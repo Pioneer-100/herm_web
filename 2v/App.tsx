@@ -189,13 +189,16 @@ export default function App() {
 
   return (
     <div className="relative isolate min-h-screen bg-[#070d14] text-slate-100 font-sans selection:bg-emerald-500 selection:text-white">
-      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none" aria-hidden="true">
+      {/* Background Image: Contained and properly scaled with subtle opacity on mobile */}
+      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none flex items-center justify-center" aria-hidden="true">
         <img
           src={heroBackgroundImg}
           alt=""
-          className="h-full w-full object-cover object-center"
+          className="w-full h-full object-contain md:object-cover object-center max-w-4xl max-h-[85vh] md:max-w-none md:max-h-none opacity-25 md:opacity-40 filter blur-[0.5px]"
         />
-        <div className="absolute inset-0 bg-[#070d14]/55" />
+        {/* Darkening & gradient tint overlays so text remains sharp & perfectly readable */}
+        <div className="absolute inset-0 bg-[#070d14]/75" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#070d14] via-transparent to-[#070d14]" />
       </div>
       <div className="relative z-10">
       
