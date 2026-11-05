@@ -1,0 +1,1146 @@
+import React, { useState } from 'react';
+import heroBackgroundImg from './hero-bg.jpg';
+import { 
+  Shield, Zap, Globe, TrendingUp, Award, ArrowRight, 
+  CheckCircle2, Droplets, Leaf, BarChart3, Mail, Phone, MapPin, 
+  ChevronRight, Menu, X, Building2, Users, FileText, Flame, 
+  Cpu, Compass, ArrowUpRight, Check, HelpCircle, Layers, Clock,
+  Sun, Sparkles, Waves, ArrowDownRight
+} from 'lucide-react';
+
+export default function App() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeNexusTab, setActiveNexusTab] = useState<'energy' | 'water' | 'food' | 'waste'>('energy');
+  const [projectFilter, setProjectFilter] = useState<string>('all');
+  
+  // Interactive Hydro-Solar Hybrid Calculator
+  const [solarCapacityMW, setSolarCapacityMW] = useState<number>(5.4);
+  const [hydroCapacityMW, setHydroCapacityMW] = useState<number>(5.0);
+
+  // Inquiry prefill message state
+  const [inquiryScope, setInquiryScope] = useState<string>('');
+
+  const prefillWithCalculator = () => {
+    const text = `Preliminary assessment request for a Hydro-Solar Hybrid system: ${solarCapacityMW} MWp Floating Solar array combined with a ${hydroCapacityMW} MW Hydroelectric scheme (Estimated joint yield: ${(totalHybridMWh / 1000).toFixed(1)} GWh/yr, ~${blendedCapacityFactor}% blended capacity factor).`;
+    setInquiryScope(text);
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Calculations based on PVsyst case study (Page 8: 5.437 MWp solar -> 10,614 MWh; 5 MW hydro -> 23,161 MWh)
+  const estimatedSolarMWh = Math.round(solarCapacityMW * (10614 / 5.437));
+  const estimatedHydroMWh = Math.round(hydroCapacityMW * (23161 / 5.0));
+  const totalHybridMWh = estimatedSolarMWh + estimatedHydroMWh;
+  const blendedCapacityFactor = (((totalHybridMWh) / ((solarCapacityMW + hydroCapacityMW) * 8760)) * 100).toFixed(1);
+  // Estimated water evaporation saved from floating solar: ~15,000 m³ per MWp per year
+  const estimatedWaterSavedM3 = Math.round(solarCapacityMW * 15200);
+
+  // Quad Nexus Data
+  const quadNexus = {
+    energy: {
+      title: "Energy Solutions",
+      subtitle: "Clean, Bankable Baseload & Peak Generation",
+      description: "Pioneering floating solar PV arrays, rooftop solar for C&I, utility-scale solar farms, pumped hydro energy storage, and integrated battery storage systems (BESS).",
+      deliverables: [
+        "Floating Solar PV on inland dams & reservoirs",
+        "Hydro-solar hybridisation sharing shared grid infrastructure",
+        "Rooftop Solar PV for commercial, industrial & pension fund portfolios",
+        "Hourly PVsyst simulation & grid protection integration"
+      ],
+      tag: "500MW+ Hybrid Potential"
+    },
+    water: {
+      title: "Water Management",
+      subtitle: "Securing High-Yield Water Resource Infrastructure",
+      description: "Harnessing clean power for solar-powered water pumping, large-scale precision irrigation schemes, comprehensive water efficiency audits, and certified purification systems.",
+      deliverables: [
+        "Solar-powered agricultural water pumping & conveyance",
+        "First-principles hydraulic modelling for mini-hydro & dams",
+        "Water resource efficiency & loss-reduction audits",
+        "NSF-certified household & institutional water purification (eSpring)"
+      ],
+      tag: "Certified Safety & Efficiency"
+    },
+    food: {
+      title: "Food Security & Agri-Energy",
+      subtitle: "Renewable-Powered Productive Agriculture",
+      description: "Bridging farm energy access through renewable-powered agro-processing, cold-chain storage solutions, and innovative Pay-As-You-Go (PAYG) financing mechanisms.",
+      deliverables: [
+        "Renewable-powered irrigation & post-harvest processing",
+        "PAYG financing models for smallholder & commercial outgrowers",
+        "Agrivoltaics and dual-use land optimization",
+        "Cold chain electrification for agricultural exports"
+      ],
+      tag: "Resilient Yields"
+    },
+    waste: {
+      title: "Waste to Energy",
+      subtitle: "Circular Bio-Economy & Valorisation",
+      description: "Transforming municipal, agricultural, and industrial organic waste into clean power and high-value biogas through advanced conversion systems.",
+      deliverables: [
+        "Biogas-to-energy anaerobic digestion engineering",
+        "Municipal and agricultural biomass waste valorisation",
+        "Industrial waste stream energy recapture studies",
+        "Circular economy compliance & carbon offset monetisation"
+      ],
+      tag: "Zero-Waste Transition"
+    }
+  };
+
+  const projectPortfolio = [
+    {
+      name: "Kariba Floating Solar Plant",
+      type: "Hydro-Solar Hybrid",
+      size: "250 – 1,000 MW",
+      location: "Lake Kariba, Zimbabwe",
+      category: "hybrid",
+      description: "Groundbreaking utility-scale floating solar integration on Lake Kariba, hybridising with the existing hydroelectric complex for grid balancing."
+    },
+    {
+      name: "Osborne Dam Floating Solar",
+      type: "Floating Solar PV",
+      size: "100 MW",
+      location: "Mutare, Zimbabwe",
+      category: "floating",
+      description: "Utility reservoir solar deployment reducing surface water evaporation while generating high-yield clean power for the regional grid."
+    },
+    {
+      name: "Bushmead Solar Plant",
+      type: "Solar PV",
+      size: "10 MW",
+      location: "Masvingo Province",
+      category: "solar",
+      description: "Full feasibility, PVsyst modelling, and grid integration for commercial solar farm feeding provincial industrial demand."
+    },
+    {
+      name: "Gwanda Solar Plant",
+      type: "Solar PV",
+      size: "5 MW",
+      location: "Mashonaland Province",
+      category: "solar",
+      description: "Decentralized power station engineered for resilient grid injection in key high-irradiance agricultural and mining hubs."
+    },
+    {
+      name: "Midlands Solar PV",
+      type: "Grid-Connected Solar",
+      size: "50 MW",
+      location: "Midlands, Zimbabwe",
+      category: "solar",
+      description: "Large-scale utility transmission study, Class 5 CAPEX assessment, and environmental and social screening (ESIA)."
+    },
+    {
+      name: "Rufaro Solar Farm",
+      type: "Grid-Connected Solar",
+      size: "50 MW",
+      location: "Zimbabwe",
+      category: "solar",
+      description: "Comprehensive bankability audit, tariff financial structuring, and interconnection design for institutional co-investment."
+    },
+    {
+      name: "Mkwasine Solar PV",
+      type: "Grid-Connected Solar",
+      size: "10.6 MW",
+      location: "Lowveld, Zimbabwe",
+      category: "solar",
+      description: "Agro-industrial power hub powering critical irrigation pumps and regional sugar cane processing facilities."
+    },
+    {
+      name: "Odzani Hydropower Plant",
+      type: "Hydropower",
+      size: "2.4 MW",
+      location: "Eastern Highlands, Zimbabwe",
+      category: "hydro",
+      description: "Run-of-river hydraulic simulation, turbine optimization, and civil rehabilitation engineering assessment."
+    },
+    {
+      name: "Nyahode Hydropower",
+      type: "Hydropower",
+      size: "1.7 MW",
+      location: "Eastern Highlands, Zimbabwe",
+      category: "hydro",
+      description: "Run-of-river hydro development and integration study for community electrification and decentralized resilience."
+    }
+  ];
+
+  const filteredProjects = projectFilter === 'all' 
+    ? projectPortfolio 
+    : projectPortfolio.filter(p => p.category === projectFilter);
+
+  const engagementStages = [
+    { step: "01", name: "Brief", desc: "Clear alignment on project scope, objectives, and client requirements." },
+    { step: "02", name: "Site & Resource", desc: "Baseline solar irradiance, hydrological data, and site condition analysis." },
+    { step: "03", name: "Modelling", desc: "Hourly PVsyst yield simulation and first-principles hydraulic engineering." },
+    { step: "04", name: "Financial", desc: "Class 5 cost accuracy benchmarking, LCOE, and bankability evaluation." },
+    { step: "05", name: "Risk & ESIA", desc: "Environmental and social screening, mitigation planning, and stakeholder engagement." },
+    { step: "06", name: "Recommendation", desc: "Final bankable advisory report, investment memorandum, and next steps." }
+  ];
+
+  const partners = [
+    { name: "Bui Power Authority", role: "Floating Solar & Pumped Hydro", location: "Ghana" },
+    { name: "UNIDO & GIZ", role: "Development Programs", location: "International" },
+    { name: "Infrastructure Dev Bank of Zimbabwe", role: "Project Finance Partner", location: "Zimbabwe" },
+    { name: "African Union Commission", role: "Small Hydro & Solar Policy", location: "Pan-Africa" },
+    { name: "REN21", role: "SADC Renewable Status Reports", location: "Regional" },
+    { name: "Ministry of Energy", role: "Mission 300 National Energy Compact", location: "Zimbabwe" },
+    { name: "NRZ Pension Fund (NRZ-CPF)", role: "Commercial Rooftop Solar Assessment", location: "Multi-site" }
+  ];
+
+  return (
+    <div className="relative isolate min-h-screen bg-[#070d14] text-slate-100 font-sans selection:bg-emerald-500 selection:text-white">
+      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none" aria-hidden="true">
+        <img
+          src={heroBackgroundImg}
+          alt=""
+          className="h-full w-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-[#070d14]/55" />
+      </div>
+      <div className="relative z-10">
+      
+      {/* Main Navbar */}
+      <nav className="sticky top-0 z-50 glass-nav bg-[#09101a]/75 border-b border-slate-800/70 transition-colors">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+          
+          {/* Logo */}
+          <a href="#" className="flex items-center space-x-3 group">
+            <img
+              src={heroBackgroundImg}
+              alt="Hermit Sustainability Advisory"
+              className="w-11 h-11 rounded-xl object-cover object-center shadow-lg shadow-emerald-500/20 transform group-hover:scale-105 transition-transform"
+            />
+            <div>
+              <span className="text-2xl font-black tracking-tight font-display text-white">
+                HERMIT
+              </span>
+              <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-400">
+                Sustainability Advisory
+              </span>
+            </div>
+          </a>
+
+          {/* Desktop Navigation Links */}
+          <div className="hidden lg:flex items-center space-x-7 text-sm font-semibold text-slate-300">
+            <a href="#about" className="hover:text-emerald-400 transition-colors">About</a>
+            <a href="#nexus" className="hover:text-emerald-400 transition-colors">Quad Nexus</a>
+            <a href="#hybrid" className="hover:text-emerald-400 transition-colors">Hydro-Solar Hybrid</a>
+            <a href="#portfolio" className="hover:text-emerald-400 transition-colors">Track Record</a>
+            <a href="#process" className="hover:text-emerald-400 transition-colors">Engagement</a>
+            <a href="#partnerships" className="hover:text-emerald-400 transition-colors">Partners</a>
+            <a href="#faq" className="hover:text-emerald-400 transition-colors">FAQ</a>
+          </div>
+
+          {/* Right Action CTA */}
+          <div className="hidden sm:flex items-center space-x-3">
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-slate-950 bg-emerald-400 hover:bg-emerald-300 rounded-xl shadow-md shadow-emerald-500/20 transition-all transform hover:-translate-y-0.5"
+            >
+              <span>Initiate Study</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="flex lg:hidden items-center">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 text-slate-300 hover:text-white"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile menu dropdown */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden border-b border-emerald-950 bg-[#070d14] px-6 py-6 space-y-3 font-medium">
+            <a href="#about" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-300 hover:text-emerald-400">About Hermit</a>
+            <a href="#nexus" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-300 hover:text-emerald-400">Quad Nexus Solutions</a>
+            <a href="#hybrid" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-300 hover:text-emerald-400">Hydro-Solar Hybrid Case</a>
+            <a href="#portfolio" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-300 hover:text-emerald-400">Project Portfolio</a>
+            <a href="#process" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-300 hover:text-emerald-400">Engagement Process</a>
+            <a href="#partnerships" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-300 hover:text-emerald-400">Strategic Partnerships</a>
+            <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="block py-3 mt-4 text-center text-slate-950 bg-emerald-400 rounded-xl font-bold">
+              Contact Harare Office
+            </a>
+          </div>
+        )}
+      </nav>
+
+      {/* Hero Section with Custom Background Image */}
+      <section className="relative pt-20 pb-28 lg:pt-32 lg:pb-44 overflow-hidden">
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
+          <video
+            className="h-full w-full object-cover object-center"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster={heroBackgroundImg}
+            tabIndex={-1}
+          >
+            <source src="/hero-background.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-[#070d14]/55" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#070d14]/35 via-transparent to-[#070d14]/70" />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-display max-w-5xl mx-auto leading-[1.12] text-white">
+            Advancing Sustainable Power Solutions{' '}
+            <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
+              Across Africa
+            </span>
+          </h1>
+
+          <p className="mt-7 text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-normal">
+            Delivering innovative, bankable, and scalable clean energy solutions grounded in the 
+            <span className="text-emerald-400 font-semibold"> Quad Nexus</span> of Energy, Water, Food, and Waste to Energy.
+          </p>
+
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="#hybrid"
+              className="w-full sm:w-auto px-8 py-4 text-sm font-bold text-slate-950 bg-emerald-400 hover:bg-emerald-300 rounded-xl shadow-xl shadow-emerald-500/20 flex items-center justify-center gap-2 transition-all transform hover:-translate-y-0.5"
+            >
+              Explore Floating Solar & Hybrid Case
+              <ArrowRight className="w-4 h-4" />
+            </a>
+            <a
+              href="#portfolio"
+              className="w-full sm:w-auto px-8 py-4 text-sm font-bold text-slate-200 bg-slate-900/80 border border-slate-700/80 hover:bg-slate-800 rounded-xl transition-all shadow-sm backdrop-blur-sm"
+            >
+              View 1,000+ MW Portfolio
+            </a>
+          </div>
+
+          {/* Quick Metrics Bar from "Hermit at a Glance" (Page 2) */}
+          <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-5 text-left">
+            <div className="p-6 rounded-2xl bg-[#0c1420]/80 backdrop-blur-md border border-slate-800/80 shadow-md hover:border-emerald-500/30 transition-all">
+              <div className="flex items-center justify-between text-emerald-400 mb-2">
+                <Zap className="w-5 h-5" />
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">PV Modelled</span>
+              </div>
+              <p className="text-3xl font-extrabold font-display text-white">5,437 kWp</p>
+              <p className="text-xs text-slate-400 mt-1">Representative floating solar array</p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-[#0c1420]/80 backdrop-blur-md border border-slate-800/80 shadow-md hover:border-teal-500/30 transition-all">
+              <div className="flex items-center justify-between text-teal-400 mb-2">
+                <TrendingUp className="w-5 h-5" />
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Annual Yield</span>
+              </div>
+              <p className="text-3xl font-extrabold font-display text-white">33.8 GWh/yr</p>
+              <p className="text-xs text-slate-400 mt-1">Combined floating solar + mini-hydro</p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-[#0c1420]/80 backdrop-blur-md border border-slate-800/80 shadow-md hover:border-cyan-500/30 transition-all">
+              <div className="flex items-center justify-between text-cyan-400 mb-2">
+                <Clock className="w-5 h-5" />
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Timeline</span>
+              </div>
+              <p className="text-3xl font-extrabold font-display text-white">8 Months</p>
+              <p className="text-xs text-slate-400 mt-1">From inception to EPC tender ready</p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-[#0c1420]/80 backdrop-blur-md border border-slate-800/80 shadow-md hover:border-emerald-500/30 transition-all">
+              <div className="flex items-center justify-between text-emerald-400 mb-2">
+                <Layers className="w-5 h-5" />
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Methodology</span>
+              </div>
+              <p className="text-3xl font-extrabold font-display text-white">Class 5</p>
+              <p className="text-xs text-slate-400 mt-1">Cost accuracy & PVsyst simulation</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* About & Mission Section */}
+      <section id="about" className="py-24 bg-[#09101a]/75 border-y border-slate-800/70">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-wider border border-emerald-500/20">
+                Executive Overview
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-white">
+                Empowering Governments, Utilities, & Industries with Real Numbers, Not Assumptions
+              </h2>
+              <p className="text-slate-300 text-base leading-relaxed">
+                Hermit Sustainability Advisory is a Zimbabwean-owned renewable energy and sustainability consultancy. 
+                We bridge the gap between renewable energy innovation and practical, bankable project execution.
+              </p>
+              <p className="text-slate-300 text-base leading-relaxed">
+                Every recommendation is grounded in rigorous technical and financial modelling — whether that is an 
+                <strong className="text-emerald-400 font-semibold"> hourly PVsyst simulation </strong> 
+                of a floating solar array or a <strong className="text-teal-400 font-semibold">first-principles hydraulic model </strong> 
+                of an existing hydro plant, so clients and their financiers make decisive capital commitments.
+              </p>
+
+              {/* Four Core Values (Page 3) */}
+              <div className="grid sm:grid-cols-2 gap-4 pt-4">
+                <div className="p-4 rounded-xl bg-[#0d1624] border border-slate-800">
+                  <div className="flex items-center gap-2 text-emerald-400 font-bold text-sm">
+                    <CheckCircle2 className="w-4 h-4" /> Sustainability
+                  </div>
+                  <p className="text-xs text-slate-400 mt-1">Solutions designed to endure environmentally, operationally, and financially.</p>
+                </div>
+
+                <div className="p-4 rounded-xl bg-[#0d1624] border border-slate-800">
+                  <div className="flex items-center gap-2 text-teal-400 font-bold text-sm">
+                    <CheckCircle2 className="w-4 h-4" /> Innovation
+                  </div>
+                  <p className="text-xs text-slate-400 mt-1">Applying proven technology in breakthrough combinations, like hydro-solar hybridisation.</p>
+                </div>
+
+                <div className="p-4 rounded-xl bg-[#0d1624] border border-slate-800">
+                  <div className="flex items-center gap-2 text-cyan-400 font-bold text-sm">
+                    <CheckCircle2 className="w-4 h-4" /> Integrity
+                  </div>
+                  <p className="text-xs text-slate-400 mt-1">Defensible findings, Class 5 costing, and bankable metrics investors rely upon.</p>
+                </div>
+
+                <div className="p-4 rounded-xl bg-[#0d1624] border border-slate-800">
+                  <div className="flex items-center gap-2 text-amber-400 font-bold text-sm">
+                    <CheckCircle2 className="w-4 h-4" /> Carbon Stewardship
+                  </div>
+                  <p className="text-xs text-slate-400 mt-1">Projects that measurably cut emissions and advance African climate commitments.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Strategic Pillars Callout / Vision */}
+            <div className="lg:col-span-5">
+              <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#0c1420] to-[#080d14] text-white border border-slate-800 shadow-2xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-52 h-52 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
+
+                <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest">Our Vision</span>
+                <h3 className="mt-2 text-2xl font-bold font-display text-white">
+                  Africa’s Leading Catalyst for Renewable Innovation
+                </h3>
+                <p className="mt-4 text-sm text-slate-300 leading-relaxed">
+                  Driving sustainable power systems that empower communities, enhance sovereign energy security, and protect the African environment for future generations.
+                </p>
+
+                <div className="mt-8 pt-6 border-t border-slate-800/80 space-y-3">
+                  <p className="text-xs text-slate-400 uppercase tracking-wider font-semibold">Standard Tools & Methodologies</p>
+                  <div className="flex flex-wrap gap-2 pt-1">
+                    {["PVsyst V7.4", "Meteonorm", "MS Project", "ZERA", "ZINWA", "ZETDC", "NSF Standards"].map((tool, i) => (
+                      <span key={i} className="text-xs bg-[#111c2e] text-emerald-300 px-2.5 py-1 rounded-md border border-slate-700/60 font-medium">
+                        {tool}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-8">
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 hover:text-emerald-300 group"
+                  >
+                    Download Information Pack & Scope
+                    <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* The Quad Nexus Section (Pages 2, 4, 5) */}
+      <section id="nexus" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto">
+          <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
+            Framework For Impact
+          </span>
+          <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-white">
+            The Quad Nexus Framework
+          </h2>
+          <p className="mt-4 text-slate-300 text-base">
+            Hermit’s specialized advisory addresses the interconnected challenges of Energy, Water, Food, and Waste to Energy through comprehensive lifecycle delivery.
+          </p>
+
+          {/* Interactive Quad Nexus Navigation Pills */}
+          <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-2 p-1.5 rounded-2xl bg-[#0d1624] border border-slate-800">
+            <button
+              onClick={() => setActiveNexusTab('energy')}
+              className={`flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+                activeNexusTab === 'energy' 
+                  ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' 
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              <Zap className="w-4 h-4 text-emerald-400" /> Energy
+            </button>
+
+            <button
+              onClick={() => setActiveNexusTab('water')}
+              className={`flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+                activeNexusTab === 'water' 
+                  ? 'bg-teal-500/20 text-teal-300 border border-teal-500/40' 
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              <Droplets className="w-4 h-4 text-teal-400" /> Water
+            </button>
+
+            <button
+              onClick={() => setActiveNexusTab('food')}
+              className={`flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+                activeNexusTab === 'food' 
+                  ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40' 
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              <Leaf className="w-4 h-4 text-amber-400" /> Food
+            </button>
+
+            <button
+              onClick={() => setActiveNexusTab('waste')}
+              className={`flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+                activeNexusTab === 'waste' 
+                  ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40' 
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              <Flame className="w-4 h-4 text-cyan-400" /> Waste to Energy
+            </button>
+          </div>
+        </div>
+
+        {/* Selected Nexus Pillar Deep Dive */}
+        <div className="mt-12 bg-[#0c1420] rounded-3xl border border-slate-800 p-8 sm:p-12 shadow-xl">
+          <div className="grid lg:grid-cols-12 gap-8 items-center">
+            
+            <div className="lg:col-span-7">
+              <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-400 uppercase tracking-wider border border-emerald-500/20">
+                {quadNexus[activeNexusTab].tag}
+              </span>
+              <h3 className="mt-4 text-2xl sm:text-3xl font-extrabold font-display text-white">
+                {quadNexus[activeNexusTab].title}
+              </h3>
+              <p className="mt-1 text-sm font-semibold text-emerald-400">
+                {quadNexus[activeNexusTab].subtitle}
+              </p>
+              <p className="mt-4 text-slate-300 text-base leading-relaxed">
+                {quadNexus[activeNexusTab].description}
+              </p>
+
+              <div className="mt-8 space-y-3">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">What We Deliver In Practice:</h4>
+                {quadNexus[activeNexusTab].deliverables.map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                    <span className="text-sm font-medium text-slate-200">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="lg:col-span-5 bg-[#070d14] p-6 sm:p-8 rounded-2xl border border-slate-800">
+              <h4 className="font-bold text-base text-white">End-to-End Advisory Scope</h4>
+              <p className="text-xs text-slate-400 mt-1">
+                Supporting institutional off-takers from pre-feasibility to commercial commissioning.
+              </p>
+
+              <div className="mt-6 space-y-4">
+                <div className="p-3.5 rounded-xl bg-[#0f1929] border border-slate-800">
+                  <p className="text-xs font-bold text-white">Technical & Financial Studies</p>
+                  <p className="text-[11px] text-slate-400 mt-0.5">Pre-feasibility & feasibility benchmarked to Class 5 cost accuracy.</p>
+                </div>
+                <div className="p-3.5 rounded-xl bg-[#0f1929] border border-slate-800">
+                  <p className="text-xs font-bold text-white">Grid Integration Studies</p>
+                  <p className="text-[11px] text-slate-400 mt-0.5">Interconnection design, power factor, and protection coordination.</p>
+                </div>
+                <div className="p-3.5 rounded-xl bg-[#0f1929] border border-slate-800">
+                  <p className="text-xs font-bold text-white">Project Structuring & SPV</p>
+                  <p className="text-[11px] text-slate-400 mt-0.5">Special purpose vehicle creation, ownership models & tender documentation.</p>
+                </div>
+              </div>
+
+              <a
+                href="#contact"
+                className="mt-6 block w-full py-3 text-center text-xs font-bold text-slate-950 bg-emerald-400 hover:bg-emerald-300 rounded-xl uppercase tracking-wider transition-all"
+              >
+                Inquire For This Sector
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Hydro-Solar Hybrid Case Study & Interactive Calculator (Page 8) */}
+      <section id="hybrid" className="py-24 bg-[#09101a]/75 text-white relative overflow-hidden border-y border-slate-800/80">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-teal-500/10 blur-3xl rounded-full pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          
+          <div className="max-w-3xl">
+            <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
+              Flagship Technical Practice (Page 8 Benchmark)
+            </span>
+            <h2 className="mt-2 text-3xl sm:text-5xl font-extrabold font-display">
+              Floating Solar & Hydro-Hybridisation
+            </h2>
+            <p className="mt-4 text-slate-300 text-base leading-relaxed">
+              Our floating solar practice hybridises megawatt-scale PV arrays with existing hydro plants, sharing one grid connection to dramatically lift a site's combined output without requiring costly transmission line reinforcement.
+            </p>
+          </div>
+
+          <div className="mt-14 grid lg:grid-cols-12 gap-10 items-center">
+            
+            {/* Interactive Sizing Model */}
+            <div className="lg:col-span-7 bg-[#0c1420] p-8 rounded-3xl border border-slate-800 shadow-xl">
+              <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+                <h3 className="font-bold text-lg font-display text-white">Hybrid Array Output Simulator</h3>
+                <span className="text-xs bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded font-semibold border border-emerald-500/30">
+                  PVsyst V7.4.7 Calibrated
+                </span>
+              </div>
+
+              <div className="mt-6 space-y-6">
+                <div>
+                  <div className="flex justify-between text-sm font-semibold mb-2">
+                    <span className="text-slate-300">Floating Solar Capacity</span>
+                    <span className="text-emerald-400 font-bold">{solarCapacityMW} MWp</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="1"
+                    max="50"
+                    step="0.5"
+                    value={solarCapacityMW}
+                    onChange={(e) => setSolarCapacityMW(parseFloat(e.target.value))}
+                    className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-400"
+                  />
+                  <div className="flex justify-between text-[11px] text-slate-500 mt-1">
+                    <span>1 MWp (Pilot Array)</span>
+                    <span>5.4 MWp (Benchmark Case)</span>
+                    <span>50 MWp (Utility Scale)</span>
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex justify-between text-sm font-semibold mb-2">
+                    <span className="text-slate-300">Existing Hydro Plant Capacity</span>
+                    <span className="text-teal-400 font-bold">{hydroCapacityMW} MW</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="1"
+                    max="100"
+                    step="1"
+                    value={hydroCapacityMW}
+                    onChange={(e) => setHydroCapacityMW(parseFloat(e.target.value))}
+                    className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-teal-400"
+                  />
+                  <div className="flex justify-between text-[11px] text-slate-500 mt-1">
+                    <span>1 MW (Mini-Hydro)</span>
+                    <span>5 MW (Case Study)</span>
+                    <span>100 MW (Reservoir Hydro)</span>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-800 text-center">
+                  <div className="p-3 rounded-xl bg-[#070d14] border border-slate-800">
+                    <span className="text-[10px] text-slate-400 uppercase font-bold">Solar Generation</span>
+                    <p className="text-base sm:text-lg font-black text-emerald-400 mt-1">{estimatedSolarMWh.toLocaleString()} MWh/yr</p>
+                    <p className="text-[10px] text-slate-500">81.3% PR (PVsyst)</p>
+                  </div>
+                  <div className="p-3 rounded-xl bg-[#070d14] border border-slate-800">
+                    <span className="text-[10px] text-slate-400 uppercase font-bold">Hydro Generation</span>
+                    <p className="text-base sm:text-lg font-black text-teal-400 mt-1">{estimatedHydroMWh.toLocaleString()} MWh/yr</p>
+                    <p className="text-[10px] text-slate-500">52.9% Capacity Factor</p>
+                  </div>
+                  <div className="p-3 rounded-xl bg-[#070d14] border border-slate-800">
+                    <span className="text-[10px] text-slate-400 uppercase font-bold flex items-center justify-center gap-1">
+                      <Droplets className="w-3 h-3 text-cyan-400" /> Water Saved
+                    </span>
+                    <p className="text-base sm:text-lg font-black text-cyan-400 mt-1">{(estimatedWaterSavedM3 / 1000).toFixed(0)}k m³/yr</p>
+                    <p className="text-[10px] text-slate-500">Reduced Evaporation</p>
+                  </div>
+                  <div className="p-3 rounded-xl bg-emerald-950/60 border border-emerald-500/40">
+                    <span className="text-[10px] text-emerald-300 uppercase font-bold">Hybrid Yield</span>
+                    <p className="text-base sm:text-lg font-black text-white mt-1">{(totalHybridMWh / 1000).toFixed(1)} GWh/yr</p>
+                    <p className="text-[10px] text-emerald-400">{blendedCapacityFactor}% Blended Factor</p>
+                  </div>
+                </div>
+
+                {/* Direct Action: Connect Simulator to Advisory Inquiry */}
+                <div className="pt-2">
+                  <button
+                    onClick={prefillWithCalculator}
+                    className="w-full py-3 px-4 rounded-xl text-xs font-bold uppercase tracking-wider text-slate-950 bg-gradient-to-r from-emerald-400 to-teal-300 hover:from-emerald-300 hover:to-teal-200 shadow-lg shadow-emerald-500/10 flex items-center justify-center gap-2 transition-all"
+                  >
+                    <span>Request Pre-Feasibility Assessment for {solarCapacityMW} MWp Solar + {hydroCapacityMW} MW Hydro</span>
+                    <ArrowDownRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* 8-Month Inception-to-Tender Workflow (Page 8) */}
+            <div className="lg:col-span-5 space-y-4">
+              <h3 className="font-bold text-xl font-display text-white">8-Month Inception to EPC Tender</h3>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                Hermit structures five rigorous work packages ensuring seamless technical de-risking and bankable tender readiness.
+              </p>
+
+              <div className="space-y-3 pt-2">
+                {[
+                  { phase: "Inception & Scope", duration: "1 Month", detail: "Baseline review & stakeholder agreement" },
+                  { phase: "Feasibility Study", duration: "3 Months", detail: "Hydraulic modeling & PVsyst solar yield" },
+                  { phase: "Detailed Preliminary Design", duration: "3 Months", detail: "Grid impact & hybrid plant architecture" },
+                  { phase: "Environmental & Social Screening", duration: "4 Months", detail: "ESIA scope, water body co-benefit analysis" },
+                  { phase: "EPC Tender Documentation", duration: "3 Months", detail: "Class 5 cost accuracy & procurement package" }
+                ].map((item, idx) => (
+                  <div key={idx} className="p-3 rounded-xl bg-[#0c1420] border border-slate-800 flex items-center justify-between">
+                    <div>
+                      <p className="text-xs font-bold text-white">{item.phase}</p>
+                      <p className="text-[10px] text-slate-400">{item.detail}</p>
+                    </div>
+                    <span className="text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                      {item.duration}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* Project Portfolio Highlights (Page 7) */}
+      <section id="portfolio" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
+          <div>
+            <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
+              Defensible Track Record
+            </span>
+            <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-white">
+              Project Portfolio Highlights
+            </h2>
+          </div>
+
+          {/* Filter Pills */}
+          <div className="mt-4 md:mt-0 flex flex-wrap gap-2">
+            {[
+              { id: 'all', label: 'All Projects' },
+              { id: 'hybrid', label: 'Hydro-Solar Hybrid' },
+              { id: 'floating', label: 'Floating Solar' },
+              { id: 'solar', label: 'Solar PV' },
+              { id: 'hydro', label: 'Hydropower' }
+            ].map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => setProjectFilter(tab.id)}
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                  projectFilter === tab.id
+                    ? 'bg-emerald-400 text-slate-950 shadow-sm'
+                    : 'bg-[#0f1929] text-slate-300 hover:bg-slate-800 border border-slate-800'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Portfolio Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredProjects.map((p, idx) => (
+            <div 
+              key={idx}
+              className="p-6 rounded-2xl bg-[#0c1420] border border-slate-800 hover:border-emerald-500/40 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between text-xs font-semibold mb-3">
+                  <span className="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    {p.type}
+                  </span>
+                  <span className="text-slate-400 flex items-center gap-1">
+                    <MapPin className="w-3.5 h-3.5 text-slate-500" /> {p.location}
+                  </span>
+                </div>
+
+                <h3 className="text-xl font-bold font-display text-white mt-1">
+                  {p.name}
+                </h3>
+                <p className="mt-3 text-sm text-slate-400 leading-relaxed">
+                  {p.description}
+                </p>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between">
+                <div>
+                  <span className="text-[10px] text-slate-500 uppercase font-bold block">Capacity</span>
+                  <span className="text-base font-extrabold text-emerald-400">{p.size}</span>
+                </div>
+                <button className="text-xs font-semibold text-slate-300 hover:text-emerald-400 flex items-center gap-1">
+                  Factsheet <ChevronRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Engagement Process (Page 3 & 7) */}
+      <section id="process" className="py-24 bg-[#09101a]/75 border-y border-slate-800/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
+              How We Work
+            </span>
+            <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-white">
+              Our Six-Stage Engagement Process
+            </h2>
+            <p className="mt-4 text-slate-300 text-base">
+              Every advisory engagement, whatever its scale, follows this structured methodology to ensure financier-grade deliverables.
+            </p>
+          </div>
+
+          <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {engagementStages.map((stage, idx) => (
+              <div 
+                key={idx}
+                className="p-6 rounded-2xl bg-[#0c1420] border border-slate-800 relative overflow-hidden group hover:border-emerald-500/50 transition-colors"
+              >
+                <div className="text-3xl font-black text-slate-700 group-hover:text-emerald-400/40 transition-colors font-display">
+                  {stage.step}
+                </div>
+                <h4 className="mt-2 text-lg font-bold font-display text-white">
+                  {stage.name}
+                </h4>
+                <p className="mt-2 text-sm text-slate-400 leading-relaxed">
+                  {stage.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* 4 Ways to Work With Us (Page 7) */}
+          <div className="mt-16 p-8 rounded-3xl bg-gradient-to-r from-emerald-950 via-[#0d221c] to-[#091814] border border-emerald-500/30 text-white">
+            <h3 className="text-xl sm:text-2xl font-bold font-display text-white">Ways to Work With Hermit</h3>
+            <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
+              <div className="bg-[#07130f]/60 p-4 rounded-xl border border-emerald-500/20 backdrop-blur-sm">
+                <span className="font-bold text-emerald-300 block mb-1">1. Pre-Feasibility Study</span>
+                <p className="text-xs text-slate-300">Stand-alone technical and financial pre-feasibility assessment.</p>
+              </div>
+              <div className="bg-[#07130f]/60 p-4 rounded-xl border border-emerald-500/20 backdrop-blur-sm">
+                <span className="font-bold text-emerald-300 block mb-1">2. Feasibility & Design</span>
+                <p className="text-xs text-slate-300">Detailed feasibility, grid impact, and preliminary engineering design.</p>
+              </div>
+              <div className="bg-[#07130f]/60 p-4 rounded-xl border border-emerald-500/20 backdrop-blur-sm">
+                <span className="font-bold text-emerald-300 block mb-1">3. Development Support</span>
+                <p className="text-xs text-slate-300">SPV structuring, funding strategy, and tender documentation.</p>
+              </div>
+              <div className="bg-[#07130f]/60 p-4 rounded-xl border border-emerald-500/20 backdrop-blur-sm">
+                <span className="font-bold text-emerald-300 block mb-1">4. Independent Review</span>
+                <p className="text-xs text-slate-300">Second opinion verification on someone else’s design or figures.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Strategic Partnerships (Page 9) */}
+      <section id="partnerships" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto">
+          <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
+            Collaboration & Recognition
+          </span>
+          <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-white">
+            Strategic Partnerships & Advisory Roles
+          </h2>
+          <p className="mt-4 text-slate-300 text-base">
+            Collaborating with leading regional utilities, multilateral development institutions, and sovereign authorities.
+          </p>
+        </div>
+
+        {/* Featured Case: Bui Power Authority */}
+        <div className="mt-12 p-8 sm:p-10 rounded-3xl bg-[#0c1420] border border-slate-800">
+          <div className="grid lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-8">
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
+                International Landmark Mandate
+              </span>
+              <h3 className="text-2xl font-bold font-display text-white mt-1">
+                Bui Power Authority (Ghana) Collaboration
+              </h3>
+              <p className="mt-3 text-slate-300 text-sm sm:text-base leading-relaxed">
+                Strategic technical advisory addressing floating solar PV integration on the Bui Reservoir, pumped hydro storage feasibility for grid stability, and institutional rooftop solar PV for community resilience.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <span className="text-xs bg-[#070d14] px-3 py-1 rounded-md font-semibold border border-slate-800 text-slate-300">
+                  Floating Solar PV
+                </span>
+                <span className="text-xs bg-[#070d14] px-3 py-1 rounded-md font-semibold border border-slate-800 text-slate-300">
+                  Pumped Hydro Storage
+                </span>
+                <span className="text-xs bg-[#070d14] px-3 py-1 rounded-md font-semibold border border-slate-800 text-slate-300">
+                  Capacity Building
+                </span>
+              </div>
+            </div>
+
+            <div className="lg:col-span-4 bg-[#070d14] p-6 rounded-2xl border border-slate-800 text-center">
+              <span className="text-3xl font-extrabold text-emerald-400 font-display">100%</span>
+              <p className="text-xs font-bold text-white mt-1">Proven Regional Replicability</p>
+              <p className="text-[11px] text-slate-400 mt-1">
+                From Lake Kariba to Bui Reservoir, delivering scalable African hydro-solar solutions.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Partners Grid */}
+        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {partners.map((p, idx) => (
+            <div key={idx} className="p-4 rounded-xl bg-[#0c1420] border border-slate-800 flex items-center justify-between">
+              <div>
+                <p className="text-sm font-bold text-white">{p.name}</p>
+                <p className="text-xs text-slate-400">{p.role}</p>
+              </div>
+              <span className="text-[10px] uppercase font-bold text-slate-400 bg-[#070d14] px-2 py-1 rounded border border-slate-800">
+                {p.location}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Frequently Asked Questions (Page 9) */}
+      <section id="faq" className="py-20 bg-[#09101a]/75 border-y border-slate-800/80">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
+              Answers & Due Diligence
+            </span>
+            <h2 className="mt-2 text-3xl font-extrabold font-display text-white">
+              Frequently Asked Questions
+            </h2>
+          </div>
+
+          <div className="space-y-4">
+            <div className="p-6 rounded-2xl bg-[#0c1420] border border-slate-800">
+              <h4 className="text-base font-bold text-white flex items-center gap-2">
+                <HelpCircle className="w-5 h-5 text-emerald-400 shrink-0" />
+                Do you only work on utility-scale projects?
+              </h4>
+              <p className="mt-2 text-sm text-slate-300 leading-relaxed pl-7">
+                No. Our work spans demonstration-led household and commercial products (such as the NSF-certified eSpring water purification rollout) through to utility-scale hydro-solar hybridisation, all viewed through the same Quad Nexus framework.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-[#0c1420] border border-slate-800">
+              <h4 className="text-base font-bold text-white flex items-center gap-2">
+                <HelpCircle className="w-5 h-5 text-emerald-400 shrink-0" />
+                What stage do you engage at?
+              </h4>
+              <p className="mt-2 text-sm text-slate-300 leading-relaxed pl-7">
+                From initial inception and pre-feasibility, through detailed preliminary design, environmental and social screening (ESIA), to bankable EPC tender support and independent technical review.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-[#0c1420] border border-slate-800">
+              <h4 className="text-base font-bold text-white flex items-center gap-2">
+                <HelpCircle className="w-5 h-5 text-emerald-400 shrink-0" />
+                Is your advisory work independently verifiable?
+              </h4>
+              <p className="mt-2 text-sm text-slate-300 leading-relaxed pl-7">
+                Yes. We utilize hourly PVsyst simulation, first-principles hydraulic modelling, Class 5 costing methodology, and NSF-certified product standards where applicable, ensuring every figure has an established, defensible basis.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact & Inquiry Section (Page 10) */}
+      <section id="contact" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-12 gap-12">
+          
+          <div className="lg:col-span-5 space-y-6">
+            <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
+              Harare Office & Operations
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-white">
+              Connect With Our Advisory Team
+            </h2>
+            <p className="text-slate-300 text-base leading-relaxed">
+              Advancing sustainable power solutions across Africa. Reach out to request a feasibility assessment, explore hydro-solar hybridisation, or discuss project development support.
+            </p>
+
+            <div className="space-y-4 pt-4">
+              <div className="flex items-start gap-3.5">
+                <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                  <MapPin className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-xs uppercase font-bold text-slate-400">Physical Address</p>
+                  <p className="text-sm font-semibold text-white">30 Tunsgate, Mt Pleasant, Harare, Zimbabwe</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3.5">
+                <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                  <Phone className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-xs uppercase font-bold text-slate-400">Direct Telephone</p>
+                  <p className="text-sm font-semibold text-white">+263 71 280 0220</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3.5">
+                <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                  <Mail className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-xs uppercase font-bold text-slate-400">Corporate Enquiries</p>
+                  <p className="text-sm font-semibold text-white">info@hermitsustainability.co.zw</p>
+                  <p className="text-xs text-slate-400">hermitinfopack@gmail.com</p>
+                </div>
+              </div>
+            </div>
+
+            {/* "Before You Get in Touch" Callout (Page 10) */}
+            <div className="p-5 rounded-2xl bg-[#0c1420] border border-slate-800">
+              <p className="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-2">
+                Before You Get In Touch (Feasibility Checklist)
+              </p>
+              <ul className="text-xs text-slate-300 space-y-1.5 list-disc pl-4">
+                <li>Site location, existing infrastructure, and grid connection details</li>
+                <li>Target off-takers or intended use of generated power</li>
+                <li>Any prior studies, resource data, or drawings already available</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Form */}
+          <div className="lg:col-span-7 bg-[#0c1420] p-8 sm:p-10 rounded-3xl border border-slate-800 shadow-2xl">
+            <h3 className="text-xl font-bold font-display text-white mb-2">
+              Request Advisory Briefing or Proposal
+            </h3>
+            <p className="text-xs text-slate-400 mb-6">
+              Our engineering and financial team typically responds within 24 business hours.
+            </p>
+
+            <form onSubmit={(e) => { e.preventDefault(); alert('Your request has been submitted to Hermit Advisory. Thank you.'); }} className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-slate-300 mb-1">Contact Name</label>
+                  <input 
+                    type="text" 
+                    required 
+                    placeholder="E.g. Tendai Moyo" 
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-[#070d14] text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-400" 
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-300 mb-1">Email Address</label>
+                  <input 
+                    type="email" 
+                    required 
+                    placeholder="tendai@organization.com" 
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-[#070d14] text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-400" 
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-slate-300 mb-1">Client Sector</label>
+                  <select className="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-[#070d14] text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-400">
+                    <option>Power Utility / IPP</option>
+                    <option>Government / Ministry</option>
+                    <option>Mining & Heavy Industry</option>
+                    <option>Commercial Agriculture & Food</option>
+                    <option>Institutional Pension Fund / DFI</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-300 mb-1">Advisory Package</label>
+                  <select className="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-[#070d14] text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-400">
+                    <option>Pre-Feasibility Study</option>
+                    <option>Floating Solar / Hydro-Hybrid Study</option>
+                    <option>Detailed Feasibility & Grid Impact</option>
+                    <option>SPV & EPC Tender Documentation</option>
+                    <option>Independent Design Review</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-300 mb-1">Project Details / Scope</label>
+                <textarea 
+                  rows={4} 
+                  required
+                  value={inquiryScope}
+                  onChange={(e) => setInquiryScope(e.target.value)}
+                  placeholder="Share details regarding site location, capacity target (MW), grid interconnect, or specific objectives..."
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-[#070d14] text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-400" 
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-3.5 text-sm font-bold text-slate-950 bg-emerald-400 hover:bg-emerald-300 rounded-xl shadow-lg shadow-emerald-500/20 transition-all uppercase tracking-wider font-display"
+              >
+                Submit Advisory Request
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Footer (Page 1 & 10) */}
+      <footer className="bg-[#05080e]/90 text-slate-400 py-12 border-t border-slate-800/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-800/60">
+            <div className="flex items-center space-x-3">
+              <img
+                src={heroBackgroundImg}
+                alt="Hermit Sustainability Advisory"
+                className="w-9 h-9 rounded-xl object-cover object-center"
+              />
+              <div>
+                <span className="text-xl font-extrabold font-display text-white tracking-tight">HERMIT</span>
+                <span className="block text-[9px] uppercase tracking-widest text-emerald-400 font-bold">Sustainability Advisory</span>
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-6 text-xs font-semibold">
+              <a href="#about" className="hover:text-white transition-colors">About</a>
+              <a href="#nexus" className="hover:text-white transition-colors">Quad Nexus</a>
+              <a href="#hybrid" className="hover:text-white transition-colors">Hydro-Solar Hybrid</a>
+              <a href="#portfolio" className="hover:text-white transition-colors">Portfolio</a>
+              <a href="#process" className="hover:text-white transition-colors">Process</a>
+              <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+            </div>
+          </div>
+
+          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+            <p>© {new Date().getFullYear()} Hermit Sustainability Advisory. Zimbabwean-Owned • Africa-Facing.</p>
+            <p className="text-slate-400">30 Tunsgate, Mt Pleasant, Harare, Zimbabwe</p>
+            <div className="flex space-x-4">
+              <a href="http://www.hermitsustainability.co.zw" target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline">
+                www.hermitsustainability.co.zw
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+      </div>
+    </div>
+  );
+}
