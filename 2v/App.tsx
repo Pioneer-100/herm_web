@@ -630,9 +630,21 @@ export default function App() {
         </div>
       </section>
 
-      {/* Hydro-Solar Hybrid Case Study & Interactive Calculator (Page 8) */}
-      <section id="hybrid" className="py-24 bg-[#09101a]/75 text-white relative overflow-hidden border-y border-slate-800/80">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-teal-500/10 blur-3xl rounded-full pointer-events-none" />
+      {/* Hydro-Solar Hybrid Case Study & Interactive Calculator */}
+      <section id="hybrid" className="py-24 text-white relative overflow-hidden border-y border-slate-800/80">
+        {/* Floating Solar Dam Background Image */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+          <img
+            src={floatingSolarHybridImg}
+            alt="Floating solar array on dam reservoir"
+            className="w-full h-full object-cover object-center scale-105"
+          />
+          {/* Subtle multi-layer gradient overlays to keep all text and simulator controls crystal clear */}
+          <div className="absolute inset-0 bg-[#070d14]/75 backdrop-brightness-[0.7]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#070d14]/90 via-[#070d14]/70 to-[#070d14]/95" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070d14]/95 via-[#070d14]/65 to-[#070d14]/90" />
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           <div className="max-w-3xl">
@@ -719,18 +731,10 @@ export default function App() {
                     <p className="text-base sm:text-lg font-black text-cyan-400 mt-1">{(estimatedWaterSavedM3 / 1000).toFixed(0)}k m³/yr</p>
                     <p className="text-[10px] text-slate-500">Reduced Evaporation</p>
                   </div>
-                  <div className="relative overflow-hidden p-3 rounded-xl border border-emerald-500/40 group">
-                    <img
-                      src={floatingSolarHybridImg}
-                      alt="Floating Solar Array on Hydropower Dam Reservoir"
-                      className="absolute inset-0 w-full h-full object-cover object-center filter brightness-50 group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-emerald-950/70 mix-blend-multiply" />
-                    <div className="relative z-10">
-                      <span className="text-[10px] text-emerald-300 uppercase font-bold drop-shadow">Hybrid Yield</span>
-                      <p className="text-base sm:text-lg font-black text-white mt-1 drop-shadow">{(totalHybridMWh / 1000).toFixed(1)} GWh/yr</p>
-                      <p className="text-[10px] text-emerald-300 drop-shadow">{blendedCapacityFactor}% Blended Factor</p>
-                    </div>
+                  <div className="p-3 rounded-xl bg-emerald-950/60 border border-emerald-500/40">
+                    <span className="text-[10px] text-emerald-300 uppercase font-bold">Hybrid Yield</span>
+                    <p className="text-base sm:text-lg font-black text-white mt-1">{(totalHybridMWh / 1000).toFixed(1)} GWh/yr</p>
+                    <p className="text-[10px] text-emerald-400">{blendedCapacityFactor}% Blended Factor</p>
                   </div>
                 </div>
 
