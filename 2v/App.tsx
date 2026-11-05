@@ -15,6 +15,54 @@ export default function App() {
   const [activeNexusTab, setActiveNexusTab] = useState<'energy' | 'water' | 'food' | 'waste'>('energy');
   const [projectFilter, setProjectFilter] = useState<string>('all');
   
+  // Theme palette switcher: 'aurora' (Emerald + Cyan + Amber) | 'bionexus' (Emerald + Sunrise Gold + Blue) | 'deepocean' (Midnight Navy + Electric Mint + Gold)
+  const [themeMode, setThemeMode] = useState<'aurora' | 'bionexus' | 'deepocean'>('aurora');
+
+  // Dynamic Theme Definitions
+  const themeStyles = {
+    aurora: {
+      name: "Option 1: Hydro-Solar Aurora",
+      bgRoot: "bg-[#060b12]",
+      badge: "border-emerald-500/30 bg-emerald-950/60 text-emerald-300",
+      headlineGradient: "from-emerald-400 via-teal-300 to-cyan-400",
+      primaryBtn: "bg-emerald-400 hover:bg-emerald-300 text-slate-950 shadow-emerald-500/20",
+      secondaryBtn: "bg-slate-900/80 border-slate-700/80 text-slate-200 hover:bg-slate-800",
+      accentText: "text-emerald-400",
+      cardBg: "bg-[#0c1420]/80 border-slate-800/80 hover:border-emerald-500/30",
+      accentGlow1: "bg-emerald-500/20",
+      accentGlow2: "bg-cyan-500/15",
+      navBorder: "border-slate-800/70"
+    },
+    bionexus: {
+      name: "Option 2: Solar Bio-Nexus",
+      bgRoot: "bg-[#060e0c]",
+      badge: "border-amber-500/30 bg-amber-950/40 text-amber-300",
+      headlineGradient: "from-emerald-400 via-emerald-300 to-amber-300",
+      primaryBtn: "bg-gradient-to-r from-emerald-400 via-teal-400 to-amber-300 hover:from-emerald-300 hover:to-amber-200 text-slate-950 shadow-amber-500/20",
+      secondaryBtn: "bg-[#0c1914]/80 border-emerald-900/60 text-emerald-100 hover:bg-[#11241d]",
+      accentText: "text-amber-400",
+      cardBg: "bg-[#0c1915]/85 border-emerald-900/40 hover:border-amber-400/40",
+      accentGlow1: "bg-amber-500/15",
+      accentGlow2: "bg-emerald-500/20",
+      navBorder: "border-emerald-900/50"
+    },
+    deepocean: {
+      name: "Option 3: Deep Ocean & Mint",
+      bgRoot: "bg-[#030712]",
+      badge: "border-blue-500/30 bg-blue-950/40 text-blue-300",
+      headlineGradient: "from-blue-400 via-teal-300 to-emerald-400",
+      primaryBtn: "bg-gradient-to-r from-blue-500 to-emerald-400 hover:from-blue-400 hover:to-emerald-300 text-slate-950 shadow-blue-500/25",
+      secondaryBtn: "bg-slate-900/90 border-blue-900/60 text-slate-200 hover:bg-slate-800",
+      accentText: "text-teal-400",
+      cardBg: "bg-[#080f1e]/85 border-blue-950 hover:border-teal-500/40",
+      accentGlow1: "bg-blue-600/15",
+      accentGlow2: "bg-emerald-500/15",
+      navBorder: "border-blue-950"
+    }
+  };
+
+  const currentTheme = themeStyles[themeMode];
+  
   // Interactive Hydro-Solar Hybrid Calculator
   const [solarCapacityMW, setSolarCapacityMW] = useState<number>(5.4);
   const [hydroCapacityMW, setHydroCapacityMW] = useState<number>(5.0);
@@ -203,7 +251,7 @@ export default function App() {
   ];
 
   return (
-    <div className="relative isolate min-h-screen bg-[#070d14] text-slate-100 font-sans selection:bg-emerald-500 selection:text-white">
+    <div className={`relative isolate min-h-screen ${currentTheme.bgRoot} text-slate-100 font-sans selection:bg-emerald-500 selection:text-white transition-colors duration-500`}>
       {/* Background Image: Contained and properly scaled with subtle opacity on mobile */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none flex items-center justify-center" aria-hidden="true">
         <img
@@ -217,8 +265,55 @@ export default function App() {
       </div>
       <div className="relative z-10">
       
+      {/* Top Banner with Interactive Color Scheme Switcher */}
+      <div className="bg-slate-950/80 border-b border-slate-800 text-xs py-2 px-4 backdrop-blur-md sticky top-0 z-[60]">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+          <div className="flex items-center gap-2 text-slate-300 text-[11px]">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="font-bold text-white uppercase tracking-wider">Palette Previewer:</span>
+            <span className="text-slate-400 hidden md:inline">Click to try each color fade live</span>
+          </div>
+
+          {/* Color Scheme Switcher Buttons */}
+          <div className="flex items-center gap-1.5 p-1 rounded-xl bg-slate-900 border border-slate-800">
+            <button
+              onClick={() => setThemeMode('aurora')}
+              className={`px-3 py-1 rounded-lg text-[11px] font-bold transition-all flex items-center gap-1.5 ${
+                themeMode === 'aurora'
+                  ? 'bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 shadow-sm'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              <span>1. Aurora (Green/Cyan)</span>
+            </button>
+
+            <button
+              onClick={() => setThemeMode('bionexus')}
+              className={`px-3 py-1 rounded-lg text-[11px] font-bold transition-all flex items-center gap-1.5 ${
+                themeMode === 'bionexus'
+                  ? 'bg-gradient-to-r from-emerald-400 via-teal-400 to-amber-300 text-slate-950 shadow-sm'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              <span>2. Bio-Nexus (Green/Gold)</span>
+            </button>
+
+            <button
+              onClick={() => setThemeMode('deepocean')}
+              className={`px-3 py-1 rounded-lg text-[11px] font-bold transition-all flex items-center gap-1.5 ${
+                themeMode === 'deepocean'
+                  ? 'bg-gradient-to-r from-blue-500 to-emerald-400 text-slate-950 shadow-sm'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              <span>3. Ocean (Navy/Mint)</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
       {/* Main Navbar */}
-      <nav className="sticky top-0 z-50 glass-nav bg-[#09101a]/75 border-b border-slate-800/70 transition-colors">
+      <nav className={`sticky top-9 z-50 glass-nav bg-[#09101a]/85 border-b ${currentTheme.navBorder} transition-colors`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
           {/* Logo */}
@@ -344,27 +439,27 @@ export default function App() {
           
           <h1 className="text-3xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-display max-w-5xl mx-auto leading-[1.15] sm:leading-[1.12] text-white">
             Advancing Sustainable Power Solutions{' '}
-            <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent drop-shadow-sm">
+            <span className={`bg-gradient-to-r ${currentTheme.headlineGradient} bg-clip-text text-transparent drop-shadow-sm`}>
               Across Africa
             </span>
           </h1>
 
           <p className="mt-5 sm:mt-7 text-sm sm:text-lg lg:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-normal px-2">
             Delivering innovative, bankable, and scalable clean energy solutions grounded in the 
-            <span className="text-emerald-400 font-semibold"> Quad Nexus</span> of Energy, Water, Food, and Waste to Energy.
+            <span className={`font-semibold ${currentTheme.accentText}`}> Quad Nexus</span> of Energy, Water, Food, and Waste to Energy.
           </p>
 
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 px-2">
             <a
               href="#hybrid"
-              className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-bold text-slate-950 bg-emerald-400 hover:bg-emerald-300 rounded-xl shadow-xl shadow-emerald-500/25 flex items-center justify-center gap-2 transition-all transform hover:-translate-y-0.5 active:scale-[0.98]"
+              className={`w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-bold ${currentTheme.primaryBtn} rounded-xl shadow-xl flex items-center justify-center gap-2 transition-all transform hover:-translate-y-0.5 active:scale-[0.98]`}
             >
               <span>Explore Floating Solar & Hybrid Case</span>
               <ArrowRight className="w-4 h-4 shrink-0" />
             </a>
             <a
               href="#portfolio"
-              className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-bold text-slate-200 bg-slate-900/80 border border-slate-700/80 hover:bg-slate-800 rounded-xl transition-all shadow-sm backdrop-blur-sm active:scale-[0.98]"
+              className={`w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-bold ${currentTheme.secondaryBtn} rounded-xl transition-all shadow-sm backdrop-blur-sm active:scale-[0.98]`}
             >
               View 1,000+ MW Portfolio
             </a>
