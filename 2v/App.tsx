@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import heroBackgroundImg from './hero-bg.jpg';
+import heroPosterImg from './hero-poster.jpg';
 import { 
   Shield, Zap, Globe, TrendingUp, Award, ArrowRight, 
   CheckCircle2, Droplets, Leaf, BarChart3, Mail, Phone, MapPin, 
@@ -19,6 +20,19 @@ export default function App() {
 
   // Inquiry prefill message state
   const [inquiryScope, setInquiryScope] = useState<string>('');
+  
+  // Track video loading state for smooth poster transition
+  const [isVideoLoaded, setIsVideoLoaded] = useState<boolean>(false);
+  const [isMobileScreen, setIsMobileScreen] = useState<boolean>(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobileScreen(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const prefillWithCalculator = () => {
     const text = `Preliminary assessment request for a Hydro-Solar Hybrid system: ${solarCapacityMW} MWp Floating Solar array combined with a ${hydroCapacityMW} MW Hydroelectric scheme (Estimated joint yield: ${(totalHybridMWh / 1000).toFixed(1)} GWh/yr, ~${blendedCapacityFactor}% blended capacity factor).`;
@@ -274,15 +288,34 @@ export default function App() {
 
       {/* Hero Section with Custom Background Image / Video */}
       <section className="relative pt-12 pb-16 sm:pt-20 sm:pb-28 lg:pt-32 lg:pb-44 overflow-hidden">
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none" aria-hidden="true">
+          
+          {/* 1. Alternate Background (Wind Turbine) - shown immediately while video buffers or on mobile */}
+          <div 
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              isVideoLoaded ? 'opacity-0' : 'opacity-100'
+            }`}
+          >
+            <img
+              src={heroPosterImg}
+              alt="Clean wind energy infrastructure"
+              className="w-full h-full object-cover object-center scale-[1.02] filter brightness-90"
+            />
+          </div>
+
+          {/* 2. Video Element with reduced mobile burden & smooth fade-in */}
           <video
-            className="h-full w-full object-cover object-center"
+            className={`h-full w-full object-cover object-center transition-opacity duration-1000 ease-in-out ${
+              isVideoLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
             autoPlay
             muted
             loop
             playsInline
-            preload="metadata"
-            poster={heroBackgroundImg}
+            preload={isMobileScreen ? "none" : "metadata"}
+            poster={heroPosterImg}
+            onLoadedData={() => setIsVideoLoaded(true)}
+            onPlaying={() => setIsVideoLoaded(true)}
             tabIndex={-1}
           >
             <source src="/hero-background.mp4" type="video/mp4" />
