@@ -341,12 +341,6 @@ export default function App() {
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           
-          {/* Eyebrow Pill */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-950/70 text-emerald-300 text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-6 sm:mb-8 backdrop-blur-md shadow-lg shadow-emerald-950/50">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>Zimbabwean-Owned • Africa-Facing Renewable Consultancy</span>
-          </div>
-
           <h1 className="text-3xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-display max-w-5xl mx-auto leading-[1.15] sm:leading-[1.12] text-white">
             Advancing Sustainable Power Solutions{' '}
             <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent drop-shadow-sm">
