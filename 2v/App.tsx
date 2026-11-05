@@ -630,24 +630,46 @@ export default function App() {
         </div>
       </section>
 
-      {/* Hydro-Solar Hybrid Case Study & Interactive Calculator (Page 8) */}
+      {/* Hydro-Solar Hybrid Case Study & Interactive Calculator */}
       <section id="hybrid" className="py-24 bg-[#09101a]/75 text-white relative overflow-hidden border-y border-slate-800/80">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-teal-500/10 blur-3xl rounded-full pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
-          <div className="max-w-3xl">
-            <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
-              Flagship Technical Practice
-            </span>
-            <h2 className="mt-2 text-3xl sm:text-5xl font-extrabold font-display">
-              Floating Solar & Hydro-Hybridisation
-            </h2>
-            <p className="mt-4 text-slate-300 text-base leading-relaxed">
-              Our floating solar practice hybridises megawatt-scale PV arrays with existing hydro plants, sharing one grid connection to dramatically lift a site's combined output without requiring costly transmission line reinforcement.
-            </p>
+          {/* Header Row: Heading on the left, floating solar picture component on the right */}
+          <div className="grid lg:grid-cols-12 gap-8 items-center mb-14">
+            <div className="lg:col-span-7">
+              <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
+                Flagship Technical Practice
+              </span>
+              <h2 className="mt-2 text-3xl sm:text-5xl font-extrabold font-display">
+                Floating Solar & Hydro-Hybridisation
+              </h2>
+              <p className="mt-4 text-slate-300 text-base leading-relaxed">
+                Our floating solar practice hybridises megawatt-scale PV arrays with existing hydro plants, sharing one grid connection to dramatically lift a site's combined output without requiring costly transmission line reinforcement.
+              </p>
+            </div>
+
+            {/* Picture component covering the upper right area */}
+            <div className="lg:col-span-5">
+              <div className="relative rounded-2xl overflow-hidden border border-slate-800 shadow-2xl group">
+                <img
+                  src={floatingSolarHybridImg}
+                  alt="Floating Solar Array on Hydropower Dam Reservoir"
+                  className="w-full h-52 sm:h-64 object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#070d14]/90 via-[#070d14]/20 to-transparent" />
+                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs">
+                  <span className="px-2.5 py-1 rounded-md bg-[#070d14]/90 backdrop-blur-md text-emerald-300 font-semibold border border-emerald-500/30 text-[11px]">
+                    Kariba & Osborne Dam Benchmark
+                  </span>
+                  <span className="text-[10px] text-slate-300 bg-slate-900/90 backdrop-blur-md px-2 py-0.5 rounded border border-slate-700/60 font-medium">
+                    Floating PV Hybrid
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="mt-14 grid lg:grid-cols-12 gap-10 items-center">
+          <div className="grid lg:grid-cols-12 gap-10 items-start">
             
             {/* Interactive Sizing Model */}
             <div className="lg:col-span-7 bg-[#0c1420] p-8 rounded-3xl border border-slate-800 shadow-xl">
@@ -741,25 +763,7 @@ export default function App() {
 
             {/* 8-Month Inception-to-Tender Workflow */}
             <div className="lg:col-span-5 space-y-4">
-              {/* Featured Floating Solar Aerial Picture Component */}
-              <div className="relative rounded-2xl overflow-hidden border border-slate-800 shadow-xl group">
-                <img
-                  src={floatingSolarHybridImg}
-                  alt="Floating Solar Array on Hydropower Dam Reservoir"
-                  className="w-full h-52 sm:h-60 object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0c1420] via-transparent to-transparent opacity-80" />
-                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs">
-                  <span className="px-2.5 py-1 rounded-md bg-[#070d14]/80 backdrop-blur-md text-emerald-300 font-semibold border border-emerald-500/30 text-[11px]">
-                    Kariba & Osborne Dam Benchmark
-                  </span>
-                  <span className="text-[10px] text-slate-300 bg-slate-900/80 backdrop-blur-md px-2 py-0.5 rounded border border-slate-700/60">
-                    Hydro-Solar Hybrid
-                  </span>
-                </div>
-              </div>
-
-              <h3 className="font-bold text-xl font-display text-white pt-1">8-Month Inception to EPC Tender</h3>
+              <h3 className="font-bold text-xl font-display text-white">8-Month Inception to EPC Tender</h3>
               <p className="text-xs text-slate-400 leading-relaxed">
                 Hermit structures five rigorous work packages ensuring seamless technical de-risking and bankable tender readiness.
               </p>
