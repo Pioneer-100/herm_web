@@ -287,18 +287,12 @@ export default function App() {
       </div>
       <div className="relative z-10">
       
-      {/* Top Advisory Banner */}
+      {/* Top Contact Bar */}
       <div className="bg-gradient-to-r from-emerald-950 via-[#0d1e17] to-[#121b14] text-emerald-200 text-xs font-medium py-2 px-4 border-b border-emerald-900/40">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
-          <div className="flex items-center space-x-2">
-            <span className="bg-gradient-to-r from-emerald-400 to-amber-300 text-slate-950 px-2 py-0.5 rounded text-[10px] uppercase tracking-wider font-extrabold">Advisory</span>
-            <span>Technical & policy advisor for Zimbabwe's Mission 300 National Energy Compact</span>
-          </div>
-          <div className="flex items-center gap-4 text-[11px]">
-            <span className="flex items-center gap-1 text-slate-300"><Phone className="w-3 h-3 text-amber-400" /> +263 71 280 0220</span>
-            <span className="hidden md:inline text-slate-600">•</span>
-            <span className="hidden md:flex items-center gap-1 text-slate-300"><Mail className="w-3 h-3 text-amber-400" /> info@hermitsustainability.co.zw</span>
-          </div>
+        <div className="max-w-7xl mx-auto flex items-center justify-end gap-4 text-[11px]">
+          <span className="flex items-center gap-1 text-slate-300"><Phone className="w-3 h-3 text-amber-400" /> +263 71 280 0220</span>
+          <span className="text-slate-600">•</span>
+          <span className="flex items-center gap-1 text-slate-300"><Mail className="w-3 h-3 text-amber-400" /> info@hermitsustainability.co.zw</span>
         </div>
       </div>
 
