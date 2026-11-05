@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import heroBackgroundImg from './hero-bg.jpg';
 import heroPosterImg from './hero-poster.jpg';
+import floatingSolarHybridImg from './floating-solar-hybrid.jpg';
 import { 
   Shield, Zap, Globe, TrendingUp, Award, ArrowRight, 
   CheckCircle2, Droplets, Leaf, BarChart3, Mail, Phone, MapPin, 
@@ -718,10 +719,18 @@ export default function App() {
                     <p className="text-base sm:text-lg font-black text-cyan-400 mt-1">{(estimatedWaterSavedM3 / 1000).toFixed(0)}k m³/yr</p>
                     <p className="text-[10px] text-slate-500">Reduced Evaporation</p>
                   </div>
-                  <div className="p-3 rounded-xl bg-emerald-950/60 border border-emerald-500/40">
-                    <span className="text-[10px] text-emerald-300 uppercase font-bold">Hybrid Yield</span>
-                    <p className="text-base sm:text-lg font-black text-white mt-1">{(totalHybridMWh / 1000).toFixed(1)} GWh/yr</p>
-                    <p className="text-[10px] text-emerald-400">{blendedCapacityFactor}% Blended Factor</p>
+                  <div className="relative overflow-hidden p-3 rounded-xl border border-emerald-500/40 group">
+                    <img
+                      src={floatingSolarHybridImg}
+                      alt="Floating Solar Array on Hydropower Dam Reservoir"
+                      className="absolute inset-0 w-full h-full object-cover object-center filter brightness-50 group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-emerald-950/70 mix-blend-multiply" />
+                    <div className="relative z-10">
+                      <span className="text-[10px] text-emerald-300 uppercase font-bold drop-shadow">Hybrid Yield</span>
+                      <p className="text-base sm:text-lg font-black text-white mt-1 drop-shadow">{(totalHybridMWh / 1000).toFixed(1)} GWh/yr</p>
+                      <p className="text-[10px] text-emerald-300 drop-shadow">{blendedCapacityFactor}% Blended Factor</p>
+                    </div>
                   </div>
                 </div>
 
