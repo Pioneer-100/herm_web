@@ -269,8 +269,8 @@ export default function App() {
         )}
       </nav>
 
-      {/* Hero Section with Custom Background Image */}
-      <section className="relative pt-20 pb-28 lg:pt-32 lg:pb-44 overflow-hidden">
+      {/* Hero Section with Custom Background Image / Video */}
+      <section className="relative pt-12 pb-16 sm:pt-20 sm:pb-28 lg:pt-32 lg:pb-44 overflow-hidden">
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
           <video
             className="h-full w-full object-cover object-center"
@@ -284,75 +284,97 @@ export default function App() {
           >
             <source src="/hero-background.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-[#070d14]/55" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#070d14]/35 via-transparent to-[#070d14]/70" />
+
+          {/* Animated Atmospheric Glows & Light Rays (visible especially on mobile when video is paused/static) */}
+          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 sm:w-[500px] sm:h-[500px] bg-gradient-to-b from-emerald-500/20 via-teal-500/10 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: '6s' }} />
+          <div className="absolute top-1/3 -right-20 w-60 h-60 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-10 -left-20 w-60 h-60 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" />
+
+          {/* Subtle Dynamic Grid Overlay to give a high-tech clean energy aesthetic */}
+          <div 
+            className="absolute inset-0 opacity-[0.07] pointer-events-none" 
+            style={{ 
+              backgroundImage: 'radial-gradient(rgba(52, 211, 153, 0.4) 1px, transparent 1px)', 
+              backgroundSize: '24px 24px' 
+            }} 
+          />
+
+          {/* Contrast & Gradient Depth Layers */}
+          <div className="absolute inset-0 bg-[#070d14]/60 backdrop-contrast-[1.1]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#070d14]/85 via-transparent to-[#070d14]" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-display max-w-5xl mx-auto leading-[1.12] text-white">
+          {/* Eyebrow Pill */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-950/70 text-emerald-300 text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-6 sm:mb-8 backdrop-blur-md shadow-lg shadow-emerald-950/50">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>Zimbabwean-Owned • Africa-Facing Renewable Consultancy</span>
+          </div>
+
+          <h1 className="text-3xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-display max-w-5xl mx-auto leading-[1.15] sm:leading-[1.12] text-white">
             Advancing Sustainable Power Solutions{' '}
-            <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent drop-shadow-sm">
               Across Africa
             </span>
           </h1>
 
-          <p className="mt-7 text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-normal">
+          <p className="mt-5 sm:mt-7 text-sm sm:text-lg lg:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-normal px-2">
             Delivering innovative, bankable, and scalable clean energy solutions grounded in the 
             <span className="text-emerald-400 font-semibold"> Quad Nexus</span> of Energy, Water, Food, and Waste to Energy.
           </p>
 
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 px-2">
             <a
               href="#hybrid"
-              className="w-full sm:w-auto px-8 py-4 text-sm font-bold text-slate-950 bg-emerald-400 hover:bg-emerald-300 rounded-xl shadow-xl shadow-emerald-500/20 flex items-center justify-center gap-2 transition-all transform hover:-translate-y-0.5"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-bold text-slate-950 bg-emerald-400 hover:bg-emerald-300 rounded-xl shadow-xl shadow-emerald-500/25 flex items-center justify-center gap-2 transition-all transform hover:-translate-y-0.5 active:scale-[0.98]"
             >
-              Explore Floating Solar & Hybrid Case
-              <ArrowRight className="w-4 h-4" />
+              <span>Explore Floating Solar & Hybrid Case</span>
+              <ArrowRight className="w-4 h-4 shrink-0" />
             </a>
             <a
               href="#portfolio"
-              className="w-full sm:w-auto px-8 py-4 text-sm font-bold text-slate-200 bg-slate-900/80 border border-slate-700/80 hover:bg-slate-800 rounded-xl transition-all shadow-sm backdrop-blur-sm"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-bold text-slate-200 bg-slate-900/80 border border-slate-700/80 hover:bg-slate-800 rounded-xl transition-all shadow-sm backdrop-blur-sm active:scale-[0.98]"
             >
               View 1,000+ MW Portfolio
             </a>
           </div>
 
           {/* Quick Metrics Bar from "Hermit at a Glance" (Page 2) */}
-          <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-5 text-left">
-            <div className="p-6 rounded-2xl bg-[#0c1420]/80 backdrop-blur-md border border-slate-800/80 shadow-md hover:border-emerald-500/30 transition-all">
-              <div className="flex items-center justify-between text-emerald-400 mb-2">
-                <Zap className="w-5 h-5" />
-                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">PV Modelled</span>
+          <div className="mt-12 sm:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 text-left">
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#0c1420]/80 backdrop-blur-md border border-slate-800/80 shadow-md hover:border-emerald-500/30 transition-all">
+              <div className="flex items-center justify-between text-emerald-400 mb-1.5 sm:mb-2">
+                <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-400">PV Modelled</span>
               </div>
-              <p className="text-3xl font-extrabold font-display text-white">5,437 kWp</p>
-              <p className="text-xs text-slate-400 mt-1">Representative floating solar array</p>
+              <p className="text-xl sm:text-3xl font-extrabold font-display text-white">5,437 kWp</p>
+              <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5 sm:mt-1">Representative floating solar array</p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#0c1420]/80 backdrop-blur-md border border-slate-800/80 shadow-md hover:border-teal-500/30 transition-all">
-              <div className="flex items-center justify-between text-teal-400 mb-2">
-                <TrendingUp className="w-5 h-5" />
-                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Annual Yield</span>
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#0c1420]/80 backdrop-blur-md border border-slate-800/80 shadow-md hover:border-teal-500/30 transition-all">
+              <div className="flex items-center justify-between text-teal-400 mb-1.5 sm:mb-2">
+                <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-400">Annual Yield</span>
               </div>
-              <p className="text-3xl font-extrabold font-display text-white">33.8 GWh/yr</p>
-              <p className="text-xs text-slate-400 mt-1">Combined floating solar + mini-hydro</p>
+              <p className="text-xl sm:text-3xl font-extrabold font-display text-white">33.8 GWh/yr</p>
+              <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5 sm:mt-1">Combined floating solar + mini-hydro</p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#0c1420]/80 backdrop-blur-md border border-slate-800/80 shadow-md hover:border-cyan-500/30 transition-all">
-              <div className="flex items-center justify-between text-cyan-400 mb-2">
-                <Clock className="w-5 h-5" />
-                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Timeline</span>
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#0c1420]/80 backdrop-blur-md border border-slate-800/80 shadow-md hover:border-cyan-500/30 transition-all">
+              <div className="flex items-center justify-between text-cyan-400 mb-1.5 sm:mb-2">
+                <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-400">Timeline</span>
               </div>
-              <p className="text-3xl font-extrabold font-display text-white">8 Months</p>
-              <p className="text-xs text-slate-400 mt-1">From inception to EPC tender ready</p>
+              <p className="text-xl sm:text-3xl font-extrabold font-display text-white">8 Months</p>
+              <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5 sm:mt-1">From inception to EPC tender ready</p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#0c1420]/80 backdrop-blur-md border border-slate-800/80 shadow-md hover:border-emerald-500/30 transition-all">
-              <div className="flex items-center justify-between text-emerald-400 mb-2">
-                <Layers className="w-5 h-5" />
-                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Methodology</span>
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#0c1420]/80 backdrop-blur-md border border-slate-800/80 shadow-md hover:border-emerald-500/30 transition-all">
+              <div className="flex items-center justify-between text-emerald-400 mb-1.5 sm:mb-2">
+                <Layers className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-400">Methodology</span>
               </div>
-              <p className="text-3xl font-extrabold font-display text-white">Class 5</p>
-              <p className="text-xs text-slate-400 mt-1">Cost accuracy & PVsyst simulation</p>
+              <p className="text-xl sm:text-3xl font-extrabold font-display text-white">Class 5</p>
+              <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5 sm:mt-1">Cost accuracy & PVsyst simulation</p>
             </div>
           </div>
 
