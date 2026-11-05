@@ -1027,10 +1027,10 @@ export default function App() {
       </section>
 
       {/* Frequently Asked Questions (Page 9) */}
-      <section id="faq" className="py-20 bg-[#09101a]/75 border-y border-slate-800/80">
+      <section id="faq" className={`py-20 ${currentTheme.sectionAlt} transition-colors`}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
+            <span className={`text-xs font-bold uppercase tracking-wider ${currentTheme.accentText}`}>
               Answers & Due Diligence
             </span>
             <h2 className="mt-2 text-3xl font-extrabold font-display text-white">
@@ -1039,9 +1039,9 @@ export default function App() {
           </div>
 
           <div className="space-y-4">
-            <div className="p-6 rounded-2xl bg-[#0c1420] border border-slate-800">
+            <div className={`p-6 rounded-2xl ${currentTheme.cardBg} transition-all`}>
               <h4 className="text-base font-bold text-white flex items-center gap-2">
-                <HelpCircle className="w-5 h-5 text-emerald-400 shrink-0" />
+                <HelpCircle className={`w-5 h-5 shrink-0 ${currentTheme.accentText}`} />
                 Do you only work on utility-scale projects?
               </h4>
               <p className="mt-2 text-sm text-slate-300 leading-relaxed pl-7">
@@ -1049,9 +1049,9 @@ export default function App() {
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#0c1420] border border-slate-800">
+            <div className={`p-6 rounded-2xl ${currentTheme.cardBg} transition-all`}>
               <h4 className="text-base font-bold text-white flex items-center gap-2">
-                <HelpCircle className="w-5 h-5 text-emerald-400 shrink-0" />
+                <HelpCircle className={`w-5 h-5 shrink-0 ${currentTheme.accentText}`} />
                 What stage do you engage at?
               </h4>
               <p className="mt-2 text-sm text-slate-300 leading-relaxed pl-7">
@@ -1059,9 +1059,9 @@ export default function App() {
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#0c1420] border border-slate-800">
+            <div className={`p-6 rounded-2xl ${currentTheme.cardBg} transition-all`}>
               <h4 className="text-base font-bold text-white flex items-center gap-2">
-                <HelpCircle className="w-5 h-5 text-emerald-400 shrink-0" />
+                <HelpCircle className={`w-5 h-5 shrink-0 ${currentTheme.accentText}`} />
                 Is your advisory work independently verifiable?
               </h4>
               <p className="mt-2 text-sm text-slate-300 leading-relaxed pl-7">
