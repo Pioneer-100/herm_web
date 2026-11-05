@@ -15,68 +15,25 @@ export default function App() {
   const [activeNexusTab, setActiveNexusTab] = useState<'energy' | 'water' | 'food' | 'waste'>('energy');
   const [projectFilter, setProjectFilter] = useState<string>('all');
   
-  // Theme palette switcher: 'aurora' (Emerald + Cyan + Amber) | 'bionexus' (Emerald + Sunrise Gold + Blue) | 'deepocean' (Midnight Navy + Electric Mint + Gold)
-  const [themeMode, setThemeMode] = useState<'aurora' | 'bionexus' | 'deepocean'>('aurora');
-
-  // Dynamic Theme Definitions affecting the whole site
-  const themeStyles = {
-    aurora: {
-      name: "Option 1: Hydro-Solar Aurora",
-      bgRoot: "bg-[#060b12]",
-      sectionAlt: "bg-[#09121d]/80 border-slate-800/80",
-      badge: "border-emerald-500/30 bg-emerald-950/60 text-emerald-300",
-      headlineGradient: "from-emerald-400 via-teal-300 to-cyan-400",
-      primaryBtn: "bg-emerald-400 hover:bg-emerald-300 text-slate-950 shadow-emerald-500/20",
-      secondaryBtn: "bg-slate-900/80 border-slate-700/80 text-slate-200 hover:bg-slate-800",
-      accentText: "text-emerald-400",
-      accentSecondary: "text-teal-400",
-      cardBg: "bg-[#0c1626]/85 border-slate-800/80 hover:border-emerald-500/40",
-      cardInner: "bg-[#080e18] border-slate-800/80",
-      navBg: "bg-[#08101b]/90 border-slate-800/80",
-      inputBg: "bg-[#08101b] border-slate-800 text-white focus:ring-emerald-400",
-      sliderAccent: "accent-emerald-400",
-      pillActive: "bg-emerald-400 text-slate-950",
-      pillInactive: "bg-[#0f1929] text-slate-300 hover:bg-slate-800 border-slate-800"
-    },
-    bionexus: {
-      name: "Option 2: Solar Bio-Nexus",
-      bgRoot: "bg-[#060e0c]",
-      sectionAlt: "bg-[#0a1713]/85 border-emerald-950/80",
-      badge: "border-amber-500/30 bg-amber-950/40 text-amber-300",
-      headlineGradient: "from-emerald-400 via-teal-300 to-amber-300",
-      primaryBtn: "bg-gradient-to-r from-emerald-400 via-teal-400 to-amber-300 hover:from-emerald-300 hover:to-amber-200 text-slate-950 shadow-amber-500/20",
-      secondaryBtn: "bg-[#0d1a15] border-emerald-900/60 text-emerald-100 hover:bg-[#12241d]",
-      accentText: "text-amber-400",
-      accentSecondary: "text-emerald-400",
-      cardBg: "bg-[#0d1b16]/90 border-emerald-900/50 hover:border-amber-400/50",
-      cardInner: "bg-[#08120e] border-emerald-950",
-      navBg: "bg-[#07130f]/90 border-emerald-950/90",
-      inputBg: "bg-[#08120e] border-emerald-950 text-white focus:ring-amber-400",
-      sliderAccent: "accent-amber-400",
-      pillActive: "bg-gradient-to-r from-emerald-400 to-amber-300 text-slate-950",
-      pillInactive: "bg-[#0e1d17] text-emerald-200 hover:bg-[#152a21] border-emerald-950"
-    },
-    deepocean: {
-      name: "Option 3: Deep Ocean & Mint",
-      bgRoot: "bg-[#030712]",
-      sectionAlt: "bg-[#070e20]/80 border-blue-950/80",
-      badge: "border-blue-500/30 bg-blue-950/50 text-blue-300",
-      headlineGradient: "from-blue-400 via-teal-300 to-emerald-400",
-      primaryBtn: "bg-gradient-to-r from-blue-500 to-emerald-400 hover:from-blue-400 hover:to-emerald-300 text-slate-950 shadow-blue-500/25",
-      secondaryBtn: "bg-[#0a1228]/90 border-blue-900/60 text-slate-200 hover:bg-[#101c3d]",
-      accentText: "text-teal-400",
-      accentSecondary: "text-blue-400",
-      cardBg: "bg-[#091329]/90 border-blue-950/90 hover:border-teal-500/50",
-      cardInner: "bg-[#050b18] border-blue-950",
-      navBg: "bg-[#050c1f]/90 border-blue-950",
-      inputBg: "bg-[#050b18] border-blue-950 text-white focus:ring-teal-400",
-      sliderAccent: "accent-teal-400",
-      pillActive: "bg-gradient-to-r from-blue-500 to-teal-400 text-slate-950",
-      pillInactive: "bg-[#091329] text-slate-300 hover:bg-[#101c3d] border-blue-950"
-    }
+  // Permanent Theme: Solar Bio-Nexus (Emerald + Warm Gold/Amber + Deep Forest Charcoal)
+  const currentTheme = {
+    name: "Solar Bio-Nexus",
+    bgRoot: "bg-[#060e0c]",
+    sectionAlt: "bg-[#0a1713]/85 border-emerald-950/80",
+    badge: "border-amber-500/30 bg-amber-950/40 text-amber-300",
+    headlineGradient: "from-emerald-400 via-teal-300 to-amber-300",
+    primaryBtn: "bg-gradient-to-r from-emerald-400 via-teal-400 to-amber-300 hover:from-emerald-300 hover:to-amber-200 text-slate-950 shadow-amber-500/20",
+    secondaryBtn: "bg-[#0d1a15] border-emerald-900/60 text-emerald-100 hover:bg-[#12241d]",
+    accentText: "text-amber-400",
+    accentSecondary: "text-emerald-400",
+    cardBg: "bg-[#0d1b16]/90 border-emerald-900/50 hover:border-amber-400/50",
+    cardInner: "bg-[#08120e] border-emerald-950",
+    navBg: "bg-[#07130f]/90 border-emerald-950/90",
+    inputBg: "bg-[#08120e] border-emerald-950 text-white focus:ring-amber-400",
+    sliderAccent: "accent-amber-400",
+    pillActive: "bg-gradient-to-r from-emerald-400 to-amber-300 text-slate-950",
+    pillInactive: "bg-[#0e1d17] text-emerald-200 hover:bg-[#152a21] border-emerald-950"
   };
-
-  const currentTheme = themeStyles[themeMode];
   
   // Interactive Hydro-Solar Hybrid Calculator
   const [solarCapacityMW, setSolarCapacityMW] = useState<number>(5.4);
@@ -280,55 +237,23 @@ export default function App() {
       </div>
       <div className="relative z-10">
       
-      {/* Top Banner with Interactive Color Scheme Switcher */}
-      <div className="bg-slate-950/80 border-b border-slate-800 text-xs py-2 px-4 backdrop-blur-md sticky top-0 z-[60]">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-          <div className="flex items-center gap-2 text-slate-300 text-[11px]">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="font-bold text-white uppercase tracking-wider">Palette Previewer:</span>
-            <span className="text-slate-400 hidden md:inline">Click to try each color fade live</span>
+      {/* Top Advisory Banner */}
+      <div className="bg-gradient-to-r from-emerald-950 via-[#0d1e17] to-[#121b14] text-emerald-200 text-xs font-medium py-2 px-4 border-b border-emerald-900/40">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+          <div className="flex items-center space-x-2">
+            <span className="bg-gradient-to-r from-emerald-400 to-amber-300 text-slate-950 px-2 py-0.5 rounded text-[10px] uppercase tracking-wider font-extrabold">Advisory</span>
+            <span>Technical & policy advisor for Zimbabwe's Mission 300 National Energy Compact</span>
           </div>
-
-          {/* Color Scheme Switcher Buttons */}
-          <div className="flex items-center gap-1.5 p-1 rounded-xl bg-slate-900 border border-slate-800">
-            <button
-              onClick={() => setThemeMode('aurora')}
-              className={`px-3 py-1 rounded-lg text-[11px] font-bold transition-all flex items-center gap-1.5 ${
-                themeMode === 'aurora'
-                  ? 'bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 shadow-sm'
-                  : 'text-slate-400 hover:text-white'
-              }`}
-            >
-              <span>1. Aurora (Green/Cyan)</span>
-            </button>
-
-            <button
-              onClick={() => setThemeMode('bionexus')}
-              className={`px-3 py-1 rounded-lg text-[11px] font-bold transition-all flex items-center gap-1.5 ${
-                themeMode === 'bionexus'
-                  ? 'bg-gradient-to-r from-emerald-400 via-teal-400 to-amber-300 text-slate-950 shadow-sm'
-                  : 'text-slate-400 hover:text-white'
-              }`}
-            >
-              <span>2. Bio-Nexus (Green/Gold)</span>
-            </button>
-
-            <button
-              onClick={() => setThemeMode('deepocean')}
-              className={`px-3 py-1 rounded-lg text-[11px] font-bold transition-all flex items-center gap-1.5 ${
-                themeMode === 'deepocean'
-                  ? 'bg-gradient-to-r from-blue-500 to-emerald-400 text-slate-950 shadow-sm'
-                  : 'text-slate-400 hover:text-white'
-              }`}
-            >
-              <span>3. Ocean (Navy/Mint)</span>
-            </button>
+          <div className="flex items-center gap-4 text-[11px]">
+            <span className="flex items-center gap-1 text-slate-300"><Phone className="w-3 h-3 text-amber-400" /> +263 71 280 0220</span>
+            <span className="hidden md:inline text-slate-600">•</span>
+            <span className="hidden md:flex items-center gap-1 text-slate-300"><Mail className="w-3 h-3 text-amber-400" /> info@hermitsustainability.co.zw</span>
           </div>
         </div>
       </div>
 
       {/* Main Navbar */}
-      <nav className={`sticky top-9 z-50 glass-nav ${currentTheme.navBg} transition-colors`}>
+      <nav className={`sticky top-0 z-50 glass-nav ${currentTheme.navBg} transition-colors`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
           {/* Logo */}
