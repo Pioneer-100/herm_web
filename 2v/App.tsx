@@ -18,46 +18,61 @@ export default function App() {
   // Theme palette switcher: 'aurora' (Emerald + Cyan + Amber) | 'bionexus' (Emerald + Sunrise Gold + Blue) | 'deepocean' (Midnight Navy + Electric Mint + Gold)
   const [themeMode, setThemeMode] = useState<'aurora' | 'bionexus' | 'deepocean'>('aurora');
 
-  // Dynamic Theme Definitions
+  // Dynamic Theme Definitions affecting the whole site
   const themeStyles = {
     aurora: {
       name: "Option 1: Hydro-Solar Aurora",
       bgRoot: "bg-[#060b12]",
+      sectionAlt: "bg-[#09121d]/80 border-slate-800/80",
       badge: "border-emerald-500/30 bg-emerald-950/60 text-emerald-300",
       headlineGradient: "from-emerald-400 via-teal-300 to-cyan-400",
       primaryBtn: "bg-emerald-400 hover:bg-emerald-300 text-slate-950 shadow-emerald-500/20",
       secondaryBtn: "bg-slate-900/80 border-slate-700/80 text-slate-200 hover:bg-slate-800",
       accentText: "text-emerald-400",
-      cardBg: "bg-[#0c1420]/80 border-slate-800/80 hover:border-emerald-500/30",
-      accentGlow1: "bg-emerald-500/20",
-      accentGlow2: "bg-cyan-500/15",
-      navBorder: "border-slate-800/70"
+      accentSecondary: "text-teal-400",
+      cardBg: "bg-[#0c1626]/85 border-slate-800/80 hover:border-emerald-500/40",
+      cardInner: "bg-[#080e18] border-slate-800/80",
+      navBg: "bg-[#08101b]/90 border-slate-800/80",
+      inputBg: "bg-[#08101b] border-slate-800 text-white focus:ring-emerald-400",
+      sliderAccent: "accent-emerald-400",
+      pillActive: "bg-emerald-400 text-slate-950",
+      pillInactive: "bg-[#0f1929] text-slate-300 hover:bg-slate-800 border-slate-800"
     },
     bionexus: {
       name: "Option 2: Solar Bio-Nexus",
       bgRoot: "bg-[#060e0c]",
+      sectionAlt: "bg-[#0a1713]/85 border-emerald-950/80",
       badge: "border-amber-500/30 bg-amber-950/40 text-amber-300",
-      headlineGradient: "from-emerald-400 via-emerald-300 to-amber-300",
+      headlineGradient: "from-emerald-400 via-teal-300 to-amber-300",
       primaryBtn: "bg-gradient-to-r from-emerald-400 via-teal-400 to-amber-300 hover:from-emerald-300 hover:to-amber-200 text-slate-950 shadow-amber-500/20",
-      secondaryBtn: "bg-[#0c1914]/80 border-emerald-900/60 text-emerald-100 hover:bg-[#11241d]",
+      secondaryBtn: "bg-[#0d1a15] border-emerald-900/60 text-emerald-100 hover:bg-[#12241d]",
       accentText: "text-amber-400",
-      cardBg: "bg-[#0c1915]/85 border-emerald-900/40 hover:border-amber-400/40",
-      accentGlow1: "bg-amber-500/15",
-      accentGlow2: "bg-emerald-500/20",
-      navBorder: "border-emerald-900/50"
+      accentSecondary: "text-emerald-400",
+      cardBg: "bg-[#0d1b16]/90 border-emerald-900/50 hover:border-amber-400/50",
+      cardInner: "bg-[#08120e] border-emerald-950",
+      navBg: "bg-[#07130f]/90 border-emerald-950/90",
+      inputBg: "bg-[#08120e] border-emerald-950 text-white focus:ring-amber-400",
+      sliderAccent: "accent-amber-400",
+      pillActive: "bg-gradient-to-r from-emerald-400 to-amber-300 text-slate-950",
+      pillInactive: "bg-[#0e1d17] text-emerald-200 hover:bg-[#152a21] border-emerald-950"
     },
     deepocean: {
       name: "Option 3: Deep Ocean & Mint",
       bgRoot: "bg-[#030712]",
-      badge: "border-blue-500/30 bg-blue-950/40 text-blue-300",
+      sectionAlt: "bg-[#070e20]/80 border-blue-950/80",
+      badge: "border-blue-500/30 bg-blue-950/50 text-blue-300",
       headlineGradient: "from-blue-400 via-teal-300 to-emerald-400",
       primaryBtn: "bg-gradient-to-r from-blue-500 to-emerald-400 hover:from-blue-400 hover:to-emerald-300 text-slate-950 shadow-blue-500/25",
-      secondaryBtn: "bg-slate-900/90 border-blue-900/60 text-slate-200 hover:bg-slate-800",
+      secondaryBtn: "bg-[#0a1228]/90 border-blue-900/60 text-slate-200 hover:bg-[#101c3d]",
       accentText: "text-teal-400",
-      cardBg: "bg-[#080f1e]/85 border-blue-950 hover:border-teal-500/40",
-      accentGlow1: "bg-blue-600/15",
-      accentGlow2: "bg-emerald-500/15",
-      navBorder: "border-blue-950"
+      accentSecondary: "text-blue-400",
+      cardBg: "bg-[#091329]/90 border-blue-950/90 hover:border-teal-500/50",
+      cardInner: "bg-[#050b18] border-blue-950",
+      navBg: "bg-[#050c1f]/90 border-blue-950",
+      inputBg: "bg-[#050b18] border-blue-950 text-white focus:ring-teal-400",
+      sliderAccent: "accent-teal-400",
+      pillActive: "bg-gradient-to-r from-blue-500 to-teal-400 text-slate-950",
+      pillInactive: "bg-[#091329] text-slate-300 hover:bg-[#101c3d] border-blue-950"
     }
   };
 
@@ -313,7 +328,7 @@ export default function App() {
       </div>
 
       {/* Main Navbar */}
-      <nav className={`sticky top-9 z-50 glass-nav bg-[#09101a]/85 border-b ${currentTheme.navBorder} transition-colors`}>
+      <nav className={`sticky top-9 z-50 glass-nav ${currentTheme.navBg} transition-colors`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
           {/* Logo */}
@@ -467,8 +482,8 @@ export default function App() {
 
           {/* Quick Metrics Bar from "Hermit at a Glance" (Page 2) */}
           <div className="mt-12 sm:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 text-left">
-            <div className="p-4 sm:p-6 rounded-2xl bg-[#0c1420]/80 backdrop-blur-md border border-slate-800/80 shadow-md hover:border-emerald-500/30 transition-all">
-              <div className="flex items-center justify-between text-emerald-400 mb-1.5 sm:mb-2">
+            <div className={`p-4 sm:p-6 rounded-2xl ${currentTheme.cardBg} backdrop-blur-md shadow-md transition-all`}>
+              <div className={`flex items-center justify-between ${currentTheme.accentText} mb-1.5 sm:mb-2`}>
                 <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-400">PV Modelled</span>
               </div>
@@ -476,8 +491,8 @@ export default function App() {
               <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5 sm:mt-1">Representative floating solar array</p>
             </div>
 
-            <div className="p-4 sm:p-6 rounded-2xl bg-[#0c1420]/80 backdrop-blur-md border border-slate-800/80 shadow-md hover:border-teal-500/30 transition-all">
-              <div className="flex items-center justify-between text-teal-400 mb-1.5 sm:mb-2">
+            <div className={`p-4 sm:p-6 rounded-2xl ${currentTheme.cardBg} backdrop-blur-md shadow-md transition-all`}>
+              <div className={`flex items-center justify-between ${currentTheme.accentSecondary} mb-1.5 sm:mb-2`}>
                 <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-400">Annual Yield</span>
               </div>
@@ -485,8 +500,8 @@ export default function App() {
               <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5 sm:mt-1">Combined floating solar + mini-hydro</p>
             </div>
 
-            <div className="p-4 sm:p-6 rounded-2xl bg-[#0c1420]/80 backdrop-blur-md border border-slate-800/80 shadow-md hover:border-cyan-500/30 transition-all">
-              <div className="flex items-center justify-between text-cyan-400 mb-1.5 sm:mb-2">
+            <div className={`p-4 sm:p-6 rounded-2xl ${currentTheme.cardBg} backdrop-blur-md shadow-md transition-all`}>
+              <div className={`flex items-center justify-between ${currentTheme.accentText} mb-1.5 sm:mb-2`}>
                 <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-400">Timeline</span>
               </div>
@@ -494,8 +509,8 @@ export default function App() {
               <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5 sm:mt-1">From inception to EPC tender ready</p>
             </div>
 
-            <div className="p-4 sm:p-6 rounded-2xl bg-[#0c1420]/80 backdrop-blur-md border border-slate-800/80 shadow-md hover:border-emerald-500/30 transition-all">
-              <div className="flex items-center justify-between text-emerald-400 mb-1.5 sm:mb-2">
+            <div className={`p-4 sm:p-6 rounded-2xl ${currentTheme.cardBg} backdrop-blur-md shadow-md transition-all`}>
+              <div className={`flex items-center justify-between ${currentTheme.accentSecondary} mb-1.5 sm:mb-2`}>
                 <Layers className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-400">Methodology</span>
               </div>
@@ -508,12 +523,12 @@ export default function App() {
       </section>
 
       {/* About & Mission Section */}
-      <section id="about" className="py-24 bg-[#09101a]/75 border-y border-slate-800/70">
+      <section id="about" className={`py-24 ${currentTheme.sectionAlt} transition-colors`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-wider border border-emerald-500/20">
+              <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider border ${currentTheme.badge}`}>
                 Executive Overview
               </div>
               <h2 className="text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-white">
@@ -525,36 +540,36 @@ export default function App() {
               </p>
               <p className="text-slate-300 text-base leading-relaxed">
                 Every recommendation is grounded in rigorous technical and financial modelling — whether that is an 
-                <strong className="text-emerald-400 font-semibold"> hourly PVsyst simulation </strong> 
-                of a floating solar array or a <strong className="text-teal-400 font-semibold">first-principles hydraulic model </strong> 
+                <strong className={`font-semibold ${currentTheme.accentText}`}> hourly PVsyst simulation </strong> 
+                of a floating solar array or a <strong className={`font-semibold ${currentTheme.accentSecondary}`}>first-principles hydraulic model </strong> 
                 of an existing hydro plant, so clients and their financiers make decisive capital commitments.
               </p>
 
               {/* Four Core Values (Page 3) */}
               <div className="grid sm:grid-cols-2 gap-4 pt-4">
-                <div className="p-4 rounded-xl bg-[#0d1624] border border-slate-800">
-                  <div className="flex items-center gap-2 text-emerald-400 font-bold text-sm">
+                <div className={`p-4 rounded-xl ${currentTheme.cardInner} transition-all`}>
+                  <div className={`flex items-center gap-2 font-bold text-sm ${currentTheme.accentText}`}>
                     <CheckCircle2 className="w-4 h-4" /> Sustainability
                   </div>
                   <p className="text-xs text-slate-400 mt-1">Solutions designed to endure environmentally, operationally, and financially.</p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-[#0d1624] border border-slate-800">
-                  <div className="flex items-center gap-2 text-teal-400 font-bold text-sm">
+                <div className={`p-4 rounded-xl ${currentTheme.cardInner} transition-all`}>
+                  <div className={`flex items-center gap-2 font-bold text-sm ${currentTheme.accentSecondary}`}>
                     <CheckCircle2 className="w-4 h-4" /> Innovation
                   </div>
                   <p className="text-xs text-slate-400 mt-1">Applying proven technology in breakthrough combinations, like hydro-solar hybridisation.</p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-[#0d1624] border border-slate-800">
-                  <div className="flex items-center gap-2 text-cyan-400 font-bold text-sm">
+                <div className={`p-4 rounded-xl ${currentTheme.cardInner} transition-all`}>
+                  <div className={`flex items-center gap-2 font-bold text-sm ${currentTheme.accentText}`}>
                     <CheckCircle2 className="w-4 h-4" /> Integrity
                   </div>
                   <p className="text-xs text-slate-400 mt-1">Defensible findings, Class 5 costing, and bankable metrics investors rely upon.</p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-[#0d1624] border border-slate-800">
-                  <div className="flex items-center gap-2 text-amber-400 font-bold text-sm">
+                <div className={`p-4 rounded-xl ${currentTheme.cardInner} transition-all`}>
+                  <div className={`flex items-center gap-2 font-bold text-sm ${currentTheme.accentSecondary}`}>
                     <CheckCircle2 className="w-4 h-4" /> Carbon Stewardship
                   </div>
                   <p className="text-xs text-slate-400 mt-1">Projects that measurably cut emissions and advance African climate commitments.</p>
@@ -605,7 +620,7 @@ export default function App() {
       {/* The Quad Nexus Section (Pages 2, 4, 5) */}
       <section id="nexus" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
-          <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
+          <span className={`text-xs font-bold uppercase tracking-wider ${currentTheme.accentText}`}>
             Framework For Impact
           </span>
           <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-white">
@@ -616,65 +631,65 @@ export default function App() {
           </p>
 
           {/* Interactive Quad Nexus Navigation Pills */}
-          <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-2 p-1.5 rounded-2xl bg-[#0d1624] border border-slate-800">
+          <div className={`mt-8 grid grid-cols-2 sm:grid-cols-4 gap-2 p-1.5 rounded-2xl ${currentTheme.cardInner} transition-all`}>
             <button
               onClick={() => setActiveNexusTab('energy')}
               className={`flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                 activeNexusTab === 'energy' 
-                  ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' 
+                  ? `${currentTheme.pillActive} shadow-sm font-extrabold` 
                   : 'text-slate-400 hover:text-white'
               }`}
             >
-              <Zap className="w-4 h-4 text-emerald-400" /> Energy
+              <Zap className="w-4 h-4" /> Energy
             </button>
 
             <button
               onClick={() => setActiveNexusTab('water')}
               className={`flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                 activeNexusTab === 'water' 
-                  ? 'bg-teal-500/20 text-teal-300 border border-teal-500/40' 
+                  ? `${currentTheme.pillActive} shadow-sm font-extrabold` 
                   : 'text-slate-400 hover:text-white'
               }`}
             >
-              <Droplets className="w-4 h-4 text-teal-400" /> Water
+              <Droplets className="w-4 h-4" /> Water
             </button>
 
             <button
               onClick={() => setActiveNexusTab('food')}
               className={`flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                 activeNexusTab === 'food' 
-                  ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40' 
+                  ? `${currentTheme.pillActive} shadow-sm font-extrabold` 
                   : 'text-slate-400 hover:text-white'
               }`}
             >
-              <Leaf className="w-4 h-4 text-amber-400" /> Food
+              <Leaf className="w-4 h-4" /> Food
             </button>
 
             <button
               onClick={() => setActiveNexusTab('waste')}
               className={`flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                 activeNexusTab === 'waste' 
-                  ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40' 
+                  ? `${currentTheme.pillActive} shadow-sm font-extrabold` 
                   : 'text-slate-400 hover:text-white'
               }`}
             >
-              <Flame className="w-4 h-4 text-cyan-400" /> Waste to Energy
+              <Flame className="w-4 h-4" /> Waste to Energy
             </button>
           </div>
         </div>
 
         {/* Selected Nexus Pillar Deep Dive */}
-        <div className="mt-12 bg-[#0c1420] rounded-3xl border border-slate-800 p-8 sm:p-12 shadow-xl">
+        <div className={`mt-12 rounded-3xl p-8 sm:p-12 shadow-xl ${currentTheme.cardBg} transition-all`}>
           <div className="grid lg:grid-cols-12 gap-8 items-center">
             
             <div className="lg:col-span-7">
-              <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-400 uppercase tracking-wider border border-emerald-500/20">
+              <span className={`px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider border ${currentTheme.badge}`}>
                 {quadNexus[activeNexusTab].tag}
               </span>
               <h3 className="mt-4 text-2xl sm:text-3xl font-extrabold font-display text-white">
                 {quadNexus[activeNexusTab].title}
               </h3>
-              <p className="mt-1 text-sm font-semibold text-emerald-400">
+              <p className={`mt-1 text-sm font-semibold ${currentTheme.accentText}`}>
                 {quadNexus[activeNexusTab].subtitle}
               </p>
               <p className="mt-4 text-slate-300 text-base leading-relaxed">
@@ -685,29 +700,29 @@ export default function App() {
                 <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">What We Deliver In Practice:</h4>
                 {quadNexus[activeNexusTab].deliverables.map((item, idx) => (
                   <div key={idx} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                    <Check className={`w-5 h-5 shrink-0 mt-0.5 ${currentTheme.accentText}`} />
                     <span className="text-sm font-medium text-slate-200">{item}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="lg:col-span-5 bg-[#070d14] p-6 sm:p-8 rounded-2xl border border-slate-800">
+            <div className={`lg:col-span-5 p-6 sm:p-8 rounded-2xl ${currentTheme.cardInner} transition-all`}>
               <h4 className="font-bold text-base text-white">End-to-End Advisory Scope</h4>
               <p className="text-xs text-slate-400 mt-1">
                 Supporting institutional off-takers from pre-feasibility to commercial commissioning.
               </p>
 
               <div className="mt-6 space-y-4">
-                <div className="p-3.5 rounded-xl bg-[#0f1929] border border-slate-800">
+                <div className={`p-3.5 rounded-xl ${currentTheme.cardBg}`}>
                   <p className="text-xs font-bold text-white">Technical & Financial Studies</p>
                   <p className="text-[11px] text-slate-400 mt-0.5">Pre-feasibility & feasibility benchmarked to Class 5 cost accuracy.</p>
                 </div>
-                <div className="p-3.5 rounded-xl bg-[#0f1929] border border-slate-800">
+                <div className={`p-3.5 rounded-xl ${currentTheme.cardBg}`}>
                   <p className="text-xs font-bold text-white">Grid Integration Studies</p>
                   <p className="text-[11px] text-slate-400 mt-0.5">Interconnection design, power factor, and protection coordination.</p>
                 </div>
-                <div className="p-3.5 rounded-xl bg-[#0f1929] border border-slate-800">
+                <div className={`p-3.5 rounded-xl ${currentTheme.cardBg}`}>
                   <p className="text-xs font-bold text-white">Project Structuring & SPV</p>
                   <p className="text-[11px] text-slate-400 mt-0.5">Special purpose vehicle creation, ownership models & tender documentation.</p>
                 </div>
@@ -715,7 +730,7 @@ export default function App() {
 
               <a
                 href="#contact"
-                className="mt-6 block w-full py-3 text-center text-xs font-bold text-slate-950 bg-emerald-400 hover:bg-emerald-300 rounded-xl uppercase tracking-wider transition-all"
+                className={`mt-6 block w-full py-3 text-center text-xs font-bold rounded-xl uppercase tracking-wider transition-all ${currentTheme.primaryBtn}`}
               >
                 Inquire For This Sector
               </a>
@@ -726,7 +741,7 @@ export default function App() {
       </section>
 
       {/* Hydro-Solar Hybrid Case Study & Interactive Calculator */}
-      <section id="hybrid" className="py-24 bg-[#09101a]/75 text-white relative overflow-hidden border-y border-slate-800/80">
+      <section id="hybrid" className={`py-24 ${currentTheme.sectionAlt} text-white relative overflow-hidden transition-colors`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           {/* Header Row: Heading on the left, floating solar picture component on the right */}
@@ -764,10 +779,10 @@ export default function App() {
           <div className="grid lg:grid-cols-12 gap-10 items-start">
             
             {/* Interactive Sizing Model */}
-            <div className="lg:col-span-7 bg-[#0c1420] p-8 rounded-3xl border border-slate-800 shadow-xl">
+            <div className={`lg:col-span-7 p-8 rounded-3xl shadow-xl transition-all ${currentTheme.cardBg}`}>
               <div className="flex items-center justify-between pb-4 border-b border-slate-800">
                 <h3 className="font-bold text-lg font-display text-white">Hybrid Array Output Simulator</h3>
-                <span className="text-xs bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded font-semibold border border-emerald-500/30">
+                <span className={`text-xs px-2.5 py-1 rounded font-semibold border ${currentTheme.badge}`}>
                   PVsyst V7.4.7 Calibrated
                 </span>
               </div>
@@ -776,7 +791,7 @@ export default function App() {
                 <div>
                   <div className="flex justify-between text-sm font-semibold mb-2">
                     <span className="text-slate-300">Floating Solar Capacity</span>
-                    <span className="text-emerald-400 font-bold">{solarCapacityMW} MWp</span>
+                    <span className={`font-bold ${currentTheme.accentText}`}>{solarCapacityMW} MWp</span>
                   </div>
                   <input
                     type="range"
@@ -785,7 +800,7 @@ export default function App() {
                     step="0.5"
                     value={solarCapacityMW}
                     onChange={(e) => setSolarCapacityMW(parseFloat(e.target.value))}
-                    className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-400"
+                    className={`w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer ${currentTheme.sliderAccent}`}
                   />
                   <div className="flex justify-between text-[11px] text-slate-500 mt-1">
                     <span>1 MWp (Pilot Array)</span>
@@ -797,7 +812,7 @@ export default function App() {
                 <div>
                   <div className="flex justify-between text-sm font-semibold mb-2">
                     <span className="text-slate-300">Existing Hydro Plant Capacity</span>
-                    <span className="text-teal-400 font-bold">{hydroCapacityMW} MW</span>
+                    <span className={`font-bold ${currentTheme.accentSecondary}`}>{hydroCapacityMW} MW</span>
                   </div>
                   <input
                     type="range"
@@ -806,7 +821,7 @@ export default function App() {
                     step="1"
                     value={hydroCapacityMW}
                     onChange={(e) => setHydroCapacityMW(parseFloat(e.target.value))}
-                    className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-teal-400"
+                    className={`w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer ${currentTheme.sliderAccent}`}
                   />
                   <div className="flex justify-between text-[11px] text-slate-500 mt-1">
                     <span>1 MW (Mini-Hydro)</span>
@@ -816,27 +831,27 @@ export default function App() {
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-800 text-center">
-                  <div className="p-3 rounded-xl bg-[#070d14] border border-slate-800">
+                  <div className={`p-3 rounded-xl ${currentTheme.cardInner}`}>
                     <span className="text-[10px] text-slate-400 uppercase font-bold">Solar Generation</span>
-                    <p className="text-base sm:text-lg font-black text-emerald-400 mt-1">{estimatedSolarMWh.toLocaleString()} MWh/yr</p>
+                    <p className={`text-base sm:text-lg font-black mt-1 ${currentTheme.accentText}`}>{estimatedSolarMWh.toLocaleString()} MWh/yr</p>
                     <p className="text-[10px] text-slate-500">81.3% PR (PVsyst)</p>
                   </div>
-                  <div className="p-3 rounded-xl bg-[#070d14] border border-slate-800">
+                  <div className={`p-3 rounded-xl ${currentTheme.cardInner}`}>
                     <span className="text-[10px] text-slate-400 uppercase font-bold">Hydro Generation</span>
-                    <p className="text-base sm:text-lg font-black text-teal-400 mt-1">{estimatedHydroMWh.toLocaleString()} MWh/yr</p>
+                    <p className={`text-base sm:text-lg font-black mt-1 ${currentTheme.accentSecondary}`}>{estimatedHydroMWh.toLocaleString()} MWh/yr</p>
                     <p className="text-[10px] text-slate-500">52.9% Capacity Factor</p>
                   </div>
-                  <div className="p-3 rounded-xl bg-[#070d14] border border-slate-800">
+                  <div className={`p-3 rounded-xl ${currentTheme.cardInner}`}>
                     <span className="text-[10px] text-slate-400 uppercase font-bold flex items-center justify-center gap-1">
                       <Droplets className="w-3 h-3 text-cyan-400" /> Water Saved
                     </span>
                     <p className="text-base sm:text-lg font-black text-cyan-400 mt-1">{(estimatedWaterSavedM3 / 1000).toFixed(0)}k m³/yr</p>
                     <p className="text-[10px] text-slate-500">Reduced Evaporation</p>
                   </div>
-                  <div className="p-3 rounded-xl bg-emerald-950/60 border border-emerald-500/40">
-                    <span className="text-[10px] text-emerald-300 uppercase font-bold">Hybrid Yield</span>
+                  <div className={`p-3 rounded-xl ${currentTheme.cardInner} border border-emerald-500/40`}>
+                    <span className={`text-[10px] uppercase font-bold ${currentTheme.accentText}`}>Hybrid Yield</span>
                     <p className="text-base sm:text-lg font-black text-white mt-1">{(totalHybridMWh / 1000).toFixed(1)} GWh/yr</p>
-                    <p className="text-[10px] text-emerald-400">{blendedCapacityFactor}% Blended Factor</p>
+                    <p className={`text-[10px] ${currentTheme.accentText}`}>{blendedCapacityFactor}% Blended Factor</p>
                   </div>
                 </div>
 
@@ -844,7 +859,7 @@ export default function App() {
                 <div className="pt-2">
                   <button
                     onClick={prefillWithCalculator}
-                    className="w-full py-3 px-4 rounded-xl text-xs font-bold uppercase tracking-wider text-slate-950 bg-gradient-to-r from-emerald-400 to-teal-300 hover:from-emerald-300 hover:to-teal-200 shadow-lg shadow-emerald-500/10 flex items-center justify-center gap-2 transition-all"
+                    className={`w-full py-3 px-4 rounded-xl text-xs font-bold uppercase tracking-wider ${currentTheme.primaryBtn} flex items-center justify-center gap-2 transition-all`}
                   >
                     <span>Request Pre-Feasibility Assessment for {solarCapacityMW} MWp Solar + {hydroCapacityMW} MW Hydro</span>
                     <ArrowDownRight className="w-4 h-4" />
