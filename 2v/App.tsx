@@ -657,11 +657,8 @@ export default function App() {
                   className="w-full h-52 sm:h-64 object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#070d14]/90 via-[#070d14]/20 to-transparent" />
-                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs">
-                  <span className="px-2.5 py-1 rounded-md bg-[#070d14]/90 backdrop-blur-md text-emerald-300 font-semibold border border-emerald-500/30 text-[11px]">
-                    Kariba & Osborne Dam Benchmark
-                  </span>
-                  <span className="text-[10px] text-slate-300 bg-slate-900/90 backdrop-blur-md px-2 py-0.5 rounded border border-slate-700/60 font-medium">
+                <div className="absolute bottom-3 right-3 text-xs">
+                  <span className="text-[10px] text-slate-300 bg-slate-900/90 backdrop-blur-md px-2.5 py-1 rounded-md border border-slate-700/60 font-medium">
                     Floating PV Hybrid
                   </span>
                 </div>
