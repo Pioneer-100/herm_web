@@ -39,8 +39,58 @@ export default function App() {
   const [solarCapacityMW, setSolarCapacityMW] = useState<number>(5.4);
   const [hydroCapacityMW, setHydroCapacityMW] = useState<number>(5.0);
 
-  // Inquiry prefill message state
+  // Inquiry prefill message and form submission state
   const [inquiryScope, setInquiryScope] = useState<string>('');
+  const [contactName, setContactName] = useState<string>('');
+  const [contactEmail, setContactEmail] = useState<string>('');
+  const [contactSector, setContactSector] = useState<string>('Power Utility / IPP');
+  const [contactPackage, setContactPackage] = useState<string>('Pre-Feasibility Study');
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [formFeedback, setFormFeedback] = useState<string>('');
+
+  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormStatus('submitting');
+    setFormFeedback('');
+
+    try {
+      // Using Formsubmit.co with direct AJAX json submission
+      // Delivers straight to info@hermitsustainability.co.zw with CC to hermitinfopack@gmail.com
+      const response = await fetch('https://formsubmit.co/ajax/info@hermitsustainability.co.zw', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: contactName,
+          email: contactEmail,
+          client_sector: contactSector,
+          advisory_package: contactPackage,
+          project_scope: inquiryScope,
+          _subject: `[Hermit Advisory] New Inception Request from ${contactName} (${contactSector})`,
+          _cc: 'hermitinfopack@gmail.com',
+          _template: 'table'
+        })
+      });
+
+      const result = await response.json();
+      if (response.ok && (result.success === 'true' || result.success === true || result.message)) {
+        setFormStatus('success');
+        setFormFeedback('Thank you. Your advisory request has been delivered to Hermit Advisory (info@hermitsustainability.co.zw). Our lead engineer will reach out within 24 business hours.');
+        // Reset form
+        setContactName('');
+        setContactEmail('');
+        setInquiryScope('');
+      } else {
+        throw new Error(result.message || 'Submission failed');
+      }
+    } catch (err: any) {
+      console.warn('Direct form delivery failed, providing mailto fallback:', err);
+      setFormStatus('error');
+      setFormFeedback('Could not deliver directly via web service. Click below to launch your email client or send directly to info@hermitsustainability.co.zw.');
+    }
+  };
   
   // Track video loading state for smooth poster transition
   const [isVideoLoaded, setIsVideoLoaded] = useState<boolean>(false);
@@ -1142,13 +1192,52 @@ export default function App() {
               Our engineering and financial team typically responds within 24 business hours.
             </p>
 
-            <form onSubmit={(e) => { e.preventDefault(); alert('Your request has been submitted to Hermit Advisory. Thank you.'); }} className="space-y-4">
+            {formStatus === 'success' && (
+              <div className="mb-6 p-5 rounded-2xl bg-emerald-950/80 border border-emerald-500/50 text-emerald-200">
+                <div className="flex items-start space-x-3">
+                  <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-bold text-white text-sm mb-1">Advisory Briefing Dispatched</h4>
+                    <p className="text-xs text-emerald-200/90 leading-relaxed mb-3">{formFeedback}</p>
+                    <button
+                      type="button"
+                      onClick={() => setFormStatus('idle')}
+                      className="text-xs text-amber-300 underline font-semibold hover:text-amber-200"
+                    >
+                      Submit another project request &rarr;
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {formStatus === 'error' && (
+              <div className="mb-6 p-5 rounded-2xl bg-rose-950/70 border border-rose-500/50 text-rose-200">
+                <div className="flex items-start space-x-3">
+                  <div className="text-rose-400 font-bold shrink-0 mt-0.5">⚠️</div>
+                  <div className="w-full">
+                    <h4 className="font-bold text-white text-sm mb-1">Notice</h4>
+                    <p className="text-xs text-rose-200/90 leading-relaxed mb-3">{formFeedback}</p>
+                    <a
+                      href={`mailto:info@hermitsustainability.co.zw?cc=hermitinfopack@gmail.com&subject=${encodeURIComponent(`Advisory Request - ${contactName || 'Project Sponsor'}`)}&body=${encodeURIComponent(`Name: ${contactName}\nEmail: ${contactEmail}\nSector: ${contactSector}\nPackage: ${contactPackage}\n\nProject Scope:\n${inquiryScope}`)}`}
+                      className="inline-flex items-center px-4 py-2 bg-rose-600 hover:bg-rose-500 text-white rounded-lg text-xs font-semibold shadow transition-colors"
+                    >
+                      Send Directly via Email Client &rarr;
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <form onSubmit={handleContactSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-semibold text-slate-300 mb-1">Contact Name</label>
                   <input 
                     type="text" 
                     required 
+                    value={contactName}
+                    onChange={(e) => setContactName(e.target.value)}
                     placeholder="E.g. Tendai Moyo" 
                     className="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-[#070d14] text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-400" 
                   />
@@ -1158,6 +1247,8 @@ export default function App() {
                   <input 
                     type="email" 
                     required 
+                    value={contactEmail}
+                    onChange={(e) => setContactEmail(e.target.value)}
                     placeholder="tendai@organization.com" 
                     className="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-[#070d14] text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-400" 
                   />
@@ -1167,7 +1258,11 @@ export default function App() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-semibold text-slate-300 mb-1">Client Sector</label>
-                  <select className="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-[#070d14] text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-400">
+                  <select 
+                    value={contactSector}
+                    onChange={(e) => setContactSector(e.target.value)}
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-[#070d14] text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                  >
                     <option>Power Utility / IPP</option>
                     <option>Government / Ministry</option>
                     <option>Mining & Heavy Industry</option>
@@ -1177,7 +1272,11 @@ export default function App() {
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-slate-300 mb-1">Advisory Package</label>
-                  <select className="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-[#070d14] text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-400">
+                  <select 
+                    value={contactPackage}
+                    onChange={(e) => setContactPackage(e.target.value)}
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-[#070d14] text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                  >
                     <option>Pre-Feasibility Study</option>
                     <option>Floating Solar / Hydro-Hybrid Study</option>
                     <option>Detailed Feasibility & Grid Impact</option>
@@ -1201,9 +1300,20 @@ export default function App() {
 
               <button
                 type="submit"
-                className="w-full py-3.5 text-sm font-bold text-slate-950 bg-emerald-400 hover:bg-emerald-300 rounded-xl shadow-lg shadow-emerald-500/20 transition-all uppercase tracking-wider font-display"
+                disabled={formStatus === 'submitting'}
+                className="w-full py-3.5 text-sm font-bold text-slate-950 bg-emerald-400 hover:bg-emerald-300 disabled:opacity-60 disabled:cursor-not-allowed rounded-xl shadow-lg shadow-emerald-500/20 transition-all uppercase tracking-wider font-display flex items-center justify-center space-x-2"
               >
-                Submit Advisory Request
+                {formStatus === 'submitting' ? (
+                  <>
+                    <svg className="animate-spin h-5 w-5 text-slate-950" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span>Transmitting to Hermit Advisory...</span>
+                  </>
+                ) : (
+                  <span>Submit Advisory Request</span>
+                )}
               </button>
             </form>
           </div>
