@@ -630,21 +630,9 @@ export default function App() {
         </div>
       </section>
 
-      {/* Hydro-Solar Hybrid Case Study & Interactive Calculator */}
-      <section id="hybrid" className="py-24 text-white relative overflow-hidden border-y border-slate-800/80">
-        {/* Floating Solar Dam Background Image */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
-          <img
-            src={floatingSolarHybridImg}
-            alt="Floating solar array on dam reservoir"
-            className="w-full h-full object-cover object-center scale-105"
-          />
-          {/* Subtle multi-layer gradient overlays to keep all text and simulator controls crystal clear */}
-          <div className="absolute inset-0 bg-[#070d14]/75 backdrop-brightness-[0.7]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#070d14]/90 via-[#070d14]/70 to-[#070d14]/95" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070d14]/95 via-[#070d14]/65 to-[#070d14]/90" />
-        </div>
-
+      {/* Hydro-Solar Hybrid Case Study & Interactive Calculator (Page 8) */}
+      <section id="hybrid" className="py-24 bg-[#09101a]/75 text-white relative overflow-hidden border-y border-slate-800/80">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-teal-500/10 blur-3xl rounded-full pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           <div className="max-w-3xl">
@@ -751,9 +739,27 @@ export default function App() {
               </div>
             </div>
 
-            {/* 8-Month Inception-to-Tender Workflow (Page 8) */}
+            {/* 8-Month Inception-to-Tender Workflow */}
             <div className="lg:col-span-5 space-y-4">
-              <h3 className="font-bold text-xl font-display text-white">8-Month Inception to EPC Tender</h3>
+              {/* Featured Floating Solar Aerial Picture Component */}
+              <div className="relative rounded-2xl overflow-hidden border border-slate-800 shadow-xl group">
+                <img
+                  src={floatingSolarHybridImg}
+                  alt="Floating Solar Array on Hydropower Dam Reservoir"
+                  className="w-full h-52 sm:h-60 object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0c1420] via-transparent to-transparent opacity-80" />
+                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs">
+                  <span className="px-2.5 py-1 rounded-md bg-[#070d14]/80 backdrop-blur-md text-emerald-300 font-semibold border border-emerald-500/30 text-[11px]">
+                    Kariba & Osborne Dam Benchmark
+                  </span>
+                  <span className="text-[10px] text-slate-300 bg-slate-900/80 backdrop-blur-md px-2 py-0.5 rounded border border-slate-700/60">
+                    Hydro-Solar Hybrid
+                  </span>
+                </div>
+              </div>
+
+              <h3 className="font-bold text-xl font-display text-white pt-1">8-Month Inception to EPC Tender</h3>
               <p className="text-xs text-slate-400 leading-relaxed">
                 Hermit structures five rigorous work packages ensuring seamless technical de-risking and bankable tender readiness.
               </p>
