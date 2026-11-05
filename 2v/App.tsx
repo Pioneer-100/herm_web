@@ -636,7 +636,7 @@ export default function App() {
           
           <div className="max-w-3xl">
             <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
-              Flagship Technical Practice (Page 8 Benchmark)
+              Flagship Technical Practice
             </span>
             <h2 className="mt-2 text-3xl sm:text-5xl font-extrabold font-display">
               Floating Solar & Hydro-Hybridisation
