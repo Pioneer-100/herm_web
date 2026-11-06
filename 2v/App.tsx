@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import heroBackgroundImg from './hero-bg.jpg';
 import heroPosterImg from './hero-poster.jpg';
 import floatingSolarHybridImg from './floating-solar-hybrid.jpg';
+import logoImg from './logo.png';
 import { 
   Shield, Zap, Globe, TrendingUp, Award, ArrowRight, 
   CheckCircle2, Droplets, Leaf, BarChart3, Mail, Phone, MapPin, 
@@ -303,9 +304,9 @@ export default function App() {
           {/* Logo */}
           <a href="#" className="flex items-center space-x-3 group">
             <img
-              src={heroBackgroundImg}
+              src={logoImg}
               alt="Hermit Sustainability Advisory"
-              className="w-11 h-11 rounded-xl object-cover object-center shadow-lg shadow-emerald-500/20 transform group-hover:scale-105 transition-transform"
+              className="w-11 h-11 rounded-full object-cover object-center shadow-lg shadow-emerald-500/20 transform group-hover:scale-105 transition-transform"
             />
             <div>
               <span className="text-2xl font-black tracking-tight font-display text-white">
@@ -1321,9 +1322,9 @@ export default function App() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-800/60">
             <div className="flex items-center space-x-3">
               <img
-                src={heroBackgroundImg}
+                src={logoImg}
                 alt="Hermit Sustainability Advisory"
-                className="w-9 h-9 rounded-xl object-cover object-center"
+                className="w-9 h-9 rounded-full object-cover object-center"
               />
               <div>
                 <span className="text-xl font-extrabold font-display text-white tracking-tight">HERMIT</span>
