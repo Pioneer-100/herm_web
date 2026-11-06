@@ -19,7 +19,7 @@ export default function App() {
   const currentTheme = {
     name: "Solar Bio-Nexus",
     bgRoot: "bg-[#060e0c]",
-    sectionAlt: "bg-[#0a1713]/85 border-emerald-950/80",
+    sectionAlt: "bg-gradient-to-b from-[#0e261f]/90 via-[#0a1c17]/85 to-[#0e261f]/90 border-emerald-800/40",
     badge: "border-amber-500/30 bg-amber-950/40 text-amber-300",
     headlineGradient: "from-emerald-400 via-teal-300 to-amber-300",
     primaryBtn: "bg-gradient-to-r from-emerald-400 via-teal-400 to-amber-300 hover:from-emerald-300 hover:to-amber-200 text-slate-950 shadow-amber-500/20",
