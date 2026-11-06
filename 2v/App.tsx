@@ -274,16 +274,16 @@ export default function App() {
 
   return (
     <div className={`relative isolate min-h-screen ${currentTheme.bgRoot} text-slate-100 font-sans selection:bg-emerald-500 selection:text-white transition-colors duration-500`}>
-      {/* Background Image: Contained and properly scaled with subtle opacity on mobile */}
+      {/* Background Image: Contained and properly scaled with enhanced brightness & visibility */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none flex items-center justify-center" aria-hidden="true">
         <img
           src={heroBackgroundImg}
           alt=""
-          className="w-full h-full object-contain md:object-cover object-center max-w-4xl max-h-[85vh] md:max-w-none md:max-h-none opacity-25 md:opacity-40 filter blur-[0.5px]"
+          className="w-full h-full object-contain md:object-cover object-center max-w-5xl max-h-[90vh] md:max-w-none md:max-h-none opacity-50 md:opacity-65 filter brightness-110 contrast-105"
         />
-        {/* Darkening & gradient tint overlays so text remains sharp & perfectly readable */}
-        <div className="absolute inset-0 bg-[#070d14]/75" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#070d14] via-transparent to-[#070d14]" />
+        {/* Subtle translucent tint overlays so text remains crisp and legible while image details pop through */}
+        <div className="absolute inset-0 bg-[#060e0c]/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#060e0c]/70 via-transparent to-[#060e0c]/75" />
       </div>
       <div className="relative z-10">
       
