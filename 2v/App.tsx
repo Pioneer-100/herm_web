@@ -896,7 +896,7 @@ export default function App() {
                 onClick={() => setProjectFilter(tab.id)}
                 className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
                   projectFilter === tab.id
-                    ? 'bg-emerald-400 text-slate-950 shadow-sm'
+                    ? 'bg-gradient-to-r from-sky-500 via-cyan-400 to-teal-400 text-slate-950 shadow-sm'
                     : 'bg-[#0f1929] text-slate-300 hover:bg-slate-800 border border-slate-800'
                 }`}
               >
