@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import heroBackgroundImg from './hero-bg.jpg';
 import heroPosterImg from './hero-poster.jpg';
 import floatingSolarHybridImg from './floating-solar-hybrid.jpg';
-import logoImg from './logo.png';
 import { 
   Shield, Zap, Globe, TrendingUp, Award, ArrowRight, 
   CheckCircle2, Droplets, Leaf, BarChart3, Mail, Phone, MapPin, 
@@ -133,7 +132,7 @@ export default function App() {
         "Floating Solar PV on inland dams & reservoirs",
         "Hydro-solar hybridisation sharing shared grid infrastructure",
         "Rooftop Solar PV for commercial, industrial & pension fund portfolios",
-        "Hourly PVsyst simulation & grid protection integration"
+        "Simulation & grid protection integration"
       ],
       tag: "500MW+ Hybrid Potential"
     },
@@ -278,13 +277,13 @@ export default function App() {
       {/* Background Image: Contained and properly scaled with enhanced brightness & visibility */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none flex items-center justify-center" aria-hidden="true">
         <img
-          src={logoImg}
+          src={heroBackgroundImg}
           alt=""
-          className="w-full h-full object-contain md:object-contain object-center max-w-4xl max-h-[85vh] opacity-35 md:opacity-45 filter drop-shadow-[0_0_80px_rgba(16,185,129,0.25)] brightness-105"
+          className="w-full h-full object-contain md:object-cover object-center max-w-5xl max-h-[90vh] md:max-w-none md:max-h-none opacity-50 md:opacity-65 filter brightness-110 contrast-105"
         />
         {/* Subtle translucent tint overlays so text remains crisp and legible while image details pop through */}
-        <div className="absolute inset-0 bg-[#060e0c]/40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#060e0c]/60 via-transparent to-[#060e0c]/70" />
+        <div className="absolute inset-0 bg-[#060e0c]/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#060e0c]/70 via-transparent to-[#060e0c]/75" />
       </div>
       <div className="relative z-10">
       
@@ -304,9 +303,9 @@ export default function App() {
           {/* Logo */}
           <a href="#" className="flex items-center space-x-3 group">
             <img
-              src={logoImg}
+              src={heroBackgroundImg}
               alt="Hermit Sustainability Advisory"
-              className="w-11 h-11 rounded-full object-cover object-center shadow-lg shadow-emerald-500/20 transform group-hover:scale-105 transition-transform"
+              className="w-11 h-11 rounded-xl object-cover object-center shadow-lg shadow-emerald-500/20 transform group-hover:scale-105 transition-transform"
             />
             <div>
               <span className="text-2xl font-black tracking-tight font-display text-white">
@@ -417,8 +416,8 @@ export default function App() {
           />
 
           {/* Contrast & Gradient Depth Layers */}
-          <div className="absolute inset-0 bg-[#070d14]/40 backdrop-contrast-[1.05]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#070d14]/70 via-transparent to-[#070d14]/40" />
+          <div className="absolute inset-0 bg-[#070d14]/60 backdrop-contrast-[1.1]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#070d14]/85 via-transparent to-[#070d14]" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           
@@ -452,7 +451,7 @@ export default function App() {
 
           {/* Quick Metrics Bar from "Hermit at a Glance" (Page 2) */}
           <div className="mt-12 sm:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 text-left">
-            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/35 hover:bg-[#004d3d]/50 border border-emerald-400/40 backdrop-blur-none shadow-lg shadow-emerald-950/20 transition-all">
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/50 hover:bg-[#004d3d]/65 border border-emerald-400/40 backdrop-blur-md shadow-lg shadow-emerald-950/30 transition-all">
               <div className="flex items-center justify-between text-amber-300 mb-1.5 sm:mb-2">
                 <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-100/70">PV Modelled</span>
@@ -461,7 +460,7 @@ export default function App() {
               <p className="text-[11px] sm:text-xs text-emerald-100/80 mt-0.5 sm:mt-1">Representative solar array</p>
             </div>
 
-            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/35 hover:bg-[#004d3d]/50 border border-emerald-400/40 backdrop-blur-none shadow-lg shadow-emerald-950/20 transition-all">
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/50 hover:bg-[#004d3d]/65 border border-emerald-400/40 backdrop-blur-md shadow-lg shadow-emerald-950/30 transition-all">
               <div className="flex items-center justify-between text-emerald-300 mb-1.5 sm:mb-2">
                 <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-100/70">Annual Yield</span>
@@ -470,7 +469,7 @@ export default function App() {
               <p className="text-[11px] sm:text-xs text-emerald-100/80 mt-0.5 sm:mt-1">Combined floating solar + mini-hydro</p>
             </div>
 
-            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/35 hover:bg-[#004d3d]/50 border border-emerald-400/40 backdrop-blur-none shadow-lg shadow-emerald-950/20 transition-all">
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/50 hover:bg-[#004d3d]/65 border border-emerald-400/40 backdrop-blur-md shadow-lg shadow-emerald-950/30 transition-all">
               <div className="flex items-center justify-between text-amber-300 mb-1.5 sm:mb-2">
                 <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-100/70">Timeline</span>
@@ -479,7 +478,7 @@ export default function App() {
               <p className="text-[11px] sm:text-xs text-emerald-100/80 mt-0.5 sm:mt-1">From inception to EPC tender ready</p>
             </div>
 
-            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/35 hover:bg-[#004d3d]/50 border border-emerald-400/40 backdrop-blur-none shadow-lg shadow-emerald-950/20 transition-all">
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/50 hover:bg-[#004d3d]/65 border border-emerald-400/40 backdrop-blur-md shadow-lg shadow-emerald-950/30 transition-all">
               <div className="flex items-center justify-between text-emerald-300 mb-1.5 sm:mb-2">
                 <Layers className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-100/70">Methodology</span>
@@ -509,8 +508,8 @@ export default function App() {
                 We bridge the gap between renewable energy innovation and practical, bankable project execution.
               </p>
               <p className="text-slate-300 text-base leading-relaxed">
-                Every recommendation is grounded in rigorous technical and financial modelling — whether that is an 
-                <strong className={`font-semibold ${currentTheme.accentText}`}> hourly PVsyst simulation </strong> 
+                Every recommendation is grounded in rigorous technical and financial modelling, whether that is an 
+                <strong className={`font-semibold ${currentTheme.accentText}`}>  simulation </strong> 
                 of a floating solar array or a <strong className={`font-semibold ${currentTheme.accentSecondary}`}>first-principles hydraulic model </strong> 
                 of an existing hydro plant, so clients and their financiers make decisive capital commitments.
               </p>
@@ -547,17 +546,10 @@ export default function App() {
               </div>
             </div>
 
-            {/* Strategic Pillars Callout / Mission and Vision */}
+            {/* Strategic Pillars Callout / Vision */}
             <div className="lg:col-span-5">
               <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#0c1420] to-[#080d14] text-white border border-slate-800 shadow-2xl relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-52 h-52 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
-
-                <div className="mb-8 pb-8 border-b border-slate-700/60">
-                  <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">Our Mission</span>
-                  <p className="mt-3 text-sm text-slate-300 leading-relaxed">
-                    Our mission is to empower governments, utilities, and industries with sustainable technologies and strategies that drive energy security, environmental stewardship, and economic resilience.
-                  </p>
-                </div>
 
                 <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest">Our Vision</span>
                 <h3 className="mt-2 text-2xl font-bold font-display text-white">
@@ -566,6 +558,27 @@ export default function App() {
                 <p className="mt-4 text-sm text-slate-300 leading-relaxed">
                   Driving sustainable power systems that empower communities, enhance sovereign energy security, and protect the African environment for future generations.
                 </p>
+
+                <div className="mt-8 pt-6 border-t border-slate-800/80 space-y-3">
+                  <p className="text-xs text-slate-400 uppercase tracking-wider font-semibold">Standard Tools & Methodologies</p>
+                  <div className="flex flex-wrap gap-2 pt-1">
+                    {["PVsyst V7.4", "Meteonorm", "MS Project", "ZERA", "ZINWA", "ZETDC", "NSF Standards"].map((tool, i) => (
+                      <span key={i} className="text-xs bg-[#111c2e] text-emerald-300 px-2.5 py-1 rounded-md border border-slate-700/60 font-medium">
+                        {tool}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-8">
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 hover:text-emerald-300 group"
+                  >
+                    Download Information Pack & Scope
+                    <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -1308,9 +1321,9 @@ export default function App() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-800/60">
             <div className="flex items-center space-x-3">
               <img
-                src={logoImg}
+                src={heroBackgroundImg}
                 alt="Hermit Sustainability Advisory"
-                className="w-9 h-9 rounded-full object-cover object-center"
+                className="w-9 h-9 rounded-xl object-cover object-center"
               />
               <div>
                 <span className="text-xl font-extrabold font-display text-white tracking-tight">HERMIT</span>
