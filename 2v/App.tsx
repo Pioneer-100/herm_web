@@ -3,6 +3,7 @@ import heroBackgroundImg from './hero-bg.jpg';
 import heroPosterImg from './hero-poster.jpg';
 import floatingSolarHybridImg from './floating-solar-hybrid.jpg';
 import logoImg from './logo.png';
+import navLeavesImg from './nav-leaves.jpg';
 import { 
   Shield, Zap, Globe, TrendingUp, Award, ArrowRight, 
   CheckCircle2, Droplets, Leaf, BarChart3, Mail, Phone, MapPin, 
@@ -176,14 +177,7 @@ export default function App() {
   };
 
   const projectPortfolio = [
-    {
-      name: "Kariba Floating Solar Plant",
-      type: "Hydro-Solar Hybrid",
-      size: "250 – 1,000 MW",
-      location: "Lake Kariba, Zimbabwe",
-      category: "hybrid",
-      description: "Groundbreaking utility-scale floating solar integration on Lake Kariba, hybridising with the existing hydroelectric complex for grid balancing."
-    },
+    
     {
       name: "Osborne Dam Floating Solar",
       type: "Floating Solar PV",
@@ -200,14 +194,7 @@ export default function App() {
       category: "solar",
       description: "Full feasibility, PVsyst modelling, and grid integration for commercial solar farm feeding provincial industrial demand."
     },
-    {
-      name: "Gwanda Solar Plant",
-      type: "Solar PV",
-      size: "5 MW",
-      location: "Mashonaland Province",
-      category: "solar",
-      description: "Decentralized power station engineered for resilient grid injection in key high-irradiance agricultural and mining hubs."
-    },
+    
     {
       name: "Midlands Solar PV",
       type: "Grid-Connected Solar",
@@ -247,6 +234,14 @@ export default function App() {
       location: "Eastern Highlands, Zimbabwe",
       category: "hydro",
       description: "Run-of-river hydro development and integration study for community electrification and decentralized resilience."
+    },
+    {
+      name: "Kariba Floating Solar Plant",
+      type: "Hydro-Solar Hybrid",
+      size: "250 – 1,000 MW",
+      location: "Lake Kariba, Zimbabwe",
+      category: "hybrid",
+      description: "Groundbreaking utility-scale floating solar integration on Lake Kariba, hybridising with the existing hydroelectric complex for grid balancing."
     }
   ];
 
@@ -297,9 +292,21 @@ export default function App() {
         </div>
       </div>
 
-      {/* Main Navbar */}
-      <nav className={`sticky top-0 z-50 glass-nav ${currentTheme.navBg} transition-colors`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      {/* Main Navbar with Option A: Dark Bio-Glass Leaf Pattern */}
+      <nav className="sticky top-0 z-50 overflow-hidden border-b border-emerald-950/90 shadow-2xl transition-colors">
+        {/* Leaf Background Layer with Dark Bio-Glass Tint */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
+          <img
+            src={navLeavesImg}
+            alt=""
+            className="w-full h-full object-cover object-center scale-105 opacity-35 filter brightness-95 contrast-125"
+          />
+          {/* Deep Forest Emerald / Charcoal Glass Gradient Overlay */}
+          <div className="absolute inset-0 bg-[#06110d]/85 backdrop-blur-[3px]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#060e0c]/90 via-[#0a1813]/70 to-[#060e0c]/90" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
           {/* Logo */}
           <a href="#" className="flex items-center space-x-3 group">
