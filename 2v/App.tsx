@@ -417,7 +417,7 @@ export default function App() {
 
           {/* Contrast & Gradient Depth Layers */}
           <div className="absolute inset-0 bg-[#070d14]/60 backdrop-contrast-[1.1]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#070d14]/85 via-transparent to-[#070d14]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#070d14]/70 via-transparent to-[#070d14]/40" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           
@@ -451,7 +451,7 @@ export default function App() {
 
           {/* Quick Metrics Bar from "Hermit at a Glance" (Page 2) */}
           <div className="mt-12 sm:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 text-left">
-            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/50 hover:bg-[#004d3d]/65 border border-emerald-400/40 backdrop-blur-md shadow-lg shadow-emerald-950/30 transition-all">
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/35 hover:bg-[#004d3d]/50 border border-emerald-400/40 shadow-lg shadow-emerald-950/20 transition-all">
               <div className="flex items-center justify-between text-amber-300 mb-1.5 sm:mb-2">
                 <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-100/70">PV Modelled</span>
@@ -460,7 +460,7 @@ export default function App() {
               <p className="text-[11px] sm:text-xs text-emerald-100/80 mt-0.5 sm:mt-1">Representative solar array</p>
             </div>
 
-            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/50 hover:bg-[#004d3d]/65 border border-emerald-400/40 backdrop-blur-md shadow-lg shadow-emerald-950/30 transition-all">
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/35 hover:bg-[#004d3d]/50 border border-emerald-400/40 shadow-lg shadow-emerald-950/20 transition-all">
               <div className="flex items-center justify-between text-emerald-300 mb-1.5 sm:mb-2">
                 <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-100/70">Annual Yield</span>
@@ -469,7 +469,7 @@ export default function App() {
               <p className="text-[11px] sm:text-xs text-emerald-100/80 mt-0.5 sm:mt-1">Combined floating solar + mini-hydro</p>
             </div>
 
-            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/50 hover:bg-[#004d3d]/65 border border-emerald-400/40 backdrop-blur-md shadow-lg shadow-emerald-950/30 transition-all">
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/35 hover:bg-[#004d3d]/50 border border-emerald-400/40 shadow-lg shadow-emerald-950/20 transition-all">
               <div className="flex items-center justify-between text-amber-300 mb-1.5 sm:mb-2">
                 <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-100/70">Timeline</span>
@@ -478,7 +478,7 @@ export default function App() {
               <p className="text-[11px] sm:text-xs text-emerald-100/80 mt-0.5 sm:mt-1">From inception to EPC tender ready</p>
             </div>
 
-            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/50 hover:bg-[#004d3d]/65 border border-emerald-400/40 backdrop-blur-md shadow-lg shadow-emerald-950/30 transition-all">
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/35 hover:bg-[#004d3d]/50 border border-emerald-400/40 shadow-lg shadow-emerald-950/20 transition-all">
               <div className="flex items-center justify-between text-emerald-300 mb-1.5 sm:mb-2">
                 <Layers className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-100/70">Methodology</span>
@@ -509,7 +509,7 @@ export default function App() {
               </p>
               <p className="text-slate-300 text-base leading-relaxed">
                 Every recommendation is grounded in rigorous technical and financial modelling, whether that is an 
-                <strong className={`font-semibold ${currentTheme.accentText}`}>  simulation </strong> 
+                <strong className={`font-semibold ${currentTheme.accentText}`}> hourly PVsyst simulation </strong> 
                 of a floating solar array or a <strong className={`font-semibold ${currentTheme.accentSecondary}`}>first-principles hydraulic model </strong> 
                 of an existing hydro plant, so clients and their financiers make decisive capital commitments.
               </p>
@@ -896,7 +896,7 @@ export default function App() {
                 onClick={() => setProjectFilter(tab.id)}
                 className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
                   projectFilter === tab.id
-                    ? 'bg-gradient-to-r from-sky-500 via-cyan-400 to-teal-400 text-slate-950 shadow-sm'
+                    ? 'bg-emerald-400 text-slate-950 shadow-sm'
                     : 'bg-[#0f1929] text-slate-300 hover:bg-slate-800 border border-slate-800'
                 }`}
               >
