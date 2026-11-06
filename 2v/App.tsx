@@ -422,9 +422,9 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           
           <h1 className="text-3xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-display max-w-5xl mx-auto leading-[1.15] sm:leading-[1.12] text-white">
-            Advancing Sustainable Power Solutions{' '}
+            {' '}
             <span className={`bg-gradient-to-r ${currentTheme.headlineGradient} bg-clip-text text-transparent drop-shadow-sm`}>
-              Across Africa
+              Advancing Sustainable Power Solutions Across Africa
             </span>
           </h1>
 
@@ -451,40 +451,40 @@ export default function App() {
 
           {/* Quick Metrics Bar from "Hermit at a Glance" (Page 2) */}
           <div className="mt-12 sm:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 text-left">
-            <div className={`p-4 sm:p-6 rounded-2xl ${currentTheme.cardBg} backdrop-blur-md shadow-md transition-all`}>
-              <div className={`flex items-center justify-between ${currentTheme.accentText} mb-1.5 sm:mb-2`}>
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/90 sm:bg-[#004d3d]/85 hover:bg-[#005c49] border border-emerald-400/30 backdrop-blur-md shadow-lg shadow-emerald-950/40 transition-all">
+              <div className="flex items-center justify-between text-amber-300 mb-1.5 sm:mb-2">
                 <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-400">PV Modelled</span>
+                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-100/70">PV Modelled</span>
               </div>
               <p className="text-xl sm:text-3xl font-extrabold font-display text-white">5,437 kWp</p>
-              <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5 sm:mt-1">Representative floating solar array</p>
+              <p className="text-[11px] sm:text-xs text-emerald-100/80 mt-0.5 sm:mt-1">Representative floating solar array</p>
             </div>
 
-            <div className={`p-4 sm:p-6 rounded-2xl ${currentTheme.cardBg} backdrop-blur-md shadow-md transition-all`}>
-              <div className={`flex items-center justify-between ${currentTheme.accentSecondary} mb-1.5 sm:mb-2`}>
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/90 sm:bg-[#004d3d]/85 hover:bg-[#005c49] border border-emerald-400/30 backdrop-blur-md shadow-lg shadow-emerald-950/40 transition-all">
+              <div className="flex items-center justify-between text-emerald-300 mb-1.5 sm:mb-2">
                 <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-400">Annual Yield</span>
+                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-100/70">Annual Yield</span>
               </div>
               <p className="text-xl sm:text-3xl font-extrabold font-display text-white">33.8 GWh/yr</p>
-              <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5 sm:mt-1">Combined floating solar + mini-hydro</p>
+              <p className="text-[11px] sm:text-xs text-emerald-100/80 mt-0.5 sm:mt-1">Combined floating solar + mini-hydro</p>
             </div>
 
-            <div className={`p-4 sm:p-6 rounded-2xl ${currentTheme.cardBg} backdrop-blur-md shadow-md transition-all`}>
-              <div className={`flex items-center justify-between ${currentTheme.accentText} mb-1.5 sm:mb-2`}>
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/90 sm:bg-[#004d3d]/85 hover:bg-[#005c49] border border-emerald-400/30 backdrop-blur-md shadow-lg shadow-emerald-950/40 transition-all">
+              <div className="flex items-center justify-between text-amber-300 mb-1.5 sm:mb-2">
                 <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-400">Timeline</span>
+                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-100/70">Timeline</span>
               </div>
               <p className="text-xl sm:text-3xl font-extrabold font-display text-white">8 Months</p>
-              <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5 sm:mt-1">From inception to EPC tender ready</p>
+              <p className="text-[11px] sm:text-xs text-emerald-100/80 mt-0.5 sm:mt-1">From inception to EPC tender ready</p>
             </div>
 
-            <div className={`p-4 sm:p-6 rounded-2xl ${currentTheme.cardBg} backdrop-blur-md shadow-md transition-all`}>
-              <div className={`flex items-center justify-between ${currentTheme.accentSecondary} mb-1.5 sm:mb-2`}>
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/90 sm:bg-[#004d3d]/85 hover:bg-[#005c49] border border-emerald-400/30 backdrop-blur-md shadow-lg shadow-emerald-950/40 transition-all">
+              <div className="flex items-center justify-between text-emerald-300 mb-1.5 sm:mb-2">
                 <Layers className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-400">Methodology</span>
+                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-100/70">Methodology</span>
               </div>
               <p className="text-xl sm:text-3xl font-extrabold font-display text-white">Class 5</p>
-              <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5 sm:mt-1">Cost accuracy & PVsyst simulation</p>
+              <p className="text-[11px] sm:text-xs text-emerald-100/80 mt-0.5 sm:mt-1">Cost accuracy & simulation</p>
             </div>
           </div>
 
