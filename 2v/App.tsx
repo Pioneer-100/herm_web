@@ -559,27 +559,6 @@ export default function App() {
                 <p className="mt-4 text-sm text-slate-300 leading-relaxed">
                   Driving sustainable power systems that empower communities, enhance sovereign energy security, and protect the African environment for future generations.
                 </p>
-
-                <div className="mt-8 pt-6 border-t border-slate-800/80 space-y-3">
-                  <p className="text-xs text-slate-400 uppercase tracking-wider font-semibold">Standard Tools & Methodologies</p>
-                  <div className="flex flex-wrap gap-2 pt-1">
-                    {["PVsyst V7.4", "Meteonorm", "MS Project", "ZERA", "ZINWA", "ZETDC", "NSF Standards"].map((tool, i) => (
-                      <span key={i} className="text-xs bg-[#111c2e] text-emerald-300 px-2.5 py-1 rounded-md border border-slate-700/60 font-medium">
-                        {tool}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="mt-8">
-                  <a
-                    href="#contact"
-                    className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 hover:text-emerald-300 group"
-                  >
-                    Download Information Pack & Scope
-                    <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                  </a>
-                </div>
               </div>
             </div>
 
