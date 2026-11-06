@@ -451,16 +451,16 @@ export default function App() {
 
           {/* Quick Metrics Bar from "Hermit at a Glance" (Page 2) */}
           <div className="mt-12 sm:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 text-left">
-            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/90 sm:bg-[#004d3d]/85 hover:bg-[#005c49] border border-emerald-400/30 backdrop-blur-md shadow-lg shadow-emerald-950/40 transition-all">
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/50 hover:bg-[#004d3d]/65 border border-emerald-400/40 backdrop-blur-md shadow-lg shadow-emerald-950/30 transition-all">
               <div className="flex items-center justify-between text-amber-300 mb-1.5 sm:mb-2">
                 <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-100/70">PV Modelled</span>
               </div>
               <p className="text-xl sm:text-3xl font-extrabold font-display text-white">5,437 kWp</p>
-              <p className="text-[11px] sm:text-xs text-emerald-100/80 mt-0.5 sm:mt-1">Representative floating solar array</p>
+              <p className="text-[11px] sm:text-xs text-emerald-100/80 mt-0.5 sm:mt-1">Representative solar array</p>
             </div>
 
-            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/90 sm:bg-[#004d3d]/85 hover:bg-[#005c49] border border-emerald-400/30 backdrop-blur-md shadow-lg shadow-emerald-950/40 transition-all">
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/50 hover:bg-[#004d3d]/65 border border-emerald-400/40 backdrop-blur-md shadow-lg shadow-emerald-950/30 transition-all">
               <div className="flex items-center justify-between text-emerald-300 mb-1.5 sm:mb-2">
                 <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-100/70">Annual Yield</span>
@@ -469,7 +469,7 @@ export default function App() {
               <p className="text-[11px] sm:text-xs text-emerald-100/80 mt-0.5 sm:mt-1">Combined floating solar + mini-hydro</p>
             </div>
 
-            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/90 sm:bg-[#004d3d]/85 hover:bg-[#005c49] border border-emerald-400/30 backdrop-blur-md shadow-lg shadow-emerald-950/40 transition-all">
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/50 hover:bg-[#004d3d]/65 border border-emerald-400/40 backdrop-blur-md shadow-lg shadow-emerald-950/30 transition-all">
               <div className="flex items-center justify-between text-amber-300 mb-1.5 sm:mb-2">
                 <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-100/70">Timeline</span>
@@ -478,7 +478,7 @@ export default function App() {
               <p className="text-[11px] sm:text-xs text-emerald-100/80 mt-0.5 sm:mt-1">From inception to EPC tender ready</p>
             </div>
 
-            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/90 sm:bg-[#004d3d]/85 hover:bg-[#005c49] border border-emerald-400/30 backdrop-blur-md shadow-lg shadow-emerald-950/40 transition-all">
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/50 hover:bg-[#004d3d]/65 border border-emerald-400/40 backdrop-blur-md shadow-lg shadow-emerald-950/30 transition-all">
               <div className="flex items-center justify-between text-emerald-300 mb-1.5 sm:mb-2">
                 <Layers className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-100/70">Methodology</span>
@@ -504,7 +504,7 @@ export default function App() {
                 Empowering Governments, Utilities, & Industries with Real Numbers, Not Assumptions
               </h2>
               <p className="text-slate-300 text-base leading-relaxed">
-                Hermit Sustainability Advisory is a Zimbabwean-owned renewable energy and sustainability consultancy. 
+                Hermit Sustainability is a Zimbabwean-owned renewable energy and sustainability consultancy. 
                 We bridge the gap between renewable energy innovation and practical, bankable project execution.
               </p>
               <p className="text-slate-300 text-base leading-relaxed">
