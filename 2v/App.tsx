@@ -22,7 +22,7 @@ export default function App() {
     sectionAlt: "bg-gradient-to-b from-[#0e261f]/40 via-[#0a1c17]/30 to-[#0e261f]/40 backdrop-blur-[2px] border-y border-emerald-500/20",
     badge: "border-amber-500/30 bg-amber-950/40 text-amber-300",
     headlineGradient: "from-emerald-400 via-teal-300 to-amber-300",
-    primaryBtn: "bg-gradient-to-r from-emerald-400 via-teal-400 to-amber-300 hover:from-emerald-300 hover:to-amber-200 text-slate-950 shadow-amber-500/20",
+    primaryBtn: "bg-gradient-to-r from-sky-500 via-cyan-400 to-teal-400 hover:from-sky-400 hover:to-teal-300 text-slate-950 shadow-cyan-500/25",
     secondaryBtn: "bg-[#0d1a15] border-emerald-900/60 text-emerald-100 hover:bg-[#12241d]",
     accentText: "text-amber-400",
     accentSecondary: "text-emerald-400",
@@ -31,7 +31,7 @@ export default function App() {
     navBg: "bg-[#07130f]/90 border-emerald-950/90",
     inputBg: "bg-[#08120e] border-emerald-950 text-white focus:ring-amber-400",
     sliderAccent: "accent-amber-400",
-    pillActive: "bg-gradient-to-r from-emerald-400 to-amber-300 text-slate-950",
+    pillActive: "bg-gradient-to-r from-sky-500 via-cyan-400 to-teal-400 text-slate-950",
     pillInactive: "bg-[#0e1d17] text-emerald-200 hover:bg-[#152a21] border-emerald-950"
   };
   
@@ -332,7 +332,7 @@ export default function App() {
           <div className="hidden sm:flex items-center space-x-3">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-slate-950 bg-emerald-400 hover:bg-emerald-300 rounded-xl shadow-md shadow-emerald-500/20 transition-all transform hover:-translate-y-0.5"
+              className={`inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-slate-950 ${currentTheme.primaryBtn} rounded-xl shadow-md transition-all transform hover:-translate-y-0.5`}
             >
               <span>Initiate Study</span>
               <ArrowUpRight className="w-4 h-4" />
@@ -359,7 +359,7 @@ export default function App() {
             <a href="#portfolio" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-300 hover:text-emerald-400">Project Portfolio</a>
             <a href="#process" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-300 hover:text-emerald-400">Engagement Process</a>
             <a href="#partnerships" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-300 hover:text-emerald-400">Strategic Partnerships</a>
-            <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="block py-3 mt-4 text-center text-slate-950 bg-emerald-400 rounded-xl font-bold">
+            <a href="#contact" onClick={() => setMobileMenuOpen(false)} className={`block py-3 mt-4 text-center text-slate-950 ${currentTheme.primaryBtn} rounded-xl font-bold`}>
               Contact Harare Office
             </a>
           </div>
@@ -1295,7 +1295,7 @@ export default function App() {
               <button
                 type="submit"
                 disabled={formStatus === 'submitting'}
-                className="w-full py-3.5 text-sm font-bold text-slate-950 bg-emerald-400 hover:bg-emerald-300 disabled:opacity-60 disabled:cursor-not-allowed rounded-xl shadow-lg shadow-emerald-500/20 transition-all uppercase tracking-wider font-display flex items-center justify-center space-x-2"
+                className={`w-full py-3.5 text-sm font-bold text-slate-950 ${currentTheme.primaryBtn} disabled:opacity-60 disabled:cursor-not-allowed rounded-xl shadow-lg transition-all uppercase tracking-wider font-display flex items-center justify-center space-x-2`}
               >
                 {formStatus === 'submitting' ? (
                   <>
