@@ -294,16 +294,15 @@ export default function App() {
 
       {/* Main Navbar with Option A: Dark Bio-Glass Leaf Pattern */}
       <nav className="sticky top-0 z-50 overflow-hidden border-b border-emerald-950/90 shadow-2xl transition-colors">
-        {/* Leaf Background Layer with Dark Bio-Glass Tint */}
+        {/* Leaf Background Layer - Highly Visible & Vibrant */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
           <img
             src={navLeavesImg}
             alt=""
-            className="w-full h-full object-cover object-center scale-105 opacity-35 filter brightness-95 contrast-125"
+            className="w-full h-full object-cover object-center opacity-85 filter brightness-105 contrast-110"
           />
-          {/* Deep Forest Emerald / Charcoal Glass Gradient Overlay */}
-          <div className="absolute inset-0 bg-[#06110d]/85 backdrop-blur-[3px]" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#060e0c]/90 via-[#0a1813]/70 to-[#060e0c]/90" />
+          {/* Subtle dark tint solely to keep white text effortlessly readable */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#060e0c]/80 via-[#060e0c]/55 to-[#060e0c]/80" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
