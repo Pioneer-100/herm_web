@@ -547,10 +547,17 @@ export default function App() {
               </div>
             </div>
 
-            {/* Strategic Pillars Callout / Vision */}
+            {/* Strategic Pillars Callout / Mission and Vision */}
             <div className="lg:col-span-5">
               <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#0c1420] to-[#080d14] text-white border border-slate-800 shadow-2xl relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-52 h-52 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
+
+                <div className="mb-8 pb-8 border-b border-slate-700/60">
+                  <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">Our Mission</span>
+                  <p className="mt-3 text-sm text-slate-300 leading-relaxed">
+                    Our mission is to empower governments, utilities, and industries with sustainable technologies and strategies that drive energy security, environmental stewardship, and economic resilience.
+                  </p>
+                </div>
 
                 <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest">Our Vision</span>
                 <h3 className="mt-2 text-2xl font-bold font-display text-white">
