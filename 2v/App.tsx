@@ -325,7 +325,7 @@ export default function App() {
           </a>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center space-x-7 text-sm font-semibold text-slate-300">
+          <div className="hidden lg:flex items-center space-x-6 xl:space-x-7 text-[15px] xl:text-base font-bold text-white drop-shadow-sm">
             <a href="#about" className="hover:text-emerald-400 transition-colors">About</a>
             <a href="#nexus" className="hover:text-emerald-400 transition-colors">Quad Nexus</a>
             <a href="#hybrid" className="hover:text-emerald-400 transition-colors">Hydro-Solar Hybrid</a>
@@ -1330,7 +1330,7 @@ export default function App() {
                 <span className="block text-[9px] uppercase tracking-widest text-emerald-400 font-bold">Sustainability Advisory</span>
               </div>
             </div>
-            <div className="flex flex-wrap gap-6 text-xs font-semibold">
+            <div className="flex flex-wrap gap-6 text-sm font-semibold">
               <a href="#about" className="hover:text-white transition-colors">About</a>
               <a href="#nexus" className="hover:text-white transition-colors">Quad Nexus</a>
               <a href="#hybrid" className="hover:text-white transition-colors">Hydro-Solar Hybrid</a>
