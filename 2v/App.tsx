@@ -278,13 +278,13 @@ export default function App() {
       {/* Background Image: Contained and properly scaled with enhanced brightness & visibility */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none flex items-center justify-center" aria-hidden="true">
         <img
-          src={heroBackgroundImg}
+          src={logoImg}
           alt=""
-          className="w-full h-full object-contain md:object-cover object-center max-w-5xl max-h-[90vh] md:max-w-none md:max-h-none opacity-50 md:opacity-65 filter brightness-110 contrast-105"
+          className="w-full h-full object-contain md:object-contain object-center max-w-4xl max-h-[85vh] opacity-35 md:opacity-45 filter drop-shadow-[0_0_80px_rgba(16,185,129,0.25)] brightness-105"
         />
         {/* Subtle translucent tint overlays so text remains crisp and legible while image details pop through */}
-        <div className="absolute inset-0 bg-[#060e0c]/50" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#060e0c]/70 via-transparent to-[#060e0c]/75" />
+        <div className="absolute inset-0 bg-[#060e0c]/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#060e0c]/60 via-transparent to-[#060e0c]/70" />
       </div>
       <div className="relative z-10">
       
