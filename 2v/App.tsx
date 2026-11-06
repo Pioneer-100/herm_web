@@ -547,19 +547,32 @@ export default function App() {
               </div>
             </div>
 
-            {/* Strategic Pillars Callout / Vision */}
-            <div className="lg:col-span-5">
+            {/* Strategic Pillars Callout: Mission & Vision */}
+            <div className="lg:col-span-5 space-y-6">
+              {/* Mission Card (Above Vision) */}
+              <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#0c1420] to-[#080d14] text-white border border-slate-800 shadow-2xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-52 h-52 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
+
+                <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">Our Mission</span>
+                <h3 className="mt-2 text-xl sm:text-2xl font-bold font-display text-white">
+                  Sustainable Technologies & Bankable Execution
+                </h3>
+                <p className="mt-4 text-sm text-slate-300 leading-relaxed">
+                  Our mission is to empower governments, utilities, and industries with sustainable technologies and strategies that drive energy security, environmental stewardship, and economic resilience.
+                </p>
+              </div>
+
+              {/* Vision Card */}
               <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#0c1420] to-[#080d14] text-white border border-slate-800 shadow-2xl relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-52 h-52 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
 
                 <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest">Our Vision</span>
-                <h3 className="mt-2 text-2xl font-bold font-display text-white">
+                <h3 className="mt-2 text-xl sm:text-2xl font-bold font-display text-white">
                   Africa’s Leading Catalyst for Renewable Innovation
                 </h3>
                 <p className="mt-4 text-sm text-slate-300 leading-relaxed">
                   Driving sustainable power systems that empower communities, enhance sovereign energy security, and protect the African environment for future generations.
                 </p>
-
               </div>
             </div>
 
