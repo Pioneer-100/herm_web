@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import heroBackgroundImg from './hero-bg.jpg';
 import heroPosterImg from './hero-poster.jpg';
 import floatingSolarHybridImg from './floating-solar-hybrid.jpg';
+import logoImg from './logo.png';
 import { 
   Shield, Zap, Globe, TrendingUp, Award, ArrowRight, 
   CheckCircle2, Droplets, Leaf, BarChart3, Mail, Phone, MapPin, 
@@ -277,9 +278,9 @@ export default function App() {
       {/* Background Image: Contained and properly scaled with enhanced brightness & visibility */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none flex items-center justify-center" aria-hidden="true">
         <img
-          src={heroBackgroundImg}
+          src={logoImg}
           alt=""
-          className="w-full h-full object-contain md:object-cover object-center max-w-5xl max-h-[90vh] md:max-w-none md:max-h-none opacity-50 md:opacity-65 filter brightness-110 contrast-105"
+          className="w-full h-full object-contain md:object-contain object-center max-w-4xl max-h-[85vh] opacity-35 md:opacity-45 filter drop-shadow-[0_0_80px_rgba(16,185,129,0.25)] brightness-105"
         />
         {/* Subtle translucent tint overlays so text remains crisp and legible while image details pop through */}
         <div className="absolute inset-0 bg-[#060e0c]/50" />
@@ -303,7 +304,7 @@ export default function App() {
           {/* Logo */}
           <a href="#" className="flex items-center space-x-3 group">
             <img
-              src={heroBackgroundImg}
+              src={logoImg}
               alt="Hermit Sustainability Advisory"
               className="w-11 h-11 rounded-xl object-cover object-center shadow-lg shadow-emerald-500/20 transform group-hover:scale-105 transition-transform"
             />
@@ -1301,7 +1302,7 @@ export default function App() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-800/60">
             <div className="flex items-center space-x-3">
               <img
-                src={heroBackgroundImg}
+                src={logoImg}
                 alt="Hermit Sustainability Advisory"
                 className="w-9 h-9 rounded-xl object-cover object-center"
               />
