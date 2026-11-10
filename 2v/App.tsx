@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import heroBackgroundImg from './hero-bg.jpg';
 import heroPosterImg from './hero-poster.jpg';
 import floatingSolarHybridImg from './floating-solar-hybrid.jpg';
 import logoImg from './logo.png';
 import navLeavesImg from './nav-leaves.jpg';
+import { MetricCounter } from './MetricCounter';
 import { 
   Shield, Zap, Globe, TrendingUp, Award, ArrowRight, 
   CheckCircle2, Droplets, Leaf, BarChart3, Mail, Phone, MapPin, 
@@ -271,7 +273,13 @@ export default function App() {
   return (
     <div className={`relative isolate min-h-screen ${currentTheme.bgRoot} text-slate-100 font-sans selection:bg-emerald-500 selection:text-white transition-colors duration-500`}>
       {/* Background Image: Contained and properly scaled with enhanced brightness & visibility */}
-      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none flex items-center justify-center" aria-hidden="true">
+      <motion.div 
+        className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none flex items-center justify-center" 
+        aria-hidden="true"
+        initial={{ scale: 1.1, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+      >
         <img
           src={logoImg}
           alt=""
@@ -280,20 +288,30 @@ export default function App() {
         {/* Subtle translucent tint overlays so text remains crisp and legible while image details pop through */}
         <div className="absolute inset-0 bg-[#060e0c]/50" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#060e0c]/70 via-transparent to-[#060e0c]/75" />
-      </div>
+      </motion.div>
       <div className="relative z-10">
       
       {/* Top Contact Bar */}
-      <div className="bg-gradient-to-r from-emerald-950 via-[#0d1e17] to-[#121b14] text-emerald-200 text-xs font-medium py-2 px-4 border-b border-emerald-900/40">
+      <motion.div 
+        initial={{ y: -30, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+        className="bg-gradient-to-r from-emerald-950 via-[#0d1e17] to-[#121b14] text-emerald-200 text-xs font-medium py-2 px-4 border-b border-emerald-900/40"
+      >
         <div className="max-w-7xl mx-auto flex items-center justify-end gap-4 text-[11px]">
           <span className="flex items-center gap-1 text-slate-300"><Phone className="w-3 h-3 text-amber-400" /> +263 71 280 0220</span>
           <span className="text-slate-600">•</span>
           <span className="flex items-center gap-1 text-slate-300"><Mail className="w-3 h-3 text-amber-400" /> info@hermitsustainability.co.zw</span>
         </div>
-      </div>
+      </motion.div>
 
       {/* Main Navbar with Option A: Dark Bio-Glass Leaf Pattern */}
-      <nav className="sticky top-0 z-50 overflow-hidden border-b border-emerald-950/90 shadow-2xl transition-colors">
+      <motion.nav 
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+        className="sticky top-0 z-50 overflow-hidden border-b border-emerald-950/90 shadow-2xl transition-colors"
+      >
         {/* Leaf Background Layer - Highly Visible & Vibrant */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
           <img
@@ -328,7 +346,7 @@ export default function App() {
           <div className="hidden lg:flex items-center space-x-6 xl:space-x-7 text-[15px] xl:text-base font-bold text-white drop-shadow-sm">
             <a href="#about" className="hover:text-emerald-400 transition-colors">About</a>
             <a href="#nexus" className="hover:text-emerald-400 transition-colors">Quad Nexus</a>
-            <a href="#hybrid" className="hover:text-emerald-400 transition-colors">Hydro-Solar Hybrid</a>
+            <a href="#hybrid" className="hover:text-emerald-400 transition-colors">Hybrid Solutions</a>
             <a href="#portfolio" className="hover:text-emerald-400 transition-colors">Track Record</a>
             <a href="#process" className="hover:text-emerald-400 transition-colors">Engagement</a>
             <a href="#partnerships" className="hover:text-emerald-400 transition-colors">Partners</a>
@@ -371,7 +389,7 @@ export default function App() {
             </a>
           </div>
         )}
-      </nav>
+      </motion.nav>
 
       {/* Hero Section with Custom Background Image / Video */}
       <section className="relative pt-12 pb-16 sm:pt-20 sm:pb-28 lg:pt-32 lg:pb-44 overflow-hidden">
@@ -428,19 +446,37 @@ export default function App() {
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           
-          <h1 className="text-3xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-display max-w-5xl mx-auto leading-[1.15] sm:leading-[1.12] text-white">
-            {' '}
-            <span className={`bg-gradient-to-r ${currentTheme.headlineGradient} bg-clip-text text-transparent drop-shadow-sm`}>
-              Advancing Sustainable Power Solutions Across Africa
-            </span>
-          </h1>
+          {/* Masked Slide-up Headline Reveal (Erthost Style) */}
+          <div className="overflow-hidden py-1">
+            <motion.h1 
+              initial={{ y: "110%", opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              className="text-3xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-display max-w-5xl mx-auto leading-[1.15] sm:leading-[1.12] text-white"
+            >
+              {' '}
+              <span className={`bg-gradient-to-r ${currentTheme.headlineGradient} bg-clip-text text-transparent drop-shadow-sm`}>
+                Advancing Sustainable Energy Solutions Globally!
+              </span>
+            </motion.h1>
+          </div>
 
-          <p className="mt-5 sm:mt-7 text-sm sm:text-lg lg:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-normal px-2">
+          <motion.p 
+            initial={{ y: 25, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-5 sm:mt-7 text-sm sm:text-lg lg:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-normal px-2"
+          >
             Delivering innovative, bankable, and scalable clean energy solutions grounded in the 
             <span className={`font-semibold ${currentTheme.accentText}`}> Quad Nexus</span> of Energy, Water, Food, and Waste to Energy.
-          </p>
+          </motion.p>
 
-          <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 px-2">
+          <motion.div 
+            initial={{ y: 25, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 px-2"
+          >
             <a
               href="#hybrid"
               className={`w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-bold ${currentTheme.primaryBtn} rounded-xl shadow-xl flex items-center justify-center gap-2 transition-all transform hover:-translate-y-0.5 active:scale-[0.98]`}
@@ -454,46 +490,94 @@ export default function App() {
             >
               View 1,000+ MW Portfolio
             </a>
-          </div>
+          </motion.div>
 
-          {/* Quick Metrics Bar from "Hermit at a Glance" (Page 2) */}
-          <div className="mt-12 sm:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 text-left">
-            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/35 hover:bg-[#004d3d]/50 border border-emerald-400/40 shadow-lg shadow-emerald-950/20 transition-all">
+          {/* Quick Metrics Bar from "Hermit at a Glance" with Staggered Entrance & Live Counters */}
+          <motion.div 
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.1,
+                  delayChildren: 0.55
+                }
+              }
+            }}
+            className="mt-12 sm:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 text-left"
+          >
+            <motion.div 
+              variants={{
+                hidden: { y: 30, opacity: 0, scale: 0.95 },
+                visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+              }}
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/35 hover:bg-[#004d3d]/50 border border-emerald-400/40 shadow-lg shadow-emerald-950/20 transition-colors"
+            >
               <div className="flex items-center justify-between text-amber-300 mb-1.5 sm:mb-2">
                 <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-100/70">PV Modelled</span>
               </div>
-              <p className="text-xl sm:text-3xl font-extrabold font-display text-white">5,437 kWp</p>
+              <p className="text-xl sm:text-3xl font-extrabold font-display text-white">
+                <MetricCounter value="1000+ kWp" />
+              </p>
               <p className="text-[11px] sm:text-xs text-emerald-100/80 mt-0.5 sm:mt-1">Representative solar array</p>
-            </div>
+            </motion.div>
 
-            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/35 hover:bg-[#004d3d]/50 border border-emerald-400/40 shadow-lg shadow-emerald-950/20 transition-all">
+            <motion.div 
+              variants={{
+                hidden: { y: 30, opacity: 0, scale: 0.95 },
+                visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+              }}
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/35 hover:bg-[#004d3d]/50 border border-emerald-400/40 shadow-lg shadow-emerald-950/20 transition-colors"
+            >
               <div className="flex items-center justify-between text-emerald-300 mb-1.5 sm:mb-2">
                 <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-100/70">Annual Yield</span>
               </div>
-              <p className="text-xl sm:text-3xl font-extrabold font-display text-white">33.8 GWh/yr</p>
+              <p className="text-xl sm:text-3xl font-extrabold font-display text-white">
+                <MetricCounter value="33.8 GWh/yr" />
+              </p>
               <p className="text-[11px] sm:text-xs text-emerald-100/80 mt-0.5 sm:mt-1">Combined floating solar + mini-hydro</p>
-            </div>
+            </motion.div>
 
-            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/35 hover:bg-[#004d3d]/50 border border-emerald-400/40 shadow-lg shadow-emerald-950/20 transition-all">
+            <motion.div 
+              variants={{
+                hidden: { y: 30, opacity: 0, scale: 0.95 },
+                visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+              }}
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/35 hover:bg-[#004d3d]/50 border border-emerald-400/40 shadow-lg shadow-emerald-950/20 transition-colors"
+            >
               <div className="flex items-center justify-between text-amber-300 mb-1.5 sm:mb-2">
                 <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-100/70">Timeline</span>
               </div>
-              <p className="text-xl sm:text-3xl font-extrabold font-display text-white">8 Months</p>
+              <p className="text-xl sm:text-3xl font-extrabold font-display text-white">
+                <MetricCounter value="8 Months" />
+              </p>
               <p className="text-[11px] sm:text-xs text-emerald-100/80 mt-0.5 sm:mt-1">From inception to EPC tender ready</p>
-            </div>
+            </motion.div>
 
-            <div className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/35 hover:bg-[#004d3d]/50 border border-emerald-400/40 shadow-lg shadow-emerald-950/20 transition-all">
+            <motion.div 
+              variants={{
+                hidden: { y: 30, opacity: 0, scale: 0.95 },
+                visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+              }}
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/35 hover:bg-[#004d3d]/50 border border-emerald-400/40 shadow-lg shadow-emerald-950/20 transition-colors"
+            >
               <div className="flex items-center justify-between text-emerald-300 mb-1.5 sm:mb-2">
                 <Layers className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-100/70">Methodology</span>
               </div>
               <p className="text-xl sm:text-3xl font-extrabold font-display text-white">Class 5</p>
               <p className="text-[11px] sm:text-xs text-emerald-100/80 mt-0.5 sm:mt-1">Cost accuracy & simulation</p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
         </div>
       </section>
