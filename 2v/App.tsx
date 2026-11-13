@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import heroBackgroundImg from './hero-bg.jpg';
 import heroPosterImg from './hero-poster.jpg';
@@ -19,24 +19,25 @@ export default function App() {
   const [activeNexusTab, setActiveNexusTab] = useState<'energy' | 'water' | 'food' | 'waste'>('energy');
   const [projectFilter, setProjectFilter] = useState<string>('all');
   
-  // LIGHT MODERN THEME
+  // LIGHT MODERN THEME - with semi-transparent cool emerald glass tints allowing watermark & white depth through
   const currentTheme = {
     name: "Light Modern",
     bgRoot: "bg-white",
-    sectionAlt: "bg-slate-50 border-y border-slate-200",
-    badge: "border-emerald-200 bg-emerald-50 text-emerald-700 font-semibold",
+    sectionAlt: "bg-emerald-950/[0.04] backdrop-blur-[3px] border-y border-emerald-500/15",
+    sectionTranslucent: "bg-emerald-900/[0.03] backdrop-blur-[2px]",
+    badge: "border-emerald-300/60 bg-emerald-100/60 text-emerald-800 font-semibold",
     headlineGradient: "from-white via-emerald-100 to-teal-200",
     primaryBtn: "bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/30 font-bold",
     secondaryBtn: "border-2 border-slate-800 text-slate-800 hover:bg-slate-800 hover:text-white",
-    accentText: "text-emerald-600",
-    accentSecondary: "text-slate-700",
-    cardBg: "bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg",
-    cardInner: "bg-slate-50 border border-slate-200",
+    accentText: "text-emerald-700",
+    accentSecondary: "text-slate-800",
+    cardBg: "bg-white/85 backdrop-blur-md border border-emerald-500/20 hover:border-emerald-500/50 shadow-sm hover:shadow-xl hover:shadow-emerald-950/5",
+    cardInner: "bg-emerald-950/[0.03] border border-emerald-500/15",
     navBg: "bg-white/95 border-slate-200",
-    inputBg: "bg-white border border-slate-300 text-slate-900 focus:ring-emerald-500 focus:border-emerald-500",
+    inputBg: "bg-white/90 border border-slate-300 text-slate-900 focus:ring-emerald-500 focus:border-emerald-500",
     sliderAccent: "accent-emerald-600",
     pillActive: "bg-emerald-600 text-white shadow-sm",
-    pillInactive: "bg-slate-100 text-slate-600 hover:bg-slate-200 border border-slate-200"
+    pillInactive: "bg-white/70 text-slate-700 hover:bg-emerald-50/80 border border-emerald-500/20"
   };
   
   // Interactive Hydro-Solar Hybrid Calculator
@@ -130,7 +131,7 @@ export default function App() {
   const estimatedHydroMWh = Math.round(hydroCapacityMW * (23161 / 5.0));
   const totalHybridMWh = estimatedSolarMWh + estimatedHydroMWh;
   const blendedCapacityFactor = (((totalHybridMWh) / ((solarCapacityMW + hydroCapacityMW) * 8760)) * 100).toFixed(1);
-  // Estimated water evaporation saved from floating solar: ~15,000 mÂ³ per MWp per year
+  // Estimated water evaporation saved from floating solar: ~15,000 m³ per MWp per year
   const estimatedWaterSavedM3 = Math.round(solarCapacityMW * 15200);
 
   // Quad Nexus Data
@@ -247,7 +248,7 @@ export default function App() {
     {
       name: "Kariba Floating Solar Plant",
       type: "Hydro-Solar Hybrid",
-      size: "250 â€“ 1,000 MW",
+      size: "250 – 1,000 MW",
       location: "Lake Kariba, Zimbabwe",
       category: "hybrid",
       description: "Groundbreaking utility-scale floating solar integration on Lake Kariba, hybridising with the existing hydroelectric complex for grid balancing."
@@ -306,7 +307,7 @@ export default function App() {
       >
         <div className="max-w-7xl mx-auto flex items-center justify-end gap-4 text-[11px]">
           <span className="flex items-center gap-1.5 text-white/90 font-medium"><Phone className="w-3 h-3 text-amber-400" /> +263 71 280 0220</span>
-          <span className="text-white/40">â€¢</span>
+          <span className="text-white/40">•</span>
           <span className="flex items-center gap-1.5 text-white/90 font-medium"><Mail className="w-3 h-3 text-amber-400" /> info@hermitsustainability.co.zw</span>
         </div>
       </motion.div>
@@ -316,17 +317,17 @@ export default function App() {
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-        className="sticky top-0 z-50 overflow-hidden shadow-2xl transition-all bg-emerald-950"
+        className="sticky top-0 z-50 overflow-hidden border-b border-slate-200 shadow-sm transition-colors bg-white"
       >
-        {/* Leaf Background Layer - Single seamless photo, no borders */}
+        {/* Leaf Background Layer - Highly Visible & Vibrant */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
           <img
             src={navLeavesImg}
             alt=""
-            className="w-full h-full object-cover object-center scale-[2.2] filter brightness-105 contrast-115 saturate-125 opacity-95"
+            className="w-full h-full object-cover object-center opacity-0"
           />
-          {/* Dark gradient scrim — keeps all nav text crisp */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/75" />
+          {/* Subtle dark tint solely to keep white text effortlessly readable */}
+          <div className="absolute inset-0 bg-white" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -339,24 +340,24 @@ export default function App() {
               className="w-11 h-11 rounded-xl object-cover object-center shadow-lg shadow-emerald-500/20 transform group-hover:scale-105 transition-transform"
             />
             <div>
-              <span className="text-2xl font-black tracking-tight font-display text-white drop-shadow-md">
+              <span className="text-2xl font-black tracking-tight font-display text-slate-900">
                 HERMIT
               </span>
-              <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-300">
+              <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-600">
                 Sustainability Advisory
               </span>
             </div>
           </a>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center space-x-7 xl:space-x-8 text-[15px] xl:text-base font-semibold text-white">
-            <a href="#about" className="hover:text-emerald-300 transition-colors drop-shadow-sm">About</a>
-            <a href="#nexus" className="hover:text-emerald-300 transition-colors drop-shadow-sm">Quad Nexus</a>
-            <a href="#hybrid" className="hover:text-emerald-300 transition-colors drop-shadow-sm">Hybrid Solutions</a>
-            <a href="#portfolio" className="hover:text-emerald-300 transition-colors drop-shadow-sm">Track Record</a>
-            <a href="#process" className="hover:text-emerald-300 transition-colors drop-shadow-sm">Engagement</a>
-            <a href="#partnerships" className="hover:text-emerald-300 transition-colors drop-shadow-sm">Partners</a>
-            <a href="#faq" className="hover:text-emerald-300 transition-colors drop-shadow-sm">FAQ</a>
+          <div className="hidden lg:flex items-center space-x-7 xl:space-x-8 text-[15px] xl:text-base font-semibold text-slate-700">
+            <a href="#about" className="hover:text-emerald-600 transition-colors">About</a>
+            <a href="#nexus" className="hover:text-emerald-600 transition-colors">Quad Nexus</a>
+            <a href="#hybrid" className="hover:text-emerald-600 transition-colors">Hybrid Solutions</a>
+            <a href="#portfolio" className="hover:text-emerald-600 transition-colors">Track Record</a>
+            <a href="#process" className="hover:text-emerald-600 transition-colors">Engagement</a>
+            <a href="#partnerships" className="hover:text-emerald-600 transition-colors">Partners</a>
+            <a href="#faq" className="hover:text-emerald-600 transition-colors">FAQ</a>
           </div>
 
           {/* Right Action CTA */}
@@ -374,7 +375,7 @@ export default function App() {
           <div className="flex lg:hidden items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-white hover:text-emerald-300"
+              className="p-2 text-slate-700 hover:text-slate-900"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -398,7 +399,7 @@ export default function App() {
       </motion.nav>
 
       {/* Hero Section with Custom Background Image / Video */}
-      <section className="relative min-h-screen flex items-center justify-start pt-20 pb-20 sm:pt-24 sm:pb-28 lg:pt-28 lg:pb-36 overflow-hidden w-full">
+      <section className="relative min-h-[90vh] flex items-center justify-start pt-24 pb-28 sm:pt-32 sm:pb-36 lg:pt-36 lg:pb-44 overflow-hidden w-full">
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none select-none" aria-hidden="true">
           {/* 1. Alternate Background (Wind Turbine / Solar) */}
           <div className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${isVideoLoaded ? "opacity-0" : "opacity-100"}`}>
@@ -641,7 +642,7 @@ export default function App() {
 
                 <span className="text-xs font-bold text-emerald-600 uppercase tracking-widest">Our Vision</span>
                 <h3 className="mt-2 text-xl sm:text-2xl font-bold font-display text-slate-900">
-                  Africaâ€™s Leading Catalyst for Renewable Innovation
+                  Africa’s Leading Catalyst for Renewable Innovation
                 </h3>
                 <p className="mt-4 text-sm text-slate-600 leading-relaxed">
                   Driving sustainable power systems that empower communities, enhance sovereign energy security, and protect the African environment for future generations.
@@ -662,8 +663,8 @@ export default function App() {
           <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-slate-900">
             The Quad Nexus Framework
           </h2>
-          <p className="mt-4 text-slate-300 text-base">
-            Hermitâ€™s specialized advisory addresses the interconnected challenges of Energy, Water, Food, and Waste to Energy through comprehensive lifecycle delivery.
+          <p className="mt-4 text-slate-600 text-base">
+            Hermit’s specialized advisory addresses the interconnected challenges of Energy, Water, Food, and Waste to Energy through comprehensive lifecycle delivery.
           </p>
 
           {/* Interactive Quad Nexus Navigation Pills */}
@@ -673,7 +674,7 @@ export default function App() {
               className={`flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                 activeNexusTab === 'energy' 
                   ? `${currentTheme.pillActive} shadow-sm font-extrabold` 
-                  : 'text-slate-400 hover:text-white'
+                  : 'text-slate-600 hover:text-emerald-700 hover:bg-white/60'
               }`}
             >
               <Zap className="w-4 h-4" /> Energy
@@ -684,7 +685,7 @@ export default function App() {
               className={`flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                 activeNexusTab === 'water' 
                   ? `${currentTheme.pillActive} shadow-sm font-extrabold` 
-                  : 'text-slate-400 hover:text-white'
+                  : 'text-slate-600 hover:text-emerald-700 hover:bg-white/60'
               }`}
             >
               <Droplets className="w-4 h-4" /> Water
@@ -695,7 +696,7 @@ export default function App() {
               className={`flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                 activeNexusTab === 'food' 
                   ? `${currentTheme.pillActive} shadow-sm font-extrabold` 
-                  : 'text-slate-400 hover:text-white'
+                  : 'text-slate-600 hover:text-emerald-700 hover:bg-white/60'
               }`}
             >
               <Leaf className="w-4 h-4" /> Food
@@ -706,7 +707,7 @@ export default function App() {
               className={`flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                 activeNexusTab === 'waste' 
                   ? `${currentTheme.pillActive} shadow-sm font-extrabold` 
-                  : 'text-slate-400 hover:text-white'
+                  : 'text-slate-600 hover:text-emerald-700 hover:bg-white/60'
               }`}
             >
               <Flame className="w-4 h-4" /> Waste to Energy
@@ -752,15 +753,15 @@ export default function App() {
               <div className="mt-6 space-y-4">
                 <div className={`p-3.5 rounded-xl ${currentTheme.cardBg}`}>
                   <p className="text-xs font-bold text-slate-900">Technical & Financial Studies</p>
-                  <p className="text-[11px] text-slate-400 mt-0.5">Pre-feasibility & feasibility benchmarked to Class 5 cost accuracy.</p>
+                  <p className="text-[11px] text-slate-600 mt-0.5">Pre-feasibility & feasibility benchmarked to Class 5 cost accuracy.</p>
                 </div>
                 <div className={`p-3.5 rounded-xl ${currentTheme.cardBg}`}>
                   <p className="text-xs font-bold text-slate-900">Grid Integration Studies</p>
-                  <p className="text-[11px] text-slate-400 mt-0.5">Interconnection design, power factor, and protection coordination.</p>
+                  <p className="text-[11px] text-slate-600 mt-0.5">Interconnection design, power factor, and protection coordination.</p>
                 </div>
                 <div className={`p-3.5 rounded-xl ${currentTheme.cardBg}`}>
                   <p className="text-xs font-bold text-slate-900">Project Structuring & SPV</p>
-                  <p className="text-[11px] text-slate-400 mt-0.5">Special purpose vehicle creation, ownership models & tender documentation.</p>
+                  <p className="text-[11px] text-slate-600 mt-0.5">Special purpose vehicle creation, ownership models & tender documentation.</p>
                 </div>
               </div>
 
@@ -866,22 +867,22 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-800 text-center">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-200 text-center">
                   <div className={`p-3 rounded-xl ${currentTheme.cardInner}`}>
-                    <span className="text-[10px] text-slate-400 uppercase font-bold">Solar Generation</span>
+                    <span className="text-[10px] text-slate-600 uppercase font-bold">Solar Generation</span>
                     <p className={`text-base sm:text-lg font-black mt-1 ${currentTheme.accentText}`}>{estimatedSolarMWh.toLocaleString()} MWh/yr</p>
                     <p className="text-[10px] text-slate-500">81.3% PR (PVsyst)</p>
                   </div>
                   <div className={`p-3 rounded-xl ${currentTheme.cardInner}`}>
-                    <span className="text-[10px] text-slate-400 uppercase font-bold">Hydro Generation</span>
+                    <span className="text-[10px] text-slate-600 uppercase font-bold">Hydro Generation</span>
                     <p className={`text-base sm:text-lg font-black mt-1 ${currentTheme.accentSecondary}`}>{estimatedHydroMWh.toLocaleString()} MWh/yr</p>
                     <p className="text-[10px] text-slate-500">52.9% Capacity Factor</p>
                   </div>
                   <div className={`p-3 rounded-xl ${currentTheme.cardInner}`}>
-                    <span className="text-[10px] text-slate-400 uppercase font-bold flex items-center justify-center gap-1">
-                      <Droplets className="w-3 h-3 text-cyan-400" /> Water Saved
+                    <span className="text-[10px] text-slate-600 uppercase font-bold flex items-center justify-center gap-1">
+                      <Droplets className="w-3 h-3 text-emerald-600" /> Water Saved
                     </span>
-                    <p className="text-base sm:text-lg font-black text-cyan-400 mt-1">{(estimatedWaterSavedM3 / 1000).toFixed(0)}k mÂ³/yr</p>
+                    <p className="text-base sm:text-lg font-black text-emerald-700 mt-1">{(estimatedWaterSavedM3 / 1000).toFixed(0)}k m³/yr</p>
                     <p className="text-[10px] text-slate-500">Reduced Evaporation</p>
                   </div>
                   <div className={`p-3 rounded-xl ${currentTheme.cardInner} border border-emerald-500/40`}>
@@ -919,12 +920,12 @@ export default function App() {
                   { phase: "Environmental & Social Screening", duration: "4 Months", detail: "ESIA scope, water body co-benefit analysis" },
                   { phase: "EPC Tender Documentation", duration: "3 Months", detail: "Class 5 cost accuracy & procurement package" }
                 ].map((item, idx) => (
-                  <div key={idx} className="p-3 rounded-xl bg-white border border-slate-200 flex items-center justify-between shadow-sm">
+                  <div key={idx} className="p-3 rounded-xl bg-white/85 backdrop-blur-sm border border-emerald-500/20 flex items-center justify-between shadow-sm">
                     <div>
                       <p className="text-xs font-bold text-slate-900">{item.phase}</p>
                       <p className="text-[10px] text-slate-500">{item.detail}</p>
                     </div>
-                    <span className="text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                    <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-500/15 px-2 py-0.5 rounded border border-emerald-500/30">
                       {item.duration}
                     </span>
                   </div>
@@ -963,8 +964,8 @@ export default function App() {
                 onClick={() => setProjectFilter(tab.id)}
                 className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
                   projectFilter === tab.id
-                    ? 'bg-emerald-400 text-slate-950 shadow-sm'
-                    : 'bg-[#0f1929] text-slate-300 hover:bg-slate-800 border border-slate-800'
+                    ? 'bg-emerald-600 text-white shadow-sm'
+                    : 'bg-white/80 text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 border border-emerald-500/20'
                 }`}
               >
                 {tab.label}
@@ -978,14 +979,14 @@ export default function App() {
           {filteredProjects.map((p, idx) => (
             <div 
               key={idx}
-              className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500/60 shadow-md hover:shadow-2xl hover:shadow-emerald-900/20 transition-all duration-300 flex flex-col justify-between"
+              className="p-6 rounded-2xl bg-white/85 backdrop-blur-md border border-emerald-500/20 hover:border-emerald-500/60 shadow-md hover:shadow-2xl hover:shadow-emerald-950/10 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between text-xs font-semibold mb-3">
-                  <span className="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                  <span className="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 border border-emerald-300">
                     {p.type}
                   </span>
-                  <span className="text-slate-400 flex items-center gap-1">
+                  <span className="text-slate-500 flex items-center gap-1">
                     <MapPin className="w-3.5 h-3.5 text-slate-500" /> {p.location}
                   </span>
                 </div>
@@ -993,15 +994,15 @@ export default function App() {
                 <h3 className="text-xl font-bold font-display text-slate-900 mt-1">
                   {p.name}
                 </h3>
-                <p className="mt-3 text-sm text-slate-400 leading-relaxed">
+                <p className="mt-3 text-sm text-slate-600 leading-relaxed">
                   {p.description}
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between">
+              <div className="mt-6 pt-4 border-t border-emerald-500/15 flex items-center justify-between">
                 <div>
                   <span className="text-[10px] text-slate-500 uppercase font-bold block">Capacity</span>
-                  <span className="text-base font-extrabold text-emerald-400">{p.size}</span>
+                  <span className="text-base font-extrabold text-emerald-700">{p.size}</span>
                 </div>
                 <button className="text-xs font-semibold text-slate-500 hover:text-emerald-600 flex items-center gap-1">
                   Factsheet <ChevronRight className="w-3.5 h-3.5" />
@@ -1022,7 +1023,7 @@ export default function App() {
             <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-slate-900">
               Our Six-Stage Engagement Process
             </h2>
-            <p className="mt-4 text-slate-300 text-base">
+            <p className="mt-4 text-slate-600 text-base">
               Every advisory engagement, whatever its scale, follows this structured methodology to ensure financier-grade deliverables.
             </p>
           </div>
@@ -1033,13 +1034,13 @@ export default function App() {
                 key={idx}
                 className={`p-6 rounded-2xl ${currentTheme.cardBg} relative overflow-hidden group transition-all`}
               >
-                <div className={`text-3xl font-black text-emerald-900/60 group-hover:${currentTheme.accentText} transition-colors font-display`}>
+                <div className={`text-3xl font-black text-emerald-800/40 group-hover:${currentTheme.accentText} transition-colors font-display`}>
                   {stage.step}
                 </div>
                 <h4 className="mt-2 text-lg font-bold font-display text-slate-900">
                   {stage.name}
                 </h4>
-                <p className="mt-2 text-sm text-slate-400 leading-relaxed">
+                <p className="mt-2 text-sm text-slate-600 leading-relaxed">
                   {stage.desc}
                 </p>
               </div>
@@ -1064,7 +1065,7 @@ export default function App() {
               </div>
               <div className="bg-white p-5 rounded-2xl shadow-md border border-slate-100 hover:shadow-lg transition-all">
                 <span className="font-bold text-slate-900 font-extrabold block mb-1">4. Independent Review</span>
-                <p className="text-xs text-slate-600 font-medium">Second opinion verification on someone elseâ€™s design or figures.</p>
+                <p className="text-xs text-slate-600 font-medium">Second opinion verification on someone else’s design or figures.</p>
               </div>
             </div>
           </div>
@@ -1205,7 +1206,7 @@ export default function App() {
                 </div>
                 <div>
                   <p className="text-xs uppercase font-bold text-slate-500">Physical Address</p>
-                  <p className="text-sm font-semibold text-slate-900">30 Tunsgate, Mt Pleasant, Harare, Zimbabwe</p>
+                  <p className="text-sm font-semibold text-slate-900">20 Aintree Road Highlands, Harare</p>
                 </div>
               </div>
 
@@ -1275,7 +1276,7 @@ export default function App() {
             {formStatus === 'error' && (
               <div className="mb-6 p-5 rounded-2xl bg-rose-950/70 border border-rose-500/50 text-rose-200">
                 <div className="flex items-start space-x-3">
-                  <div className="text-rose-400 font-bold shrink-0 mt-0.5">âš ï¸</div>
+                  <div className="text-rose-400 font-bold shrink-0 mt-0.5">⚠️</div>
                   <div className="w-full">
                     <h4 className="font-bold text-slate-900 text-sm mb-1">Notice</h4>
                     <p className="text-xs text-rose-200/90 leading-relaxed mb-3">{formFeedback}</p>
@@ -1408,8 +1409,8 @@ export default function App() {
           </div>
 
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-            <p>Â© {new Date().getFullYear()} Hermit Sustainability Advisory. Zimbabwean-Owned â€¢ Africa-Facing.</p>
-            <p className="text-slate-400">30 Tunsgate, Mt Pleasant, Harare, Zimbabwe</p>
+            <p>© {new Date().getFullYear()} Hermit Sustainability Advisory. Zimbabwean-Owned • Africa-Facing.</p>
+            <p className="text-slate-400">20 Aintree Road Highlands, Harare</p>
             <div className="flex space-x-4">
               <a href="http://www.hermitsustainability.co.zw" target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline">
                 www.hermitsustainability.co.zw
