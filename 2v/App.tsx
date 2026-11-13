@@ -316,7 +316,7 @@ export default function App() {
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-        className="sticky top-0 z-50 overflow-hidden border-b border-emerald-950/80 shadow-2xl transition-all"
+        className="sticky top-0 z-50 overflow-hidden shadow-2xl transition-all"
       >
         {/* Leaf Background Layer - Single seamless photo, no borders */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
