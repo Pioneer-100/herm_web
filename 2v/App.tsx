@@ -36,10 +36,10 @@ export default function App() {
     cardBg: "bg-white border border-emerald-200 hover:border-emerald-400 shadow-md hover:shadow-xl hover:shadow-emerald-950/10",
     cardInner: "bg-emerald-50 border border-emerald-200",
     navBg: "bg-white/95 border-slate-200",
-    inputBg: "bg-white border border-slate-300 text-white drop-shadow-md focus:ring-emerald-500 focus:border-emerald-500",
+    inputBg: "bg-white border border-slate-300 text-slate-900 font-medium focus:ring-emerald-500 focus:border-emerald-500",
     sliderAccent: "accent-emerald-600",
     pillActive: "bg-emerald-600 text-white shadow-sm",
-    pillInactive: "bg-white text-white drop-shadow-md hover:bg-emerald-50 border border-slate-200 hover:border-emerald-400"
+    pillInactive: "bg-white text-slate-800 font-medium hover:bg-emerald-50 border border-slate-200 hover:border-emerald-400"
   };
   
   // Interactive Hydro-Solar Hybrid Calculator
@@ -306,9 +306,9 @@ export default function App() {
         className="bg-emerald-700 text-white text-xs font-medium py-2.5 px-4 border-b border-emerald-800"
       >
         <div className="max-w-7xl mx-auto flex items-center justify-end gap-4 text-[11px]">
-          <span className="flex items-center gap-1.5 text-white/90 font-medium"><Phone className="w-3 h-3 text-amber-400" /> +263 71 280 0220</span>
+          <span className="flex items-center gap-1.5 text-white font-semibold"><Phone className="w-3 h-3 text-amber-400" /> +263 71 280 0220</span>
           <span className="text-white/40">•</span>
-          <span className="flex items-center gap-1.5 text-white/90 font-medium"><Mail className="w-3 h-3 text-amber-400" /> info@hermitsustainability.co.zw</span>
+          <span className="flex items-center gap-1.5 text-white font-semibold"><Mail className="w-3 h-3 text-amber-400" /> info@hermitsustainability.co.zw</span>
         </div>
       </motion.div>
 
@@ -579,7 +579,7 @@ export default function App() {
               <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider border ${currentTheme.badge}`}>
                 Executive Overview
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-white drop-shadow-md leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-white drop-shadow-lg leading-tight">
                 Empowering Governments, Utilities, & Industries with Real Numbers, Not Assumptions
               </h2>
               <p className="text-slate-600 text-base leading-relaxed">
@@ -628,7 +628,7 @@ export default function App() {
             {/* Strategic Pillars Callout: Mission & Vision */}
             <div className="lg:col-span-5 space-y-6">
               {/* Mission Card (Above Vision) */}
-              <div className="p-8 sm:p-10 rounded-3xl bg-white text-white drop-shadow-md border border-slate-200 shadow-xl relative overflow-hidden hover:border-emerald-400 transition-all">
+              <div className="p-8 sm:p-10 rounded-3xl bg-white text-slate-900 border border-slate-200 shadow-xl relative overflow-hidden hover:border-emerald-400 transition-all">
                 <div className="absolute top-0 right-0 w-52 h-52 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
 
                 <span className="text-xs font-bold text-amber-500 uppercase tracking-widest">Our Mission</span>
@@ -641,7 +641,7 @@ export default function App() {
               </div>
 
               {/* Vision Card */}
-              <div className="p-8 sm:p-10 rounded-3xl bg-white text-white drop-shadow-md border border-slate-200 shadow-xl relative overflow-hidden hover:border-emerald-400 transition-all">
+              <div className="p-8 sm:p-10 rounded-3xl bg-white text-slate-900 border border-slate-200 shadow-xl relative overflow-hidden hover:border-emerald-400 transition-all">
                 <div className="absolute top-0 right-0 w-52 h-52 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
 
                 <span className="text-xs font-bold text-emerald-300 drop-shadow-sm uppercase tracking-widest">Our Vision</span>
@@ -738,7 +738,7 @@ export default function App() {
               </p>
 
               <div className="mt-8 space-y-3">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">What We Deliver In Practice:</h4>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200">What We Deliver In Practice:</h4>
                 {quadNexus[activeNexusTab].deliverables.map((item, idx) => (
                   <div key={idx} className="flex items-start gap-3">
                     <Check className={`w-5 h-5 shrink-0 mt-0.5 ${currentTheme.accentText}`} />
@@ -969,7 +969,7 @@ export default function App() {
                 className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
                   projectFilter === tab.id
                     ? 'bg-emerald-600 text-white shadow-sm'
-                    : 'bg-white/80 text-white drop-shadow-md hover:bg-emerald-50 hover:text-emerald-800 border border-emerald-500/20'
+                    : 'bg-white/90 text-slate-800 font-medium hover:bg-emerald-50 hover:text-emerald-900 border border-emerald-500/20'
                 }`}
               >
                 {tab.label}
@@ -1001,7 +1001,7 @@ export default function App() {
                     <MapPin className="w-3.5 h-3.5 text-slate-500" /> {p.location}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold font-display text-white drop-shadow-md mt-1">{p.name}</h3>
+                <h3 className="text-xl font-bold font-display text-slate-900 mt-1">{p.name}</h3>
                 <p className="mt-3 text-sm text-slate-600 leading-relaxed">{p.description}</p>
               </div>
               <div className="mt-6 pt-4 border-t border-emerald-500/15 flex items-center justify-between">
@@ -1177,7 +1177,7 @@ export default function App() {
 
         {/* Partners Logo Banner */}
         <div className="mt-14">
-          <p className="text-center text-xs font-bold uppercase tracking-widest text-slate-400 mb-8">
+          <p className="text-center text-xs font-bold uppercase tracking-widest text-slate-200 mb-8">
             Collaborating with global institutions &amp; regional leaders
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -1276,7 +1276,7 @@ export default function App() {
             <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
               Harare Office & Operations
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-white drop-shadow-md leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-white drop-shadow-lg leading-tight">
               Connect With Our Advisory Team
             </h2>
             <p className="text-slate-600 text-base leading-relaxed">
@@ -1385,7 +1385,7 @@ export default function App() {
                     value={contactName}
                     onChange={(e) => setContactName(e.target.value)}
                     placeholder="E.g. Tendai Moyo" 
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-white drop-shadow-md placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
+                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 font-medium placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
                   />
                 </div>
                 <div>
@@ -1396,7 +1396,7 @@ export default function App() {
                     value={contactEmail}
                     onChange={(e) => setContactEmail(e.target.value)}
                     placeholder="tendai@organization.com" 
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-white drop-shadow-md placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
+                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 font-medium placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
                   />
                 </div>
               </div>
@@ -1407,7 +1407,7 @@ export default function App() {
                   <select 
                     value={contactSector}
                     onChange={(e) => setContactSector(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-white drop-shadow-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
                   >
                     <option>Power Utility / IPP</option>
                     <option>Government / Ministry</option>
@@ -1421,7 +1421,7 @@ export default function App() {
                   <select 
                     value={contactPackage}
                     onChange={(e) => setContactPackage(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-white drop-shadow-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
                   >
                     <option>Pre-Feasibility Study</option>
                     <option>Floating Solar / Hydro-Hybrid Study</option>
@@ -1440,7 +1440,7 @@ export default function App() {
                   value={inquiryScope}
                   onChange={(e) => setInquiryScope(e.target.value)}
                   placeholder="Share details regarding site location, capacity target (MW), grid interconnect, or specific objectives..."
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-white drop-shadow-md placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
+                  className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 font-medium placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
                 />
               </div>
 
@@ -1468,7 +1468,7 @@ export default function App() {
       </section>
 
       {/* Footer (Page 1 & 10) */}
-      <footer className="bg-slate-900 text-slate-400 py-14 border-t border-slate-800">
+      <footer className="bg-slate-900 text-slate-200 py-14 border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-200">
             <div className="flex items-center space-x-3">
@@ -1494,7 +1494,7 @@ export default function App() {
 
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
             <p>© {new Date().getFullYear()} Hermit Sustainability Advisory. Zimbabwean-Owned • Africa-Facing.</p>
-            <p className="text-slate-400">20 Aintree Road Highlands, Harare</p>
+            <p className="text-slate-200">20 Aintree Road Highlands, Harare</p>
             <div className="flex space-x-4">
               <a href="http://www.hermitsustainability.co.zw" target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline">
                 www.hermitsustainability.co.zw
