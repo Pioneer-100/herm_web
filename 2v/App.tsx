@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import heroBackgroundImg from './hero-bg.jpg';
 import heroPosterImg from './hero-poster.jpg';
 import floatingSolarHybridImg from './floating-solar-hybrid.jpg';
@@ -15,15 +15,18 @@ import { MetricCounter } from './MetricCounter';
 import { 
   Shield, Zap, Globe, TrendingUp, Award, ArrowRight, 
   CheckCircle2, Droplets, Leaf, BarChart3, Mail, Phone, MapPin, 
-  ChevronRight, Menu, X, Building2, Users, FileText, Flame, 
+  ChevronRight, ChevronLeft, Menu, X, Building2, Users, FileText, Flame, 
   Cpu, Compass, ArrowUpRight, Check, HelpCircle, Layers, Clock,
-  Sun, Sparkles, Waves, ArrowDownRight
+  Sun, Sparkles, Waves, ArrowDownRight, SlidersHorizontal, Eye
 } from 'lucide-react';
 
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeNexusTab, setActiveNexusTab] = useState<'energy' | 'water' | 'food' | 'waste'>('energy');
   const [projectFilter, setProjectFilter] = useState<string>('all');
+  const [isProjectsDrawerOpen, setIsProjectsDrawerOpen] = useState(false);
+  const [stackIndex, setStackIndex] = useState(0);
+  const [isStackPaused, setIsStackPaused] = useState(false);
   
   // LIGHT MODERN THEME - with semi-transparent cool emerald glass tints allowing watermark & white depth through
   const currentTheme = {
@@ -265,6 +268,37 @@ export default function App() {
   const filteredProjects = projectFilter === 'all' 
     ? projectPortfolio 
     : projectPortfolio.filter(p => p.category === projectFilter);
+
+  // Auto-slide projects showcase in stack mode (pauses on hover or when drawer is open)
+  useEffect(() => {
+    if (isStackPaused || isProjectsDrawerOpen) return;
+    const interval = setInterval(() => {
+      setStackIndex(prev => (prev + 1) % projectPortfolio.length);
+    }, 4200);
+    return () => clearInterval(interval);
+  }, [isStackPaused, isProjectsDrawerOpen, projectPortfolio.length]);
+
+  // Lock body scroll and handle Escape key for the Project Portfolio Drawer
+  useEffect(() => {
+    if (isProjectsDrawerOpen) {
+      document.body.style.overflow = 'hidden';
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') setIsProjectsDrawerOpen(false);
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.style.overflow = '';
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [isProjectsDrawerOpen]);
+
+  const totalProjects = projectPortfolio.length;
+  const cardStackHead = projectPortfolio[stackIndex % totalProjects];
+  const cardUnstacked1 = projectPortfolio[(stackIndex + 1) % totalProjects];
+  const cardUnstacked2 = projectPortfolio[(stackIndex + 2) % totalProjects];
 
   const engagementStages = [
     { step: "01", name: "Brief", desc: "Clear alignment on project scope, objectives, and client requirements." },
@@ -943,80 +977,409 @@ export default function App() {
         </div>
       </section>
 
-      {/* Project Portfolio Highlights (Page 7) */}
+      {/* Project Portfolio Highlights (Page 7) - Stack Showcase View */}
       <section id="portfolio" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
-            <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
-              Defensible Track Record
-            </span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 border border-emerald-300">
+              <Layers className="w-3.5 h-3.5 text-emerald-600" /> Defensible Track Record
+            </div>
             <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-slate-900">
               Project Portfolio Highlights
             </h2>
+            <p className="mt-2 text-sm text-slate-600 max-w-xl">
+              Representative utility-scale and industrial projects across Southern Africa. Showing 3 highlighted assets at a time from our project deck.
+            </p>
           </div>
 
-          {/* Filter Pills */}
-          <div className="mt-4 md:mt-0 flex flex-wrap gap-2">
-            {[
-              { id: 'all', label: 'All Projects' },
-              { id: 'hybrid', label: 'Hydro-Solar Hybrid' },
-              { id: 'floating', label: 'Floating Solar' },
-              { id: 'solar', label: 'Solar PV' },
-              { id: 'hydro', label: 'Hydropower' }
-            ].map(tab => (
-              <button
-                key={tab.id}
-                onClick={() => setProjectFilter(tab.id)}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                  projectFilter === tab.id
-                    ? 'bg-emerald-600 text-white shadow-sm'
-                    : 'bg-white/80 text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 border border-emerald-500/20'
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
+          {/* Action to open the full drawer */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setIsProjectsDrawerOpen(true)}
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-900 hover:bg-emerald-700 text-white text-xs sm:text-sm font-bold shadow-lg hover:shadow-emerald-950/20 transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95"
+            >
+              <Layers className="w-4 h-4 text-emerald-400" />
+              <span>View All Projects ({totalProjects})</span>
+              <ChevronRight className="w-4 h-4 ml-1" />
+            </button>
           </div>
         </div>
 
-        {/* Portfolio Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((p, idx) => (
-            <div 
-              key={idx}
-              className="p-6 rounded-2xl bg-white/85 backdrop-blur-md border border-emerald-500/20 hover:border-emerald-500/60 shadow-md hover:shadow-2xl hover:shadow-emerald-950/10 transition-all duration-300 flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between text-xs font-semibold mb-3">
-                  <span className="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 border border-emerald-300">
-                    {p.type}
-                  </span>
-                  <span className="text-slate-500 flex items-center gap-1">
-                    <MapPin className="w-3.5 h-3.5 text-slate-500" /> {p.location}
-                  </span>
-                </div>
+        {/* 3-Card Interactive Showcase: Stack on Left + 2 Unstacked across screen */}
+        <div 
+          className="relative"
+          onMouseEnter={() => setIsStackPaused(true)}
+          onMouseLeave={() => setIsStackPaused(false)}
+        >
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 items-stretch">
 
-                <h3 className="text-xl font-bold font-display text-slate-900 mt-1">
-                  {p.name}
-                </h3>
-                <p className="mt-3 text-sm text-slate-600 leading-relaxed">
-                  {p.description}
-                </p>
-              </div>
+            {/* Position 0: The Stack Deck (Left) */}
+            <div className="relative group flex flex-col">
+              {/* Stack Background Layer 2 (Furthest Back Card) */}
+              <div 
+                className="absolute inset-0 bg-emerald-100/70 border border-emerald-300/60 rounded-2xl -translate-x-3 -translate-y-2.5 -rotate-2 -z-20 shadow-sm pointer-events-none transition-transform duration-500 group-hover:-translate-x-4 group-hover:-translate-y-3.5" 
+                aria-hidden="true"
+              />
+              {/* Stack Background Layer 1 (Middle Card in Stack) */}
+              <div 
+                className="absolute inset-0 bg-white border border-emerald-200/90 rounded-2xl -translate-x-1.5 -translate-y-1 -rotate-1 -z-10 shadow-md pointer-events-none transition-transform duration-500 group-hover:-translate-x-2 group-hover:-translate-y-2" 
+                aria-hidden="true"
+              />
 
-              <div className="mt-6 pt-4 border-t border-emerald-500/15 flex items-center justify-between">
-                <div>
-                  <span className="text-[10px] text-slate-500 uppercase font-bold block">Capacity</span>
-                  <span className="text-base font-extrabold text-emerald-700">{p.size}</span>
-                </div>
-                <button className="text-xs font-semibold text-slate-500 hover:text-emerald-600 flex items-center gap-1">
-                  Factsheet <ChevronRight className="w-3.5 h-3.5" />
+              {/* Front Top Card on the Stack Deck */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`stack-top-${cardStackHead.name}`}
+                  initial={{ opacity: 0, x: -30, scale: 0.96 }}
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
+                  exit={{ opacity: 0, x: 30, scale: 0.96 }}
+                  transition={{ duration: 0.45, ease: "easeInOut" }}
+                  className="flex-1 p-6 rounded-2xl bg-white border-2 border-emerald-500/40 hover:border-emerald-500 shadow-xl flex flex-col justify-between relative overflow-hidden"
+                >
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-bl-full pointer-events-none" />
+
+                  <div>
+                    {/* Stack Top Badge */}
+                    <div className="flex items-center justify-between text-xs font-semibold mb-4 gap-2">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-600 text-white font-bold text-[11px] shadow-sm">
+                        <Layers className="w-3 h-3 text-emerald-200" /> Stack Top ({(stackIndex % totalProjects) + 1}/{totalProjects})
+                      </span>
+                      <span className="text-slate-500 flex items-center gap-1 text-[11px] font-medium">
+                        <MapPin className="w-3.5 h-3.5 text-slate-400" /> {cardStackHead.location}
+                      </span>
+                    </div>
+
+                    <div className="inline-block px-2.5 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200 mb-2">
+                      {cardStackHead.type}
+                    </div>
+
+                    <h3 className="text-xl font-bold font-display text-slate-900 leading-snug">
+                      {cardStackHead.name}
+                    </h3>
+                    <p className="mt-3 text-sm text-slate-600 leading-relaxed">
+                      {cardStackHead.description}
+                    </p>
+                  </div>
+
+                  <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <div>
+                      <span className="text-[10px] text-slate-400 uppercase font-bold block">Capacity</span>
+                      <span className="text-base font-extrabold text-emerald-700">{cardStackHead.size}</span>
+                    </div>
+                    <button
+                      onClick={() => setIsProjectsDrawerOpen(true)}
+                      className="text-xs font-bold text-slate-600 hover:text-emerald-700 flex items-center gap-1 group-hover:translate-x-0.5 transition-all"
+                    >
+                      Factsheet <ChevronRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Position 1: Unstacked Across Screen (Middle) */}
+            <div className="flex flex-col">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`unstacked-1-${cardUnstacked1.name}`}
+                  initial={{ opacity: 0, y: 20, scale: 0.97 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -20, scale: 0.97 }}
+                  transition={{ duration: 0.45, ease: "easeInOut", delay: 0.08 }}
+                  className="flex-1 p-6 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between text-xs font-semibold mb-4 gap-2">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-bold text-[11px] border border-slate-200">
+                        <ArrowRight className="w-3 h-3 text-emerald-600" /> Unstacked 1
+                      </span>
+                      <span className="text-slate-500 flex items-center gap-1 text-[11px] font-medium">
+                        <MapPin className="w-3.5 h-3.5 text-slate-400" /> {cardUnstacked1.location}
+                      </span>
+                    </div>
+
+                    <div className="inline-block px-2.5 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider bg-slate-100 text-slate-700 border border-slate-200 mb-2">
+                      {cardUnstacked1.type}
+                    </div>
+
+                    <h3 className="text-xl font-bold font-display text-slate-900 leading-snug">
+                      {cardUnstacked1.name}
+                    </h3>
+                    <p className="mt-3 text-sm text-slate-600 leading-relaxed">
+                      {cardUnstacked1.description}
+                    </p>
+                  </div>
+
+                  <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <div>
+                      <span className="text-[10px] text-slate-400 uppercase font-bold block">Capacity</span>
+                      <span className="text-base font-extrabold text-emerald-700">{cardUnstacked1.size}</span>
+                    </div>
+                    <button
+                      onClick={() => setIsProjectsDrawerOpen(true)}
+                      className="text-xs font-bold text-slate-600 hover:text-emerald-700 flex items-center gap-1 transition-colors"
+                    >
+                      Factsheet <ChevronRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Position 2: Unstacked Across Screen (Right) */}
+            <div className="flex flex-col">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`unstacked-2-${cardUnstacked2.name}`}
+                  initial={{ opacity: 0, x: 25, scale: 0.97 }}
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
+                  exit={{ opacity: 0, x: -25, scale: 0.97 }}
+                  transition={{ duration: 0.45, ease: "easeInOut", delay: 0.16 }}
+                  className="flex-1 p-6 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between text-xs font-semibold mb-4 gap-2">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-bold text-[11px] border border-slate-200">
+                        <ArrowRight className="w-3 h-3 text-emerald-600" /> Unstacked 2
+                      </span>
+                      <span className="text-slate-500 flex items-center gap-1 text-[11px] font-medium">
+                        <MapPin className="w-3.5 h-3.5 text-slate-400" /> {cardUnstacked2.location}
+                      </span>
+                    </div>
+
+                    <div className="inline-block px-2.5 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider bg-slate-100 text-slate-700 border border-slate-200 mb-2">
+                      {cardUnstacked2.type}
+                    </div>
+
+                    <h3 className="text-xl font-bold font-display text-slate-900 leading-snug">
+                      {cardUnstacked2.name}
+                    </h3>
+                    <p className="mt-3 text-sm text-slate-600 leading-relaxed">
+                      {cardUnstacked2.description}
+                    </p>
+                  </div>
+
+                  <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <div>
+                      <span className="text-[10px] text-slate-400 uppercase font-bold block">Capacity</span>
+                      <span className="text-base font-extrabold text-emerald-700">{cardUnstacked2.size}</span>
+                    </div>
+                    <button
+                      onClick={() => setIsProjectsDrawerOpen(true)}
+                      className="text-xs font-bold text-slate-600 hover:text-emerald-700 flex items-center gap-1 transition-colors"
+                    >
+                      Factsheet <ChevronRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+          </div>
+
+          {/* Interactive Stack Controls Bar */}
+          <div className="mt-8 pt-4 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex items-center gap-1.5 text-xs text-slate-500 font-medium">
+                <span className={`w-2 h-2 rounded-full ${isStackPaused ? 'bg-amber-400' : 'bg-emerald-500 animate-pulse'}`} />
+                {isStackPaused ? "Cycle paused (hovering)" : "Auto-cycling deck"}
+              </span>
+
+              {/* Prev / Next controls */}
+              <div className="flex items-center gap-1 ml-2">
+                <button
+                  onClick={() => setStackIndex(prev => (prev - 1 + totalProjects) % totalProjects)}
+                  aria-label="Previous project in stack"
+                  className="p-1.5 rounded-lg border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 transition-colors shadow-xs"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setStackIndex(prev => (prev + 1) % totalProjects)}
+                  aria-label="Next project in stack"
+                  className="p-1.5 rounded-lg border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 transition-colors shadow-xs"
+                >
+                  <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
             </div>
-          ))}
+
+            {/* Pagination Dots for all projects */}
+            <div className="flex items-center gap-1.5">
+              {projectPortfolio.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setStackIndex(idx)}
+                  aria-label={`Jump to project ${idx + 1}`}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    idx === stackIndex % totalProjects
+                      ? 'w-6 bg-emerald-600'
+                      : 'w-2 bg-slate-300 hover:bg-slate-400'
+                  }`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={() => setIsProjectsDrawerOpen(true)}
+              className="text-xs font-bold text-emerald-700 hover:text-emerald-800 flex items-center gap-1 hover:underline"
+            >
+              Open Project Drawer <ChevronRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
         </div>
       </section>
+
+      {/* FULL PROJECTS DRAWER: Static View, All Projects Visible, Filters Present */}
+      <AnimatePresence>
+        {isProjectsDrawerOpen && (
+          <div className="fixed inset-0 z-50 flex justify-end" role="dialog" aria-modal="true">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              onClick={() => setIsProjectsDrawerOpen(false)}
+              className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm"
+            />
+
+            {/* Slide-in Drawer Panel */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 30, stiffness: 280 }}
+              className="relative z-10 w-full max-w-6xl bg-white h-full shadow-2xl flex flex-col overflow-hidden"
+            >
+              {/* Drawer Top Header */}
+              <div className="p-6 sm:p-8 border-b border-slate-200 bg-slate-50/80 flex items-start justify-between gap-4">
+                <div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 border border-emerald-300">
+                    <Layers className="w-3.5 h-3.5 text-emerald-600" /> Complete Track Record
+                  </div>
+                  <h3 className="mt-2 text-2xl sm:text-3xl font-extrabold font-display text-slate-900">
+                    All Projects Portfolio
+                  </h3>
+                  <p className="mt-1 text-xs sm:text-sm text-slate-600 max-w-2xl">
+                    Full bankable project repository across floating solar PV, run-of-river mini-hydro, and agro-industrial utility hybridisation.
+                  </p>
+                </div>
+                <button
+                  onClick={() => setIsProjectsDrawerOpen(false)}
+                  className="p-2.5 rounded-xl bg-white hover:bg-slate-200 border border-slate-300 text-slate-700 hover:text-slate-900 transition-colors flex items-center gap-1.5 text-xs font-bold shrink-0 shadow-xs"
+                >
+                  <X className="w-4 h-4" /> Close
+                </button>
+              </div>
+
+              {/* Filters Bar Inside Drawer (Interactive, Static View) */}
+              <div className="px-6 sm:px-8 py-4 border-b border-slate-200 bg-white flex flex-wrap items-center justify-between gap-3">
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    { id: 'all', label: 'All Projects', count: projectPortfolio.length },
+                    { id: 'hybrid', label: 'Hydro-Solar Hybrid', count: projectPortfolio.filter(p => p.category === 'hybrid').length },
+                    { id: 'floating', label: 'Floating Solar', count: projectPortfolio.filter(p => p.category === 'floating').length },
+                    { id: 'solar', label: 'Solar PV', count: projectPortfolio.filter(p => p.category === 'solar').length },
+                    { id: 'hydro', label: 'Hydropower', count: projectPortfolio.filter(p => p.category === 'hydro').length }
+                  ].map(tab => (
+                    <button
+                      key={tab.id}
+                      onClick={() => setProjectFilter(tab.id)}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+                        projectFilter === tab.id
+                          ? 'bg-emerald-600 text-white shadow-sm'
+                          : 'bg-slate-100 text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 border border-slate-200'
+                      }`}
+                    >
+                      <span>{tab.label}</span>
+                      <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${projectFilter === tab.id ? 'bg-emerald-700 text-white' : 'bg-slate-200 text-slate-600 font-semibold'}`}>
+                        {tab.count}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+                <span className="text-xs font-semibold text-slate-500">
+                  Showing {filteredProjects.length} of {projectPortfolio.length} assets
+                </span>
+              </div>
+
+              {/* Drawer Scrollable Body: All Projects Grid (No longer animating, complete static view) */}
+              <div className="flex-1 overflow-y-auto p-6 sm:p-8 bg-slate-50/40">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {filteredProjects.map((p, idx) => (
+                    <div
+                      key={idx}
+                      className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                    >
+                      <div>
+                        <div className="flex items-center justify-between text-xs font-semibold mb-3">
+                          <span className="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 border border-emerald-300">
+                            {p.type}
+                          </span>
+                          <span className="text-slate-500 flex items-center gap-1 text-[11px]">
+                            <MapPin className="w-3.5 h-3.5 text-slate-400" /> {p.location}
+                          </span>
+                        </div>
+
+                        <h4 className="text-lg font-bold font-display text-slate-900 mt-1">
+                          {p.name}
+                        </h4>
+                        <p className="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                          {p.description}
+                        </p>
+                      </div>
+
+                      <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                        <div>
+                          <span className="text-[10px] text-slate-400 uppercase font-bold block">Capacity</span>
+                          <span className="text-base font-extrabold text-emerald-700">{p.size}</span>
+                        </div>
+                        <button
+                          onClick={() => {
+                            setIsProjectsDrawerOpen(false);
+                            setInquiryScope(`Inquiry regarding factsheet and advisory scope for ${p.name} (${p.size} ${p.type}, located in ${p.location}).`);
+                            const contactEl = document.getElementById('contact');
+                            if (contactEl) contactEl.scrollIntoView({ behavior: 'smooth' });
+                          }}
+                          className="text-xs font-bold text-emerald-700 hover:text-emerald-800 hover:underline flex items-center gap-1"
+                        >
+                          Factsheet Inquiry <ChevronRight className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Drawer Bottom Action Bar */}
+              <div className="p-4 sm:p-6 border-t border-slate-200 bg-white flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p className="text-xs text-slate-500">
+                  Seeking technical due diligence, Class 5 costing, or bankability assessment for a clean energy asset?
+                </p>
+                <div className="flex items-center gap-3 w-full sm:w-auto">
+                  <button
+                    onClick={() => setIsProjectsDrawerOpen(false)}
+                    className="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-slate-300 text-xs font-bold text-slate-700 hover:bg-slate-100 transition-colors"
+                  >
+                    Close Drawer
+                  </button>
+                  <button
+                    onClick={() => {
+                      setIsProjectsDrawerOpen(false);
+                      const contactEl = document.getElementById('contact');
+                      if (contactEl) contactEl.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-md transition-colors"
+                  >
+                    Initiate Advisory Inquiry
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
 
       {/* Engagement Process (Page 3 & 7) */}
       <section id="process" className={`py-24 ${currentTheme.sectionAlt} transition-colors`}>
