@@ -271,10 +271,12 @@ export default function App() {
 
   const partners = [
     { name: "Bui Power Authority", role: "Floating Solar & Pumped Hydro", location: "Ghana" },
-    { name: "UNIDO & GIZ", role: "Development Programs", location: "International" },
-    { name: "Infrastructure Dev Bank of Zimbabwe", role: "Project Finance Partner", location: "Zimbabwe" },
-    { name: "African Union Commission", role: "Small Hydro & Solar Policy", location: "Pan-Africa" },
+    { name: "UNIDO", role: "Development Programs", location: "International" },
+    { name: "GIZ", role: "Development Programs", location: "International" },
+    { name: "IDBZ", role: "Project Finance Partner", location: "Zimbabwe" },
+    { name: "SADELEC", role: "Regional Energy Distribution", location: "SADC" },
     { name: "REN21", role: "SADC Renewable Status Reports", location: "Regional" },
+    { name: "African Union Commission", role: "Small Hydro & Solar Policy", location: "Pan-Africa" },
     { name: "Ministry of Energy", role: "Mission 300 National Energy Compact", location: "Zimbabwe" },
     { name: "NRZ Pension Fund (NRZ-CPF)", role: "Commercial Rooftop Solar Assessment", location: "Multi-site" }
   ];
@@ -1119,19 +1121,68 @@ export default function App() {
           </div>
         </div>
 
-        {/* Partners Grid */}
-        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {partners.map((p, idx) => (
-            <div key={idx} className="p-4 rounded-xl bg-white/85 backdrop-blur-sm border border-emerald-500/20 hover:border-emerald-500/60 flex items-center justify-between transition-all shadow-sm">
-              <div>
-                <p className="text-sm font-bold text-slate-900">{p.name}</p>
-                <p className="text-xs text-slate-600">{p.role}</p>
+        {/* Partners Logo Banner */}
+        <div className="mt-14">
+          <p className="text-center text-xs font-bold uppercase tracking-widest text-slate-400 mb-8">
+            Collaborating with global institutions & regional leaders
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+
+            {/* UNIDO */}
+            <div className="group flex flex-col items-center justify-center gap-2 p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg transition-all">
+              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#009EDB]/10">
+                <span className="text-[11px] font-black text-[#009EDB] leading-tight text-center">UN<br/>IDO</span>
               </div>
-              <span className="text-[10px] uppercase font-bold text-emerald-800 bg-emerald-50 px-2 py-1 rounded border border-emerald-200">
-                {p.location}
-              </span>
+              <p className="text-[11px] font-bold text-slate-800 text-center leading-tight">UNIDO</p>
+              <p className="text-[10px] text-slate-500 text-center leading-tight">Dev Programs</p>
             </div>
-          ))}
+
+            {/* GIZ */}
+            <div className="group flex flex-col items-center justify-center gap-2 p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg transition-all">
+              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#006400]/10">
+                <span className="text-[13px] font-black text-[#006400] leading-tight text-center">GIZ</span>
+              </div>
+              <p className="text-[11px] font-bold text-slate-800 text-center leading-tight">GIZ</p>
+              <p className="text-[10px] text-slate-500 text-center leading-tight">Dev Programs</p>
+            </div>
+
+            {/* IDBZ */}
+            <div className="group flex flex-col items-center justify-center gap-2 p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg transition-all">
+              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-emerald-600/10">
+                <span className="text-[11px] font-black text-emerald-700 leading-tight text-center">IDB<br/>Z</span>
+              </div>
+              <p className="text-[11px] font-bold text-slate-800 text-center leading-tight">IDBZ</p>
+              <p className="text-[10px] text-slate-500 text-center leading-tight">Project Finance</p>
+            </div>
+
+            {/* SADELEC */}
+            <div className="group flex flex-col items-center justify-center gap-2 p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg transition-all">
+              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-amber-500/10">
+                <Zap className="w-6 h-6 text-amber-500" />
+              </div>
+              <p className="text-[11px] font-bold text-slate-800 text-center leading-tight">SADELEC</p>
+              <p className="text-[10px] text-slate-500 text-center leading-tight">SADC Energy</p>
+            </div>
+
+            {/* REN21 */}
+            <div className="group flex flex-col items-center justify-center gap-2 p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg transition-all">
+              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#F7941D]/10">
+                <span className="text-[11px] font-black text-[#F7941D] leading-tight text-center">REN<br/>21</span>
+              </div>
+              <p className="text-[11px] font-bold text-slate-800 text-center leading-tight">REN21</p>
+              <p className="text-[10px] text-slate-500 text-center leading-tight">SADC RE Reports</p>
+            </div>
+
+            {/* African Union Commission */}
+            <div className="group flex flex-col items-center justify-center gap-2 p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg transition-all">
+              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#009A44]/10">
+                <Globe className="w-6 h-6 text-[#009A44]" />
+              </div>
+              <p className="text-[11px] font-bold text-slate-800 text-center leading-tight">African Union</p>
+              <p className="text-[10px] text-slate-500 text-center leading-tight">Pan-African Policy</p>
+            </div>
+
+          </div>
         </div>
       </section>
 
