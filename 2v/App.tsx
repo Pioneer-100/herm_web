@@ -19,13 +19,14 @@ export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeNexusTab, setActiveNexusTab] = useState<'energy' | 'water' | 'food' | 'waste'>('energy');
   const [projectFilter, setProjectFilter] = useState<string>('all');
+  const [showAllProjects, setShowAllProjects] = useState(false);
   
   // LIGHT MODERN THEME - with semi-transparent cool emerald glass tints allowing watermark & white depth through
   const currentTheme = {
     name: "Light Modern",
-    bgRoot: "bg-white",
-    sectionAlt: "bg-emerald-50/60 border-y border-emerald-200/60",
-    sectionTranslucent: "bg-emerald-50/40",
+    bgRoot: "bg-transparent",
+    sectionAlt: "bg-white/80 backdrop-blur-sm border-y border-emerald-200/60",
+    sectionTranslucent: "bg-white/70 backdrop-blur-sm",
     badge: "border-emerald-400/70 bg-emerald-100 text-emerald-800 font-semibold",
     headlineGradient: "from-white via-emerald-100 to-teal-200",
     primaryBtn: "bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/30 font-bold",
@@ -283,18 +284,7 @@ export default function App() {
   ];
 
   return (
-    <div className={`relative isolate min-h-screen ${currentTheme.bgRoot} text-white drop-shadow-md font-sans selection:bg-emerald-500 selection:text-white transition-colors duration-500`}>
-      {/* Background Hermit Logo: Fullscreen, 100% original visibility, no fading */}
-      <div
-        className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none flex items-center justify-center"
-        aria-hidden="true"
-      >
-        <img
-          src={logoImg}
-          alt="Hermit Sustainability Background"
-          className="w-full h-full object-cover object-center"
-        />
-      </div>
+    <div className="relative isolate min-h-screen text-slate-900 font-sans selection:bg-emerald-500 selection:text-white transition-colors duration-500">
       <div className="relative z-10">
       
       {/* Top Contact Bar */}
@@ -566,6 +556,9 @@ export default function App() {
         </div>
       </section>
 
+      {/* About & Mission Section */}
+      {/* ── All content sections below the hero slide over the fixed globe watermark ── */}
+      <div className="relative bg-white/85 backdrop-blur-[2px]">
       {/* About & Mission Section */}
       <section id="about" className={`py-24 ${currentTheme.sectionAlt} transition-colors`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -961,7 +954,7 @@ export default function App() {
             ].map(tab => (
               <button
                 key={tab.id}
-                onClick={() => setProjectFilter(tab.id)}
+                onClick={() => { setProjectFilter(tab.id); setShowAllProjects(false); }}
                 className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
                   projectFilter === tab.id
                     ? 'bg-emerald-600 text-white shadow-sm'
@@ -974,12 +967,19 @@ export default function App() {
           </div>
         </div>
 
-        {/* Portfolio Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((p, idx) => (
-            <div 
+        {/* Portfolio Grid — top 3 always visible, rest in animated drawer */}
+        {(() => {
+          const visibleProjects = filteredProjects.slice(0, 3);
+          const hiddenProjects = filteredProjects.slice(3);
+          const cardClass = "p-6 rounded-2xl bg-white/85 backdrop-blur-md border border-emerald-500/20 hover:border-emerald-500/60 shadow-md hover:shadow-2xl hover:shadow-emerald-950/10 transition-all duration-300 flex flex-col justify-between";
+
+          const ProjectCard = ({ p, idx, delay = 0 }: { p: typeof filteredProjects[0]; idx: number; delay?: number }) => (
+            <motion.div
               key={idx}
-              className="p-6 rounded-2xl bg-white/85 backdrop-blur-md border border-emerald-500/20 hover:border-emerald-500/60 shadow-md hover:shadow-2xl hover:shadow-emerald-950/10 transition-all duration-300 flex flex-col justify-between"
+              initial={{ opacity: 0, y: 32, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.45, delay, ease: [0.16, 1, 0.3, 1] }}
+              className={cardClass}
             >
               <div>
                 <div className="flex items-center justify-between text-xs font-semibold mb-3">
@@ -990,15 +990,9 @@ export default function App() {
                     <MapPin className="w-3.5 h-3.5 text-slate-500" /> {p.location}
                   </span>
                 </div>
-
-                <h3 className="text-xl font-bold font-display text-white drop-shadow-md mt-1">
-                  {p.name}
-                </h3>
-                <p className="mt-3 text-sm text-slate-600 leading-relaxed">
-                  {p.description}
-                </p>
+                <h3 className="text-xl font-bold font-display text-white drop-shadow-md mt-1">{p.name}</h3>
+                <p className="mt-3 text-sm text-slate-600 leading-relaxed">{p.description}</p>
               </div>
-
               <div className="mt-6 pt-4 border-t border-emerald-500/15 flex items-center justify-between">
                 <div>
                   <span className="text-[10px] text-slate-500 uppercase font-bold block">Capacity</span>
@@ -1008,9 +1002,57 @@ export default function App() {
                   Factsheet <ChevronRight className="w-3.5 h-3.5" />
                 </button>
               </div>
-            </div>
-          ))}
-        </div>
+            </motion.div>
+          );
+
+          return (
+            <>
+              {/* Top 3 cards — always shown with staggered unpack animation */}
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {visibleProjects.map((p, idx) => (
+                  <ProjectCard key={idx} p={p} idx={idx} delay={idx * 0.1} />
+                ))}
+              </div>
+
+              {/* Animated drawer for remaining cards */}
+              {hiddenProjects.length > 0 && (
+                <div className="mt-6">
+                  {/* Drawer content with CSS transition */}
+                  <div
+                    className="overflow-hidden transition-all duration-700 ease-in-out"
+                    style={{ maxHeight: showAllProjects ? `${hiddenProjects.length * 320}px` : '0px', opacity: showAllProjects ? 1 : 0 }}
+                  >
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 pt-6">
+                      {hiddenProjects.map((p, idx) => (
+                        <ProjectCard key={idx + 3} p={p} idx={idx + 3} delay={showAllProjects ? idx * 0.1 : 0} />
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Toggle button */}
+                  <div className="mt-8 flex justify-center">
+                    <button
+                      onClick={() => setShowAllProjects(!showAllProjects)}
+                      className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-white border-2 border-emerald-500 text-emerald-700 font-bold text-sm hover:bg-emerald-600 hover:text-white hover:border-emerald-600 shadow-lg shadow-emerald-500/20 transition-all duration-300"
+                    >
+                      {showAllProjects ? (
+                        <>
+                          <span>Show Less</span>
+                          <ChevronRight className="w-4 h-4 rotate-[-90deg] transition-transform duration-300" />
+                        </>
+                      ) : (
+                        <>
+                          <span>See All {filteredProjects.length} Projects</span>
+                          <ChevronRight className="w-4 h-4 rotate-90 transition-transform duration-300 group-hover:translate-y-0.5" />
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </div>
+              )}
+            </>
+          );
+        })()}
       </section>
 
       {/* Engagement Process (Page 3 & 7) */}
@@ -1450,6 +1492,7 @@ export default function App() {
           </div>
         </div>
       </footer>
+      </div>{/* end content-sections wrapper */}
       </div>
     </div>
   );
