@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import heroBackgroundImg from './hero-bg.jpg';
 import heroPosterImg from './hero-poster.jpg';
@@ -419,8 +419,9 @@ export default function App() {
             playsInline
             preload={isMobileScreen ? "none" : "metadata"}
             poster={heroPosterImg}
-            onLoadedData={() => setIsVideoLoaded(true)}
-            onPlaying={() => setIsVideoLoaded(true)}
+            ref={(el) => { if (el) el.playbackRate = 0.55; }}
+            onLoadedData={(e) => { e.currentTarget.playbackRate = 0.55; setIsVideoLoaded(true); }}
+            onPlaying={(e) => { e.currentTarget.playbackRate = 0.55; setIsVideoLoaded(true); }}
             tabIndex={-1}
           >
             <source src="/hero-background.mp4" type="video/mp4" />
