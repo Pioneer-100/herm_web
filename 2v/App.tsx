@@ -316,14 +316,14 @@ export default function App() {
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-        className="sticky top-0 z-50 overflow-hidden shadow-2xl transition-all"
+        className="sticky top-0 z-50 overflow-hidden shadow-2xl transition-all bg-emerald-950"
       >
         {/* Leaf Background Layer - Single seamless photo, no borders */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
           <img
             src={navLeavesImg}
             alt=""
-            className="w-full h-full object-cover object-center filter brightness-105 contrast-110 opacity-90"
+            className="w-full h-full object-cover object-center scale-[2.2] filter brightness-105 contrast-115 saturate-125 opacity-95"
           />
           {/* Dark gradient scrim — keeps all nav text crisp */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/75" />
@@ -398,7 +398,7 @@ export default function App() {
       </motion.nav>
 
       {/* Hero Section with Custom Background Image / Video */}
-      <section className="relative min-h-[90vh] flex items-center justify-start pt-24 pb-28 sm:pt-32 sm:pb-36 lg:pt-36 lg:pb-44 overflow-hidden w-full">
+      <section className="relative min-h-screen flex items-center justify-start pt-20 pb-20 sm:pt-24 sm:pb-28 lg:pt-28 lg:pb-36 overflow-hidden w-full">
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none select-none" aria-hidden="true">
           {/* 1. Alternate Background (Wind Turbine / Solar) */}
           <div className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${isVideoLoaded ? "opacity-0" : "opacity-100"}`}>
