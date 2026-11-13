@@ -696,13 +696,13 @@ export default function App() {
       {/* The Quad Nexus Section (Pages 2, 4, 5) */}
       <section id="nexus" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
-          <span className={`text-xs font-bold uppercase tracking-wider ${currentTheme.accentText}`}>
+          <span className="text-xs font-extrabold uppercase tracking-widest text-emerald-300 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
             Framework For Impact
           </span>
-          <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-slate-900">
+          <h2 className="mt-2 text-3xl sm:text-4xl sm:text-5xl font-extrabold font-display tracking-tight text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
             The Quad Nexus Framework
           </h2>
-          <p className="mt-4 text-slate-600 text-base">
+          <p className="mt-4 text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)] text-base sm:text-lg font-medium">
             Hermit’s specialized advisory addresses the interconnected challenges of Energy, Water, Food, and Waste to Energy through comprehensive lifecycle delivery.
           </p>
 
