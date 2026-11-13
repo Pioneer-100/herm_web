@@ -25,8 +25,8 @@ export default function App() {
   const currentTheme = {
     name: "Light Modern",
     bgRoot: "bg-transparent",
-    sectionAlt: "bg-white/80 backdrop-blur-sm border-y border-emerald-200/60",
-    sectionTranslucent: "bg-white/70 backdrop-blur-sm",
+    sectionAlt: "bg-transparent border-y border-white/20",
+    sectionTranslucent: "bg-transparent",
     badge: "border-emerald-400/70 bg-emerald-100 text-emerald-800 font-semibold",
     headlineGradient: "from-white via-emerald-100 to-teal-200",
     primaryBtn: "bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/30 font-bold",
@@ -569,7 +569,7 @@ export default function App() {
 
       {/* About & Mission Section */}
       {/* ── All content sections below the hero slide over the fixed globe watermark ── */}
-      <div className="relative bg-white/85 backdrop-blur-[2px]">
+      <div className="relative bg-transparent">
       {/* About & Mission Section */}
       <section id="about" className={`py-24 ${currentTheme.sectionAlt} transition-colors`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
