@@ -400,25 +400,18 @@ export default function App() {
       {/* Hero Section with Custom Background Image / Video */}
       <section className="relative min-h-[92vh] flex items-center pt-20 pb-24 sm:pt-28 sm:pb-32 lg:pt-36 lg:pb-40 overflow-hidden w-full">
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none select-none" aria-hidden="true">
-          
-          {/* 1. Alternate Background (Wind Turbine) - shown immediately while video buffers or on mobile */}
-          <div 
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-              isVideoLoaded ? 'opacity-0' : 'opacity-100'
-            }`}
-          >
+          {/* 1. Alternate Background (Wind Turbine / Solar) */}
+          <div className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${isVideoLoaded ? "opacity-0" : "opacity-100"}`}>
             <img
               src={heroPosterImg}
-              alt="Clean wind energy infrastructure"
-              className="absolute inset-0 w-full h-full object-cover object-center min-w-full min-h-full scale-[1.01] filter brightness-100"
+              alt="Clean renewable energy infrastructure"
+              className="absolute inset-0 w-full h-full object-cover object-center min-w-full min-h-full filter brightness-100"
             />
           </div>
 
-          {/* 2. Video Element with reduced mobile burden & smooth fade-in */}
+          {/* 2. Video Element covering 100% with no black gap */}
           <video
-            className={`absolute inset-0 w-full h-full object-cover object-center min-w-full min-h-full transition-opacity duration-1000 ease-in-out ${
-              isVideoLoaded ? 'opacity-100' : 'opacity-0'
-            }`}
+            className={`absolute inset-0 w-full h-full object-cover object-center min-w-full min-h-full transition-opacity duration-1000 ease-in-out ${isVideoLoaded ? "opacity-100" : "opacity-0"}`}
             autoPlay
             muted
             loop
@@ -431,24 +424,6 @@ export default function App() {
           >
             <source src="/hero-background.mp4" type="video/mp4" />
           </video>
-
-          {/* Animated Atmospheric Glows & Light Rays (visible especially on mobile when video is paused/static) */}
-          <div className="absolute -top-24 left-1/4 -translate-x-1/2 w-96 h-96 sm:w-[600px] sm:h-[600px] bg-gradient-to-b from-emerald-500/30 via-teal-500/15 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: '6s' }} />
-          <div className="absolute top-1/4 right-1/4 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-10 -left-20 w-60 h-60 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" />
-
-          {/* Subtle Dynamic Grid Overlay to give a high-tech clean energy aesthetic */}
-          <div 
-            className="absolute inset-0 opacity-[0.07] pointer-events-none" 
-            style={{ 
-              backgroundImage: 'radial-gradient(rgba(52, 211, 153, 0.4) 1px, transparent 1px)', 
-              backgroundSize: '24px 24px' 
-            }} 
-          />
-
-          {/* Contrast & Gradient Depth Layers */}
-          <div className="absolute inset-0 bg-slate-900/30" />
-          <div className="absolute inset-0 bg-slate-950/25" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
