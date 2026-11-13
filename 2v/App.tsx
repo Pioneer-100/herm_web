@@ -322,10 +322,10 @@ export default function App() {
           <img
             src={navLeavesImg}
             alt=""
-            className="w-full h-full object-cover object-center opacity-100"
+            className="w-full h-full object-cover object-center filter brightness-125 contrast-110 saturate-125"
           />
           {/* Subtle dark tint solely to keep white text effortlessly readable */}
-          <div className="absolute inset-0 bg-gradient-to-r from-emerald-950/70 via-black/40 to-emerald-950/70" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/35 via-black/15 to-black/35" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
