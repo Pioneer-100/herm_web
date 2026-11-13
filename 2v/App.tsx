@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import heroBackgroundImg from './hero-bg.jpg';
 import heroPosterImg from './hero-poster.jpg';
@@ -28,7 +28,7 @@ export default function App() {
     badge: "border-emerald-400/70 bg-emerald-100 text-emerald-800 font-semibold",
     headlineGradient: "from-white via-emerald-100 to-teal-200",
     primaryBtn: "bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/30 font-bold",
-    secondaryBtn: "border-2 border-slate-700 text-slate-700 hover:bg-slate-700 hover:text-white",
+    secondaryBtn: "bg-white/20 hover:bg-white/30 text-white border-2 border-white/80 hover:border-white backdrop-blur-md shadow-lg shadow-black/20 hover:shadow-xl font-bold",
     accentText: "text-emerald-700",
     accentSecondary: "text-slate-800",
     cardBg: "bg-white border border-emerald-200 hover:border-emerald-400 shadow-md hover:shadow-xl hover:shadow-emerald-950/10",
@@ -315,17 +315,17 @@ export default function App() {
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-        className="sticky top-0 z-50 overflow-hidden border-b border-slate-200 shadow-sm transition-colors bg-white"
+        className="sticky top-0 z-50 overflow-hidden shadow-2xl transition-all"
       >
         {/* Leaf Background Layer - Highly Visible & Vibrant */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
           <img
             src={navLeavesImg}
             alt=""
-            className="w-full h-full object-cover object-center opacity-0"
+            className="w-full h-full object-cover object-center opacity-100"
           />
           {/* Subtle dark tint solely to keep white text effortlessly readable */}
-          <div className="absolute inset-0 bg-white" />
+          <div className="absolute inset-0 bg-gradient-to-r from-emerald-950/70 via-black/40 to-emerald-950/70" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -349,13 +349,13 @@ export default function App() {
 
           {/* Desktop Navigation Links */}
           <div className="hidden lg:flex items-center space-x-7 xl:space-x-8 text-[15px] xl:text-base font-semibold text-slate-700">
-            <a href="#about" className="hover:text-emerald-600 transition-colors">About</a>
-            <a href="#nexus" className="hover:text-emerald-600 transition-colors">Quad Nexus</a>
-            <a href="#hybrid" className="hover:text-emerald-600 transition-colors">Hybrid Solutions</a>
-            <a href="#portfolio" className="hover:text-emerald-600 transition-colors">Track Record</a>
-            <a href="#process" className="hover:text-emerald-600 transition-colors">Engagement</a>
-            <a href="#partnerships" className="hover:text-emerald-600 transition-colors">Partners</a>
-            <a href="#faq" className="hover:text-emerald-600 transition-colors">FAQ</a>
+            <a href="#about" className="hover:text-emerald-300 transition-colors drop-shadow-sm">About</a>
+            <a href="#nexus" className="hover:text-emerald-300 transition-colors drop-shadow-sm">Quad Nexus</a>
+            <a href="#hybrid" className="hover:text-emerald-300 transition-colors drop-shadow-sm">Hybrid Solutions</a>
+            <a href="#portfolio" className="hover:text-emerald-300 transition-colors drop-shadow-sm">Track Record</a>
+            <a href="#process" className="hover:text-emerald-300 transition-colors drop-shadow-sm">Engagement</a>
+            <a href="#partnerships" className="hover:text-emerald-300 transition-colors drop-shadow-sm">Partners</a>
+            <a href="#faq" className="hover:text-emerald-300 transition-colors drop-shadow-sm">FAQ</a>
           </div>
 
           {/* Right Action CTA */}
@@ -373,7 +373,7 @@ export default function App() {
           <div className="flex lg:hidden items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-slate-700 hover:text-slate-900"
+              className="p-2 text-white hover:text-emerald-300"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -400,7 +400,7 @@ export default function App() {
       <section className="relative min-h-[calc(100vh-7.5rem)] flex items-center justify-start py-8 sm:py-10 lg:py-12 overflow-hidden w-full">
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none select-none" aria-hidden="true">
           {/* 1. Alternate Background (Wind Turbine / Solar) */}
-          <div className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${isVideoLoaded ? "opacity-0" : "opacity-100"}`}>
+          <div className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${isVideoLoaded ? "opacity-100" : "opacity-100"}`}>
             <img
               src={heroPosterImg}
               alt="Clean renewable energy infrastructure"
@@ -411,7 +411,7 @@ export default function App() {
           {/* 2. Video Element covering 100% with no black gap */}
           <video
             ref={videoRef}
-            className={`absolute inset-0 w-full h-full object-cover object-center min-w-full min-h-full transition-opacity duration-1000 ease-in-out ${isVideoLoaded ? "opacity-100" : "opacity-0"}`}
+            className={`absolute inset-0 w-full h-full object-cover object-center min-w-full min-h-full transition-opacity duration-1000 ease-in-out ${isVideoLoaded ? "opacity-100" : "opacity-100"}`}
             autoPlay
             muted
             loop
