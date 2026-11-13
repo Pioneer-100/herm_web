@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import heroBackgroundImg from './hero-bg.jpg';
 import heroPosterImg from './hero-poster.jpg';
@@ -101,6 +101,7 @@ export default function App() {
   const [showScrolledWatermark, setShowScrolledWatermark] = useState<boolean>(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState<boolean>(false);
   const [isMobileScreen, setIsMobileScreen] = useState<boolean>(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -412,6 +413,7 @@ export default function App() {
 
           {/* 2. Video Element covering 100% with no black gap */}
           <video
+            ref={videoRef}
             className={`absolute inset-0 w-full h-full object-cover object-center min-w-full min-h-full transition-opacity duration-1000 ease-in-out ${isVideoLoaded ? "opacity-100" : "opacity-0"}`}
             autoPlay
             muted
@@ -419,7 +421,7 @@ export default function App() {
             playsInline
             preload={isMobileScreen ? "none" : "metadata"}
             poster={heroPosterImg}
-            onLoadedData={() => setIsVideoLoaded(true)}
+            onLoadedData={() => { if (videoRef.current) videoRef.current.playbackRate = 0.75; setIsVideoLoaded(true); }}
             onPlaying={() => setIsVideoLoaded(true)}
             tabIndex={-1}
           >
