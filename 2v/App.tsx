@@ -4,6 +4,7 @@ import heroBackgroundImg from './hero-bg.jpg';
 import heroPosterImg from './hero-poster.jpg';
 import floatingSolarHybridImg from './floating-solar-hybrid.jpg';
 import logoImg from './logo.png';
+import globeBgImg from './globe-bg.png';
 import navLeavesImg from './nav-leaves.jpg';
 import logoUnido from './logo-unido.png';
 import logoGiz from './logo-giz.png';
@@ -458,7 +459,7 @@ export default function App() {
             playsInline
             preload={isMobileScreen ? "none" : "metadata"}
             poster={heroPosterImg}
-            onLoadedData={() => { if (videoRef.current) videoRef.current.playbackRate = 1.0; setIsVideoLoaded(true); }}
+            onLoadedData={() => { if (videoRef.current) videoRef.current.playbackRate = 0.75; setIsVideoLoaded(true); }}
             onPlaying={() => setIsVideoLoaded(true)}
             tabIndex={-1}
           >
@@ -491,7 +492,7 @@ export default function App() {
             className="mt-4 sm:mt-5 text-sm sm:text-lg lg:text-xl text-white/95 max-w-2xl leading-relaxed font-medium drop-shadow-md"
           >
             Delivering innovative, bankable, and scalable clean energy solutions grounded in the 
-            <span className={`font-semibold ${currentTheme.accentText}`}> Quad Nexus</span> of Energy, Water, Food, and Waste to Energy.
+            <span className="font-bold text-emerald-300 drop-shadow"> Quad Nexus</span> of Energy, Water, Food, and Waste to Energy.
           </motion.p>
 
           <motion.div 
@@ -696,13 +697,13 @@ export default function App() {
       {/* The Quad Nexus Section (Pages 2, 4, 5) */}
       <section id="nexus" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
-          <span className="text-xs font-extrabold uppercase tracking-widest text-emerald-300 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
+          <span className={`text-xs font-bold uppercase tracking-wider ${currentTheme.accentText}`}>
             Framework For Impact
           </span>
-          <h2 className="mt-2 text-3xl sm:text-4xl sm:text-5xl font-extrabold font-display tracking-tight text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
+          <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-slate-900">
             The Quad Nexus Framework
           </h2>
-          <p className="mt-4 text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)] text-base sm:text-lg font-medium">
+          <p className="mt-4 text-slate-600 text-base sm:text-lg leading-relaxed">
             Hermit’s specialized advisory addresses the interconnected challenges of Energy, Water, Food, and Waste to Energy through comprehensive lifecycle delivery.
           </p>
 
@@ -773,7 +774,7 @@ export default function App() {
               </p>
 
               <div className="mt-8 space-y-3">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">What We Deliver In Practice:</h4>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700">What We Deliver In Practice:</h4>
                 {quadNexus[activeNexusTab].deliverables.map((item, idx) => (
                   <div key={idx} className="flex items-start gap-3">
                     <Check className={`w-5 h-5 shrink-0 mt-0.5 ${currentTheme.accentText}`} />
@@ -785,7 +786,7 @@ export default function App() {
 
             <div className={`lg:col-span-5 p-6 sm:p-8 rounded-2xl ${currentTheme.cardInner} transition-all`}>
               <h4 className="font-bold text-base text-slate-900">End-to-End Advisory Scope</h4>
-              <p className="text-xs text-slate-500 mt-1">
+              <p className="text-xs text-slate-600 font-medium mt-1">
                 Supporting institutional off-takers from pre-feasibility to commercial commissioning.
               </p>
 
@@ -823,7 +824,7 @@ export default function App() {
           {/* Header Row: Heading on the left, floating solar picture component on the right */}
           <div className="grid lg:grid-cols-12 gap-8 items-center mb-14">
             <div className="lg:col-span-7">
-              <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
+              <span className="text-emerald-700 text-xs font-bold uppercase tracking-wider">
                 Flagship Technical Practice
               </span>
               <h2 className="mt-2 text-3xl sm:text-5xl font-extrabold font-display">
@@ -878,7 +879,7 @@ export default function App() {
                     onChange={(e) => setSolarCapacityMW(parseFloat(e.target.value))}
                     className={`w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer ${currentTheme.sliderAccent}`}
                   />
-                  <div className="flex justify-between text-[11px] text-slate-500 mt-1">
+                  <div className="flex justify-between text-[11px] text-slate-600 mt-1">
                     <span>1 MWp (Pilot Array)</span>
                     <span>5.4 MWp (Benchmark Case)</span>
                     <span>50 MWp (Utility Scale)</span>
@@ -899,7 +900,7 @@ export default function App() {
                     onChange={(e) => setHydroCapacityMW(parseFloat(e.target.value))}
                     className={`w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer ${currentTheme.sliderAccent}`}
                   />
-                  <div className="flex justify-between text-[11px] text-slate-500 mt-1">
+                  <div className="flex justify-between text-[11px] text-slate-600 mt-1">
                     <span>1 MW (Mini-Hydro)</span>
                     <span>5 MW (Case Study)</span>
                     <span>100 MW (Reservoir Hydro)</span>
@@ -910,19 +911,19 @@ export default function App() {
                   <div className={`p-3 rounded-xl ${currentTheme.cardInner}`}>
                     <span className="text-[10px] text-slate-600 uppercase font-bold">Solar Generation</span>
                     <p className={`text-base sm:text-lg font-black mt-1 ${currentTheme.accentText}`}>{estimatedSolarMWh.toLocaleString()} MWh/yr</p>
-                    <p className="text-[10px] text-slate-500">81.3% PR (PVsyst)</p>
+                    <p className="text-[10px] text-slate-600 font-medium">81.3% PR (PVsyst)</p>
                   </div>
                   <div className={`p-3 rounded-xl ${currentTheme.cardInner}`}>
                     <span className="text-[10px] text-slate-600 uppercase font-bold">Hydro Generation</span>
                     <p className={`text-base sm:text-lg font-black mt-1 ${currentTheme.accentSecondary}`}>{estimatedHydroMWh.toLocaleString()} MWh/yr</p>
-                    <p className="text-[10px] text-slate-500">52.9% Capacity Factor</p>
+                    <p className="text-[10px] text-slate-600 font-medium">52.9% Capacity Factor</p>
                   </div>
                   <div className={`p-3 rounded-xl ${currentTheme.cardInner}`}>
                     <span className="text-[10px] text-slate-600 uppercase font-bold flex items-center justify-center gap-1">
                       <Droplets className="w-3 h-3 text-emerald-600" /> Water Saved
                     </span>
                     <p className="text-base sm:text-lg font-black text-emerald-700 mt-1">{(estimatedWaterSavedM3 / 1000).toFixed(0)}k m³/yr</p>
-                    <p className="text-[10px] text-slate-500">Reduced Evaporation</p>
+                    <p className="text-[10px] text-slate-600 font-medium">Reduced Evaporation</p>
                   </div>
                   <div className={`p-3 rounded-xl ${currentTheme.cardInner} border border-emerald-500/40`}>
                     <span className={`text-[10px] uppercase font-bold ${currentTheme.accentText}`}>Hybrid Yield</span>
@@ -947,7 +948,7 @@ export default function App() {
             {/* 8-Month Inception-to-Tender Workflow */}
             <div className="lg:col-span-5 space-y-4">
               <h3 className="font-bold text-xl font-display text-slate-900">8-Month Inception to EPC Tender</h3>
-              <p className="text-xs text-slate-500 leading-relaxed">
+              <p className="text-xs text-slate-600 font-medium leading-relaxed">
                 Hermit structures five rigorous work packages ensuring seamless technical de-risking and bankable tender readiness.
               </p>
 
@@ -1043,8 +1044,8 @@ export default function App() {
                       <span className="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold text-[11px]">
                         {cardStackHead.type}
                       </span>
-                      <span className="text-slate-500 flex items-center gap-1 text-[11px] font-medium">
-                        <MapPin className="w-3.5 h-3.5 text-slate-400" /> {cardStackHead.location}
+                      <span className="text-slate-600 flex items-center gap-1 text-[11px] font-medium">
+                        <MapPin className="w-3.5 h-3.5 text-slate-500" /> {cardStackHead.location}
                       </span>
                     </div>
 
@@ -1058,7 +1059,7 @@ export default function App() {
 
                   <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
                     <div>
-                      <span className="text-[10px] text-slate-400 uppercase font-bold block">Capacity</span>
+                      <span className="text-[10px] text-slate-600 uppercase font-bold block">Capacity</span>
                       <span className="text-base font-extrabold text-emerald-700">{cardStackHead.size}</span>
                     </div>
                   </div>
@@ -1082,8 +1083,8 @@ export default function App() {
                       <span className="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold text-[11px]">
                         {cardUnstacked1.type}
                       </span>
-                      <span className="text-slate-500 flex items-center gap-1 text-[11px] font-medium">
-                        <MapPin className="w-3.5 h-3.5 text-slate-400" /> {cardUnstacked1.location}
+                      <span className="text-slate-600 flex items-center gap-1 text-[11px] font-medium">
+                        <MapPin className="w-3.5 h-3.5 text-slate-500" /> {cardUnstacked1.location}
                       </span>
                     </div>
 
@@ -1097,7 +1098,7 @@ export default function App() {
 
                   <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
                     <div>
-                      <span className="text-[10px] text-slate-400 uppercase font-bold block">Capacity</span>
+                      <span className="text-[10px] text-slate-600 uppercase font-bold block">Capacity</span>
                       <span className="text-base font-extrabold text-emerald-700">{cardUnstacked1.size}</span>
                     </div>
                   </div>
@@ -1121,8 +1122,8 @@ export default function App() {
                       <span className="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold text-[11px]">
                         {cardUnstacked2.type}
                       </span>
-                      <span className="text-slate-500 flex items-center gap-1 text-[11px] font-medium">
-                        <MapPin className="w-3.5 h-3.5 text-slate-400" /> {cardUnstacked2.location}
+                      <span className="text-slate-600 flex items-center gap-1 text-[11px] font-medium">
+                        <MapPin className="w-3.5 h-3.5 text-slate-500" /> {cardUnstacked2.location}
                       </span>
                     </div>
 
@@ -1136,7 +1137,7 @@ export default function App() {
 
                   <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
                     <div>
-                      <span className="text-[10px] text-slate-400 uppercase font-bold block">Capacity</span>
+                      <span className="text-[10px] text-slate-600 uppercase font-bold block">Capacity</span>
                       <span className="text-base font-extrabold text-emerald-700">{cardUnstacked2.size}</span>
                     </div>
                   </div>
@@ -1149,7 +1150,7 @@ export default function App() {
           {/* Interactive Stack Controls Bar */}
           <div className="mt-8 pt-4 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <span className="inline-flex items-center gap-1.5 text-xs text-slate-500 font-medium">
+              <span className="inline-flex items-center gap-1.5 text-xs text-slate-600 font-medium">
                 <span className={`w-2 h-2 rounded-full ${isStackPaused ? 'bg-amber-400' : 'bg-emerald-500 animate-pulse'}`} />
                 {isStackPaused ? "Cycle paused (hovering)" : "Auto-cycling deck"}
               </span>
@@ -1261,7 +1262,7 @@ export default function App() {
                     </button>
                   ))}
                 </div>
-                <span className="text-xs font-semibold text-slate-500">
+                <span className="text-xs font-semibold text-slate-700">
                   Showing {filteredProjects.length} of {projectPortfolio.length} assets
                 </span>
               </div>
@@ -1279,8 +1280,8 @@ export default function App() {
                           <span className="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 border border-emerald-300">
                             {p.type}
                           </span>
-                          <span className="text-slate-500 flex items-center gap-1 text-[11px]">
-                            <MapPin className="w-3.5 h-3.5 text-slate-400" /> {p.location}
+                          <span className="text-slate-600 flex items-center gap-1 text-[11px]">
+                            <MapPin className="w-3.5 h-3.5 text-slate-500" /> {p.location}
                           </span>
                         </div>
 
@@ -1294,7 +1295,7 @@ export default function App() {
 
                       <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
                         <div>
-                          <span className="text-[10px] text-slate-400 uppercase font-bold block">Capacity</span>
+                          <span className="text-[10px] text-slate-600 uppercase font-bold block">Capacity</span>
                           <span className="text-base font-extrabold text-emerald-700">{p.size}</span>
                         </div>
                         <button
@@ -1316,7 +1317,7 @@ export default function App() {
 
               {/* Drawer Bottom Action Bar */}
               <div className="p-4 sm:p-6 border-t border-slate-200 bg-white flex flex-col sm:flex-row items-center justify-between gap-4">
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-slate-700 font-medium">
                   Seeking technical due diligence, Class 5 costing, or bankability assessment for a clean energy asset?
                 </p>
                 <div className="flex items-center gap-3 w-full sm:w-auto">
@@ -1454,7 +1455,7 @@ export default function App() {
 
         {/* Partners Logo Banner */}
         <div className="mt-14">
-          <p className="text-center text-xs font-bold uppercase tracking-widest text-slate-500 mb-8">
+          <p className="text-center text-xs font-bold uppercase tracking-widest text-slate-700 mb-8">
             Strategic Partners & Multilateral Collaborations
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
@@ -1470,7 +1471,7 @@ export default function App() {
               </div>
               <div className="text-center mt-2">
                 <p className="text-xs font-bold text-slate-800 leading-tight">UNIDO</p>
-                <p className="text-[10px] text-slate-500 leading-tight mt-0.5">Development Programs</p>
+                <p className="text-[10px] text-slate-600 font-medium leading-tight mt-0.5">Development Programs</p>
               </div>
             </div>
 
@@ -1485,7 +1486,7 @@ export default function App() {
               </div>
               <div className="text-center mt-2">
                 <p className="text-xs font-bold text-slate-800 leading-tight">GIZ</p>
-                <p className="text-[10px] text-slate-500 leading-tight mt-0.5">International Dev</p>
+                <p className="text-[10px] text-slate-600 font-medium leading-tight mt-0.5">International Dev</p>
               </div>
             </div>
 
@@ -1500,7 +1501,7 @@ export default function App() {
               </div>
               <div className="text-center mt-2">
                 <p className="text-xs font-bold text-slate-800 leading-tight">IDBZ</p>
-                <p className="text-[10px] text-slate-500 leading-tight mt-0.5">Project Finance Partner</p>
+                <p className="text-[10px] text-slate-600 font-medium leading-tight mt-0.5">Project Finance Partner</p>
               </div>
             </div>
 
@@ -1515,7 +1516,7 @@ export default function App() {
               </div>
               <div className="text-center mt-2">
                 <p className="text-xs font-bold text-slate-800 leading-tight">SADELEC</p>
-                <p className="text-[10px] text-slate-500 leading-tight mt-0.5">SADC Energy Solutions</p>
+                <p className="text-[10px] text-slate-600 font-medium leading-tight mt-0.5">SADC Energy Solutions</p>
               </div>
             </div>
 
@@ -1530,7 +1531,7 @@ export default function App() {
               </div>
               <div className="text-center mt-2">
                 <p className="text-xs font-bold text-slate-800 leading-tight">REN21</p>
-                <p className="text-[10px] text-slate-500 leading-tight mt-0.5">SADC RE Status Reports</p>
+                <p className="text-[10px] text-slate-600 font-medium leading-tight mt-0.5">SADC RE Status Reports</p>
               </div>
             </div>
 
@@ -1545,7 +1546,7 @@ export default function App() {
               </div>
               <div className="text-center mt-2">
                 <p className="text-xs font-bold text-slate-800 leading-tight">African Union</p>
-                <p className="text-[10px] text-slate-500 leading-tight mt-0.5">AU Commission Policy</p>
+                <p className="text-[10px] text-slate-600 font-medium leading-tight mt-0.5">AU Commission Policy</p>
               </div>
             </div>
 
@@ -1604,7 +1605,7 @@ export default function App() {
         <div className="grid lg:grid-cols-12 gap-12">
           
           <div className="lg:col-span-5 space-y-6">
-            <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
+            <span className="text-emerald-700 text-xs font-bold uppercase tracking-wider">
               Harare Office & Operations
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-slate-900 leading-tight">
@@ -1620,7 +1621,7 @@ export default function App() {
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs uppercase font-bold text-slate-500">Physical Address</p>
+                  <p className="text-xs uppercase font-bold text-slate-600">Physical Address</p>
                   <p className="text-sm font-semibold text-slate-900">20 Aintree Road Highlands, Harare</p>
                 </div>
               </div>
@@ -1630,7 +1631,7 @@ export default function App() {
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs uppercase font-bold text-slate-500">Direct Telephone</p>
+                  <p className="text-xs uppercase font-bold text-slate-600">Direct Telephone</p>
                   <p className="text-sm font-semibold text-slate-900">+263 71 280 0220</p>
                 </div>
               </div>
@@ -1640,9 +1641,9 @@ export default function App() {
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs uppercase font-bold text-slate-500">Corporate Enquiries</p>
+                  <p className="text-xs uppercase font-bold text-slate-600">Corporate Enquiries</p>
                   <p className="text-sm font-semibold text-slate-900">info@hermitsustainability.co.zw</p>
-                  <p className="text-xs text-slate-500">hermitinfopack@gmail.com</p>
+                  <p className="text-xs text-slate-600">hermitinfopack@gmail.com</p>
                 </div>
               </div>
             </div>
@@ -1665,7 +1666,7 @@ export default function App() {
             <h3 className="text-xl font-bold font-display text-slate-900 mb-2">
               Request Advisory Briefing or Proposal
             </h3>
-            <p className="text-xs text-slate-500 mb-6">
+            <p className="text-xs text-slate-600 mb-6">
               Our engineering and financial team typically responds within 24 business hours.
             </p>
 
@@ -1801,7 +1802,7 @@ export default function App() {
       {/* Footer (Page 1 & 10) */}
       <footer className="bg-slate-900 text-slate-400 py-14 border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-200">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-800">
             <div className="flex items-center space-x-3">
               <img
                 src={logoImg}
