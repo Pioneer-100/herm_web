@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import heroBackgroundImg from './hero-bg.jpg';
 import heroPosterImg from './hero-poster.jpg';
@@ -213,7 +213,7 @@ export default function App() {
       size: "10 MW",
       location: "Masvingo Province",
       category: "solar",
-      description: "Full feasibility, PVsyst modelling, and grid integration for commercial solar farm feeding provincial industrial demand."
+      description: "Full feasibility, modelling, and grid integration for commercial solar farm feeding provincial industrial demand."
     },
     
     {
@@ -304,7 +304,7 @@ export default function App() {
   const engagementStages = [
     { step: "01", name: "Brief", desc: "Clear alignment on project scope, objectives, and client requirements." },
     { step: "02", name: "Site & Resource", desc: "Baseline solar irradiance, hydrological data, and site condition analysis." },
-    { step: "03", name: "Modelling", desc: "Hourly PVsyst yield simulation and first-principles hydraulic engineering." },
+    { step: "03", name: "Modelling", desc: " simulation and first-principles hydraulic engineering." },
     { step: "04", name: "Financial", desc: "Class 5 cost accuracy benchmarking, LCOE, and bankability evaluation." },
     { step: "05", name: "Risk & ESIA", desc: "Environmental and social screening, mitigation planning, and stakeholder engagement." },
     { step: "06", name: "Recommendation", desc: "Final bankable advisory report, investment memorandum, and next steps." }
@@ -623,8 +623,8 @@ export default function App() {
                 We bridge the gap between renewable energy innovation and practical, bankable project execution.
               </p>
               <p className="text-black text-base sm:text-lg leading-relaxed font-bold">
-                Every recommendation is grounded in rigorous technical and financial modelling, whether that is an 
-                <strong className="font-black text-emerald-950 underline decoration-emerald-600 underline-offset-4"> hourly PVsyst simulation </strong> 
+                Every recommendation is grounded in rigorous technical and financial modelling, whether that is a 
+                <strong className="font-black text-emerald-950 underline decoration-emerald-600 underline-offset-4"> simulation </strong> 
                 of a floating solar array or a <strong className="font-black text-black underline decoration-slate-900 underline-offset-4">first-principles hydraulic model </strong> 
                 of an existing hydro plant, so clients and their financiers make decisive capital commitments.
               </p>
@@ -860,7 +860,7 @@ export default function App() {
               <div className="flex items-center justify-between pb-4 border-b border-slate-200">
                 <h3 className="font-bold text-lg font-display text-slate-900">Hybrid Array Output Simulator</h3>
                 <span className={`text-xs px-2.5 py-1 rounded font-semibold border ${currentTheme.badge}`}>
-                  PVsyst V7.4.7 Calibrated
+                   
                 </span>
               </div>
 
@@ -911,7 +911,7 @@ export default function App() {
                   <div className={`p-3 rounded-xl ${currentTheme.cardInner}`}>
                     <span className="text-[10px] text-slate-600 uppercase font-bold">Solar Generation</span>
                     <p className={`text-base sm:text-lg font-black mt-1 ${currentTheme.accentText}`}>{estimatedSolarMWh.toLocaleString()} MWh/yr</p>
-                    <p className="text-[10px] text-slate-600 font-medium">81.3% PR (PVsyst)</p>
+                    <p className="text-[10px] text-slate-600 font-medium"></p>
                   </div>
                   <div className={`p-3 rounded-xl ${currentTheme.cardInner}`}>
                     <span className="text-[10px] text-slate-600 uppercase font-bold">Hydro Generation</span>
@@ -955,7 +955,7 @@ export default function App() {
               <div className="space-y-3 pt-2">
                 {[
                   { phase: "Inception & Scope", duration: "1 Month", detail: "Baseline review & stakeholder agreement" },
-                  { phase: "Feasibility Study", duration: "3 Months", detail: "Hydraulic modeling & PVsyst solar yield" },
+                  { phase: "Feasibility Study", duration: "3 Months", detail: "Hydraulic modeling & solar yield" },
                   { phase: "Detailed Preliminary Design", duration: "3 Months", detail: "Grid impact & hybrid plant architecture" },
                   { phase: "Environmental & Social Screening", duration: "4 Months", detail: "ESIA scope, water body co-benefit analysis" },
                   { phase: "EPC Tender Documentation", duration: "3 Months", detail: "Class 5 cost accuracy & procurement package" }
@@ -1593,7 +1593,7 @@ export default function App() {
                 Is your advisory work independently verifiable?
               </h4>
               <p className="mt-2 text-sm text-slate-600 leading-relaxed pl-7">
-                Yes. We utilize hourly PVsyst simulation, first-principles hydraulic modelling, Class 5 costing methodology, and NSF-certified product standards where applicable, ensuring every figure has an established, defensible basis.
+                Yes. We utilize simulations, first-principles hydraulic modelling, Class 5 costing methodology, and NSF-certified product standards where applicable, ensuring every figure has an established, defensible basis.
               </p>
             </div>
           </div>
@@ -1828,8 +1828,8 @@ export default function App() {
             <p>© {new Date().getFullYear()} Hermit Sustainability Advisory. Zimbabwean-Owned • Africa-Facing.</p>
             <p className="text-slate-400">20 Aintree Road Highlands, Harare</p>
             <div className="flex space-x-4">
-              <a href="http://www.hermitsustainability.co.zw" target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline">
-                www.hermitsustainability.co.zw
+              <a href="http://www.hermit.co.zw" target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline">
+                www.hermit.co.zw
               </a>
             </div>
           </div>
