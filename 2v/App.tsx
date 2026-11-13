@@ -316,17 +316,17 @@ export default function App() {
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-        className="sticky top-0 z-50 overflow-hidden border-b border-slate-200 shadow-sm transition-colors bg-white"
+        className="sticky top-0 z-50 overflow-hidden border-b border-emerald-950/80 shadow-2xl transition-all"
       >
         {/* Leaf Background Layer - Highly Visible & Vibrant */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
           <img
             src={navLeavesImg}
             alt=""
-            className="w-full h-full object-cover object-center opacity-0"
+            className="w-full h-full object-cover object-center scale-105 filter brightness-105 contrast-110 opacity-90"
           />
           {/* Subtle dark tint solely to keep white text effortlessly readable */}
-          <div className="absolute inset-0 bg-white" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/75" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -339,24 +339,24 @@ export default function App() {
               className="w-11 h-11 rounded-xl object-cover object-center shadow-lg shadow-emerald-500/20 transform group-hover:scale-105 transition-transform"
             />
             <div>
-              <span className="text-2xl font-black tracking-tight font-display text-slate-900">
+              <span className="text-2xl font-black tracking-tight font-display text-white drop-shadow-md">
                 HERMIT
               </span>
-              <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-600">
+              <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-300">
                 Sustainability Advisory
               </span>
             </div>
           </a>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center space-x-7 xl:space-x-8 text-[15px] xl:text-base font-semibold text-slate-700">
-            <a href="#about" className="hover:text-emerald-600 transition-colors">About</a>
-            <a href="#nexus" className="hover:text-emerald-600 transition-colors">Quad Nexus</a>
-            <a href="#hybrid" className="hover:text-emerald-600 transition-colors">Hybrid Solutions</a>
-            <a href="#portfolio" className="hover:text-emerald-600 transition-colors">Track Record</a>
-            <a href="#process" className="hover:text-emerald-600 transition-colors">Engagement</a>
-            <a href="#partnerships" className="hover:text-emerald-600 transition-colors">Partners</a>
-            <a href="#faq" className="hover:text-emerald-600 transition-colors">FAQ</a>
+          <div className="hidden lg:flex items-center space-x-7 xl:space-x-8 text-[15px] xl:text-base font-semibold text-white">
+            <a href="#about" className="hover:text-emerald-300 transition-colors drop-shadow-sm">About</a>
+            <a href="#nexus" className="hover:text-emerald-300 transition-colors drop-shadow-sm">Quad Nexus</a>
+            <a href="#hybrid" className="hover:text-emerald-300 transition-colors drop-shadow-sm">Hybrid Solutions</a>
+            <a href="#portfolio" className="hover:text-emerald-300 transition-colors drop-shadow-sm">Track Record</a>
+            <a href="#process" className="hover:text-emerald-300 transition-colors drop-shadow-sm">Engagement</a>
+            <a href="#partnerships" className="hover:text-emerald-300 transition-colors drop-shadow-sm">Partners</a>
+            <a href="#faq" className="hover:text-emerald-300 transition-colors drop-shadow-sm">FAQ</a>
           </div>
 
           {/* Right Action CTA */}
@@ -374,7 +374,7 @@ export default function App() {
           <div className="flex lg:hidden items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-slate-700 hover:text-slate-900"
+              className="p-2 text-white hover:text-emerald-300"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
