@@ -4,7 +4,7 @@ import heroBackgroundImg from './hero-bg.jpg';
 import heroPosterImg from './hero-poster.jpg';
 import floatingSolarHybridImg from './floating-solar-hybrid.jpg';
 import logoImg from './logo.png';
-import globeBgImg from './globe-bg.png';
+import globeBgImg from './logo.png';
 import navLeavesImg from './nav-leaves.jpg';
 import logoUnido from './logo-unido.png';
 import logoGiz from './logo-giz.png';
@@ -324,15 +324,15 @@ export default function App() {
 
   return (
     <div className={`relative isolate min-h-screen ${currentTheme.bgRoot} text-slate-900 font-sans selection:bg-emerald-500 selection:text-white transition-colors duration-500`}>
-      {/* Background Hermit Logo: Fullscreen, 100% original visibility, no fading */}
+      {/* Background Hermit Logo: Fullscreen, hands holding globe fully visible */}
       <div
-        className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none flex items-center justify-center"
+        className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none flex items-center justify-center p-4 sm:p-8"
         aria-hidden="true"
       >
         <img
           src={globeBgImg}
-          alt="Earth Globe Background"
-          className="w-full h-full object-cover object-center"
+          alt="Hands Holding Globe Background"
+          className="w-full h-full object-contain object-center max-w-5xl max-h-[90vh]"
         />
       </div>
       <div className="relative z-10">
