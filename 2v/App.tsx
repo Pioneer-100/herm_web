@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import heroBackgroundImg from './hero-bg.jpg';
 import heroPosterImg from './hero-poster.jpg';
@@ -19,24 +19,24 @@ export default function App() {
   const [activeNexusTab, setActiveNexusTab] = useState<'energy' | 'water' | 'food' | 'waste'>('energy');
   const [projectFilter, setProjectFilter] = useState<string>('all');
   
-  // Permanent Theme: Solar Bio-Nexus (Emerald + Warm Gold/Amber + Deep Forest Charcoal)
+  // LIGHT MODERN THEME
   const currentTheme = {
-    name: "Solar Bio-Nexus",
-    bgRoot: "bg-[#060e0c]",
-    sectionAlt: "bg-gradient-to-b from-[#0e261f]/40 via-[#0a1c17]/30 to-[#0e261f]/40 backdrop-blur-[2px] border-y border-emerald-500/20",
-    badge: "border-amber-500/30 bg-amber-950/40 text-amber-300",
-    headlineGradient: "from-emerald-400 via-teal-300 to-amber-300",
-    primaryBtn: "bg-gradient-to-r from-sky-500 via-cyan-400 to-teal-400 hover:from-sky-400 hover:to-teal-300 text-slate-950 shadow-cyan-500/25",
-    secondaryBtn: "bg-[#0d1a15] border-emerald-900/60 text-emerald-100 hover:bg-[#12241d]",
-    accentText: "text-amber-400",
-    accentSecondary: "text-emerald-400",
-    cardBg: "bg-[#0d1b16]/90 border-emerald-900/50 hover:border-amber-400/50",
-    cardInner: "bg-[#08120e] border-emerald-950",
-    navBg: "bg-[#07130f]/90 border-emerald-950/90",
-    inputBg: "bg-[#08120e] border-emerald-950 text-white focus:ring-amber-400",
-    sliderAccent: "accent-amber-400",
-    pillActive: "bg-gradient-to-r from-sky-500 via-cyan-400 to-teal-400 text-slate-950",
-    pillInactive: "bg-[#0e1d17] text-emerald-200 hover:bg-[#152a21] border-emerald-950"
+    name: "Light Modern",
+    bgRoot: "bg-white",
+    sectionAlt: "bg-slate-50 border-y border-slate-200",
+    badge: "border-emerald-200 bg-emerald-50 text-emerald-700 font-semibold",
+    headlineGradient: "from-slate-900 via-emerald-800 to-emerald-600",
+    primaryBtn: "bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/30 font-bold",
+    secondaryBtn: "border-2 border-slate-800 text-slate-800 hover:bg-slate-800 hover:text-white",
+    accentText: "text-emerald-600",
+    accentSecondary: "text-slate-700",
+    cardBg: "bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg",
+    cardInner: "bg-slate-50 border border-slate-200",
+    navBg: "bg-white/95 border-slate-200",
+    inputBg: "bg-white border border-slate-300 text-slate-900 focus:ring-emerald-500 focus:border-emerald-500",
+    sliderAccent: "accent-emerald-600",
+    pillActive: "bg-emerald-600 text-white shadow-sm",
+    pillInactive: "bg-slate-100 text-slate-600 hover:bg-slate-200 border border-slate-200"
   };
   
   // Interactive Hydro-Solar Hybrid Calculator
@@ -271,7 +271,7 @@ export default function App() {
   ];
 
   return (
-    <div className={`relative isolate min-h-screen ${currentTheme.bgRoot} text-slate-100 font-sans selection:bg-emerald-500 selection:text-white transition-colors duration-500`}>
+    <div className={`relative isolate min-h-screen ${currentTheme.bgRoot} text-slate-900 font-sans selection:bg-emerald-500 selection:text-white transition-colors duration-500`}>
       {/* Background Image: Contained and properly scaled with enhanced brightness & visibility */}
       <motion.div 
         className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none flex items-center justify-center" 
@@ -283,11 +283,11 @@ export default function App() {
         <img
           src={logoImg}
           alt=""
-          className="w-full h-full object-contain md:object-contain object-center max-w-4xl max-h-[85vh] opacity-20 md:opacity-30 filter drop-shadow-[0_0_120px_rgba(52,211,153,0.4)] brightness-110"
+          className="w-full h-full object-contain md:object-contain object-center max-w-4xl max-h-[85vh] opacity-5 md:opacity-8 filter drop-shadow-[0_0_120px_rgba(52,211,153,0.4)] brightness-110"
         />
         {/* Subtle translucent tint overlays so text remains crisp and legible while image details pop through */}
-        <div className="absolute inset-0 bg-[#060e0c]/50" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#060e0c]/70 via-transparent to-[#060e0c]/75" />
+        <div className="absolute inset-0 bg-white/0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-transparent to-white/0" />
       </motion.div>
       <div className="relative z-10">
       
@@ -296,11 +296,11 @@ export default function App() {
         initial={{ y: -30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-        className="bg-gradient-to-r from-emerald-900/80 via-emerald-950/80 to-emerald-900/80 text-emerald-100 text-xs font-medium py-2.5 px-4 border-b border-emerald-600/30"
+        className="bg-emerald-700 text-white text-xs font-medium py-2.5 px-4 border-b border-emerald-800"
       >
         <div className="max-w-7xl mx-auto flex items-center justify-end gap-4 text-[11px]">
           <span className="flex items-center gap-1.5 text-white/90 font-medium"><Phone className="w-3 h-3 text-amber-400" /> +263 71 280 0220</span>
-          <span className="text-slate-600">•</span>
+          <span className="text-white/40">•</span>
           <span className="flex items-center gap-1.5 text-white/90 font-medium"><Mail className="w-3 h-3 text-amber-400" /> info@hermitsustainability.co.zw</span>
         </div>
       </motion.div>
@@ -310,17 +310,17 @@ export default function App() {
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-        className="sticky top-0 z-50 overflow-hidden border-b border-emerald-800/50 shadow-2xl shadow-black/40 transition-colors glass-nav"
+        className="sticky top-0 z-50 overflow-hidden border-b border-slate-200 shadow-sm transition-colors bg-white"
       >
         {/* Leaf Background Layer - Highly Visible & Vibrant */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
           <img
             src={navLeavesImg}
             alt=""
-            className="w-full h-full object-cover object-center opacity-85 filter brightness-105 contrast-110"
+            className="w-full h-full object-cover object-center opacity-0"
           />
           {/* Subtle dark tint solely to keep white text effortlessly readable */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#040a07]/88 via-[#040a07]/65 to-[#040a07]/88" />
+          <div className="absolute inset-0 bg-white" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -333,24 +333,24 @@ export default function App() {
               className="w-11 h-11 rounded-xl object-cover object-center shadow-lg shadow-emerald-500/20 transform group-hover:scale-105 transition-transform"
             />
             <div>
-              <span className="text-2xl font-black tracking-tight font-display text-white">
+              <span className="text-2xl font-black tracking-tight font-display text-slate-900">
                 HERMIT
               </span>
-              <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-300">
+              <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-600">
                 Sustainability Advisory
               </span>
             </div>
           </a>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center space-x-7 xl:space-x-8 text-[15px] xl:text-base font-semibold text-slate-100">
-            <a href="#about" className="hover:text-emerald-300 transition-colors hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.6)]">About</a>
-            <a href="#nexus" className="hover:text-emerald-300 transition-colors hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.6)]">Quad Nexus</a>
-            <a href="#hybrid" className="hover:text-emerald-300 transition-colors hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.6)]">Hybrid Solutions</a>
-            <a href="#portfolio" className="hover:text-emerald-300 transition-colors hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.6)]">Track Record</a>
-            <a href="#process" className="hover:text-emerald-300 transition-colors hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.6)]">Engagement</a>
-            <a href="#partnerships" className="hover:text-emerald-300 transition-colors hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.6)]">Partners</a>
-            <a href="#faq" className="hover:text-emerald-300 transition-colors hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.6)]">FAQ</a>
+          <div className="hidden lg:flex items-center space-x-7 xl:space-x-8 text-[15px] xl:text-base font-semibold text-slate-700">
+            <a href="#about" className="hover:text-emerald-600 transition-colors">About</a>
+            <a href="#nexus" className="hover:text-emerald-600 transition-colors">Quad Nexus</a>
+            <a href="#hybrid" className="hover:text-emerald-600 transition-colors">Hybrid Solutions</a>
+            <a href="#portfolio" className="hover:text-emerald-600 transition-colors">Track Record</a>
+            <a href="#process" className="hover:text-emerald-600 transition-colors">Engagement</a>
+            <a href="#partnerships" className="hover:text-emerald-600 transition-colors">Partners</a>
+            <a href="#faq" className="hover:text-emerald-600 transition-colors">FAQ</a>
           </div>
 
           {/* Right Action CTA */}
@@ -368,7 +368,7 @@ export default function App() {
           <div className="flex lg:hidden items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-slate-300 hover:text-white"
+              className="p-2 text-slate-700 hover:text-slate-900"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -377,13 +377,13 @@ export default function App() {
 
         {/* Mobile menu dropdown */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-b border-emerald-950 bg-[#070d14] px-6 py-6 space-y-3 font-medium">
-            <a href="#about" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-300 hover:text-emerald-400">About Hermit</a>
-            <a href="#nexus" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-300 hover:text-emerald-400">Quad Nexus Solutions</a>
-            <a href="#hybrid" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-300 hover:text-emerald-400">Hydro-Solar Hybrid Case</a>
-            <a href="#portfolio" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-300 hover:text-emerald-400">Project Portfolio</a>
-            <a href="#process" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-300 hover:text-emerald-400">Engagement Process</a>
-            <a href="#partnerships" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-300 hover:text-emerald-400">Strategic Partnerships</a>
+          <div className="lg:hidden border-b border-slate-200 bg-white px-6 py-6 space-y-3 font-medium shadow-lg">
+            <a href="#about" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 hover:text-emerald-600">About Hermit</a>
+            <a href="#nexus" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 hover:text-emerald-600">Quad Nexus Solutions</a>
+            <a href="#hybrid" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 hover:text-emerald-600">Hydro-Solar Hybrid Case</a>
+            <a href="#portfolio" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 hover:text-emerald-600">Project Portfolio</a>
+            <a href="#process" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 hover:text-emerald-600">Engagement Process</a>
+            <a href="#partnerships" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 hover:text-emerald-600">Strategic Partnerships</a>
             <a href="#contact" onClick={() => setMobileMenuOpen(false)} className={`block py-3 mt-4 text-center text-slate-950 ${currentTheme.primaryBtn} rounded-xl font-bold`}>
               Contact Harare Office
             </a>
@@ -441,8 +441,8 @@ export default function App() {
           />
 
           {/* Contrast & Gradient Depth Layers */}
-          <div className="absolute inset-0 bg-[#040a07]/45" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#040a07]/65 via-transparent to-[#040a07]/50" />
+          <div className="absolute inset-0 bg-slate-900/50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/30 to-slate-900/70" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
@@ -514,7 +514,7 @@ export default function App() {
                 visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
               }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="p-4 sm:p-6 rounded-2xl bg-emerald-950/60 hover:bg-emerald-900/60 border border-emerald-500/50 shadow-lg shadow-emerald-900/30 transition-all card-glow"
+              className="p-4 sm:p-6 rounded-2xl bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/30 shadow-lg transition-all"
             >
               <div className="flex items-center justify-between text-amber-300 mb-1.5 sm:mb-2">
                 <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -532,7 +532,7 @@ export default function App() {
                 visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
               }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="p-4 sm:p-6 rounded-2xl bg-emerald-950/60 hover:bg-emerald-900/60 border border-emerald-500/50 shadow-lg shadow-emerald-900/30 transition-all card-glow"
+              className="p-4 sm:p-6 rounded-2xl bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/30 shadow-lg transition-all"
             >
               <div className="flex items-center justify-between text-emerald-300 mb-1.5 sm:mb-2">
                 <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -550,7 +550,7 @@ export default function App() {
                 visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
               }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="p-4 sm:p-6 rounded-2xl bg-emerald-950/60 hover:bg-emerald-900/60 border border-emerald-500/50 shadow-lg shadow-emerald-900/30 transition-all card-glow"
+              className="p-4 sm:p-6 rounded-2xl bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/30 shadow-lg transition-all"
             >
               <div className="flex items-center justify-between text-amber-300 mb-1.5 sm:mb-2">
                 <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -568,7 +568,7 @@ export default function App() {
                 visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
               }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="p-4 sm:p-6 rounded-2xl bg-emerald-950/60 hover:bg-emerald-900/60 border border-emerald-500/50 shadow-lg shadow-emerald-900/30 transition-all card-glow"
+              className="p-4 sm:p-6 rounded-2xl bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/30 shadow-lg transition-all"
             >
               <div className="flex items-center justify-between text-emerald-300 mb-1.5 sm:mb-2">
                 <Layers className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -591,14 +591,14 @@ export default function App() {
               <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider border ${currentTheme.badge}`}>
                 Executive Overview
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-white leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-slate-900 leading-tight">
                 Empowering Governments, Utilities, & Industries with Real Numbers, Not Assumptions
               </h2>
-              <p className="text-slate-300 text-base leading-relaxed">
+              <p className="text-slate-600 text-base leading-relaxed">
                 Hermit Sustainability is a Zimbabwean-owned renewable energy and sustainability consultancy. 
                 We bridge the gap between renewable energy innovation and practical, bankable project execution.
               </p>
-              <p className="text-slate-300 text-base leading-relaxed">
+              <p className="text-slate-600 text-base leading-relaxed">
                 Every recommendation is grounded in rigorous technical and financial modelling, whether that is an 
                 <strong className={`font-semibold ${currentTheme.accentText}`}> hourly PVsyst simulation </strong> 
                 of a floating solar array or a <strong className={`font-semibold ${currentTheme.accentSecondary}`}>first-principles hydraulic model </strong> 
@@ -611,28 +611,28 @@ export default function App() {
                   <div className={`flex items-center gap-2 font-bold text-sm ${currentTheme.accentText}`}>
                     <CheckCircle2 className="w-4 h-4" /> Sustainability
                   </div>
-                  <p className="text-xs text-slate-400 mt-1">Solutions designed to endure environmentally, operationally, and financially.</p>
+                  <p className="text-xs text-slate-500 mt-1">Solutions designed to endure environmentally, operationally, and financially.</p>
                 </div>
 
                 <div className={`p-4 rounded-xl ${currentTheme.cardInner} transition-all`}>
                   <div className={`flex items-center gap-2 font-bold text-sm ${currentTheme.accentSecondary}`}>
                     <CheckCircle2 className="w-4 h-4" /> Innovation
                   </div>
-                  <p className="text-xs text-slate-400 mt-1">Applying proven technology in breakthrough combinations, like hydro-solar hybridisation.</p>
+                  <p className="text-xs text-slate-500 mt-1">Applying proven technology in breakthrough combinations, like hydro-solar hybridisation.</p>
                 </div>
 
                 <div className={`p-4 rounded-xl ${currentTheme.cardInner} transition-all`}>
                   <div className={`flex items-center gap-2 font-bold text-sm ${currentTheme.accentText}`}>
                     <CheckCircle2 className="w-4 h-4" /> Integrity
                   </div>
-                  <p className="text-xs text-slate-400 mt-1">Defensible findings, Class 5 costing, and bankable metrics investors rely upon.</p>
+                  <p className="text-xs text-slate-500 mt-1">Defensible findings, Class 5 costing, and bankable metrics investors rely upon.</p>
                 </div>
 
                 <div className={`p-4 rounded-xl ${currentTheme.cardInner} transition-all`}>
                   <div className={`flex items-center gap-2 font-bold text-sm ${currentTheme.accentSecondary}`}>
                     <CheckCircle2 className="w-4 h-4" /> Carbon Stewardship
                   </div>
-                  <p className="text-xs text-slate-400 mt-1">Projects that measurably cut emissions and advance African climate commitments.</p>
+                  <p className="text-xs text-slate-500 mt-1">Projects that measurably cut emissions and advance African climate commitments.</p>
                 </div>
               </div>
             </div>
@@ -640,27 +640,27 @@ export default function App() {
             {/* Strategic Pillars Callout: Mission & Vision */}
             <div className="lg:col-span-5 space-y-6">
               {/* Mission Card (Above Vision) */}
-              <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#0d1f18] to-[#07100c] text-white border border-emerald-800/40 shadow-2xl relative overflow-hidden hover:border-emerald-600/60 transition-all">
+              <div className="p-8 sm:p-10 rounded-3xl bg-white text-slate-900 border border-slate-200 shadow-xl relative overflow-hidden hover:border-emerald-400 transition-all">
                 <div className="absolute top-0 right-0 w-52 h-52 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
 
-                <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">Our Mission</span>
-                <h3 className="mt-2 text-xl sm:text-2xl font-bold font-display text-white">
+                <span className="text-xs font-bold text-amber-500 uppercase tracking-widest">Our Mission</span>
+                <h3 className="mt-2 text-xl sm:text-2xl font-bold font-display text-slate-900">
                   Sustainable Technologies & Bankable Execution
                 </h3>
-                <p className="mt-4 text-sm text-slate-300 leading-relaxed">
+                <p className="mt-4 text-sm text-slate-600 leading-relaxed">
                   Our mission is to empower governments, utilities, and industries with sustainable technologies and strategies that drive energy security, environmental stewardship, and economic resilience.
                 </p>
               </div>
 
               {/* Vision Card */}
-              <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#0d1f18] to-[#07100c] text-white border border-emerald-800/40 shadow-2xl relative overflow-hidden hover:border-emerald-600/60 transition-all">
+              <div className="p-8 sm:p-10 rounded-3xl bg-white text-slate-900 border border-slate-200 shadow-xl relative overflow-hidden hover:border-emerald-400 transition-all">
                 <div className="absolute top-0 right-0 w-52 h-52 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
 
-                <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest">Our Vision</span>
-                <h3 className="mt-2 text-xl sm:text-2xl font-bold font-display text-white">
+                <span className="text-xs font-bold text-emerald-600 uppercase tracking-widest">Our Vision</span>
+                <h3 className="mt-2 text-xl sm:text-2xl font-bold font-display text-slate-900">
                   Africa’s Leading Catalyst for Renewable Innovation
                 </h3>
-                <p className="mt-4 text-sm text-slate-300 leading-relaxed">
+                <p className="mt-4 text-sm text-slate-600 leading-relaxed">
                   Driving sustainable power systems that empower communities, enhance sovereign energy security, and protect the African environment for future generations.
                 </p>
               </div>
@@ -676,7 +676,7 @@ export default function App() {
           <span className={`text-xs font-bold uppercase tracking-wider ${currentTheme.accentText}`}>
             Framework For Impact
           </span>
-          <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-white">
+          <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-slate-900">
             The Quad Nexus Framework
           </h2>
           <p className="mt-4 text-slate-300 text-base">
@@ -745,7 +745,7 @@ export default function App() {
               <p className={`mt-1 text-sm font-semibold ${currentTheme.accentText}`}>
                 {quadNexus[activeNexusTab].subtitle}
               </p>
-              <p className="mt-4 text-slate-300 text-base leading-relaxed">
+              <p className="mt-4 text-slate-600 text-base leading-relaxed">
                 {quadNexus[activeNexusTab].description}
               </p>
 
@@ -761,22 +761,22 @@ export default function App() {
             </div>
 
             <div className={`lg:col-span-5 p-6 sm:p-8 rounded-2xl ${currentTheme.cardInner} transition-all`}>
-              <h4 className="font-bold text-base text-white">End-to-End Advisory Scope</h4>
-              <p className="text-xs text-slate-400 mt-1">
+              <h4 className="font-bold text-base text-slate-900">End-to-End Advisory Scope</h4>
+              <p className="text-xs text-slate-500 mt-1">
                 Supporting institutional off-takers from pre-feasibility to commercial commissioning.
               </p>
 
               <div className="mt-6 space-y-4">
                 <div className={`p-3.5 rounded-xl ${currentTheme.cardBg}`}>
-                  <p className="text-xs font-bold text-white">Technical & Financial Studies</p>
+                  <p className="text-xs font-bold text-slate-900">Technical & Financial Studies</p>
                   <p className="text-[11px] text-slate-400 mt-0.5">Pre-feasibility & feasibility benchmarked to Class 5 cost accuracy.</p>
                 </div>
                 <div className={`p-3.5 rounded-xl ${currentTheme.cardBg}`}>
-                  <p className="text-xs font-bold text-white">Grid Integration Studies</p>
+                  <p className="text-xs font-bold text-slate-900">Grid Integration Studies</p>
                   <p className="text-[11px] text-slate-400 mt-0.5">Interconnection design, power factor, and protection coordination.</p>
                 </div>
                 <div className={`p-3.5 rounded-xl ${currentTheme.cardBg}`}>
-                  <p className="text-xs font-bold text-white">Project Structuring & SPV</p>
+                  <p className="text-xs font-bold text-slate-900">Project Structuring & SPV</p>
                   <p className="text-[11px] text-slate-400 mt-0.5">Special purpose vehicle creation, ownership models & tender documentation.</p>
                 </div>
               </div>
@@ -806,14 +806,14 @@ export default function App() {
               <h2 className="mt-2 text-3xl sm:text-5xl font-extrabold font-display">
                 Floating Solar & Hydro-Hybridisation
               </h2>
-              <p className="mt-4 text-slate-300 text-base leading-relaxed">
+              <p className="mt-4 text-slate-600 text-base leading-relaxed">
                 Our floating solar practice hybridises megawatt-scale PV arrays with existing hydro plants, sharing one grid connection to dramatically lift a site's combined output without requiring costly transmission line reinforcement.
               </p>
             </div>
 
             {/* Picture component covering the upper right area */}
             <div className="lg:col-span-5">
-              <div className="relative rounded-2xl overflow-hidden border border-slate-800 shadow-2xl group">
+              <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-2xl group">
                 <img
                   src={floatingSolarHybridImg}
                   alt="Floating Solar Array on Hydropower Dam Reservoir"
@@ -821,7 +821,7 @@ export default function App() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#070d14]/90 via-[#070d14]/20 to-transparent" />
                 <div className="absolute bottom-3 right-3 text-xs">
-                  <span className="text-[10px] text-slate-300 bg-slate-900/90 backdrop-blur-md px-2.5 py-1 rounded-md border border-slate-700/60 font-medium">
+                  <span className="text-[10px] text-slate-300 bg-slate-900/90 backdrop-blur-md px-2.5 py-1 rounded-md border border-slate-200 font-medium">
                     Floating PV Hybrid
                   </span>
                 </div>
@@ -834,7 +834,7 @@ export default function App() {
             {/* Interactive Sizing Model */}
             <div className={`lg:col-span-7 p-8 rounded-3xl shadow-xl transition-all ${currentTheme.cardBg}`}>
               <div className="flex items-center justify-between pb-4 border-b border-slate-800">
-                <h3 className="font-bold text-lg font-display text-white">Hybrid Array Output Simulator</h3>
+                <h3 className="font-bold text-lg font-display text-slate-900">Hybrid Array Output Simulator</h3>
                 <span className={`text-xs px-2.5 py-1 rounded font-semibold border ${currentTheme.badge}`}>
                   PVsyst V7.4.7 Calibrated
                 </span>
@@ -843,7 +843,7 @@ export default function App() {
               <div className="mt-6 space-y-6">
                 <div>
                   <div className="flex justify-between text-sm font-semibold mb-2">
-                    <span className="text-slate-300">Floating Solar Capacity</span>
+                    <span className="text-slate-600">Floating Solar Capacity</span>
                     <span className={`font-bold ${currentTheme.accentText}`}>{solarCapacityMW} MWp</span>
                   </div>
                   <input
@@ -864,7 +864,7 @@ export default function App() {
 
                 <div>
                   <div className="flex justify-between text-sm font-semibold mb-2">
-                    <span className="text-slate-300">Existing Hydro Plant Capacity</span>
+                    <span className="text-slate-600">Existing Hydro Plant Capacity</span>
                     <span className={`font-bold ${currentTheme.accentSecondary}`}>{hydroCapacityMW} MW</span>
                   </div>
                   <input
@@ -924,7 +924,7 @@ export default function App() {
             {/* 8-Month Inception-to-Tender Workflow */}
             <div className="lg:col-span-5 space-y-4">
               <h3 className="font-bold text-xl font-display text-white">8-Month Inception to EPC Tender</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <p className="text-xs text-slate-500 leading-relaxed">
                 Hermit structures five rigorous work packages ensuring seamless technical de-risking and bankable tender readiness.
               </p>
 
@@ -936,10 +936,10 @@ export default function App() {
                   { phase: "Environmental & Social Screening", duration: "4 Months", detail: "ESIA scope, water body co-benefit analysis" },
                   { phase: "EPC Tender Documentation", duration: "3 Months", detail: "Class 5 cost accuracy & procurement package" }
                 ].map((item, idx) => (
-                  <div key={idx} className="p-3 rounded-xl bg-[#0c1420] border border-slate-800 flex items-center justify-between">
+                  <div key={idx} className="p-3 rounded-xl bg-white border border-slate-200 flex items-center justify-between shadow-sm">
                     <div>
-                      <p className="text-xs font-bold text-white">{item.phase}</p>
-                      <p className="text-[10px] text-slate-400">{item.detail}</p>
+                      <p className="text-xs font-bold text-slate-900">{item.phase}</p>
+                      <p className="text-[10px] text-slate-500">{item.detail}</p>
                     </div>
                     <span className="text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
                       {item.duration}
@@ -961,7 +961,7 @@ export default function App() {
             <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
               Defensible Track Record
             </span>
-            <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-white">
+            <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-slate-900">
               Project Portfolio Highlights
             </h2>
           </div>
@@ -995,7 +995,7 @@ export default function App() {
           {filteredProjects.map((p, idx) => (
             <div 
               key={idx}
-              className="p-6 rounded-2xl bg-[#0c1912]/80 border border-slate-700/60 hover:border-emerald-500/60 shadow-md hover:shadow-2xl hover:shadow-emerald-900/20 transition-all duration-300 flex flex-col justify-between"
+              className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500/60 shadow-md hover:shadow-2xl hover:shadow-emerald-900/20 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between text-xs font-semibold mb-3">
@@ -1007,7 +1007,7 @@ export default function App() {
                   </span>
                 </div>
 
-                <h3 className="text-xl font-bold font-display text-white mt-1">
+                <h3 className="text-xl font-bold font-display text-slate-900 mt-1">
                   {p.name}
                 </h3>
                 <p className="mt-3 text-sm text-slate-400 leading-relaxed">
@@ -1015,12 +1015,12 @@ export default function App() {
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between">
+              <div className="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between">
                 <div>
                   <span className="text-[10px] text-slate-500 uppercase font-bold block">Capacity</span>
                   <span className="text-base font-extrabold text-emerald-400">{p.size}</span>
                 </div>
-                <button className="text-xs font-semibold text-slate-300 hover:text-emerald-400 flex items-center gap-1">
+                <button className="text-xs font-semibold text-slate-500 hover:text-emerald-600 flex items-center gap-1">
                   Factsheet <ChevronRight className="w-3.5 h-3.5" />
                 </button>
               </div>
@@ -1036,7 +1036,7 @@ export default function App() {
             <span className={`text-xs font-bold uppercase tracking-wider ${currentTheme.accentText}`}>
               How We Work
             </span>
-            <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-white">
+            <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-slate-900">
               Our Six-Stage Engagement Process
             </h2>
             <p className="mt-4 text-slate-300 text-base">
@@ -1053,7 +1053,7 @@ export default function App() {
                 <div className={`text-3xl font-black text-emerald-900/60 group-hover:${currentTheme.accentText} transition-colors font-display`}>
                   {stage.step}
                 </div>
-                <h4 className="mt-2 text-lg font-bold font-display text-white">
+                <h4 className="mt-2 text-lg font-bold font-display text-slate-900">
                   {stage.name}
                 </h4>
                 <p className="mt-2 text-sm text-slate-400 leading-relaxed">
@@ -1064,24 +1064,24 @@ export default function App() {
           </div>
 
           {/* 4 Ways to Work With Us (Page 7) */}
-          <div className="mt-16 p-8 rounded-3xl bg-gradient-to-r from-emerald-950/90 via-[#0d221c] to-[#091814] border border-emerald-500/50 text-white shadow-xl shadow-emerald-950/50">
-            <h3 className="text-xl sm:text-2xl font-bold font-display text-white">Ways to Work With Hermit</h3>
+          <div className="mt-16 p-8 rounded-3xl bg-emerald-700 border border-emerald-600 text-white shadow-xl">
+            <h3 className="text-xl sm:text-2xl font-bold font-display text-slate-900">Ways to Work With Hermit</h3>
             <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
-              <div className="bg-[#07130f]/60 p-4 rounded-xl border border-emerald-500/20 backdrop-blur-sm">
-                <span className="font-bold text-emerald-300 block mb-1">1. Pre-Feasibility Study</span>
-                <p className="text-xs text-slate-300">Stand-alone technical and financial pre-feasibility assessment.</p>
+              <div className="bg-white p-4 rounded-xl border border-emerald-500/20 backdrop-blur-sm">
+                <span className="font-bold text-white block mb-1">1. Pre-Feasibility Study</span>
+                <p className="text-xs text-white/80">Stand-alone technical and financial pre-feasibility assessment.</p>
               </div>
-              <div className="bg-[#07130f]/60 p-4 rounded-xl border border-emerald-500/20 backdrop-blur-sm">
-                <span className="font-bold text-emerald-300 block mb-1">2. Feasibility & Design</span>
-                <p className="text-xs text-slate-300">Detailed feasibility, grid impact, and preliminary engineering design.</p>
+              <div className="bg-white p-4 rounded-xl border border-emerald-500/20 backdrop-blur-sm">
+                <span className="font-bold text-white block mb-1">2. Feasibility & Design</span>
+                <p className="text-xs text-white/80">Detailed feasibility, grid impact, and preliminary engineering design.</p>
               </div>
-              <div className="bg-[#07130f]/60 p-4 rounded-xl border border-emerald-500/20 backdrop-blur-sm">
-                <span className="font-bold text-emerald-300 block mb-1">3. Development Support</span>
-                <p className="text-xs text-slate-300">SPV structuring, funding strategy, and tender documentation.</p>
+              <div className="bg-white p-4 rounded-xl border border-emerald-500/20 backdrop-blur-sm">
+                <span className="font-bold text-white block mb-1">3. Development Support</span>
+                <p className="text-xs text-white/80">SPV structuring, funding strategy, and tender documentation.</p>
               </div>
-              <div className="bg-[#07130f]/60 p-4 rounded-xl border border-emerald-500/20 backdrop-blur-sm">
-                <span className="font-bold text-emerald-300 block mb-1">4. Independent Review</span>
-                <p className="text-xs text-slate-300">Second opinion verification on someone else’s design or figures.</p>
+              <div className="bg-white p-4 rounded-xl border border-emerald-500/20 backdrop-blur-sm">
+                <span className="font-bold text-white block mb-1">4. Independent Review</span>
+                <p className="text-xs text-white/80">Second opinion verification on someone else’s design or figures.</p>
               </div>
             </div>
           </div>
@@ -1094,7 +1094,7 @@ export default function App() {
           <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
             Collaboration & Recognition
           </span>
-          <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-white">
+          <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-slate-900">
             Strategic Partnerships & Advisory Roles
           </h2>
           <p className="mt-4 text-slate-300 text-base">
@@ -1103,35 +1103,35 @@ export default function App() {
         </div>
 
         {/* Featured Case: Bui Power Authority */}
-        <div className="mt-12 p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#0d1f18] to-[#07100c] border border-emerald-700/50 shadow-xl">
+        <div className="mt-12 p-8 sm:p-10 rounded-3xl bg-white border border-slate-200 shadow-xl">
           <div className="grid lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8">
-              <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-600">
                 International Landmark Mandate
               </span>
-              <h3 className="text-2xl font-bold font-display text-white mt-1">
+              <h3 className="mt-2 text-2xl font-bold font-display text-slate-900">
                 Bui Power Authority (Ghana) Collaboration
               </h3>
-              <p className="mt-3 text-slate-300 text-sm sm:text-base leading-relaxed">
+              <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
                 Strategic technical advisory addressing floating solar PV integration on the Bui Reservoir, pumped hydro storage feasibility for grid stability, and institutional rooftop solar PV for community resilience.
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
-                <span className="text-xs bg-[#070d14] px-3 py-1 rounded-md font-semibold border border-slate-800 text-slate-300">
+                <span className="text-xs bg-slate-50 px-3 py-1 rounded-md font-semibold border border-slate-200 text-slate-300">
                   Floating Solar PV
                 </span>
-                <span className="text-xs bg-[#070d14] px-3 py-1 rounded-md font-semibold border border-slate-800 text-slate-300">
+                <span className="text-xs bg-slate-50 px-3 py-1 rounded-md font-semibold border border-slate-200 text-slate-300">
                   Pumped Hydro Storage
                 </span>
-                <span className="text-xs bg-[#070d14] px-3 py-1 rounded-md font-semibold border border-slate-800 text-slate-300">
+                <span className="text-xs bg-slate-50 px-3 py-1 rounded-md font-semibold border border-slate-200 text-slate-300">
                   Capacity Building
                 </span>
               </div>
             </div>
 
-            <div className="lg:col-span-4 bg-emerald-500/10 p-6 rounded-2xl border border-emerald-500/30 text-center">
-              <span className="text-4xl font-black text-emerald-400 font-display">100%</span>
-              <p className="text-xs font-bold text-white mt-1">Proven Regional Replicability</p>
-              <p className="text-[11px] text-slate-400 mt-1">
+            <div className="lg:col-span-4 bg-emerald-50 p-6 rounded-2xl border border-emerald-200 text-center">
+              <span className="text-4xl font-black text-emerald-600 font-display">100%</span>
+              <p className="text-xs font-bold text-slate-900 mt-1">Proven Regional Replicability</p>
+              <p className="text-[11px] text-slate-500 mt-1">
                 From Lake Kariba to Bui Reservoir, delivering scalable African hydro-solar solutions.
               </p>
             </div>
@@ -1141,12 +1141,12 @@ export default function App() {
         {/* Partners Grid */}
         <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {partners.map((p, idx) => (
-            <div key={idx} className="p-4 rounded-xl bg-[#0c1912]/70 border border-slate-700/50 hover:border-emerald-600/50 flex items-center justify-between transition-all">
+            <div key={idx} className="p-4 rounded-xl bg-white border border-slate-200 hover:border-emerald-600/50 flex items-center justify-between transition-all">
               <div>
-                <p className="text-sm font-bold text-white">{p.name}</p>
-                <p className="text-xs text-slate-400">{p.role}</p>
+                <p className="text-sm font-bold text-slate-900">{p.name}</p>
+                <p className="text-xs text-slate-500">{p.role}</p>
               </div>
-              <span className="text-[10px] uppercase font-bold text-slate-400 bg-[#070d14] px-2 py-1 rounded border border-slate-800">
+              <span className="text-[10px] uppercase font-bold text-slate-400 bg-slate-50 px-2 py-1 rounded border border-slate-800">
                 {p.location}
               </span>
             </div>
@@ -1161,7 +1161,7 @@ export default function App() {
             <span className={`text-xs font-bold uppercase tracking-wider ${currentTheme.accentText}`}>
               Answers & Due Diligence
             </span>
-            <h2 className="mt-2 text-3xl font-extrabold font-display text-white">
+            <h2 className="mt-2 text-3xl font-extrabold font-display text-slate-900">
               Frequently Asked Questions
             </h2>
           </div>
@@ -1208,52 +1208,52 @@ export default function App() {
             <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
               Harare Office & Operations
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-white leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-slate-900 leading-tight">
               Connect With Our Advisory Team
             </h2>
-            <p className="text-slate-300 text-base leading-relaxed">
+            <p className="text-slate-600 text-base leading-relaxed">
               Advancing sustainable power solutions across Africa. Reach out to request a feasibility assessment, explore hydro-solar hybridisation, or discuss project development support.
             </p>
 
             <div className="space-y-4 pt-4">
               <div className="flex items-start gap-3.5">
-                <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                <div className="p-2.5 rounded-xl bg-emerald-100 text-emerald-600 border border-emerald-200">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs uppercase font-bold text-slate-400">Physical Address</p>
-                  <p className="text-sm font-semibold text-white">30 Tunsgate, Mt Pleasant, Harare, Zimbabwe</p>
+                  <p className="text-xs uppercase font-bold text-slate-500">Physical Address</p>
+                  <p className="text-sm font-semibold text-slate-900">30 Tunsgate, Mt Pleasant, Harare, Zimbabwe</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3.5">
-                <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                <div className="p-2.5 rounded-xl bg-emerald-100 text-emerald-600 border border-emerald-200">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs uppercase font-bold text-slate-400">Direct Telephone</p>
-                  <p className="text-sm font-semibold text-white">+263 71 280 0220</p>
+                  <p className="text-xs uppercase font-bold text-slate-500">Direct Telephone</p>
+                  <p className="text-sm font-semibold text-slate-900">+263 71 280 0220</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3.5">
-                <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                <div className="p-2.5 rounded-xl bg-emerald-100 text-emerald-600 border border-emerald-200">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs uppercase font-bold text-slate-400">Corporate Enquiries</p>
-                  <p className="text-sm font-semibold text-white">info@hermitsustainability.co.zw</p>
-                  <p className="text-xs text-slate-400">hermitinfopack@gmail.com</p>
+                  <p className="text-xs uppercase font-bold text-slate-500">Corporate Enquiries</p>
+                  <p className="text-sm font-semibold text-slate-900">info@hermitsustainability.co.zw</p>
+                  <p className="text-xs text-slate-500">hermitinfopack@gmail.com</p>
                 </div>
               </div>
             </div>
 
             {/* "Before You Get in Touch" Callout (Page 10) */}
-            <div className="p-5 rounded-2xl bg-[#0c1912]/60 border border-emerald-800/40">
-              <p className="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-2">
+            <div className="p-5 rounded-2xl bg-emerald-50 border border-emerald-200">
+              <p className="text-xs font-bold uppercase tracking-wider text-emerald-700 mb-2">
                 Before You Get In Touch (Feasibility Checklist)
               </p>
-              <ul className="text-xs text-slate-300 space-y-1.5 list-disc pl-4">
+              <ul className="text-xs text-slate-700 space-y-1.5 list-disc pl-4">
                 <li>Site location, existing infrastructure, and grid connection details</li>
                 <li>Target off-takers or intended use of generated power</li>
                 <li>Any prior studies, resource data, or drawings already available</li>
@@ -1262,21 +1262,21 @@ export default function App() {
           </div>
 
           {/* Form */}
-          <div className="lg:col-span-7 bg-gradient-to-br from-[#0d1f18] to-[#07100c] p-8 sm:p-10 rounded-3xl border border-emerald-800/50 shadow-2xl">
-            <h3 className="text-xl font-bold font-display text-white mb-2">
+          <div className="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-xl">
+            <h3 className="text-xl font-bold font-display text-slate-900 mb-2">
               Request Advisory Briefing or Proposal
             </h3>
-            <p className="text-xs text-slate-400 mb-6">
+            <p className="text-xs text-slate-500 mb-6">
               Our engineering and financial team typically responds within 24 business hours.
             </p>
 
             {formStatus === 'success' && (
-              <div className="mb-6 p-5 rounded-2xl bg-emerald-950/80 border border-emerald-500/50 text-emerald-200">
+              <div className="mb-6 p-5 rounded-2xl bg-emerald-50 border border-emerald-300 text-emerald-800">
                 <div className="flex items-start space-x-3">
                   <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-bold text-white text-sm mb-1">Advisory Briefing Dispatched</h4>
-                    <p className="text-xs text-emerald-200/90 leading-relaxed mb-3">{formFeedback}</p>
+                    <h4 className="font-bold text-slate-900 text-sm mb-1">Advisory Briefing Dispatched</h4>
+                    <p className="text-xs text-emerald-700 leading-relaxed mb-3">{formFeedback}</p>
                     <button
                       type="button"
                       onClick={() => setFormStatus('idle')}
@@ -1294,7 +1294,7 @@ export default function App() {
                 <div className="flex items-start space-x-3">
                   <div className="text-rose-400 font-bold shrink-0 mt-0.5">⚠️</div>
                   <div className="w-full">
-                    <h4 className="font-bold text-white text-sm mb-1">Notice</h4>
+                    <h4 className="font-bold text-slate-900 text-sm mb-1">Notice</h4>
                     <p className="text-xs text-rose-200/90 leading-relaxed mb-3">{formFeedback}</p>
                     <a
                       href={`mailto:info@hermitsustainability.co.zw?cc=hermitinfopack@gmail.com&subject=${encodeURIComponent(`Advisory Request - ${contactName || 'Project Sponsor'}`)}&body=${encodeURIComponent(`Name: ${contactName}\nEmail: ${contactEmail}\nSector: ${contactSector}\nPackage: ${contactPackage}\n\nProject Scope:\n${inquiryScope}`)}`}
@@ -1310,36 +1310,36 @@ export default function App() {
             <form onSubmit={handleContactSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">Contact Name</label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">Contact Name</label>
                   <input 
                     type="text" 
                     required 
                     value={contactName}
                     onChange={(e) => setContactName(e.target.value)}
                     placeholder="E.g. Tendai Moyo" 
-                    className="w-full px-4 py-3 rounded-xl border border-slate-700/70 bg-[#071210]/80 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
+                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">Email Address</label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">Email Address</label>
                   <input 
                     type="email" 
                     required 
                     value={contactEmail}
                     onChange={(e) => setContactEmail(e.target.value)}
                     placeholder="tendai@organization.com" 
-                    className="w-full px-4 py-3 rounded-xl border border-slate-700/70 bg-[#071210]/80 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
+                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">Client Sector</label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">Client Sector</label>
                   <select 
                     value={contactSector}
                     onChange={(e) => setContactSector(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-700/70 bg-[#071210]/80 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
                   >
                     <option>Power Utility / IPP</option>
                     <option>Government / Ministry</option>
@@ -1349,11 +1349,11 @@ export default function App() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">Advisory Package</label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">Advisory Package</label>
                   <select 
                     value={contactPackage}
                     onChange={(e) => setContactPackage(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-700/70 bg-[#071210]/80 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
                   >
                     <option>Pre-Feasibility Study</option>
                     <option>Floating Solar / Hydro-Hybrid Study</option>
@@ -1365,14 +1365,14 @@ export default function App() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">Project Details / Scope</label>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">Project Details / Scope</label>
                 <textarea 
                   rows={4} 
                   required
                   value={inquiryScope}
                   onChange={(e) => setInquiryScope(e.target.value)}
                   placeholder="Share details regarding site location, capacity target (MW), grid interconnect, or specific objectives..."
-                  className="w-full px-4 py-3 rounded-xl border border-slate-700/70 bg-[#071210]/80 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
+                  className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
                 />
               </div>
 
@@ -1400,9 +1400,9 @@ export default function App() {
       </section>
 
       {/* Footer (Page 1 & 10) */}
-      <footer className="bg-[#030806]/95 text-slate-400 py-14 border-t border-emerald-900/40">
+      <footer className="bg-slate-900 text-slate-400 py-14 border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-800/60">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-200">
             <div className="flex items-center space-x-3">
               <img
                 src={logoImg}
