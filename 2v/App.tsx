@@ -5,7 +5,12 @@ import heroPosterImg from './hero-poster.jpg';
 import floatingSolarHybridImg from './floating-solar-hybrid.jpg';
 import logoImg from './logo.png';
 import navLeavesImg from './nav-leaves.jpg';
-import globeBgImg from './globe-bg.png';
+import logoUnido from './logo-unido.png';
+import logoGiz from './logo-giz.png';
+import logoIdbz from './logo-idbz.png';
+import logoSadelec from './logo-sadelec.png';
+import logoRen21 from './logo-ren21.png';
+import logoAu from './logo-au.png';
 import { MetricCounter } from './MetricCounter';
 import { 
   Shield, Zap, Globe, TrendingUp, Award, ArrowRight, 
@@ -19,27 +24,26 @@ export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeNexusTab, setActiveNexusTab] = useState<'energy' | 'water' | 'food' | 'waste'>('energy');
   const [projectFilter, setProjectFilter] = useState<string>('all');
-  const [showAllProjects, setShowAllProjects] = useState(false);
   
   // LIGHT MODERN THEME - with semi-transparent cool emerald glass tints allowing watermark & white depth through
   const currentTheme = {
     name: "Light Modern",
-    bgRoot: "bg-transparent",
-    sectionAlt: "bg-transparent border-y border-white/20",
-    sectionTranslucent: "bg-transparent",
+    bgRoot: "bg-white",
+    sectionAlt: "bg-emerald-50/60 border-y border-emerald-200/60",
+    sectionTranslucent: "bg-emerald-50/40",
     badge: "border-emerald-400/70 bg-emerald-100 text-emerald-800 font-semibold",
     headlineGradient: "from-white via-emerald-100 to-teal-200",
     primaryBtn: "bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/30 font-bold",
-    secondaryBtn: "bg-white/20 hover:bg-white/30 text-white border-2 border-white/80 hover:border-white backdrop-blur-md shadow-lg shadow-black/20 hover:shadow-xl font-bold",
+    secondaryBtn: "border-2 border-slate-700 text-slate-700 hover:bg-slate-700 hover:text-white",
     accentText: "text-emerald-700",
     accentSecondary: "text-slate-800",
     cardBg: "bg-white border border-emerald-200 hover:border-emerald-400 shadow-md hover:shadow-xl hover:shadow-emerald-950/10",
     cardInner: "bg-emerald-50 border border-emerald-200",
     navBg: "bg-white/95 border-slate-200",
-    inputBg: "bg-white border border-slate-300 text-slate-900 font-medium focus:ring-emerald-500 focus:border-emerald-500",
+    inputBg: "bg-white border border-slate-300 text-slate-900 focus:ring-emerald-500 focus:border-emerald-500",
     sliderAccent: "accent-emerald-600",
     pillActive: "bg-emerald-600 text-white shadow-sm",
-    pillInactive: "bg-white text-slate-800 font-medium hover:bg-emerald-50 border border-slate-200 hover:border-emerald-400"
+    pillInactive: "bg-white text-slate-700 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-400"
   };
   
   // Interactive Hydro-Solar Hybrid Calculator
@@ -284,16 +288,16 @@ export default function App() {
   ];
 
   return (
-        <div className="relative isolate min-h-screen text-slate-900 font-sans selection:bg-emerald-500 selection:text-white transition-colors duration-500">
-      {/* Fixed Fullscreen Earth Globe Background */}
+    <div className={`relative isolate min-h-screen ${currentTheme.bgRoot} text-slate-900 font-sans selection:bg-emerald-500 selection:text-white transition-colors duration-500`}>
+      {/* Background Hermit Logo: Fullscreen, 100% original visibility, no fading */}
       <div
-        className="fixed inset-0 z-0 pointer-events-none select-none flex items-center justify-center overflow-hidden"
+        className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none flex items-center justify-center"
         aria-hidden="true"
       >
         <img
-          src={globeBgImg}
-          alt="Earth Globe Background"
-          className="w-full h-full object-cover object-center filter brightness-100"
+          src={logoImg}
+          alt="Hermit Sustainability Background"
+          className="w-full h-full object-cover object-center"
         />
       </div>
       <div className="relative z-10">
@@ -306,9 +310,9 @@ export default function App() {
         className="bg-emerald-700 text-white text-xs font-medium py-2.5 px-4 border-b border-emerald-800"
       >
         <div className="max-w-7xl mx-auto flex items-center justify-end gap-4 text-[11px]">
-          <span className="flex items-center gap-1.5 text-white font-semibold"><Phone className="w-3 h-3 text-amber-400" /> +263 71 280 0220</span>
+          <span className="flex items-center gap-1.5 text-white/90 font-medium"><Phone className="w-3 h-3 text-amber-400" /> +263 71 280 0220</span>
           <span className="text-white/40">•</span>
-          <span className="flex items-center gap-1.5 text-white font-semibold"><Mail className="w-3 h-3 text-amber-400" /> info@hermitsustainability.co.zw</span>
+          <span className="flex items-center gap-1.5 text-white/90 font-medium"><Mail className="w-3 h-3 text-amber-400" /> info@hermitsustainability.co.zw</span>
         </div>
       </motion.div>
 
@@ -317,17 +321,17 @@ export default function App() {
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-        className="sticky top-0 z-50 overflow-hidden shadow-2xl transition-all"
+        className="sticky top-0 z-50 overflow-hidden border-b border-slate-200 shadow-sm transition-colors bg-white"
       >
         {/* Leaf Background Layer - Highly Visible & Vibrant */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
           <img
             src={navLeavesImg}
             alt=""
-            className="w-full h-full object-cover object-center filter brightness-125 contrast-110 saturate-125"
+            className="w-full h-full object-cover object-center opacity-0"
           />
           {/* Subtle dark tint solely to keep white text effortlessly readable */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/35 via-black/15 to-black/35" />
+          <div className="absolute inset-0 bg-white" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -340,24 +344,24 @@ export default function App() {
               className="w-11 h-11 rounded-xl object-cover object-center shadow-lg shadow-emerald-500/20 transform group-hover:scale-105 transition-transform"
             />
             <div>
-              <span className="text-2xl font-black tracking-tight font-display text-white drop-shadow-md">
+              <span className="text-2xl font-black tracking-tight font-display text-slate-900">
                 HERMIT
               </span>
-              <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-300 drop-shadow-sm">
+              <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-600">
                 Sustainability Advisory
               </span>
             </div>
           </a>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center space-x-7 xl:space-x-8 text-[15px] xl:text-base font-semibold text-white drop-shadow-md">
-            <a href="#about" className="hover:text-emerald-300 transition-colors drop-shadow-sm">About</a>
-            <a href="#nexus" className="hover:text-emerald-300 transition-colors drop-shadow-sm">Quad Nexus</a>
-            <a href="#hybrid" className="hover:text-emerald-300 transition-colors drop-shadow-sm">Hybrid Solutions</a>
-            <a href="#portfolio" className="hover:text-emerald-300 transition-colors drop-shadow-sm">Track Record</a>
-            <a href="#process" className="hover:text-emerald-300 transition-colors drop-shadow-sm">Engagement</a>
-            <a href="#partnerships" className="hover:text-emerald-300 transition-colors drop-shadow-sm">Partners</a>
-            <a href="#faq" className="hover:text-emerald-300 transition-colors drop-shadow-sm">FAQ</a>
+          <div className="hidden lg:flex items-center space-x-7 xl:space-x-8 text-[15px] xl:text-base font-semibold text-slate-700">
+            <a href="#about" className="hover:text-emerald-600 transition-colors">About</a>
+            <a href="#nexus" className="hover:text-emerald-600 transition-colors">Quad Nexus</a>
+            <a href="#hybrid" className="hover:text-emerald-600 transition-colors">Hybrid Solutions</a>
+            <a href="#portfolio" className="hover:text-emerald-600 transition-colors">Track Record</a>
+            <a href="#process" className="hover:text-emerald-600 transition-colors">Engagement</a>
+            <a href="#partnerships" className="hover:text-emerald-600 transition-colors">Partners</a>
+            <a href="#faq" className="hover:text-emerald-600 transition-colors">FAQ</a>
           </div>
 
           {/* Right Action CTA */}
@@ -375,7 +379,7 @@ export default function App() {
           <div className="flex lg:hidden items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-white hover:text-emerald-300"
+              className="p-2 text-slate-700 hover:text-slate-900"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -385,12 +389,12 @@ export default function App() {
         {/* Mobile menu dropdown */}
         {mobileMenuOpen && (
           <div className="lg:hidden border-b border-slate-200 bg-white px-6 py-6 space-y-3 font-medium shadow-lg">
-            <a href="#about" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-white drop-shadow-md hover:text-emerald-300 drop-shadow-sm">About Hermit</a>
-            <a href="#nexus" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-white drop-shadow-md hover:text-emerald-300 drop-shadow-sm">Quad Nexus Solutions</a>
-            <a href="#hybrid" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-white drop-shadow-md hover:text-emerald-300 drop-shadow-sm">Hydro-Solar Hybrid Case</a>
-            <a href="#portfolio" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-white drop-shadow-md hover:text-emerald-300 drop-shadow-sm">Project Portfolio</a>
-            <a href="#process" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-white drop-shadow-md hover:text-emerald-300 drop-shadow-sm">Engagement Process</a>
-            <a href="#partnerships" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-white drop-shadow-md hover:text-emerald-300 drop-shadow-sm">Strategic Partnerships</a>
+            <a href="#about" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 hover:text-emerald-600">About Hermit</a>
+            <a href="#nexus" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 hover:text-emerald-600">Quad Nexus Solutions</a>
+            <a href="#hybrid" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 hover:text-emerald-600">Hydro-Solar Hybrid Case</a>
+            <a href="#portfolio" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 hover:text-emerald-600">Project Portfolio</a>
+            <a href="#process" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 hover:text-emerald-600">Engagement Process</a>
+            <a href="#partnerships" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 hover:text-emerald-600">Strategic Partnerships</a>
             <a href="#contact" onClick={() => setMobileMenuOpen(false)} className={`block py-3 mt-4 text-center text-slate-950 ${currentTheme.primaryBtn} rounded-xl font-bold`}>
               Contact Harare Office
             </a>
@@ -402,7 +406,7 @@ export default function App() {
       <section className="relative min-h-[calc(100vh-7.5rem)] flex items-center justify-start py-8 sm:py-10 lg:py-12 overflow-hidden w-full">
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none select-none" aria-hidden="true">
           {/* 1. Alternate Background (Wind Turbine / Solar) */}
-          <div className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${isVideoLoaded ? "opacity-100" : "opacity-100"}`}>
+          <div className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${isVideoLoaded ? "opacity-0" : "opacity-100"}`}>
             <img
               src={heroPosterImg}
               alt="Clean renewable energy infrastructure"
@@ -413,7 +417,7 @@ export default function App() {
           {/* 2. Video Element covering 100% with no black gap */}
           <video
             ref={videoRef}
-            className={`absolute inset-0 w-full h-full object-cover object-center min-w-full min-h-full transition-opacity duration-1000 ease-in-out ${isVideoLoaded ? "opacity-100" : "opacity-100"}`}
+            className={`absolute inset-0 w-full h-full object-cover object-center min-w-full min-h-full transition-opacity duration-1000 ease-in-out ${isVideoLoaded ? "opacity-100" : "opacity-0"}`}
             autoPlay
             muted
             loop
@@ -568,9 +572,6 @@ export default function App() {
       </section>
 
       {/* About & Mission Section */}
-      {/* ── All content sections below the hero slide over the fixed globe watermark ── */}
-      <div className="relative bg-transparent">
-      {/* About & Mission Section */}
       <section id="about" className={`py-24 ${currentTheme.sectionAlt} transition-colors`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
@@ -579,7 +580,7 @@ export default function App() {
               <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider border ${currentTheme.badge}`}>
                 Executive Overview
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-white drop-shadow-lg leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-slate-900 leading-tight">
                 Empowering Governments, Utilities, & Industries with Real Numbers, Not Assumptions
               </h2>
               <p className="text-slate-600 text-base leading-relaxed">
@@ -632,7 +633,7 @@ export default function App() {
                 <div className="absolute top-0 right-0 w-52 h-52 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
 
                 <span className="text-xs font-bold text-amber-500 uppercase tracking-widest">Our Mission</span>
-                <h3 className="mt-2 text-xl sm:text-2xl font-bold font-display text-white drop-shadow-md">
+                <h3 className="mt-2 text-xl sm:text-2xl font-bold font-display text-slate-900">
                   Sustainable Technologies & Bankable Execution
                 </h3>
                 <p className="mt-4 text-sm text-slate-600 leading-relaxed">
@@ -644,8 +645,8 @@ export default function App() {
               <div className="p-8 sm:p-10 rounded-3xl bg-white text-slate-900 border border-slate-200 shadow-xl relative overflow-hidden hover:border-emerald-400 transition-all">
                 <div className="absolute top-0 right-0 w-52 h-52 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
 
-                <span className="text-xs font-bold text-emerald-300 drop-shadow-sm uppercase tracking-widest">Our Vision</span>
-                <h3 className="mt-2 text-xl sm:text-2xl font-bold font-display text-white drop-shadow-md">
+                <span className="text-xs font-bold text-emerald-600 uppercase tracking-widest">Our Vision</span>
+                <h3 className="mt-2 text-xl sm:text-2xl font-bold font-display text-slate-900">
                   Africa’s Leading Catalyst for Renewable Innovation
                 </h3>
                 <p className="mt-4 text-sm text-slate-600 leading-relaxed">
@@ -664,7 +665,7 @@ export default function App() {
           <span className={`text-xs font-bold uppercase tracking-wider ${currentTheme.accentText}`}>
             Framework For Impact
           </span>
-          <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-white drop-shadow-md">
+          <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-slate-900">
             The Quad Nexus Framework
           </h2>
           <p className="mt-4 text-slate-600 text-base">
@@ -727,7 +728,7 @@ export default function App() {
               <span className={`px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider border ${currentTheme.badge}`}>
                 {quadNexus[activeNexusTab].tag}
               </span>
-              <h3 className="mt-4 text-2xl sm:text-3xl font-extrabold font-display text-white drop-shadow-md">
+              <h3 className="mt-4 text-2xl sm:text-3xl font-extrabold font-display text-slate-900">
                 {quadNexus[activeNexusTab].title}
               </h3>
               <p className={`mt-1 text-sm font-semibold ${currentTheme.accentText}`}>
@@ -738,33 +739,33 @@ export default function App() {
               </p>
 
               <div className="mt-8 space-y-3">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200">What We Deliver In Practice:</h4>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">What We Deliver In Practice:</h4>
                 {quadNexus[activeNexusTab].deliverables.map((item, idx) => (
                   <div key={idx} className="flex items-start gap-3">
                     <Check className={`w-5 h-5 shrink-0 mt-0.5 ${currentTheme.accentText}`} />
-                    <span className="text-sm font-medium text-white drop-shadow-md">{item}</span>
+                    <span className="text-sm font-medium text-slate-700">{item}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             <div className={`lg:col-span-5 p-6 sm:p-8 rounded-2xl ${currentTheme.cardInner} transition-all`}>
-              <h4 className="font-bold text-base text-white drop-shadow-md">End-to-End Advisory Scope</h4>
+              <h4 className="font-bold text-base text-slate-900">End-to-End Advisory Scope</h4>
               <p className="text-xs text-slate-500 mt-1">
                 Supporting institutional off-takers from pre-feasibility to commercial commissioning.
               </p>
 
               <div className="mt-6 space-y-4">
                 <div className={`p-3.5 rounded-xl ${currentTheme.cardBg}`}>
-                  <p className="text-xs font-bold text-white drop-shadow-md">Technical & Financial Studies</p>
+                  <p className="text-xs font-bold text-slate-900">Technical & Financial Studies</p>
                   <p className="text-[11px] text-slate-600 mt-0.5">Pre-feasibility & feasibility benchmarked to Class 5 cost accuracy.</p>
                 </div>
                 <div className={`p-3.5 rounded-xl ${currentTheme.cardBg}`}>
-                  <p className="text-xs font-bold text-white drop-shadow-md">Grid Integration Studies</p>
+                  <p className="text-xs font-bold text-slate-900">Grid Integration Studies</p>
                   <p className="text-[11px] text-slate-600 mt-0.5">Interconnection design, power factor, and protection coordination.</p>
                 </div>
                 <div className={`p-3.5 rounded-xl ${currentTheme.cardBg}`}>
-                  <p className="text-xs font-bold text-white drop-shadow-md">Project Structuring & SPV</p>
+                  <p className="text-xs font-bold text-slate-900">Project Structuring & SPV</p>
                   <p className="text-[11px] text-slate-600 mt-0.5">Special purpose vehicle creation, ownership models & tender documentation.</p>
                 </div>
               </div>
@@ -782,7 +783,7 @@ export default function App() {
       </section>
 
       {/* Hydro-Solar Hybrid Case Study & Interactive Calculator */}
-      <section id="hybrid" className={`py-24 ${currentTheme.sectionAlt} text-white drop-shadow-md relative overflow-hidden transition-colors`}>
+      <section id="hybrid" className={`py-24 ${currentTheme.sectionAlt} text-slate-900 relative overflow-hidden transition-colors`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           {/* Header Row: Heading on the left, floating solar picture component on the right */}
@@ -822,7 +823,7 @@ export default function App() {
             {/* Interactive Sizing Model */}
             <div className={`lg:col-span-7 p-8 rounded-3xl shadow-xl transition-all ${currentTheme.cardBg}`}>
               <div className="flex items-center justify-between pb-4 border-b border-slate-200">
-                <h3 className="font-bold text-lg font-display text-white drop-shadow-md">Hybrid Array Output Simulator</h3>
+                <h3 className="font-bold text-lg font-display text-slate-900">Hybrid Array Output Simulator</h3>
                 <span className={`text-xs px-2.5 py-1 rounded font-semibold border ${currentTheme.badge}`}>
                   PVsyst V7.4.7 Calibrated
                 </span>
@@ -884,14 +885,14 @@ export default function App() {
                   </div>
                   <div className={`p-3 rounded-xl ${currentTheme.cardInner}`}>
                     <span className="text-[10px] text-slate-600 uppercase font-bold flex items-center justify-center gap-1">
-                      <Droplets className="w-3 h-3 text-emerald-300 drop-shadow-sm" /> Water Saved
+                      <Droplets className="w-3 h-3 text-emerald-600" /> Water Saved
                     </span>
                     <p className="text-base sm:text-lg font-black text-emerald-700 mt-1">{(estimatedWaterSavedM3 / 1000).toFixed(0)}k m³/yr</p>
                     <p className="text-[10px] text-slate-500">Reduced Evaporation</p>
                   </div>
                   <div className={`p-3 rounded-xl ${currentTheme.cardInner} border border-emerald-500/40`}>
                     <span className={`text-[10px] uppercase font-bold ${currentTheme.accentText}`}>Hybrid Yield</span>
-                    <p className="text-base sm:text-lg font-black text-white drop-shadow-md mt-1">{(totalHybridMWh / 1000).toFixed(1)} GWh/yr</p>
+                    <p className="text-base sm:text-lg font-black text-slate-900 mt-1">{(totalHybridMWh / 1000).toFixed(1)} GWh/yr</p>
                     <p className={`text-[10px] ${currentTheme.accentText}`}>{blendedCapacityFactor}% Blended Factor</p>
                   </div>
                 </div>
@@ -911,7 +912,7 @@ export default function App() {
 
             {/* 8-Month Inception-to-Tender Workflow */}
             <div className="lg:col-span-5 space-y-4">
-              <h3 className="font-bold text-xl font-display text-white drop-shadow-md">8-Month Inception to EPC Tender</h3>
+              <h3 className="font-bold text-xl font-display text-slate-900">8-Month Inception to EPC Tender</h3>
               <p className="text-xs text-slate-500 leading-relaxed">
                 Hermit structures five rigorous work packages ensuring seamless technical de-risking and bankable tender readiness.
               </p>
@@ -926,7 +927,7 @@ export default function App() {
                 ].map((item, idx) => (
                   <div key={idx} className="p-3 rounded-xl bg-white/85 backdrop-blur-sm border border-emerald-500/20 flex items-center justify-between shadow-sm">
                     <div>
-                      <p className="text-xs font-bold text-white drop-shadow-md">{item.phase}</p>
+                      <p className="text-xs font-bold text-slate-900">{item.phase}</p>
                       <p className="text-[10px] text-slate-500">{item.detail}</p>
                     </div>
                     <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-500/15 px-2 py-0.5 rounded border border-emerald-500/30">
@@ -949,7 +950,7 @@ export default function App() {
             <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
               Defensible Track Record
             </span>
-            <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-white drop-shadow-md">
+            <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-slate-900">
               Project Portfolio Highlights
             </h2>
           </div>
@@ -965,11 +966,11 @@ export default function App() {
             ].map(tab => (
               <button
                 key={tab.id}
-                onClick={() => { setProjectFilter(tab.id); setShowAllProjects(false); }}
+                onClick={() => setProjectFilter(tab.id)}
                 className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
                   projectFilter === tab.id
                     ? 'bg-emerald-600 text-white shadow-sm'
-                    : 'bg-white/90 text-slate-800 font-medium hover:bg-emerald-50 hover:text-emerald-900 border border-emerald-500/20'
+                    : 'bg-white/80 text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 border border-emerald-500/20'
                 }`}
               >
                 {tab.label}
@@ -978,19 +979,12 @@ export default function App() {
           </div>
         </div>
 
-        {/* Portfolio Grid — top 3 always visible, rest in animated drawer */}
-        {(() => {
-          const visibleProjects = filteredProjects.slice(0, 3);
-          const hiddenProjects = filteredProjects.slice(3);
-          const cardClass = "p-6 rounded-2xl bg-white/85 backdrop-blur-md border border-emerald-500/20 hover:border-emerald-500/60 shadow-md hover:shadow-2xl hover:shadow-emerald-950/10 transition-all duration-300 flex flex-col justify-between";
-
-          const ProjectCard = ({ p, idx, delay = 0 }: { p: typeof filteredProjects[0]; idx: number; delay?: number }) => (
-            <motion.div
+        {/* Portfolio Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredProjects.map((p, idx) => (
+            <div 
               key={idx}
-              initial={{ opacity: 0, y: 32, scale: 0.97 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.45, delay, ease: [0.16, 1, 0.3, 1] }}
-              className={cardClass}
+              className="p-6 rounded-2xl bg-white/85 backdrop-blur-md border border-emerald-500/20 hover:border-emerald-500/60 shadow-md hover:shadow-2xl hover:shadow-emerald-950/10 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between text-xs font-semibold mb-3">
@@ -1001,69 +995,27 @@ export default function App() {
                     <MapPin className="w-3.5 h-3.5 text-slate-500" /> {p.location}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold font-display text-slate-900 mt-1">{p.name}</h3>
-                <p className="mt-3 text-sm text-slate-600 leading-relaxed">{p.description}</p>
+
+                <h3 className="text-xl font-bold font-display text-slate-900 mt-1">
+                  {p.name}
+                </h3>
+                <p className="mt-3 text-sm text-slate-600 leading-relaxed">
+                  {p.description}
+                </p>
               </div>
+
               <div className="mt-6 pt-4 border-t border-emerald-500/15 flex items-center justify-between">
                 <div>
                   <span className="text-[10px] text-slate-500 uppercase font-bold block">Capacity</span>
                   <span className="text-base font-extrabold text-emerald-700">{p.size}</span>
                 </div>
-                <button className="text-xs font-semibold text-slate-500 hover:text-emerald-300 drop-shadow-sm flex items-center gap-1">
+                <button className="text-xs font-semibold text-slate-500 hover:text-emerald-600 flex items-center gap-1">
                   Factsheet <ChevronRight className="w-3.5 h-3.5" />
                 </button>
               </div>
-            </motion.div>
-          );
-
-          return (
-            <>
-              {/* Top 3 cards — always shown with staggered unpack animation */}
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {visibleProjects.map((p, idx) => (
-                  <ProjectCard key={idx} p={p} idx={idx} delay={idx * 0.1} />
-                ))}
-              </div>
-
-              {/* Animated drawer for remaining cards */}
-              {hiddenProjects.length > 0 && (
-                <div className="mt-6">
-                  {/* Drawer content with CSS transition */}
-                  <div
-                    className="overflow-hidden transition-all duration-700 ease-in-out"
-                    style={{ maxHeight: showAllProjects ? `${hiddenProjects.length * 320}px` : '0px', opacity: showAllProjects ? 1 : 0 }}
-                  >
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 pt-6">
-                      {hiddenProjects.map((p, idx) => (
-                        <ProjectCard key={idx + 3} p={p} idx={idx + 3} delay={showAllProjects ? idx * 0.1 : 0} />
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Toggle button */}
-                  <div className="mt-8 flex justify-center">
-                    <button
-                      onClick={() => setShowAllProjects(!showAllProjects)}
-                      className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-white border-2 border-emerald-500 text-emerald-700 font-bold text-sm hover:bg-emerald-600 hover:text-white hover:border-emerald-600 shadow-lg shadow-emerald-500/20 transition-all duration-300"
-                    >
-                      {showAllProjects ? (
-                        <>
-                          <span>Show Less</span>
-                          <ChevronRight className="w-4 h-4 rotate-[-90deg] transition-transform duration-300" />
-                        </>
-                      ) : (
-                        <>
-                          <span>See All {filteredProjects.length} Projects</span>
-                          <ChevronRight className="w-4 h-4 rotate-90 transition-transform duration-300 group-hover:translate-y-0.5" />
-                        </>
-                      )}
-                    </button>
-                  </div>
-                </div>
-              )}
-            </>
-          );
-        })()}
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* Engagement Process (Page 3 & 7) */}
@@ -1073,7 +1025,7 @@ export default function App() {
             <span className={`text-xs font-bold uppercase tracking-wider ${currentTheme.accentText}`}>
               How We Work
             </span>
-            <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-white drop-shadow-md">
+            <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-slate-900">
               Our Six-Stage Engagement Process
             </h2>
             <p className="mt-4 text-slate-600 text-base">
@@ -1090,7 +1042,7 @@ export default function App() {
                 <div className={`text-3xl font-black text-emerald-800/40 group-hover:${currentTheme.accentText} transition-colors font-display`}>
                   {stage.step}
                 </div>
-                <h4 className="mt-2 text-lg font-bold font-display text-white drop-shadow-md">
+                <h4 className="mt-2 text-lg font-bold font-display text-slate-900">
                   {stage.name}
                 </h4>
                 <p className="mt-2 text-sm text-slate-600 leading-relaxed">
@@ -1105,19 +1057,19 @@ export default function App() {
             <h3 className="text-xl sm:text-2xl font-bold font-display text-white">Ways to Work With Hermit</h3>
             <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
               <div className="bg-white p-5 rounded-2xl shadow-md border border-slate-100 hover:shadow-lg transition-all">
-                <span className="font-bold text-white drop-shadow-md font-extrabold block mb-1">1. Pre-Feasibility Study</span>
+                <span className="font-bold text-slate-900 font-extrabold block mb-1">1. Pre-Feasibility Study</span>
                 <p className="text-xs text-slate-600 font-medium">Stand-alone technical and financial pre-feasibility assessment.</p>
               </div>
               <div className="bg-white p-5 rounded-2xl shadow-md border border-slate-100 hover:shadow-lg transition-all">
-                <span className="font-bold text-white drop-shadow-md font-extrabold block mb-1">2. Feasibility & Design</span>
+                <span className="font-bold text-slate-900 font-extrabold block mb-1">2. Feasibility & Design</span>
                 <p className="text-xs text-slate-600 font-medium">Detailed feasibility, grid impact, and preliminary engineering design.</p>
               </div>
               <div className="bg-white p-5 rounded-2xl shadow-md border border-slate-100 hover:shadow-lg transition-all">
-                <span className="font-bold text-white drop-shadow-md font-extrabold block mb-1">3. Development Support</span>
+                <span className="font-bold text-slate-900 font-extrabold block mb-1">3. Development Support</span>
                 <p className="text-xs text-slate-600 font-medium">SPV structuring, funding strategy, and tender documentation.</p>
               </div>
               <div className="bg-white p-5 rounded-2xl shadow-md border border-slate-100 hover:shadow-lg transition-all">
-                <span className="font-bold text-white drop-shadow-md font-extrabold block mb-1">4. Independent Review</span>
+                <span className="font-bold text-slate-900 font-extrabold block mb-1">4. Independent Review</span>
                 <p className="text-xs text-slate-600 font-medium">Second opinion verification on someone else’s design or figures.</p>
               </div>
             </div>
@@ -1131,7 +1083,7 @@ export default function App() {
           <span className={`text-xs font-bold uppercase tracking-wider ${currentTheme.accentText}`}>
             Collaboration & Recognition
           </span>
-          <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-white drop-shadow-md">
+          <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-slate-900">
             Strategic Partnerships & Advisory Roles
           </h2>
           <p className="mt-4 text-slate-600 text-base">
@@ -1146,7 +1098,7 @@ export default function App() {
               <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">
                 International Landmark Mandate
               </span>
-              <h3 className="mt-2 text-2xl font-bold font-display text-white drop-shadow-md">
+              <h3 className="mt-2 text-2xl font-bold font-display text-slate-900">
                 Bui Power Authority (Ghana) Collaboration
               </h3>
               <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
@@ -1167,7 +1119,7 @@ export default function App() {
 
             <div className="lg:col-span-4 bg-emerald-50/80 p-6 rounded-2xl border border-emerald-200 text-center">
               <span className="text-4xl font-black text-emerald-700 font-display">100%</span>
-              <p className="text-xs font-bold text-white drop-shadow-md mt-1">Proven Regional Replicability</p>
+              <p className="text-xs font-bold text-slate-900 mt-1">Proven Regional Replicability</p>
               <p className="text-[11px] text-slate-600 mt-1">
                 From Lake Kariba to Bui Reservoir, delivering scalable African hydro-solar solutions.
               </p>
@@ -1177,45 +1129,99 @@ export default function App() {
 
         {/* Partners Logo Banner */}
         <div className="mt-14">
-          <p className="text-center text-xs font-bold uppercase tracking-widest text-slate-200 mb-8">
-            Collaborating with global institutions &amp; regional leaders
+          <p className="text-center text-xs font-bold uppercase tracking-widest text-slate-500 mb-8">
+            Strategic Partners & Multilateral Collaborations
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
 
             {/* UNIDO */}
-            <div className="group flex flex-col items-center justify-center gap-3 p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg transition-all">
-              <img src="/logo-unido.png" alt="UNIDO" className="h-14 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300" />
-              <p className="text-[10px] text-slate-500 text-center leading-tight">Dev Programs</p>
+            <div className="group flex flex-col items-center justify-between p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm hover:shadow-xl transition-all">
+              <div className="w-full h-20 flex items-center justify-center p-1">
+                <img
+                  src={logoUnido}
+                  alt="UNIDO - United Nations Industrial Development Organization"
+                  className="max-h-16 max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="text-center mt-2">
+                <p className="text-xs font-bold text-slate-800 leading-tight">UNIDO</p>
+                <p className="text-[10px] text-slate-500 leading-tight mt-0.5">Development Programs</p>
+              </div>
             </div>
 
             {/* GIZ */}
-            <div className="group flex flex-col items-center justify-center gap-3 p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg transition-all">
-              <img src="/logo-giz.png" alt="GIZ" className="h-14 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300" />
-              <p className="text-[10px] text-slate-500 text-center leading-tight">Dev Programs</p>
+            <div className="group flex flex-col items-center justify-between p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm hover:shadow-xl transition-all">
+              <div className="w-full h-20 flex items-center justify-center p-1">
+                <img
+                  src={logoGiz}
+                  alt="GIZ - Deutsche Gesellschaft für Internationale Zusammenarbeit"
+                  className="max-h-16 max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="text-center mt-2">
+                <p className="text-xs font-bold text-slate-800 leading-tight">GIZ</p>
+                <p className="text-[10px] text-slate-500 leading-tight mt-0.5">International Dev</p>
+              </div>
             </div>
 
             {/* IDBZ */}
-            <div className="group flex flex-col items-center justify-center gap-3 p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg transition-all">
-              <img src="/logo-idbz.png" alt="IDBZ" className="h-14 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300" />
-              <p className="text-[10px] text-slate-500 text-center leading-tight">Project Finance</p>
+            <div className="group flex flex-col items-center justify-between p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm hover:shadow-xl transition-all">
+              <div className="w-full h-20 flex items-center justify-center p-1">
+                <img
+                  src={logoIdbz}
+                  alt="IDBZ - Infrastructure Development Bank of Zimbabwe"
+                  className="max-h-16 max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="text-center mt-2">
+                <p className="text-xs font-bold text-slate-800 leading-tight">IDBZ</p>
+                <p className="text-[10px] text-slate-500 leading-tight mt-0.5">Project Finance Partner</p>
+              </div>
             </div>
 
             {/* SADELEC / SADC Energy */}
-            <div className="group flex flex-col items-center justify-center gap-3 p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg transition-all">
-              <img src="/logo-sadelec.png" alt="SADC Energy" className="h-14 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300" />
-              <p className="text-[10px] text-slate-500 text-center leading-tight">SADC Energy</p>
+            <div className="group flex flex-col items-center justify-between p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm hover:shadow-xl transition-all">
+              <div className="w-full h-20 flex items-center justify-center p-1">
+                <img
+                  src={logoSadelec}
+                  alt="SADELEC - SADC Energy"
+                  className="max-h-16 max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="text-center mt-2">
+                <p className="text-xs font-bold text-slate-800 leading-tight">SADELEC</p>
+                <p className="text-[10px] text-slate-500 leading-tight mt-0.5">SADC Energy Solutions</p>
+              </div>
             </div>
 
             {/* REN21 */}
-            <div className="group flex flex-col items-center justify-center gap-3 p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg transition-all">
-              <img src="/logo-ren21.png" alt="REN21" className="h-14 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300" />
-              <p className="text-[10px] text-slate-500 text-center leading-tight">SADC RE Reports</p>
+            <div className="group flex flex-col items-center justify-between p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm hover:shadow-xl transition-all">
+              <div className="w-full h-20 flex items-center justify-center p-1">
+                <img
+                  src={logoRen21}
+                  alt="REN21 Renewables Now"
+                  className="max-h-16 max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="text-center mt-2">
+                <p className="text-xs font-bold text-slate-800 leading-tight">REN21</p>
+                <p className="text-[10px] text-slate-500 leading-tight mt-0.5">SADC RE Status Reports</p>
+              </div>
             </div>
 
             {/* African Union Commission */}
-            <div className="group flex flex-col items-center justify-center gap-3 p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg transition-all">
-              <img src="/logo-au.png" alt="African Union" className="h-14 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300" />
-              <p className="text-[10px] text-slate-500 text-center leading-tight">Pan-African Policy</p>
+            <div className="group flex flex-col items-center justify-between p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm hover:shadow-xl transition-all">
+              <div className="w-full h-20 flex items-center justify-center p-1">
+                <img
+                  src={logoAu}
+                  alt="African Union Commission"
+                  className="max-h-16 max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="text-center mt-2">
+                <p className="text-xs font-bold text-slate-800 leading-tight">African Union</p>
+                <p className="text-[10px] text-slate-500 leading-tight mt-0.5">AU Commission Policy</p>
+              </div>
             </div>
 
           </div>
@@ -1229,14 +1235,14 @@ export default function App() {
             <span className={`text-xs font-bold uppercase tracking-wider ${currentTheme.accentText}`}>
               Answers & Due Diligence
             </span>
-            <h2 className="mt-2 text-3xl font-extrabold font-display text-white drop-shadow-md">
+            <h2 className="mt-2 text-3xl font-extrabold font-display text-slate-900">
               Frequently Asked Questions
             </h2>
           </div>
 
           <div className="space-y-4">
             <div className={`p-6 rounded-2xl ${currentTheme.cardBg} transition-all`}>
-              <h4 className="text-base font-bold text-white drop-shadow-md flex items-center gap-2">
+              <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
                 <HelpCircle className={`w-5 h-5 shrink-0 ${currentTheme.accentText}`} />
                 Do you only work on utility-scale projects?
               </h4>
@@ -1246,7 +1252,7 @@ export default function App() {
             </div>
 
             <div className={`p-6 rounded-2xl ${currentTheme.cardBg} transition-all`}>
-              <h4 className="text-base font-bold text-white drop-shadow-md flex items-center gap-2">
+              <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
                 <HelpCircle className={`w-5 h-5 shrink-0 ${currentTheme.accentText}`} />
                 What stage do you engage at?
               </h4>
@@ -1256,7 +1262,7 @@ export default function App() {
             </div>
 
             <div className={`p-6 rounded-2xl ${currentTheme.cardBg} transition-all`}>
-              <h4 className="text-base font-bold text-white drop-shadow-md flex items-center gap-2">
+              <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
                 <HelpCircle className={`w-5 h-5 shrink-0 ${currentTheme.accentText}`} />
                 Is your advisory work independently verifiable?
               </h4>
@@ -1276,7 +1282,7 @@ export default function App() {
             <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
               Harare Office & Operations
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-white drop-shadow-lg leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-slate-900 leading-tight">
               Connect With Our Advisory Team
             </h2>
             <p className="text-slate-600 text-base leading-relaxed">
@@ -1285,32 +1291,32 @@ export default function App() {
 
             <div className="space-y-4 pt-4">
               <div className="flex items-start gap-3.5">
-                <div className="p-2.5 rounded-xl bg-emerald-100 text-emerald-300 drop-shadow-sm border border-emerald-200">
+                <div className="p-2.5 rounded-xl bg-emerald-100 text-emerald-600 border border-emerald-200">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
                   <p className="text-xs uppercase font-bold text-slate-500">Physical Address</p>
-                  <p className="text-sm font-semibold text-white drop-shadow-md">20 Aintree Road Highlands, Harare</p>
+                  <p className="text-sm font-semibold text-slate-900">20 Aintree Road Highlands, Harare</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3.5">
-                <div className="p-2.5 rounded-xl bg-emerald-100 text-emerald-300 drop-shadow-sm border border-emerald-200">
+                <div className="p-2.5 rounded-xl bg-emerald-100 text-emerald-600 border border-emerald-200">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
                   <p className="text-xs uppercase font-bold text-slate-500">Direct Telephone</p>
-                  <p className="text-sm font-semibold text-white drop-shadow-md">+263 71 280 0220</p>
+                  <p className="text-sm font-semibold text-slate-900">+263 71 280 0220</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3.5">
-                <div className="p-2.5 rounded-xl bg-emerald-100 text-emerald-300 drop-shadow-sm border border-emerald-200">
+                <div className="p-2.5 rounded-xl bg-emerald-100 text-emerald-600 border border-emerald-200">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
                   <p className="text-xs uppercase font-bold text-slate-500">Corporate Enquiries</p>
-                  <p className="text-sm font-semibold text-white drop-shadow-md">info@hermitsustainability.co.zw</p>
+                  <p className="text-sm font-semibold text-slate-900">info@hermitsustainability.co.zw</p>
                   <p className="text-xs text-slate-500">hermitinfopack@gmail.com</p>
                 </div>
               </div>
@@ -1321,7 +1327,7 @@ export default function App() {
               <p className="text-xs font-bold uppercase tracking-wider text-emerald-700 mb-2">
                 Before You Get In Touch (Feasibility Checklist)
               </p>
-              <ul className="text-xs text-white drop-shadow-md space-y-1.5 list-disc pl-4">
+              <ul className="text-xs text-slate-700 space-y-1.5 list-disc pl-4">
                 <li>Site location, existing infrastructure, and grid connection details</li>
                 <li>Target off-takers or intended use of generated power</li>
                 <li>Any prior studies, resource data, or drawings already available</li>
@@ -1331,7 +1337,7 @@ export default function App() {
 
           {/* Form */}
           <div className="lg:col-span-7 bg-white/85 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-emerald-500/20 shadow-xl">
-            <h3 className="text-xl font-bold font-display text-white drop-shadow-md mb-2">
+            <h3 className="text-xl font-bold font-display text-slate-900 mb-2">
               Request Advisory Briefing or Proposal
             </h3>
             <p className="text-xs text-slate-500 mb-6">
@@ -1343,7 +1349,7 @@ export default function App() {
                 <div className="flex items-start space-x-3">
                   <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-bold text-white drop-shadow-md text-sm mb-1">Advisory Briefing Dispatched</h4>
+                    <h4 className="font-bold text-slate-900 text-sm mb-1">Advisory Briefing Dispatched</h4>
                     <p className="text-xs text-emerald-700 leading-relaxed mb-3">{formFeedback}</p>
                     <button
                       type="button"
@@ -1362,7 +1368,7 @@ export default function App() {
                 <div className="flex items-start space-x-3">
                   <div className="text-rose-400 font-bold shrink-0 mt-0.5">⚠️</div>
                   <div className="w-full">
-                    <h4 className="font-bold text-white drop-shadow-md text-sm mb-1">Notice</h4>
+                    <h4 className="font-bold text-slate-900 text-sm mb-1">Notice</h4>
                     <p className="text-xs text-rose-200/90 leading-relaxed mb-3">{formFeedback}</p>
                     <a
                       href={`mailto:info@hermitsustainability.co.zw?cc=hermitinfopack@gmail.com&subject=${encodeURIComponent(`Advisory Request - ${contactName || 'Project Sponsor'}`)}&body=${encodeURIComponent(`Name: ${contactName}\nEmail: ${contactEmail}\nSector: ${contactSector}\nPackage: ${contactPackage}\n\nProject Scope:\n${inquiryScope}`)}`}
@@ -1378,36 +1384,36 @@ export default function App() {
             <form onSubmit={handleContactSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-white drop-shadow-md mb-1">Contact Name</label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">Contact Name</label>
                   <input 
                     type="text" 
                     required 
                     value={contactName}
                     onChange={(e) => setContactName(e.target.value)}
                     placeholder="E.g. Tendai Moyo" 
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 font-medium placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
+                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-white drop-shadow-md mb-1">Email Address</label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">Email Address</label>
                   <input 
                     type="email" 
                     required 
                     value={contactEmail}
                     onChange={(e) => setContactEmail(e.target.value)}
                     placeholder="tendai@organization.com" 
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 font-medium placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
+                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-white drop-shadow-md mb-1">Client Sector</label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">Client Sector</label>
                   <select 
                     value={contactSector}
                     onChange={(e) => setContactSector(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
                   >
                     <option>Power Utility / IPP</option>
                     <option>Government / Ministry</option>
@@ -1417,11 +1423,11 @@ export default function App() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-white drop-shadow-md mb-1">Advisory Package</label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">Advisory Package</label>
                   <select 
                     value={contactPackage}
                     onChange={(e) => setContactPackage(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
                   >
                     <option>Pre-Feasibility Study</option>
                     <option>Floating Solar / Hydro-Hybrid Study</option>
@@ -1433,14 +1439,14 @@ export default function App() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-white drop-shadow-md mb-1">Project Details / Scope</label>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">Project Details / Scope</label>
                 <textarea 
                   rows={4} 
                   required
                   value={inquiryScope}
                   onChange={(e) => setInquiryScope(e.target.value)}
                   placeholder="Share details regarding site location, capacity target (MW), grid interconnect, or specific objectives..."
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 font-medium placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
+                  className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
                 />
               </div>
 
@@ -1468,7 +1474,7 @@ export default function App() {
       </section>
 
       {/* Footer (Page 1 & 10) */}
-      <footer className="bg-slate-900 text-slate-200 py-14 border-t border-slate-800">
+      <footer className="bg-slate-900 text-slate-400 py-14 border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-200">
             <div className="flex items-center space-x-3">
@@ -1494,7 +1500,7 @@ export default function App() {
 
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
             <p>© {new Date().getFullYear()} Hermit Sustainability Advisory. Zimbabwean-Owned • Africa-Facing.</p>
-            <p className="text-slate-200">20 Aintree Road Highlands, Harare</p>
+            <p className="text-slate-400">20 Aintree Road Highlands, Harare</p>
             <div className="flex space-x-4">
               <a href="http://www.hermitsustainability.co.zw" target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline">
                 www.hermitsustainability.co.zw
@@ -1503,7 +1509,6 @@ export default function App() {
           </div>
         </div>
       </footer>
-      </div>{/* end content-sections wrapper */}
       </div>
     </div>
   );
