@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import heroBackgroundImg from './hero-bg.jpg';
 import heroPosterImg from './hero-poster.jpg';
@@ -97,6 +97,7 @@ export default function App() {
   };
   
   // Track video loading state for smooth poster transition
+  const [showScrolledWatermark, setShowScrolledWatermark] = useState<boolean>(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState<boolean>(false);
   const [isMobileScreen, setIsMobileScreen] = useState<boolean>(false);
 
@@ -106,7 +107,13 @@ export default function App() {
     };
     checkMobile();
     window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    const handleScroll = () => {
+      // Show watermark once user scrolls past 350px (beyond hero)
+      setShowScrolledWatermark(window.scrollY > 350);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => { window.removeEventListener('resize', checkMobile); window.removeEventListener('scroll', handleScroll); };
   }, []);
 
   const prefillWithCalculator = () => {
@@ -272,22 +279,21 @@ export default function App() {
 
   return (
     <div className={`relative isolate min-h-screen ${currentTheme.bgRoot} text-slate-900 font-sans selection:bg-emerald-500 selection:text-white transition-colors duration-500`}>
-      {/* Background Image: Contained and properly scaled with enhanced brightness & visibility */}
-      <motion.div 
-        className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none flex items-center justify-center" 
+      {/* Background Watermark: Hidden on Hero, smoothly appears with crisp visibility when scrolling down */}
+      <motion.div
+        className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none flex items-center justify-center transition-opacity duration-700 ease-out"
         aria-hidden="true"
-        initial={{ scale: 1.1, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        animate={{
+          opacity: showScrolledWatermark ? 0.35 : 0,
+          scale: showScrolledWatermark ? 1 : 0.95
+        }}
+        transition={{ duration: 0.5 }}
       >
         <img
           src={logoImg}
-          alt=""
-          className="w-full h-full object-contain md:object-contain object-center max-w-4xl max-h-[85vh] opacity-20 md:opacity-30 filter drop-shadow-[0_0_50px_rgba(16,185,129,0.35)]"
+          alt="Hermit Sustainability Watermark"
+          className="w-full h-full object-contain object-center max-w-3xl max-h-[75vh] filter drop-shadow-[0_0_50px_rgba(16,185,129,0.3)]"
         />
-        {/* Subtle translucent tint overlays so text remains crisp and legible while image details pop through */}
-        <div className="absolute inset-0 bg-white/0" />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-transparent to-white/0" />
       </motion.div>
       <div className="relative z-10">
       
@@ -404,14 +410,14 @@ export default function App() {
             <img
               src={heroPosterImg}
               alt="Clean wind energy infrastructure"
-              className="w-full h-full object-cover object-center scale-[1.02] opacity-35 filter brightness-95"
+              className="w-full h-full object-cover object-center scale-[1.02] filter brightness-100"
             />
           </div>
 
           {/* 2. Video Element with reduced mobile burden & smooth fade-in */}
           <video
             className={`h-full w-full object-cover object-center transition-opacity duration-1000 ease-in-out ${
-              isVideoLoaded ? 'opacity-35' : 'opacity-0'
+              isVideoLoaded ? 'opacity-100' : 'opacity-0'
             }`}
             autoPlay
             muted
@@ -465,7 +471,7 @@ export default function App() {
             initial={{ y: 25, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-6 sm:mt-8 text-base sm:text-xl lg:text-2xl text-slate-700 max-w-2xl leading-relaxed font-normal"
+            className="mt-6 sm:mt-8 text-base sm:text-xl lg:text-2xl text-white max-w-2xl leading-relaxed font-medium drop-shadow-md"
           >
             Delivering innovative, bankable, and scalable clean energy solutions grounded in the 
             <span className={`font-semibold ${currentTheme.accentText}`}> Quad Nexus</span> of Energy, Water, Food, and Waste to Energy.
@@ -514,7 +520,7 @@ export default function App() {
                 visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
               }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="p-4 sm:p-6 rounded-2xl bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/30 shadow-lg transition-all"
+              className="p-4 sm:p-6 rounded-2xl bg-slate-900/70 hover:bg-slate-900/85 backdrop-blur-md border border-white/20 shadow-xl transition-all"
             >
               <div className="flex items-center justify-between text-amber-300 mb-1.5 sm:mb-2">
                 <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -532,7 +538,7 @@ export default function App() {
                 visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
               }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="p-4 sm:p-6 rounded-2xl bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/30 shadow-lg transition-all"
+              className="p-4 sm:p-6 rounded-2xl bg-slate-900/70 hover:bg-slate-900/85 backdrop-blur-md border border-white/20 shadow-xl transition-all"
             >
               <div className="flex items-center justify-between text-emerald-300 mb-1.5 sm:mb-2">
                 <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -550,7 +556,7 @@ export default function App() {
                 visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
               }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="p-4 sm:p-6 rounded-2xl bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/30 shadow-lg transition-all"
+              className="p-4 sm:p-6 rounded-2xl bg-slate-900/70 hover:bg-slate-900/85 backdrop-blur-md border border-white/20 shadow-xl transition-all"
             >
               <div className="flex items-center justify-between text-amber-300 mb-1.5 sm:mb-2">
                 <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -568,7 +574,7 @@ export default function App() {
                 visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
               }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="p-4 sm:p-6 rounded-2xl bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/30 shadow-lg transition-all"
+              className="p-4 sm:p-6 rounded-2xl bg-slate-900/70 hover:bg-slate-900/85 backdrop-blur-md border border-white/20 shadow-xl transition-all"
             >
               <div className="flex items-center justify-between text-emerald-300 mb-1.5 sm:mb-2">
                 <Layers className="w-4 h-4 sm:w-5 sm:h-5" />
