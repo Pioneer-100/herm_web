@@ -283,7 +283,7 @@ export default function App() {
         <img
           src={logoImg}
           alt=""
-          className="w-full h-full object-contain md:object-contain object-center max-w-4xl max-h-[85vh] opacity-5 md:opacity-8 filter drop-shadow-[0_0_120px_rgba(52,211,153,0.4)] brightness-110"
+          className="w-full h-full object-contain md:object-contain object-center max-w-4xl max-h-[85vh] opacity-20 md:opacity-30 filter drop-shadow-[0_0_50px_rgba(16,185,129,0.35)]"
         />
         {/* Subtle translucent tint overlays so text remains crisp and legible while image details pop through */}
         <div className="absolute inset-0 bg-white/0" />
@@ -404,14 +404,14 @@ export default function App() {
             <img
               src={heroPosterImg}
               alt="Clean wind energy infrastructure"
-              className="w-full h-full object-cover object-center scale-[1.02] filter brightness-90"
+              className="w-full h-full object-cover object-center scale-[1.02] opacity-35 filter brightness-95"
             />
           </div>
 
           {/* 2. Video Element with reduced mobile burden & smooth fade-in */}
           <video
             className={`h-full w-full object-cover object-center transition-opacity duration-1000 ease-in-out ${
-              isVideoLoaded ? 'opacity-100' : 'opacity-0'
+              isVideoLoaded ? 'opacity-35' : 'opacity-0'
             }`}
             autoPlay
             muted
@@ -441,8 +441,8 @@ export default function App() {
           />
 
           {/* Contrast & Gradient Depth Layers */}
-          <div className="absolute inset-0 bg-slate-900/50" />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/30 to-slate-900/70" />
+          <div className="absolute inset-0 bg-slate-900/30" />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-transparent to-white" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
@@ -465,7 +465,7 @@ export default function App() {
             initial={{ y: 25, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-6 sm:mt-8 text-base sm:text-xl lg:text-2xl text-slate-200 max-w-2xl leading-relaxed font-normal"
+            className="mt-6 sm:mt-8 text-base sm:text-xl lg:text-2xl text-slate-700 max-w-2xl leading-relaxed font-normal"
           >
             Delivering innovative, bankable, and scalable clean energy solutions grounded in the 
             <span className={`font-semibold ${currentTheme.accentText}`}> Quad Nexus</span> of Energy, Water, Food, and Waste to Energy.
@@ -739,7 +739,7 @@ export default function App() {
               <span className={`px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider border ${currentTheme.badge}`}>
                 {quadNexus[activeNexusTab].tag}
               </span>
-              <h3 className="mt-4 text-2xl sm:text-3xl font-extrabold font-display text-white">
+              <h3 className="mt-4 text-2xl sm:text-3xl font-extrabold font-display text-slate-900">
                 {quadNexus[activeNexusTab].title}
               </h3>
               <p className={`mt-1 text-sm font-semibold ${currentTheme.accentText}`}>
@@ -754,7 +754,7 @@ export default function App() {
                 {quadNexus[activeNexusTab].deliverables.map((item, idx) => (
                   <div key={idx} className="flex items-start gap-3">
                     <Check className={`w-5 h-5 shrink-0 mt-0.5 ${currentTheme.accentText}`} />
-                    <span className="text-sm font-medium text-slate-200">{item}</span>
+                    <span className="text-sm font-medium text-slate-700">{item}</span>
                   </div>
                 ))}
               </div>
@@ -794,7 +794,7 @@ export default function App() {
       </section>
 
       {/* Hydro-Solar Hybrid Case Study & Interactive Calculator */}
-      <section id="hybrid" className={`py-24 ${currentTheme.sectionAlt} text-white relative overflow-hidden transition-colors`}>
+      <section id="hybrid" className={`py-24 ${currentTheme.sectionAlt} text-slate-900 relative overflow-hidden transition-colors`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           {/* Header Row: Heading on the left, floating solar picture component on the right */}
@@ -903,7 +903,7 @@ export default function App() {
                   </div>
                   <div className={`p-3 rounded-xl ${currentTheme.cardInner} border border-emerald-500/40`}>
                     <span className={`text-[10px] uppercase font-bold ${currentTheme.accentText}`}>Hybrid Yield</span>
-                    <p className="text-base sm:text-lg font-black text-white mt-1">{(totalHybridMWh / 1000).toFixed(1)} GWh/yr</p>
+                    <p className="text-base sm:text-lg font-black text-slate-900 mt-1">{(totalHybridMWh / 1000).toFixed(1)} GWh/yr</p>
                     <p className={`text-[10px] ${currentTheme.accentText}`}>{blendedCapacityFactor}% Blended Factor</p>
                   </div>
                 </div>
@@ -923,7 +923,7 @@ export default function App() {
 
             {/* 8-Month Inception-to-Tender Workflow */}
             <div className="lg:col-span-5 space-y-4">
-              <h3 className="font-bold text-xl font-display text-white">8-Month Inception to EPC Tender</h3>
+              <h3 className="font-bold text-xl font-display text-slate-900">8-Month Inception to EPC Tender</h3>
               <p className="text-xs text-slate-500 leading-relaxed">
                 Hermit structures five rigorous work packages ensuring seamless technical de-risking and bankable tender readiness.
               </p>
@@ -1168,7 +1168,7 @@ export default function App() {
 
           <div className="space-y-4">
             <div className={`p-6 rounded-2xl ${currentTheme.cardBg} transition-all`}>
-              <h4 className="text-base font-bold text-white flex items-center gap-2">
+              <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
                 <HelpCircle className={`w-5 h-5 shrink-0 ${currentTheme.accentText}`} />
                 Do you only work on utility-scale projects?
               </h4>
@@ -1178,7 +1178,7 @@ export default function App() {
             </div>
 
             <div className={`p-6 rounded-2xl ${currentTheme.cardBg} transition-all`}>
-              <h4 className="text-base font-bold text-white flex items-center gap-2">
+              <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
                 <HelpCircle className={`w-5 h-5 shrink-0 ${currentTheme.accentText}`} />
                 What stage do you engage at?
               </h4>
@@ -1188,7 +1188,7 @@ export default function App() {
             </div>
 
             <div className={`p-6 rounded-2xl ${currentTheme.cardBg} transition-all`}>
-              <h4 className="text-base font-bold text-white flex items-center gap-2">
+              <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
                 <HelpCircle className={`w-5 h-5 shrink-0 ${currentTheme.accentText}`} />
                 Is your advisory work independently verifiable?
               </h4>
@@ -1317,7 +1317,7 @@ export default function App() {
                     value={contactName}
                     onChange={(e) => setContactName(e.target.value)}
                     placeholder="E.g. Tendai Moyo" 
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
+                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
                   />
                 </div>
                 <div>
@@ -1328,7 +1328,7 @@ export default function App() {
                     value={contactEmail}
                     onChange={(e) => setContactEmail(e.target.value)}
                     placeholder="tendai@organization.com" 
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
+                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
                   />
                 </div>
               </div>
@@ -1339,7 +1339,7 @@ export default function App() {
                   <select 
                     value={contactSector}
                     onChange={(e) => setContactSector(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
                   >
                     <option>Power Utility / IPP</option>
                     <option>Government / Ministry</option>
@@ -1353,7 +1353,7 @@ export default function App() {
                   <select 
                     value={contactPackage}
                     onChange={(e) => setContactPackage(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
                   >
                     <option>Pre-Feasibility Study</option>
                     <option>Floating Solar / Hydro-Hybrid Study</option>
@@ -1372,7 +1372,7 @@ export default function App() {
                   value={inquiryScope}
                   onChange={(e) => setInquiryScope(e.target.value)}
                   placeholder="Share details regarding site location, capacity target (MW), grid interconnect, or specific objectives..."
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
+                  className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
                 />
               </div>
 
