@@ -614,17 +614,17 @@ export default function App() {
               <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider border ${currentTheme.badge}`}>
                 Executive Overview
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-slate-900 drop-shadow-sm leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-black drop-shadow-none leading-tight">
                 Empowering Governments, Utilities, & Industries with Real Numbers, Not Assumptions
               </h2>
-              <p className="text-slate-800 text-base sm:text-lg leading-relaxed font-medium">
+              <p className="text-black text-base sm:text-lg leading-relaxed font-bold">
                 Hermit Sustainability is a Zimbabwean-owned renewable energy and sustainability consultancy. 
                 We bridge the gap between renewable energy innovation and practical, bankable project execution.
               </p>
-              <p className="text-slate-800 text-base sm:text-lg leading-relaxed font-medium">
+              <p className="text-black text-base sm:text-lg leading-relaxed font-bold">
                 Every recommendation is grounded in rigorous technical and financial modelling, whether that is an 
-                <strong className="font-bold text-emerald-800"> hourly PVsyst simulation </strong> 
-                of a floating solar array or a <strong className="font-bold text-slate-900">first-principles hydraulic model </strong> 
+                <strong className="font-black text-emerald-950 underline decoration-emerald-600 underline-offset-4"> hourly PVsyst simulation </strong> 
+                of a floating solar array or a <strong className="font-black text-black underline decoration-slate-900 underline-offset-4">first-principles hydraulic model </strong> 
                 of an existing hydro plant, so clients and their financiers make decisive capital commitments.
               </p>
 
