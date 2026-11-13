@@ -398,8 +398,8 @@ export default function App() {
       </motion.nav>
 
       {/* Hero Section with Custom Background Image / Video */}
-      <section className="relative pt-16 pb-20 sm:pt-28 sm:pb-36 lg:pt-40 lg:pb-52 overflow-hidden">
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none" aria-hidden="true">
+      <section className="relative min-h-[92vh] flex items-center pt-20 pb-24 sm:pt-28 sm:pb-32 lg:pt-36 lg:pb-40 overflow-hidden w-full">
+        <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none select-none" aria-hidden="true">
           
           {/* 1. Alternate Background (Wind Turbine) - shown immediately while video buffers or on mobile */}
           <div 
@@ -410,13 +410,13 @@ export default function App() {
             <img
               src={heroPosterImg}
               alt="Clean wind energy infrastructure"
-              className="w-full h-full object-cover object-center scale-[1.02] filter brightness-100"
+              className="absolute inset-0 w-full h-full object-cover object-center min-w-full min-h-full scale-[1.01] filter brightness-100"
             />
           </div>
 
           {/* 2. Video Element with reduced mobile burden & smooth fade-in */}
           <video
-            className={`h-full w-full object-cover object-center transition-opacity duration-1000 ease-in-out ${
+            className={`absolute inset-0 w-full h-full object-cover object-center min-w-full min-h-full transition-opacity duration-1000 ease-in-out ${
               isVideoLoaded ? 'opacity-100' : 'opacity-0'
             }`}
             autoPlay
@@ -448,7 +448,7 @@ export default function App() {
 
           {/* Contrast & Gradient Depth Layers */}
           <div className="absolute inset-0 bg-slate-900/30" />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-transparent to-white" />
+          <div className="absolute inset-0 bg-slate-950/25" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
