@@ -283,7 +283,7 @@ export default function App() {
         <img
           src={logoImg}
           alt=""
-          className="w-full h-full object-contain md:object-contain object-center max-w-4xl max-h-[85vh] opacity-35 md:opacity-45 filter drop-shadow-[0_0_80px_rgba(16,185,129,0.25)] brightness-105"
+          className="w-full h-full object-contain md:object-contain object-center max-w-4xl max-h-[85vh] opacity-20 md:opacity-30 filter drop-shadow-[0_0_120px_rgba(52,211,153,0.4)] brightness-110"
         />
         {/* Subtle translucent tint overlays so text remains crisp and legible while image details pop through */}
         <div className="absolute inset-0 bg-[#060e0c]/50" />
@@ -296,12 +296,12 @@ export default function App() {
         initial={{ y: -30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-        className="bg-gradient-to-r from-emerald-950 via-[#0d1e17] to-[#121b14] text-emerald-200 text-xs font-medium py-2 px-4 border-b border-emerald-900/40"
+        className="bg-gradient-to-r from-emerald-900/80 via-emerald-950/80 to-emerald-900/80 text-emerald-100 text-xs font-medium py-2.5 px-4 border-b border-emerald-600/30"
       >
         <div className="max-w-7xl mx-auto flex items-center justify-end gap-4 text-[11px]">
-          <span className="flex items-center gap-1 text-slate-300"><Phone className="w-3 h-3 text-amber-400" /> +263 71 280 0220</span>
+          <span className="flex items-center gap-1.5 text-white/90 font-medium"><Phone className="w-3 h-3 text-amber-400" /> +263 71 280 0220</span>
           <span className="text-slate-600">•</span>
-          <span className="flex items-center gap-1 text-slate-300"><Mail className="w-3 h-3 text-amber-400" /> info@hermitsustainability.co.zw</span>
+          <span className="flex items-center gap-1.5 text-white/90 font-medium"><Mail className="w-3 h-3 text-amber-400" /> info@hermitsustainability.co.zw</span>
         </div>
       </motion.div>
 
@@ -310,7 +310,7 @@ export default function App() {
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-        className="sticky top-0 z-50 overflow-hidden border-b border-emerald-950/90 shadow-2xl transition-colors"
+        className="sticky top-0 z-50 overflow-hidden border-b border-emerald-800/50 shadow-2xl shadow-black/40 transition-colors glass-nav"
       >
         {/* Leaf Background Layer - Highly Visible & Vibrant */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
@@ -320,7 +320,7 @@ export default function App() {
             className="w-full h-full object-cover object-center opacity-85 filter brightness-105 contrast-110"
           />
           {/* Subtle dark tint solely to keep white text effortlessly readable */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#060e0c]/80 via-[#060e0c]/55 to-[#060e0c]/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#040a07]/88 via-[#040a07]/65 to-[#040a07]/88" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -336,28 +336,28 @@ export default function App() {
               <span className="text-2xl font-black tracking-tight font-display text-white">
                 HERMIT
               </span>
-              <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-400">
+              <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-300">
                 Sustainability Advisory
               </span>
             </div>
           </a>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center space-x-6 xl:space-x-7 text-[15px] xl:text-base font-bold text-white drop-shadow-sm">
-            <a href="#about" className="hover:text-emerald-400 transition-colors">About</a>
-            <a href="#nexus" className="hover:text-emerald-400 transition-colors">Quad Nexus</a>
-            <a href="#hybrid" className="hover:text-emerald-400 transition-colors">Hybrid Solutions</a>
-            <a href="#portfolio" className="hover:text-emerald-400 transition-colors">Track Record</a>
-            <a href="#process" className="hover:text-emerald-400 transition-colors">Engagement</a>
-            <a href="#partnerships" className="hover:text-emerald-400 transition-colors">Partners</a>
-            <a href="#faq" className="hover:text-emerald-400 transition-colors">FAQ</a>
+          <div className="hidden lg:flex items-center space-x-7 xl:space-x-8 text-[15px] xl:text-base font-semibold text-slate-100">
+            <a href="#about" className="hover:text-emerald-300 transition-colors hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.6)]">About</a>
+            <a href="#nexus" className="hover:text-emerald-300 transition-colors hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.6)]">Quad Nexus</a>
+            <a href="#hybrid" className="hover:text-emerald-300 transition-colors hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.6)]">Hybrid Solutions</a>
+            <a href="#portfolio" className="hover:text-emerald-300 transition-colors hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.6)]">Track Record</a>
+            <a href="#process" className="hover:text-emerald-300 transition-colors hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.6)]">Engagement</a>
+            <a href="#partnerships" className="hover:text-emerald-300 transition-colors hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.6)]">Partners</a>
+            <a href="#faq" className="hover:text-emerald-300 transition-colors hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.6)]">FAQ</a>
           </div>
 
           {/* Right Action CTA */}
           <div className="hidden sm:flex items-center space-x-3">
             <a
               href="#contact"
-              className={`inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-slate-950 ${currentTheme.primaryBtn} rounded-xl shadow-md transition-all transform hover:-translate-y-0.5`}
+              className={`inline-flex items-center gap-2 px-6 py-3 text-sm font-bold uppercase tracking-wider text-slate-950 ${currentTheme.primaryBtn} rounded-xl transition-all transform hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-500/40`}
             >
               <span>Initiate Study</span>
               <ArrowUpRight className="w-4 h-4" />
@@ -392,7 +392,7 @@ export default function App() {
       </motion.nav>
 
       {/* Hero Section with Custom Background Image / Video */}
-      <section className="relative pt-12 pb-16 sm:pt-20 sm:pb-28 lg:pt-32 lg:pb-44 overflow-hidden">
+      <section className="relative pt-16 pb-20 sm:pt-28 sm:pb-36 lg:pt-40 lg:pb-52 overflow-hidden">
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none" aria-hidden="true">
           
           {/* 1. Alternate Background (Wind Turbine) - shown immediately while video buffers or on mobile */}
@@ -427,8 +427,8 @@ export default function App() {
           </video>
 
           {/* Animated Atmospheric Glows & Light Rays (visible especially on mobile when video is paused/static) */}
-          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 sm:w-[500px] sm:h-[500px] bg-gradient-to-b from-emerald-500/20 via-teal-500/10 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: '6s' }} />
-          <div className="absolute top-1/3 -right-20 w-60 h-60 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -top-24 left-1/4 -translate-x-1/2 w-96 h-96 sm:w-[600px] sm:h-[600px] bg-gradient-to-b from-emerald-500/30 via-teal-500/15 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: '6s' }} />
+          <div className="absolute top-1/4 right-1/4 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-10 -left-20 w-60 h-60 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" />
 
           {/* Subtle Dynamic Grid Overlay to give a high-tech clean energy aesthetic */}
@@ -441,10 +441,10 @@ export default function App() {
           />
 
           {/* Contrast & Gradient Depth Layers */}
-          <div className="absolute inset-0 bg-[#070d14]/60 backdrop-contrast-[1.1]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#070d14]/70 via-transparent to-[#070d14]/40" />
+          <div className="absolute inset-0 bg-[#040a07]/45" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#040a07]/65 via-transparent to-[#040a07]/50" />
         </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           {/* Masked Slide-up Headline Reveal (Erthost Style) */}
           <div className="overflow-hidden py-1">
@@ -452,10 +452,10 @@ export default function App() {
               initial={{ y: "110%", opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="text-3xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-display max-w-5xl mx-auto leading-[1.15] sm:leading-[1.12] text-white"
+              className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight font-display max-w-3xl leading-[1.08] sm:leading-[1.05] text-white"
             >
               {' '}
-              <span className={`bg-gradient-to-r ${currentTheme.headlineGradient} bg-clip-text text-transparent drop-shadow-sm`}>
+              <span className={`bg-gradient-to-r ${currentTheme.headlineGradient} bg-clip-text text-transparent`}>
                 Advancing Sustainable Energy Solutions Globally!
               </span>
             </motion.h1>
@@ -465,7 +465,7 @@ export default function App() {
             initial={{ y: 25, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-5 sm:mt-7 text-sm sm:text-lg lg:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-normal px-2"
+            className="mt-6 sm:mt-8 text-base sm:text-xl lg:text-2xl text-slate-200 max-w-2xl leading-relaxed font-normal"
           >
             Delivering innovative, bankable, and scalable clean energy solutions grounded in the 
             <span className={`font-semibold ${currentTheme.accentText}`}> Quad Nexus</span> of Energy, Water, Food, and Waste to Energy.
@@ -475,18 +475,18 @@ export default function App() {
             initial={{ y: 25, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 px-2"
+            className="mt-10 sm:mt-12 flex flex-col sm:flex-row items-stretch sm:items-start gap-4"
           >
             <a
               href="#hybrid"
-              className={`w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-bold ${currentTheme.primaryBtn} rounded-xl shadow-xl flex items-center justify-center gap-2 transition-all transform hover:-translate-y-0.5 active:scale-[0.98]`}
+              className={`w-full sm:w-auto px-7 sm:px-10 py-4 sm:py-5 text-sm sm:text-base font-bold ${currentTheme.primaryBtn} rounded-2xl shadow-2xl flex items-center justify-center gap-2 transition-all transform hover:-translate-y-1 active:scale-[0.98] hover:shadow-emerald-500/50`}
             >
               <span>Explore Floating Solar & Hybrid Case</span>
               <ArrowRight className="w-4 h-4 shrink-0" />
             </a>
             <a
               href="#portfolio"
-              className={`w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-bold ${currentTheme.secondaryBtn} rounded-xl transition-all shadow-sm backdrop-blur-sm active:scale-[0.98]`}
+              className={`w-full sm:w-auto px-7 sm:px-10 py-4 sm:py-5 text-sm sm:text-base font-bold ${currentTheme.secondaryBtn} rounded-2xl transition-all active:scale-[0.98]`}
             >
               View 1,000+ MW Portfolio
             </a>
@@ -506,7 +506,7 @@ export default function App() {
                 }
               }
             }}
-            className="mt-12 sm:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 text-left"
+            className="mt-16 sm:mt-24 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 text-left"
           >
             <motion.div 
               variants={{
@@ -514,7 +514,7 @@ export default function App() {
                 visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
               }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/35 hover:bg-[#004d3d]/50 border border-emerald-400/40 shadow-lg shadow-emerald-950/20 transition-colors"
+              className="p-4 sm:p-6 rounded-2xl bg-emerald-950/60 hover:bg-emerald-900/60 border border-emerald-500/50 shadow-lg shadow-emerald-900/30 transition-all card-glow"
             >
               <div className="flex items-center justify-between text-amber-300 mb-1.5 sm:mb-2">
                 <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -532,7 +532,7 @@ export default function App() {
                 visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
               }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/35 hover:bg-[#004d3d]/50 border border-emerald-400/40 shadow-lg shadow-emerald-950/20 transition-colors"
+              className="p-4 sm:p-6 rounded-2xl bg-emerald-950/60 hover:bg-emerald-900/60 border border-emerald-500/50 shadow-lg shadow-emerald-900/30 transition-all card-glow"
             >
               <div className="flex items-center justify-between text-emerald-300 mb-1.5 sm:mb-2">
                 <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -550,7 +550,7 @@ export default function App() {
                 visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
               }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/35 hover:bg-[#004d3d]/50 border border-emerald-400/40 shadow-lg shadow-emerald-950/20 transition-colors"
+              className="p-4 sm:p-6 rounded-2xl bg-emerald-950/60 hover:bg-emerald-900/60 border border-emerald-500/50 shadow-lg shadow-emerald-900/30 transition-all card-glow"
             >
               <div className="flex items-center justify-between text-amber-300 mb-1.5 sm:mb-2">
                 <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -568,7 +568,7 @@ export default function App() {
                 visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
               }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="p-4 sm:p-6 rounded-2xl bg-[#004d3d]/35 hover:bg-[#004d3d]/50 border border-emerald-400/40 shadow-lg shadow-emerald-950/20 transition-colors"
+              className="p-4 sm:p-6 rounded-2xl bg-emerald-950/60 hover:bg-emerald-900/60 border border-emerald-500/50 shadow-lg shadow-emerald-900/30 transition-all card-glow"
             >
               <div className="flex items-center justify-between text-emerald-300 mb-1.5 sm:mb-2">
                 <Layers className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -591,7 +591,7 @@ export default function App() {
               <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider border ${currentTheme.badge}`}>
                 Executive Overview
               </div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-white">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-white leading-tight">
                 Empowering Governments, Utilities, & Industries with Real Numbers, Not Assumptions
               </h2>
               <p className="text-slate-300 text-base leading-relaxed">
@@ -640,7 +640,7 @@ export default function App() {
             {/* Strategic Pillars Callout: Mission & Vision */}
             <div className="lg:col-span-5 space-y-6">
               {/* Mission Card (Above Vision) */}
-              <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#0c1420] to-[#080d14] text-white border border-slate-800 shadow-2xl relative overflow-hidden">
+              <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#0d1f18] to-[#07100c] text-white border border-emerald-800/40 shadow-2xl relative overflow-hidden hover:border-emerald-600/60 transition-all">
                 <div className="absolute top-0 right-0 w-52 h-52 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
 
                 <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">Our Mission</span>
@@ -653,7 +653,7 @@ export default function App() {
               </div>
 
               {/* Vision Card */}
-              <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#0c1420] to-[#080d14] text-white border border-slate-800 shadow-2xl relative overflow-hidden">
+              <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#0d1f18] to-[#07100c] text-white border border-emerald-800/40 shadow-2xl relative overflow-hidden hover:border-emerald-600/60 transition-all">
                 <div className="absolute top-0 right-0 w-52 h-52 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
 
                 <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest">Our Vision</span>
@@ -995,7 +995,7 @@ export default function App() {
           {filteredProjects.map((p, idx) => (
             <div 
               key={idx}
-              className="p-6 rounded-2xl bg-[#0c1420] border border-slate-800 hover:border-emerald-500/40 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              className="p-6 rounded-2xl bg-[#0c1912]/80 border border-slate-700/60 hover:border-emerald-500/60 shadow-md hover:shadow-2xl hover:shadow-emerald-900/20 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between text-xs font-semibold mb-3">
@@ -1064,7 +1064,7 @@ export default function App() {
           </div>
 
           {/* 4 Ways to Work With Us (Page 7) */}
-          <div className="mt-16 p-8 rounded-3xl bg-gradient-to-r from-emerald-950 via-[#0d221c] to-[#091814] border border-emerald-500/30 text-white">
+          <div className="mt-16 p-8 rounded-3xl bg-gradient-to-r from-emerald-950/90 via-[#0d221c] to-[#091814] border border-emerald-500/50 text-white shadow-xl shadow-emerald-950/50">
             <h3 className="text-xl sm:text-2xl font-bold font-display text-white">Ways to Work With Hermit</h3>
             <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
               <div className="bg-[#07130f]/60 p-4 rounded-xl border border-emerald-500/20 backdrop-blur-sm">
@@ -1103,7 +1103,7 @@ export default function App() {
         </div>
 
         {/* Featured Case: Bui Power Authority */}
-        <div className="mt-12 p-8 sm:p-10 rounded-3xl bg-[#0c1420] border border-slate-800">
+        <div className="mt-12 p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#0d1f18] to-[#07100c] border border-emerald-700/50 shadow-xl">
           <div className="grid lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8">
               <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
@@ -1128,8 +1128,8 @@ export default function App() {
               </div>
             </div>
 
-            <div className="lg:col-span-4 bg-[#070d14] p-6 rounded-2xl border border-slate-800 text-center">
-              <span className="text-3xl font-extrabold text-emerald-400 font-display">100%</span>
+            <div className="lg:col-span-4 bg-emerald-500/10 p-6 rounded-2xl border border-emerald-500/30 text-center">
+              <span className="text-4xl font-black text-emerald-400 font-display">100%</span>
               <p className="text-xs font-bold text-white mt-1">Proven Regional Replicability</p>
               <p className="text-[11px] text-slate-400 mt-1">
                 From Lake Kariba to Bui Reservoir, delivering scalable African hydro-solar solutions.
@@ -1141,7 +1141,7 @@ export default function App() {
         {/* Partners Grid */}
         <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {partners.map((p, idx) => (
-            <div key={idx} className="p-4 rounded-xl bg-[#0c1420] border border-slate-800 flex items-center justify-between">
+            <div key={idx} className="p-4 rounded-xl bg-[#0c1912]/70 border border-slate-700/50 hover:border-emerald-600/50 flex items-center justify-between transition-all">
               <div>
                 <p className="text-sm font-bold text-white">{p.name}</p>
                 <p className="text-xs text-slate-400">{p.role}</p>
@@ -1208,7 +1208,7 @@ export default function App() {
             <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
               Harare Office & Operations
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-white">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-white leading-tight">
               Connect With Our Advisory Team
             </h2>
             <p className="text-slate-300 text-base leading-relaxed">
@@ -1249,7 +1249,7 @@ export default function App() {
             </div>
 
             {/* "Before You Get in Touch" Callout (Page 10) */}
-            <div className="p-5 rounded-2xl bg-[#0c1420] border border-slate-800">
+            <div className="p-5 rounded-2xl bg-[#0c1912]/60 border border-emerald-800/40">
               <p className="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-2">
                 Before You Get In Touch (Feasibility Checklist)
               </p>
@@ -1262,7 +1262,7 @@ export default function App() {
           </div>
 
           {/* Form */}
-          <div className="lg:col-span-7 bg-[#0c1420] p-8 sm:p-10 rounded-3xl border border-slate-800 shadow-2xl">
+          <div className="lg:col-span-7 bg-gradient-to-br from-[#0d1f18] to-[#07100c] p-8 sm:p-10 rounded-3xl border border-emerald-800/50 shadow-2xl">
             <h3 className="text-xl font-bold font-display text-white mb-2">
               Request Advisory Briefing or Proposal
             </h3>
@@ -1317,7 +1317,7 @@ export default function App() {
                     value={contactName}
                     onChange={(e) => setContactName(e.target.value)}
                     placeholder="E.g. Tendai Moyo" 
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-[#070d14] text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-400" 
+                    className="w-full px-4 py-3 rounded-xl border border-slate-700/70 bg-[#071210]/80 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
                   />
                 </div>
                 <div>
@@ -1328,7 +1328,7 @@ export default function App() {
                     value={contactEmail}
                     onChange={(e) => setContactEmail(e.target.value)}
                     placeholder="tendai@organization.com" 
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-[#070d14] text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-400" 
+                    className="w-full px-4 py-3 rounded-xl border border-slate-700/70 bg-[#071210]/80 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
                   />
                 </div>
               </div>
@@ -1339,7 +1339,7 @@ export default function App() {
                   <select 
                     value={contactSector}
                     onChange={(e) => setContactSector(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-[#070d14] text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-700/70 bg-[#071210]/80 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
                   >
                     <option>Power Utility / IPP</option>
                     <option>Government / Ministry</option>
@@ -1353,7 +1353,7 @@ export default function App() {
                   <select 
                     value={contactPackage}
                     onChange={(e) => setContactPackage(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-[#070d14] text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-700/70 bg-[#071210]/80 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
                   >
                     <option>Pre-Feasibility Study</option>
                     <option>Floating Solar / Hydro-Hybrid Study</option>
@@ -1372,7 +1372,7 @@ export default function App() {
                   value={inquiryScope}
                   onChange={(e) => setInquiryScope(e.target.value)}
                   placeholder="Share details regarding site location, capacity target (MW), grid interconnect, or specific objectives..."
-                  className="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-[#070d14] text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-400" 
+                  className="w-full px-4 py-3 rounded-xl border border-slate-700/70 bg-[#071210]/80 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
                 />
               </div>
 
@@ -1400,7 +1400,7 @@ export default function App() {
       </section>
 
       {/* Footer (Page 1 & 10) */}
-      <footer className="bg-[#05080e]/90 text-slate-400 py-12 border-t border-slate-800/80">
+      <footer className="bg-[#030806]/95 text-slate-400 py-14 border-t border-emerald-900/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-800/60">
             <div className="flex items-center space-x-3">
