@@ -41,7 +41,7 @@ export default function App() {
     accentText: "text-emerald-700",
     accentSecondary: "text-slate-800",
     cardBg: "bg-white border border-emerald-200 hover:border-emerald-400 shadow-md hover:shadow-xl hover:shadow-emerald-950/10",
-    cardInner: "bg-emerald-50 border border-emerald-200",
+    cardInner: "bg-slate-900/80 backdrop-blur-md border border-white/20 text-white",
     navBg: "bg-white/95 border-slate-200",
     inputBg: "bg-white border border-slate-300 text-slate-900 focus:ring-emerald-500 focus:border-emerald-500",
     sliderAccent: "accent-emerald-600",
@@ -465,7 +465,7 @@ export default function App() {
             <source src="/hero-background.mp4" type="video/mp4" />
           </video>
           {/* Full-bleed seamless gradient overlay: no harsh lines, keeps text ultra-readable */}
-          <div className="absolute inset-0 w-full h-full bg-black/40 pointer-events-none" />
+          <div className="absolute inset-0 w-full h-full bg-transparent pointer-events-none" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
           
@@ -614,14 +614,14 @@ export default function App() {
               <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider border ${currentTheme.badge}`}>
                 Executive Overview
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-slate-900 leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-white drop-shadow-lg leading-tight">
                 Empowering Governments, Utilities, & Industries with Real Numbers, Not Assumptions
               </h2>
-              <p className="text-slate-600 text-base leading-relaxed">
+              <p className="text-white drop-shadow-md text-base leading-relaxed font-medium">
                 Hermit Sustainability is a Zimbabwean-owned renewable energy and sustainability consultancy. 
                 We bridge the gap between renewable energy innovation and practical, bankable project execution.
               </p>
-              <p className="text-slate-600 text-base leading-relaxed">
+              <p className="text-white drop-shadow-md text-base leading-relaxed font-medium">
                 Every recommendation is grounded in rigorous technical and financial modelling, whether that is an 
                 <strong className={`font-semibold ${currentTheme.accentText}`}> hourly PVsyst simulation </strong> 
                 of a floating solar array or a <strong className={`font-semibold ${currentTheme.accentSecondary}`}>first-principles hydraulic model </strong> 
@@ -962,7 +962,7 @@ export default function App() {
                   <div key={idx} className="p-3 rounded-xl bg-white/85 backdrop-blur-sm border border-emerald-500/20 flex items-center justify-between shadow-sm">
                     <div>
                       <p className="text-xs font-bold text-slate-900">{item.phase}</p>
-                      <p className="text-[10px] text-slate-500">{item.detail}</p>
+                      <p className="text-[10px] text-slate-700 font-semibold">{item.detail}</p>
                     </div>
                     <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-500/15 px-2 py-0.5 rounded border border-emerald-500/30">
                       {item.duration}
