@@ -284,7 +284,18 @@ export default function App() {
   ];
 
   return (
-    <div className="relative isolate min-h-screen text-slate-900 font-sans selection:bg-emerald-500 selection:text-white transition-colors duration-500">
+        <div className="relative isolate min-h-screen text-slate-900 font-sans selection:bg-emerald-500 selection:text-white transition-colors duration-500">
+      {/* Fixed Fullscreen Earth Globe Background */}
+      <div
+        className="fixed inset-0 z-0 pointer-events-none select-none flex items-center justify-center overflow-hidden"
+        aria-hidden="true"
+      >
+        <img
+          src={globeBgImg}
+          alt="Earth Globe Background"
+          className="w-full h-full object-cover object-center filter brightness-100"
+        />
+      </div>
       <div className="relative z-10">
       
       {/* Top Contact Bar */}
