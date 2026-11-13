@@ -38,10 +38,10 @@ export default function App() {
     headlineGradient: "from-white via-emerald-100 to-teal-200",
     primaryBtn: "bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/30 font-bold",
     secondaryBtn: "border-2 border-slate-700 text-slate-700 hover:bg-slate-700 hover:text-white",
-    accentText: "text-emerald-700",
-    accentSecondary: "text-slate-800",
+    accentText: "text-emerald-800",
+    accentSecondary: "text-slate-900",
     cardBg: "bg-white border border-emerald-200 hover:border-emerald-400 shadow-md hover:shadow-xl hover:shadow-emerald-950/10",
-    cardInner: "bg-slate-900/80 backdrop-blur-md border border-white/20 text-white",
+    cardInner: "bg-white border border-slate-200/90 shadow-md hover:shadow-lg transition-all text-slate-900",
     navBg: "bg-white/95 border-slate-200",
     inputBg: "bg-white border border-slate-300 text-slate-900 focus:ring-emerald-500 focus:border-emerald-500",
     sliderAccent: "accent-emerald-600",
@@ -634,28 +634,28 @@ export default function App() {
                   <div className={`flex items-center gap-2 font-bold text-sm ${currentTheme.accentText}`}>
                     <CheckCircle2 className="w-4 h-4" /> Sustainability
                   </div>
-                  <p className="text-xs text-slate-500 mt-1">Solutions designed to endure environmentally, operationally, and financially.</p>
+                  <p className="text-xs text-slate-700 font-medium mt-1">Solutions designed to endure environmentally, operationally, and financially.</p>
                 </div>
 
                 <div className={`p-4 rounded-xl ${currentTheme.cardInner} transition-all`}>
                   <div className={`flex items-center gap-2 font-bold text-sm ${currentTheme.accentSecondary}`}>
                     <CheckCircle2 className="w-4 h-4" /> Innovation
                   </div>
-                  <p className="text-xs text-slate-500 mt-1">Applying proven technology in breakthrough combinations, like hydro-solar hybridisation.</p>
+                  <p className="text-xs text-slate-700 font-medium mt-1">Applying proven technology in breakthrough combinations, like hydro-solar hybridisation.</p>
                 </div>
 
                 <div className={`p-4 rounded-xl ${currentTheme.cardInner} transition-all`}>
                   <div className={`flex items-center gap-2 font-bold text-sm ${currentTheme.accentText}`}>
                     <CheckCircle2 className="w-4 h-4" /> Integrity
                   </div>
-                  <p className="text-xs text-slate-500 mt-1">Defensible findings, Class 5 costing, and bankable metrics investors rely upon.</p>
+                  <p className="text-xs text-slate-700 font-medium mt-1">Defensible findings, Class 5 costing, and bankable metrics investors rely upon.</p>
                 </div>
 
                 <div className={`p-4 rounded-xl ${currentTheme.cardInner} transition-all`}>
                   <div className={`flex items-center gap-2 font-bold text-sm ${currentTheme.accentSecondary}`}>
                     <CheckCircle2 className="w-4 h-4" /> Carbon Stewardship
                   </div>
-                  <p className="text-xs text-slate-500 mt-1">Projects that measurably cut emissions and advance African climate commitments.</p>
+                  <p className="text-xs text-slate-700 font-medium mt-1">Projects that measurably cut emissions and advance African climate commitments.</p>
                 </div>
               </div>
             </div>
