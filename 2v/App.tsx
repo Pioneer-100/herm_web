@@ -23,21 +23,21 @@ export default function App() {
   const currentTheme = {
     name: "Light Modern",
     bgRoot: "bg-white",
-    sectionAlt: "bg-emerald-950/[0.04] backdrop-blur-[3px] border-y border-emerald-500/15",
-    sectionTranslucent: "bg-emerald-900/[0.03] backdrop-blur-[2px]",
-    badge: "border-emerald-300/60 bg-emerald-100/60 text-emerald-800 font-semibold",
+    sectionAlt: "bg-emerald-50/60 border-y border-emerald-200/60",
+    sectionTranslucent: "bg-emerald-50/40",
+    badge: "border-emerald-400/70 bg-emerald-100 text-emerald-800 font-semibold",
     headlineGradient: "from-white via-emerald-100 to-teal-200",
     primaryBtn: "bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/30 font-bold",
-    secondaryBtn: "border-2 border-slate-800 text-slate-800 hover:bg-slate-800 hover:text-white",
+    secondaryBtn: "border-2 border-slate-700 text-slate-700 hover:bg-slate-700 hover:text-white",
     accentText: "text-emerald-700",
     accentSecondary: "text-slate-800",
-    cardBg: "bg-white/85 backdrop-blur-md border border-emerald-500/20 hover:border-emerald-500/50 shadow-sm hover:shadow-xl hover:shadow-emerald-950/5",
-    cardInner: "bg-emerald-950/[0.03] border border-emerald-500/15",
+    cardBg: "bg-white border border-emerald-200 hover:border-emerald-400 shadow-md hover:shadow-xl hover:shadow-emerald-950/10",
+    cardInner: "bg-emerald-50 border border-emerald-200",
     navBg: "bg-white/95 border-slate-200",
-    inputBg: "bg-white/90 border border-slate-300 text-slate-900 focus:ring-emerald-500 focus:border-emerald-500",
+    inputBg: "bg-white border border-slate-300 text-slate-900 focus:ring-emerald-500 focus:border-emerald-500",
     sliderAccent: "accent-emerald-600",
     pillActive: "bg-emerald-600 text-white shadow-sm",
-    pillInactive: "bg-white/70 text-slate-700 hover:bg-emerald-50/80 border border-emerald-500/20"
+    pillInactive: "bg-white text-slate-700 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-400"
   };
   
   // Interactive Hydro-Solar Hybrid Calculator
@@ -817,7 +817,7 @@ export default function App() {
             
             {/* Interactive Sizing Model */}
             <div className={`lg:col-span-7 p-8 rounded-3xl shadow-xl transition-all ${currentTheme.cardBg}`}>
-              <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+              <div className="flex items-center justify-between pb-4 border-b border-slate-200">
                 <h3 className="font-bold text-lg font-display text-slate-900">Hybrid Array Output Simulator</h3>
                 <span className={`text-xs px-2.5 py-1 rounded font-semibold border ${currentTheme.badge}`}>
                   PVsyst V7.4.7 Calibrated
@@ -837,7 +837,7 @@ export default function App() {
                     step="0.5"
                     value={solarCapacityMW}
                     onChange={(e) => setSolarCapacityMW(parseFloat(e.target.value))}
-                    className={`w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer ${currentTheme.sliderAccent}`}
+                    className={`w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer ${currentTheme.sliderAccent}`}
                   />
                   <div className="flex justify-between text-[11px] text-slate-500 mt-1">
                     <span>1 MWp (Pilot Array)</span>
@@ -858,7 +858,7 @@ export default function App() {
                     step="1"
                     value={hydroCapacityMW}
                     onChange={(e) => setHydroCapacityMW(parseFloat(e.target.value))}
-                    className={`w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer ${currentTheme.sliderAccent}`}
+                    className={`w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer ${currentTheme.sliderAccent}`}
                   />
                   <div className="flex justify-between text-[11px] text-slate-500 mt-1">
                     <span>1 MW (Mini-Hydro)</span>
