@@ -1124,61 +1124,43 @@ export default function App() {
         {/* Partners Logo Banner */}
         <div className="mt-14">
           <p className="text-center text-xs font-bold uppercase tracking-widest text-slate-400 mb-8">
-            Collaborating with global institutions & regional leaders
+            Collaborating with global institutions &amp; regional leaders
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
 
             {/* UNIDO */}
-            <div className="group flex flex-col items-center justify-center gap-2 p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg transition-all">
-              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#009EDB]/10">
-                <span className="text-[11px] font-black text-[#009EDB] leading-tight text-center">UN<br/>IDO</span>
-              </div>
-              <p className="text-[11px] font-bold text-slate-800 text-center leading-tight">UNIDO</p>
+            <div className="group flex flex-col items-center justify-center gap-3 p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg transition-all">
+              <img src="/logo-unido.png" alt="UNIDO" className="h-14 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300" />
               <p className="text-[10px] text-slate-500 text-center leading-tight">Dev Programs</p>
             </div>
 
             {/* GIZ */}
-            <div className="group flex flex-col items-center justify-center gap-2 p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg transition-all">
-              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#006400]/10">
-                <span className="text-[13px] font-black text-[#006400] leading-tight text-center">GIZ</span>
-              </div>
-              <p className="text-[11px] font-bold text-slate-800 text-center leading-tight">GIZ</p>
+            <div className="group flex flex-col items-center justify-center gap-3 p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg transition-all">
+              <img src="/logo-giz.png" alt="GIZ" className="h-14 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300" />
               <p className="text-[10px] text-slate-500 text-center leading-tight">Dev Programs</p>
             </div>
 
             {/* IDBZ */}
-            <div className="group flex flex-col items-center justify-center gap-2 p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg transition-all">
-              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-emerald-600/10">
-                <span className="text-[11px] font-black text-emerald-700 leading-tight text-center">IDB<br/>Z</span>
-              </div>
-              <p className="text-[11px] font-bold text-slate-800 text-center leading-tight">IDBZ</p>
+            <div className="group flex flex-col items-center justify-center gap-3 p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg transition-all">
+              <img src="/logo-idbz.png" alt="IDBZ" className="h-14 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300" />
               <p className="text-[10px] text-slate-500 text-center leading-tight">Project Finance</p>
             </div>
 
-            {/* SADELEC */}
-            <div className="group flex flex-col items-center justify-center gap-2 p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg transition-all">
-              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-amber-500/10">
-                <Zap className="w-6 h-6 text-amber-500" />
-              </div>
-              <p className="text-[11px] font-bold text-slate-800 text-center leading-tight">SADELEC</p>
+            {/* SADELEC / SADC Energy */}
+            <div className="group flex flex-col items-center justify-center gap-3 p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg transition-all">
+              <img src="/logo-sadelec.png" alt="SADC Energy" className="h-14 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300" />
               <p className="text-[10px] text-slate-500 text-center leading-tight">SADC Energy</p>
             </div>
 
             {/* REN21 */}
-            <div className="group flex flex-col items-center justify-center gap-2 p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg transition-all">
-              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#F7941D]/10">
-                <span className="text-[11px] font-black text-[#F7941D] leading-tight text-center">REN<br/>21</span>
-              </div>
-              <p className="text-[11px] font-bold text-slate-800 text-center leading-tight">REN21</p>
+            <div className="group flex flex-col items-center justify-center gap-3 p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg transition-all">
+              <img src="/logo-ren21.png" alt="REN21" className="h-14 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300" />
               <p className="text-[10px] text-slate-500 text-center leading-tight">SADC RE Reports</p>
             </div>
 
             {/* African Union Commission */}
-            <div className="group flex flex-col items-center justify-center gap-2 p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg transition-all">
-              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#009A44]/10">
-                <Globe className="w-6 h-6 text-[#009A44]" />
-              </div>
-              <p className="text-[11px] font-bold text-slate-800 text-center leading-tight">African Union</p>
+            <div className="group flex flex-col items-center justify-center gap-3 p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-lg transition-all">
+              <img src="/logo-au.png" alt="African Union" className="h-14 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300" />
               <p className="text-[10px] text-slate-500 text-center leading-tight">Pan-African Policy</p>
             </div>
 
