@@ -25,7 +25,7 @@ export default function App() {
     bgRoot: "bg-white",
     sectionAlt: "bg-slate-50 border-y border-slate-200",
     badge: "border-emerald-200 bg-emerald-50 text-emerald-700 font-semibold",
-    headlineGradient: "from-slate-900 via-emerald-800 to-emerald-600",
+    headlineGradient: "from-white via-emerald-100 to-teal-200",
     primaryBtn: "bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/30 font-bold",
     secondaryBtn: "border-2 border-slate-800 text-slate-800 hover:bg-slate-800 hover:text-white",
     accentText: "text-emerald-600",
@@ -398,7 +398,7 @@ export default function App() {
       </motion.nav>
 
       {/* Hero Section with Custom Background Image / Video */}
-      <section className="relative min-h-[92vh] flex items-center pt-20 pb-24 sm:pt-28 sm:pb-32 lg:pt-36 lg:pb-40 overflow-hidden w-full">
+      <section className="relative min-h-[90vh] flex items-center justify-start pt-24 pb-28 sm:pt-32 sm:pb-36 lg:pt-36 lg:pb-44 overflow-hidden w-full">
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none select-none" aria-hidden="true">
           {/* 1. Alternate Background (Wind Turbine / Solar) */}
           <div className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${isVideoLoaded ? "opacity-0" : "opacity-100"}`}>
@@ -424,11 +424,13 @@ export default function App() {
           >
             <source src="/hero-background.mp4" type="video/mp4" />
           </video>
+          {/* Full-bleed seamless gradient overlay: no harsh lines, keeps text ultra-readable */}
+          <div className="absolute inset-0 w-full h-full bg-black/35 pointer-events-none" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           {/* Masked Slide-up Headline Reveal (Erthost Style) */}
-          <div className="overflow-hidden py-1">
+          <div className="py-2">
             <motion.h1 
               initial={{ y: "110%", opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -436,7 +438,7 @@ export default function App() {
               className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight font-display max-w-3xl leading-[1.08] sm:leading-[1.05] text-white"
             >
               {' '}
-              <span className={`bg-gradient-to-r ${currentTheme.headlineGradient} bg-clip-text text-transparent`}>
+              <span className="text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)] font-extrabold">
                 Advancing Sustainable Energy Solutions Globally!
               </span>
             </motion.h1>
