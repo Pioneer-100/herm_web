@@ -1070,24 +1070,24 @@ export default function App() {
           </div>
 
           {/* 4 Ways to Work With Us (Page 7) */}
-          <div className="mt-16 p-8 rounded-3xl bg-emerald-700 border border-emerald-600 text-white shadow-xl">
-            <h3 className="text-xl sm:text-2xl font-bold font-display text-slate-900">Ways to Work With Hermit</h3>
+          <div className="mt-16 p-8 rounded-3xl bg-emerald-800 border border-emerald-700 shadow-xl">
+            <h3 className="text-xl sm:text-2xl font-bold font-display text-white">Ways to Work With Hermit</h3>
             <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
-              <div className="bg-white p-4 rounded-xl border border-emerald-500/20 backdrop-blur-sm">
-                <span className="font-bold text-white block mb-1">1. Pre-Feasibility Study</span>
-                <p className="text-xs text-white/80">Stand-alone technical and financial pre-feasibility assessment.</p>
+              <div className="bg-white p-5 rounded-2xl shadow-md border border-slate-100 hover:shadow-lg transition-all">
+                <span className="font-bold text-slate-900 font-extrabold block mb-1">1. Pre-Feasibility Study</span>
+                <p className="text-xs text-slate-600 font-medium">Stand-alone technical and financial pre-feasibility assessment.</p>
               </div>
-              <div className="bg-white p-4 rounded-xl border border-emerald-500/20 backdrop-blur-sm">
-                <span className="font-bold text-white block mb-1">2. Feasibility & Design</span>
-                <p className="text-xs text-white/80">Detailed feasibility, grid impact, and preliminary engineering design.</p>
+              <div className="bg-white p-5 rounded-2xl shadow-md border border-slate-100 hover:shadow-lg transition-all">
+                <span className="font-bold text-slate-900 font-extrabold block mb-1">2. Feasibility & Design</span>
+                <p className="text-xs text-slate-600 font-medium">Detailed feasibility, grid impact, and preliminary engineering design.</p>
               </div>
-              <div className="bg-white p-4 rounded-xl border border-emerald-500/20 backdrop-blur-sm">
-                <span className="font-bold text-white block mb-1">3. Development Support</span>
-                <p className="text-xs text-white/80">SPV structuring, funding strategy, and tender documentation.</p>
+              <div className="bg-white p-5 rounded-2xl shadow-md border border-slate-100 hover:shadow-lg transition-all">
+                <span className="font-bold text-slate-900 font-extrabold block mb-1">3. Development Support</span>
+                <p className="text-xs text-slate-600 font-medium">SPV structuring, funding strategy, and tender documentation.</p>
               </div>
-              <div className="bg-white p-4 rounded-xl border border-emerald-500/20 backdrop-blur-sm">
-                <span className="font-bold text-white block mb-1">4. Independent Review</span>
-                <p className="text-xs text-white/80">Second opinion verification on someone else’s design or figures.</p>
+              <div className="bg-white p-5 rounded-2xl shadow-md border border-slate-100 hover:shadow-lg transition-all">
+                <span className="font-bold text-slate-900 font-extrabold block mb-1">4. Independent Review</span>
+                <p className="text-xs text-slate-600 font-medium">Second opinion verification on someone else’s design or figures.</p>
               </div>
             </div>
           </div>
