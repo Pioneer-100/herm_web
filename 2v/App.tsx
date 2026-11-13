@@ -329,8 +329,8 @@ export default function App() {
         aria-hidden="true"
       >
         <img
-          src={logoImg}
-          alt="Hermit Sustainability Background"
+          src={globeBgImg}
+          alt="Earth Globe Background"
           className="w-full h-full object-cover object-center"
         />
       </div>
@@ -614,17 +614,17 @@ export default function App() {
               <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider border ${currentTheme.badge}`}>
                 Executive Overview
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-white drop-shadow-lg leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)] leading-tight">
                 Empowering Governments, Utilities, & Industries with Real Numbers, Not Assumptions
               </h2>
-              <p className="text-white drop-shadow-md text-base leading-relaxed font-medium">
+              <p className="text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)] text-base sm:text-lg leading-relaxed font-semibold">
                 Hermit Sustainability is a Zimbabwean-owned renewable energy and sustainability consultancy. 
                 We bridge the gap between renewable energy innovation and practical, bankable project execution.
               </p>
-              <p className="text-white drop-shadow-md text-base leading-relaxed font-medium">
+              <p className="text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)] text-base sm:text-lg leading-relaxed font-semibold">
                 Every recommendation is grounded in rigorous technical and financial modelling, whether that is an 
-                <strong className={`font-semibold ${currentTheme.accentText}`}> hourly PVsyst simulation </strong> 
-                of a floating solar array or a <strong className={`font-semibold ${currentTheme.accentSecondary}`}>first-principles hydraulic model </strong> 
+                <strong className="font-bold text-emerald-300 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"> hourly PVsyst simulation </strong> 
+                of a floating solar array or a <strong className="font-bold text-teal-200 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">first-principles hydraulic model </strong> 
                 of an existing hydro plant, so clients and their financiers make decisive capital commitments.
               </p>
 
