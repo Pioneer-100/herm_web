@@ -399,7 +399,7 @@ export default function App() {
       </motion.nav>
 
       {/* Hero Section with Custom Background Image / Video */}
-      <section className="relative min-h-[90vh] flex items-center justify-start pt-24 pb-28 sm:pt-32 sm:pb-36 lg:pt-36 lg:pb-44 overflow-hidden w-full">
+      <section className="relative min-h-[calc(100vh-7.5rem)] flex items-center justify-start py-8 sm:py-10 lg:py-12 overflow-hidden w-full">
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none select-none" aria-hidden="true">
           {/* 1. Alternate Background (Wind Turbine / Solar) */}
           <div className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${isVideoLoaded ? "opacity-0" : "opacity-100"}`}>
@@ -426,17 +426,17 @@ export default function App() {
             <source src="/hero-background.mp4" type="video/mp4" />
           </video>
           {/* Full-bleed seamless gradient overlay: no harsh lines, keeps text ultra-readable */}
-          <div className="absolute inset-0 w-full h-full bg-black/35 pointer-events-none" />
+          <div className="absolute inset-0 w-full h-full bg-black/40 pointer-events-none" />
         </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
           
           {/* Masked Slide-up Headline Reveal (Erthost Style) */}
-          <div className="py-2">
+          <div className="py-1">
             <motion.h1 
               initial={{ y: "110%", opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight font-display max-w-3xl leading-[1.08] sm:leading-[1.05] text-white"
+              className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight font-display max-w-3xl leading-[1.1] sm:leading-[1.08] text-white"
             >
               {' '}
               <span className="text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)] font-extrabold">
@@ -449,7 +449,7 @@ export default function App() {
             initial={{ y: 25, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-6 sm:mt-8 text-base sm:text-xl lg:text-2xl text-white max-w-2xl leading-relaxed font-medium drop-shadow-md"
+            className="mt-4 sm:mt-5 text-sm sm:text-lg lg:text-xl text-white/95 max-w-2xl leading-relaxed font-medium drop-shadow-md"
           >
             Delivering innovative, bankable, and scalable clean energy solutions grounded in the 
             <span className={`font-semibold ${currentTheme.accentText}`}> Quad Nexus</span> of Energy, Water, Food, and Waste to Energy.
@@ -459,18 +459,18 @@ export default function App() {
             initial={{ y: 25, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-10 sm:mt-12 flex flex-col sm:flex-row items-stretch sm:items-start gap-4"
+            className="mt-6 sm:mt-7 flex flex-col sm:flex-row items-stretch sm:items-start gap-3 sm:gap-4"
           >
             <a
               href="#hybrid"
-              className={`w-full sm:w-auto px-7 sm:px-10 py-4 sm:py-5 text-sm sm:text-base font-bold ${currentTheme.primaryBtn} rounded-2xl shadow-2xl flex items-center justify-center gap-2 transition-all transform hover:-translate-y-1 active:scale-[0.98] hover:shadow-emerald-500/50`}
+              className={`w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 text-xs sm:text-sm font-bold ${currentTheme.primaryBtn} rounded-xl shadow-2xl flex items-center justify-center gap-2 transition-all transform hover:-translate-y-1 active:scale-[0.98] hover:shadow-emerald-500/50`}
             >
               <span>Explore Floating Solar & Hybrid Case</span>
               <ArrowRight className="w-4 h-4 shrink-0" />
             </a>
             <a
               href="#portfolio"
-              className={`w-full sm:w-auto px-7 sm:px-10 py-4 sm:py-5 text-sm sm:text-base font-bold ${currentTheme.secondaryBtn} rounded-2xl transition-all active:scale-[0.98]`}
+              className={`w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 text-xs sm:text-sm font-bold ${currentTheme.secondaryBtn} rounded-xl transition-all active:scale-[0.98]`}
             >
               View 1,000+ MW Portfolio
             </a>
@@ -490,7 +490,7 @@ export default function App() {
                 }
               }
             }}
-            className="mt-16 sm:mt-24 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 text-left"
+            className="mt-8 sm:mt-10 lg:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 text-left"
           >
             <motion.div 
               variants={{
@@ -498,16 +498,16 @@ export default function App() {
                 visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
               }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="p-4 sm:p-6 rounded-2xl bg-slate-900/70 hover:bg-slate-900/85 backdrop-blur-md border border-white/20 shadow-xl transition-all"
+              className="p-3.5 sm:p-4 rounded-xl bg-slate-900/75 hover:bg-slate-900/90 backdrop-blur-md border border-white/20 shadow-xl transition-all"
             >
-              <div className="flex items-center justify-between text-amber-300 mb-1.5 sm:mb-2">
-                <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-100/70">PV Modelled</span>
+              <div className="flex items-center justify-between text-amber-300 mb-1">
+                <Zap className="w-4 h-4" />
+                <span className="text-[9px] font-bold uppercase tracking-wider text-emerald-100/70">PV Modelled</span>
               </div>
-              <p className="text-xl sm:text-3xl font-extrabold font-display text-white">
+              <p className="text-lg sm:text-2xl font-extrabold font-display text-white">
                 <MetricCounter value="1000+ kWp" />
               </p>
-              <p className="text-[11px] sm:text-xs text-emerald-100/80 mt-0.5 sm:mt-1">Representative solar array</p>
+              <p className="text-[10px] sm:text-xs text-emerald-100/80 mt-0.5">Representative solar array</p>
             </motion.div>
 
             <motion.div 
@@ -516,16 +516,16 @@ export default function App() {
                 visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
               }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="p-4 sm:p-6 rounded-2xl bg-slate-900/70 hover:bg-slate-900/85 backdrop-blur-md border border-white/20 shadow-xl transition-all"
+              className="p-3.5 sm:p-4 rounded-xl bg-slate-900/75 hover:bg-slate-900/90 backdrop-blur-md border border-white/20 shadow-xl transition-all"
             >
-              <div className="flex items-center justify-between text-emerald-300 mb-1.5 sm:mb-2">
-                <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-100/70">Annual Yield</span>
+              <div className="flex items-center justify-between text-emerald-300 mb-1">
+                <TrendingUp className="w-4 h-4" />
+                <span className="text-[9px] font-bold uppercase tracking-wider text-emerald-100/70">Annual Yield</span>
               </div>
-              <p className="text-xl sm:text-3xl font-extrabold font-display text-white">
+              <p className="text-lg sm:text-2xl font-extrabold font-display text-white">
                 <MetricCounter value="33.8 GWh/yr" />
               </p>
-              <p className="text-[11px] sm:text-xs text-emerald-100/80 mt-0.5 sm:mt-1">Combined floating solar + mini-hydro</p>
+              <p className="text-[10px] sm:text-xs text-emerald-100/80 mt-0.5">Combined floating solar + mini-hydro</p>
             </motion.div>
 
             <motion.div 
@@ -534,16 +534,16 @@ export default function App() {
                 visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
               }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="p-4 sm:p-6 rounded-2xl bg-slate-900/70 hover:bg-slate-900/85 backdrop-blur-md border border-white/20 shadow-xl transition-all"
+              className="p-3.5 sm:p-4 rounded-xl bg-slate-900/75 hover:bg-slate-900/90 backdrop-blur-md border border-white/20 shadow-xl transition-all"
             >
-              <div className="flex items-center justify-between text-amber-300 mb-1.5 sm:mb-2">
-                <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-100/70">Timeline</span>
+              <div className="flex items-center justify-between text-amber-300 mb-1">
+                <Clock className="w-4 h-4" />
+                <span className="text-[9px] font-bold uppercase tracking-wider text-emerald-100/70">Timeline</span>
               </div>
-              <p className="text-xl sm:text-3xl font-extrabold font-display text-white">
+              <p className="text-lg sm:text-2xl font-extrabold font-display text-white">
                 <MetricCounter value="8 Months" />
               </p>
-              <p className="text-[11px] sm:text-xs text-emerald-100/80 mt-0.5 sm:mt-1">From inception to EPC tender ready</p>
+              <p className="text-[10px] sm:text-xs text-emerald-100/80 mt-0.5">From inception to EPC tender ready</p>
             </motion.div>
 
             <motion.div 
@@ -552,14 +552,14 @@ export default function App() {
                 visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
               }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="p-4 sm:p-6 rounded-2xl bg-slate-900/70 hover:bg-slate-900/85 backdrop-blur-md border border-white/20 shadow-xl transition-all"
+              className="p-3.5 sm:p-4 rounded-xl bg-slate-900/75 hover:bg-slate-900/90 backdrop-blur-md border border-white/20 shadow-xl transition-all"
             >
-              <div className="flex items-center justify-between text-emerald-300 mb-1.5 sm:mb-2">
-                <Layers className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-100/70">Methodology</span>
+              <div className="flex items-center justify-between text-emerald-300 mb-1">
+                <Layers className="w-4 h-4" />
+                <span className="text-[9px] font-bold uppercase tracking-wider text-emerald-100/70">Methodology</span>
               </div>
-              <p className="text-xl sm:text-3xl font-extrabold font-display text-white">Class 5</p>
-              <p className="text-[11px] sm:text-xs text-emerald-100/80 mt-0.5 sm:mt-1">Cost accuracy & simulation</p>
+              <p className="text-lg sm:text-2xl font-extrabold font-display text-white">Class 5</p>
+              <p className="text-[10px] sm:text-xs text-emerald-100/80 mt-0.5">Cost accuracy & simulation</p>
             </motion.div>
           </motion.div>
 
@@ -1075,22 +1075,22 @@ export default function App() {
       {/* Strategic Partnerships (Page 9) */}
       <section id="partnerships" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
-          <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
+          <span className={`text-xs font-bold uppercase tracking-wider ${currentTheme.accentText}`}>
             Collaboration & Recognition
           </span>
           <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-slate-900">
             Strategic Partnerships & Advisory Roles
           </h2>
-          <p className="mt-4 text-slate-300 text-base">
+          <p className="mt-4 text-slate-600 text-base">
             Collaborating with leading regional utilities, multilateral development institutions, and sovereign authorities.
           </p>
         </div>
 
         {/* Featured Case: Bui Power Authority */}
-        <div className="mt-12 p-8 sm:p-10 rounded-3xl bg-white border border-slate-200 shadow-xl">
+        <div className="mt-12 p-8 sm:p-10 rounded-3xl bg-white/85 backdrop-blur-md border border-emerald-500/20 shadow-xl">
           <div className="grid lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8">
-              <span className="text-xs font-bold uppercase tracking-wider text-emerald-600">
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">
                 International Landmark Mandate
               </span>
               <h3 className="mt-2 text-2xl font-bold font-display text-slate-900">
@@ -1100,22 +1100,22 @@ export default function App() {
                 Strategic technical advisory addressing floating solar PV integration on the Bui Reservoir, pumped hydro storage feasibility for grid stability, and institutional rooftop solar PV for community resilience.
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
-                <span className="text-xs bg-slate-50 px-3 py-1 rounded-md font-semibold border border-slate-200 text-slate-300">
+                <span className="text-xs bg-emerald-50 px-3 py-1 rounded-md font-semibold border border-emerald-200 text-emerald-800">
                   Floating Solar PV
                 </span>
-                <span className="text-xs bg-slate-50 px-3 py-1 rounded-md font-semibold border border-slate-200 text-slate-300">
+                <span className="text-xs bg-emerald-50 px-3 py-1 rounded-md font-semibold border border-emerald-200 text-emerald-800">
                   Pumped Hydro Storage
                 </span>
-                <span className="text-xs bg-slate-50 px-3 py-1 rounded-md font-semibold border border-slate-200 text-slate-300">
+                <span className="text-xs bg-emerald-50 px-3 py-1 rounded-md font-semibold border border-emerald-200 text-emerald-800">
                   Capacity Building
                 </span>
               </div>
             </div>
 
-            <div className="lg:col-span-4 bg-emerald-50 p-6 rounded-2xl border border-emerald-200 text-center">
-              <span className="text-4xl font-black text-emerald-600 font-display">100%</span>
+            <div className="lg:col-span-4 bg-emerald-50/80 p-6 rounded-2xl border border-emerald-200 text-center">
+              <span className="text-4xl font-black text-emerald-700 font-display">100%</span>
               <p className="text-xs font-bold text-slate-900 mt-1">Proven Regional Replicability</p>
-              <p className="text-[11px] text-slate-500 mt-1">
+              <p className="text-[11px] text-slate-600 mt-1">
                 From Lake Kariba to Bui Reservoir, delivering scalable African hydro-solar solutions.
               </p>
             </div>
@@ -1125,12 +1125,12 @@ export default function App() {
         {/* Partners Grid */}
         <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {partners.map((p, idx) => (
-            <div key={idx} className="p-4 rounded-xl bg-white border border-slate-200 hover:border-emerald-600/50 flex items-center justify-between transition-all">
+            <div key={idx} className="p-4 rounded-xl bg-white/85 backdrop-blur-sm border border-emerald-500/20 hover:border-emerald-500/60 flex items-center justify-between transition-all shadow-sm">
               <div>
                 <p className="text-sm font-bold text-slate-900">{p.name}</p>
-                <p className="text-xs text-slate-500">{p.role}</p>
+                <p className="text-xs text-slate-600">{p.role}</p>
               </div>
-              <span className="text-[10px] uppercase font-bold text-slate-400 bg-slate-50 px-2 py-1 rounded border border-slate-800">
+              <span className="text-[10px] uppercase font-bold text-emerald-800 bg-emerald-50 px-2 py-1 rounded border border-emerald-200">
                 {p.location}
               </span>
             </div>
@@ -1156,7 +1156,7 @@ export default function App() {
                 <HelpCircle className={`w-5 h-5 shrink-0 ${currentTheme.accentText}`} />
                 Do you only work on utility-scale projects?
               </h4>
-              <p className="mt-2 text-sm text-slate-300 leading-relaxed pl-7">
+              <p className="mt-2 text-sm text-slate-600 leading-relaxed pl-7">
                 No. Our work spans demonstration-led household and commercial products (such as the NSF-certified eSpring water purification rollout) through to utility-scale hydro-solar hybridisation, all viewed through the same Quad Nexus framework.
               </p>
             </div>
@@ -1166,7 +1166,7 @@ export default function App() {
                 <HelpCircle className={`w-5 h-5 shrink-0 ${currentTheme.accentText}`} />
                 What stage do you engage at?
               </h4>
-              <p className="mt-2 text-sm text-slate-300 leading-relaxed pl-7">
+              <p className="mt-2 text-sm text-slate-600 leading-relaxed pl-7">
                 From initial inception and pre-feasibility, through detailed preliminary design, environmental and social screening (ESIA), to bankable EPC tender support and independent technical review.
               </p>
             </div>
@@ -1176,7 +1176,7 @@ export default function App() {
                 <HelpCircle className={`w-5 h-5 shrink-0 ${currentTheme.accentText}`} />
                 Is your advisory work independently verifiable?
               </h4>
-              <p className="mt-2 text-sm text-slate-300 leading-relaxed pl-7">
+              <p className="mt-2 text-sm text-slate-600 leading-relaxed pl-7">
                 Yes. We utilize hourly PVsyst simulation, first-principles hydraulic modelling, Class 5 costing methodology, and NSF-certified product standards where applicable, ensuring every figure has an established, defensible basis.
               </p>
             </div>
@@ -1246,7 +1246,7 @@ export default function App() {
           </div>
 
           {/* Form */}
-          <div className="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-xl">
+          <div className="lg:col-span-7 bg-white/85 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-emerald-500/20 shadow-xl">
             <h3 className="text-xl font-bold font-display text-slate-900 mb-2">
               Request Advisory Briefing or Proposal
             </h3>
