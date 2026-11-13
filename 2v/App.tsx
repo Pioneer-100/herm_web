@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import heroBackgroundImg from './hero-bg.jpg';
 import heroPosterImg from './hero-poster.jpg';
@@ -101,6 +101,7 @@ export default function App() {
   const [showScrolledWatermark, setShowScrolledWatermark] = useState<boolean>(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState<boolean>(false);
   const [isMobileScreen, setIsMobileScreen] = useState<boolean>(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -280,22 +281,17 @@ export default function App() {
 
   return (
     <div className={`relative isolate min-h-screen ${currentTheme.bgRoot} text-slate-900 font-sans selection:bg-emerald-500 selection:text-white transition-colors duration-500`}>
-      {/* Background Watermark: Hidden on Hero, smoothly appears with crisp visibility when scrolling down */}
-      <motion.div
-        className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none flex items-center justify-center transition-opacity duration-700 ease-out"
+      {/* Background Hermit Logo: Fullscreen, 100% original visibility, no fading */}
+      <div
+        className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none flex items-center justify-center"
         aria-hidden="true"
-        animate={{
-          opacity: showScrolledWatermark ? 0.35 : 0,
-          scale: showScrolledWatermark ? 1 : 0.95
-        }}
-        transition={{ duration: 0.5 }}
       >
         <img
           src={logoImg}
-          alt="Hermit Sustainability Watermark"
-          className="w-full h-full object-contain object-center max-w-3xl max-h-[75vh] filter drop-shadow-[0_0_50px_rgba(16,185,129,0.3)]"
+          alt="Hermit Sustainability Background"
+          className="w-full h-full object-cover object-center"
         />
-      </motion.div>
+      </div>
       <div className="relative z-10">
       
       {/* Top Contact Bar */}
@@ -412,6 +408,7 @@ export default function App() {
 
           {/* 2. Video Element covering 100% with no black gap */}
           <video
+            ref={videoRef}
             className={`absolute inset-0 w-full h-full object-cover object-center min-w-full min-h-full transition-opacity duration-1000 ease-in-out ${isVideoLoaded ? "opacity-100" : "opacity-0"}`}
             autoPlay
             muted
@@ -419,9 +416,8 @@ export default function App() {
             playsInline
             preload={isMobileScreen ? "none" : "metadata"}
             poster={heroPosterImg}
-            ref={(el) => { if (el) el.playbackRate = 0.55; }}
-            onLoadedData={(e) => { e.currentTarget.playbackRate = 0.55; setIsVideoLoaded(true); }}
-            onPlaying={(e) => { e.currentTarget.playbackRate = 0.55; setIsVideoLoaded(true); }}
+            onLoadedData={() => { if (videoRef.current) videoRef.current.playbackRate = 1.0; setIsVideoLoaded(true); }}
+            onPlaying={() => setIsVideoLoaded(true)}
             tabIndex={-1}
           >
             <source src="/hero-background.mp4" type="video/mp4" />
