@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import heroBackgroundImg from './hero-bg.jpg';
 import heroPosterImg from './hero-poster.jpg';
@@ -130,7 +130,7 @@ export default function App() {
   const estimatedHydroMWh = Math.round(hydroCapacityMW * (23161 / 5.0));
   const totalHybridMWh = estimatedSolarMWh + estimatedHydroMWh;
   const blendedCapacityFactor = (((totalHybridMWh) / ((solarCapacityMW + hydroCapacityMW) * 8760)) * 100).toFixed(1);
-  // Estimated water evaporation saved from floating solar: ~15,000 m³ per MWp per year
+  // Estimated water evaporation saved from floating solar: ~15,000 mÂ³ per MWp per year
   const estimatedWaterSavedM3 = Math.round(solarCapacityMW * 15200);
 
   // Quad Nexus Data
@@ -247,7 +247,7 @@ export default function App() {
     {
       name: "Kariba Floating Solar Plant",
       type: "Hydro-Solar Hybrid",
-      size: "250 – 1,000 MW",
+      size: "250 â€“ 1,000 MW",
       location: "Lake Kariba, Zimbabwe",
       category: "hybrid",
       description: "Groundbreaking utility-scale floating solar integration on Lake Kariba, hybridising with the existing hydroelectric complex for grid balancing."
@@ -306,7 +306,7 @@ export default function App() {
       >
         <div className="max-w-7xl mx-auto flex items-center justify-end gap-4 text-[11px]">
           <span className="flex items-center gap-1.5 text-white/90 font-medium"><Phone className="w-3 h-3 text-amber-400" /> +263 71 280 0220</span>
-          <span className="text-white/40">•</span>
+          <span className="text-white/40">â€¢</span>
           <span className="flex items-center gap-1.5 text-white/90 font-medium"><Mail className="w-3 h-3 text-amber-400" /> info@hermitsustainability.co.zw</span>
         </div>
       </motion.div>
@@ -318,16 +318,20 @@ export default function App() {
         transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         className="sticky top-0 z-50 overflow-hidden border-b border-emerald-950/80 shadow-2xl transition-all"
       >
-        {/* Leaf Background Layer - Highly Visible & Vibrant */}
-        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
-          <img
-            src={navLeavesImg}
-            alt=""
-            className="w-full h-full object-cover object-center scale-105 filter brightness-105 contrast-110 opacity-90"
-          />
-          {/* Subtle dark tint solely to keep white text effortlessly readable */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/75" />
-        </div>
+        {/* Leaf Background Layer - Many small repeating tiles for a lush, dense pattern */}
+        <div
+          className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
+          aria-hidden="true"
+          style={{
+            backgroundImage: `url(${navLeavesImg})`,
+            backgroundRepeat: 'repeat',
+            backgroundSize: '130px auto',
+            filter: 'brightness(1.08) contrast(1.12)',
+            opacity: 0.9,
+          }}
+        />
+        {/* Dark gradient scrim — keeps all nav text crisp over the busy leaf pattern */}
+        <div className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-r from-black/78 via-black/60 to-black/78" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
@@ -641,7 +645,7 @@ export default function App() {
 
                 <span className="text-xs font-bold text-emerald-600 uppercase tracking-widest">Our Vision</span>
                 <h3 className="mt-2 text-xl sm:text-2xl font-bold font-display text-slate-900">
-                  Africa’s Leading Catalyst for Renewable Innovation
+                  Africaâ€™s Leading Catalyst for Renewable Innovation
                 </h3>
                 <p className="mt-4 text-sm text-slate-600 leading-relaxed">
                   Driving sustainable power systems that empower communities, enhance sovereign energy security, and protect the African environment for future generations.
@@ -663,7 +667,7 @@ export default function App() {
             The Quad Nexus Framework
           </h2>
           <p className="mt-4 text-slate-300 text-base">
-            Hermit’s specialized advisory addresses the interconnected challenges of Energy, Water, Food, and Waste to Energy through comprehensive lifecycle delivery.
+            Hermitâ€™s specialized advisory addresses the interconnected challenges of Energy, Water, Food, and Waste to Energy through comprehensive lifecycle delivery.
           </p>
 
           {/* Interactive Quad Nexus Navigation Pills */}
@@ -881,7 +885,7 @@ export default function App() {
                     <span className="text-[10px] text-slate-400 uppercase font-bold flex items-center justify-center gap-1">
                       <Droplets className="w-3 h-3 text-cyan-400" /> Water Saved
                     </span>
-                    <p className="text-base sm:text-lg font-black text-cyan-400 mt-1">{(estimatedWaterSavedM3 / 1000).toFixed(0)}k m³/yr</p>
+                    <p className="text-base sm:text-lg font-black text-cyan-400 mt-1">{(estimatedWaterSavedM3 / 1000).toFixed(0)}k mÂ³/yr</p>
                     <p className="text-[10px] text-slate-500">Reduced Evaporation</p>
                   </div>
                   <div className={`p-3 rounded-xl ${currentTheme.cardInner} border border-emerald-500/40`}>
@@ -1064,7 +1068,7 @@ export default function App() {
               </div>
               <div className="bg-white p-5 rounded-2xl shadow-md border border-slate-100 hover:shadow-lg transition-all">
                 <span className="font-bold text-slate-900 font-extrabold block mb-1">4. Independent Review</span>
-                <p className="text-xs text-slate-600 font-medium">Second opinion verification on someone else’s design or figures.</p>
+                <p className="text-xs text-slate-600 font-medium">Second opinion verification on someone elseâ€™s design or figures.</p>
               </div>
             </div>
           </div>
@@ -1275,7 +1279,7 @@ export default function App() {
             {formStatus === 'error' && (
               <div className="mb-6 p-5 rounded-2xl bg-rose-950/70 border border-rose-500/50 text-rose-200">
                 <div className="flex items-start space-x-3">
-                  <div className="text-rose-400 font-bold shrink-0 mt-0.5">⚠️</div>
+                  <div className="text-rose-400 font-bold shrink-0 mt-0.5">âš ï¸</div>
                   <div className="w-full">
                     <h4 className="font-bold text-slate-900 text-sm mb-1">Notice</h4>
                     <p className="text-xs text-rose-200/90 leading-relaxed mb-3">{formFeedback}</p>
@@ -1408,7 +1412,7 @@ export default function App() {
           </div>
 
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-            <p>© {new Date().getFullYear()} Hermit Sustainability Advisory. Zimbabwean-Owned • Africa-Facing.</p>
+            <p>Â© {new Date().getFullYear()} Hermit Sustainability Advisory. Zimbabwean-Owned â€¢ Africa-Facing.</p>
             <p className="text-slate-400">30 Tunsgate, Mt Pleasant, Harare, Zimbabwe</p>
             <div className="flex space-x-4">
               <a href="http://www.hermitsustainability.co.zw" target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline">
