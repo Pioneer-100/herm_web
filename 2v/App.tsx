@@ -5,6 +5,7 @@ import heroPosterImg from './hero-poster.jpg';
 import floatingSolarHybridImg from './floating-solar-hybrid.jpg';
 import logoImg from './logo.png';
 import navLeavesImg from './nav-leaves.jpg';
+import globeBgImg from './globe-bg.png';
 import { MetricCounter } from './MetricCounter';
 import { 
   Shield, Zap, Globe, TrendingUp, Award, ArrowRight, 
