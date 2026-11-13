@@ -318,20 +318,16 @@ export default function App() {
         transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         className="sticky top-0 z-50 overflow-hidden border-b border-emerald-950/80 shadow-2xl transition-all"
       >
-        {/* Leaf Background Layer - Many small repeating tiles for a lush, dense pattern */}
-        <div
-          className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
-          aria-hidden="true"
-          style={{
-            backgroundImage: `url(${navLeavesImg})`,
-            backgroundRepeat: 'repeat',
-            backgroundSize: '130px auto',
-            filter: 'brightness(1.08) contrast(1.12)',
-            opacity: 0.9,
-          }}
-        />
-        {/* Dark gradient scrim — keeps all nav text crisp over the busy leaf pattern */}
-        <div className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-r from-black/78 via-black/60 to-black/78" />
+        {/* Leaf Background Layer - Single seamless photo, no borders */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
+          <img
+            src={navLeavesImg}
+            alt=""
+            className="w-full h-full object-cover object-center filter brightness-105 contrast-110 opacity-90"
+          />
+          {/* Dark gradient scrim — keeps all nav text crisp */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/75" />
+        </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
