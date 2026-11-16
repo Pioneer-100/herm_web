@@ -342,38 +342,13 @@ export default function App() {
       </div>
       <div className="relative z-10">
       
-      {/* Top Contact Bar */}
-      <motion.div 
-        initial={{ y: -30, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-        className="bg-emerald-700 text-white text-xs font-medium py-2.5 px-4 border-b border-emerald-800"
-      >
-        <div className="max-w-7xl mx-auto flex items-center justify-end gap-4 text-[11px]">
-          <span className="flex items-center gap-1.5 text-white/90 font-medium"><Phone className="w-3 h-3 text-amber-400" /> +263 71 280 0220</span>
-          <span className="text-white/40">•</span>
-          <span className="flex items-center gap-1.5 text-white/90 font-medium"><Mail className="w-3 h-3 text-amber-400" /> info@hermitsustainability.co.zw</span>
-        </div>
-      </motion.div>
-
-      {/* Main Navbar with Option A: Dark Bio-Glass Leaf Pattern */}
+      {/* Main Navbar */}
       <motion.nav 
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-        className="sticky top-0 z-50 overflow-hidden border-b border-slate-200 shadow-sm transition-colors bg-white"
+        className="sticky top-0 z-50 overflow-hidden border-b border-emerald-200 shadow-sm transition-colors bg-gradient-to-b from-emerald-100 via-emerald-50 to-lime-100"
       >
-        {/* Leaf Background Layer - Highly Visible & Vibrant */}
-        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
-          <img
-            src={navLeavesImg}
-            alt=""
-            className="w-full h-full object-cover object-center opacity-0"
-          />
-          {/* Subtle dark tint solely to keep white text effortlessly readable */}
-          <div className="absolute inset-0 bg-white" />
-        </div>
-
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
           {/* Logo */}
@@ -428,7 +403,7 @@ export default function App() {
 
         {/* Mobile menu dropdown */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-b border-slate-200 bg-white px-6 py-6 space-y-3 font-medium shadow-lg">
+          <div className="lg:hidden border-b border-emerald-200 bg-gradient-to-b from-emerald-100 via-emerald-50 to-lime-100 px-6 py-6 space-y-3 font-medium shadow-lg">
             <a href="#about" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 hover:text-emerald-600">About Hermit</a>
             <a href="#nexus" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 hover:text-emerald-600">Quad Nexus Solutions</a>
             <a href="#hybrid" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 hover:text-emerald-600">Hydro-Solar Hybrid Case</a>
@@ -543,16 +518,16 @@ export default function App() {
                 visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
               }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="p-3.5 sm:p-4 rounded-xl bg-slate-900/75 hover:bg-slate-900/90 backdrop-blur-md border border-white/20 shadow-xl transition-all"
+              className="p-3.5 sm:p-4 rounded-xl bg-gradient-to-b from-emerald-100 via-emerald-50 to-lime-100 hover:from-emerald-200 hover:to-lime-100 border border-emerald-200 shadow-xl transition-all"
             >
-              <div className="flex items-center justify-between text-amber-300 mb-1">
+              <div className="flex items-center justify-between text-amber-600 mb-1">
                 <Zap className="w-4 h-4" />
-                <span className="text-[9px] font-bold uppercase tracking-wider text-emerald-100/70">PV Modelled</span>
+                <span className="text-[9px] font-bold uppercase tracking-wider text-emerald-800/80">PV Modelled</span>
               </div>
-              <p className="text-lg sm:text-2xl font-extrabold font-display text-white">
+              <p className="text-lg sm:text-2xl font-extrabold font-display text-slate-900">
                 <MetricCounter value="1000+ kWp" />
               </p>
-              <p className="text-[10px] sm:text-xs text-emerald-100/80 mt-0.5">Representative solar array</p>
+              <p className="text-[10px] sm:text-xs text-slate-700 font-medium mt-0.5">Representative solar array</p>
             </motion.div>
 
             <motion.div 
@@ -561,16 +536,16 @@ export default function App() {
                 visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
               }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="p-3.5 sm:p-4 rounded-xl bg-slate-900/75 hover:bg-slate-900/90 backdrop-blur-md border border-white/20 shadow-xl transition-all"
+              className="p-3.5 sm:p-4 rounded-xl bg-gradient-to-b from-emerald-100 via-emerald-50 to-lime-100 hover:from-emerald-200 hover:to-lime-100 border border-emerald-200 shadow-xl transition-all"
             >
-              <div className="flex items-center justify-between text-emerald-300 mb-1">
+              <div className="flex items-center justify-between text-emerald-700 mb-1">
                 <TrendingUp className="w-4 h-4" />
-                <span className="text-[9px] font-bold uppercase tracking-wider text-emerald-100/70">Annual Yield</span>
+                <span className="text-[9px] font-bold uppercase tracking-wider text-emerald-800/80">Annual Yield</span>
               </div>
-              <p className="text-lg sm:text-2xl font-extrabold font-display text-white">
+              <p className="text-lg sm:text-2xl font-extrabold font-display text-slate-900">
                 <MetricCounter value="33.8 GWh/yr" />
               </p>
-              <p className="text-[10px] sm:text-xs text-emerald-100/80 mt-0.5">Combined floating solar + mini-hydro</p>
+              <p className="text-[10px] sm:text-xs text-slate-700 font-medium mt-0.5">Combined floating solar + mini-hydro</p>
             </motion.div>
 
             <motion.div 
@@ -579,16 +554,16 @@ export default function App() {
                 visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
               }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="p-3.5 sm:p-4 rounded-xl bg-slate-900/75 hover:bg-slate-900/90 backdrop-blur-md border border-white/20 shadow-xl transition-all"
+              className="p-3.5 sm:p-4 rounded-xl bg-gradient-to-b from-emerald-100 via-emerald-50 to-lime-100 hover:from-emerald-200 hover:to-lime-100 border border-emerald-200 shadow-xl transition-all"
             >
-              <div className="flex items-center justify-between text-amber-300 mb-1">
+              <div className="flex items-center justify-between text-amber-600 mb-1">
                 <Clock className="w-4 h-4" />
-                <span className="text-[9px] font-bold uppercase tracking-wider text-emerald-100/70">Timeline</span>
+                <span className="text-[9px] font-bold uppercase tracking-wider text-emerald-800/80">Timeline</span>
               </div>
-              <p className="text-lg sm:text-2xl font-extrabold font-display text-white">
+              <p className="text-lg sm:text-2xl font-extrabold font-display text-slate-900">
                 <MetricCounter value="8 Months" />
               </p>
-              <p className="text-[10px] sm:text-xs text-emerald-100/80 mt-0.5">From inception to EPC tender ready</p>
+              <p className="text-[10px] sm:text-xs text-slate-700 font-medium mt-0.5">From inception to EPC tender ready</p>
             </motion.div>
 
             <motion.div 
@@ -597,14 +572,14 @@ export default function App() {
                 visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
               }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="p-3.5 sm:p-4 rounded-xl bg-slate-900/75 hover:bg-slate-900/90 backdrop-blur-md border border-white/20 shadow-xl transition-all"
+              className="p-3.5 sm:p-4 rounded-xl bg-gradient-to-b from-emerald-100 via-emerald-50 to-lime-100 hover:from-emerald-200 hover:to-lime-100 border border-emerald-200 shadow-xl transition-all"
             >
-              <div className="flex items-center justify-between text-emerald-300 mb-1">
+              <div className="flex items-center justify-between text-emerald-700 mb-1">
                 <Layers className="w-4 h-4" />
-                <span className="text-[9px] font-bold uppercase tracking-wider text-emerald-100/70">Methodology</span>
+                <span className="text-[9px] font-bold uppercase tracking-wider text-emerald-800/80">Methodology</span>
               </div>
-              <p className="text-lg sm:text-2xl font-extrabold font-display text-white">Class 5</p>
-              <p className="text-[10px] sm:text-xs text-emerald-100/80 mt-0.5">Cost accuracy & simulation</p>
+              <p className="text-lg sm:text-2xl font-extrabold font-display text-slate-900">Class 5</p>
+              <p className="text-[10px] sm:text-xs text-slate-700 font-medium mt-0.5">Cost accuracy & simulation</p>
             </motion.div>
           </motion.div>
 
@@ -1760,35 +1735,35 @@ export default function App() {
       </section>
 
       {/* Footer (Page 1 & 10) */}
-      <footer className="bg-slate-900 text-slate-400 py-14 border-t border-slate-800">
+      <footer className="bg-gradient-to-b from-emerald-100/95 via-emerald-100/80 to-lime-100/75 text-slate-700 py-14 border-t border-emerald-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-800">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-emerald-200/80">
             <div className="flex items-center space-x-3">
               <img
                 src={logoImg}
                 alt="Hermit Sustainability Advisory"
-                className="w-9 h-9 rounded-xl object-cover object-center"
+                className="w-9 h-9 rounded-xl object-cover object-center shadow-sm"
               />
               <div>
-                <span className="text-xl font-extrabold font-display text-white tracking-tight">HERMIT</span>
-                <span className="block text-[9px] uppercase tracking-widest text-emerald-400 font-bold">Sustainability Advisory</span>
+                <span className="text-xl font-extrabold font-display text-slate-900 tracking-tight">HERMIT</span>
+                <span className="block text-[9px] uppercase tracking-widest text-emerald-700 font-bold">Sustainability Advisory</span>
               </div>
             </div>
-            <div className="flex flex-wrap gap-6 text-sm font-semibold">
-              <a href="#about" className="hover:text-white transition-colors">About</a>
-              <a href="#nexus" className="hover:text-white transition-colors">Quad Nexus</a>
-              <a href="#hybrid" className="hover:text-white transition-colors">Hydro-Solar Hybrid</a>
-              <a href="#portfolio" className="hover:text-white transition-colors">Portfolio</a>
-              <a href="#process" className="hover:text-white transition-colors">Process</a>
-              <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+            <div className="flex flex-wrap gap-6 text-sm font-semibold text-slate-700">
+              <a href="#about" className="hover:text-emerald-800 transition-colors">About</a>
+              <a href="#nexus" className="hover:text-emerald-800 transition-colors">Quad Nexus</a>
+              <a href="#hybrid" className="hover:text-emerald-800 transition-colors">Hydro-Solar Hybrid</a>
+              <a href="#portfolio" className="hover:text-emerald-800 transition-colors">Portfolio</a>
+              <a href="#process" className="hover:text-emerald-800 transition-colors">Process</a>
+              <a href="#contact" className="hover:text-emerald-800 transition-colors">Contact</a>
             </div>
           </div>
 
-          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-600 gap-4">
             <p>© {new Date().getFullYear()} Hermit Sustainability Advisory. Zimbabwean-Owned • Africa-Facing.</p>
-            <p className="text-slate-400">20 Aintree Road Highlands, Harare</p>
+            <p className="text-slate-600">20 Aintree Road Highlands, Harare</p>
             <div className="flex space-x-4">
-              <a href="http://www.hermit.co.zw" target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline">
+              <a href="http://www.hermit.co.zw" target="_blank" rel="noreferrer" className="text-emerald-700 font-semibold hover:text-emerald-800 hover:underline">
                 www.hermit.co.zw
               </a>
             </div>
