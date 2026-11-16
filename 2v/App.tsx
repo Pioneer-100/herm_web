@@ -330,8 +330,21 @@ export default function App() {
     <div className={`relative isolate min-h-screen ${currentTheme.bgRoot} text-slate-900 font-sans selection:bg-emerald-500 selection:text-white transition-colors duration-500`}>
       {/* Background Hermit Logo: Fullscreen, hands holding globe fully visible */}
       <div
-        className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none flex items-center justify-center p-4 sm:p-8 transform-gpu will-change-transform"
-        style={{ transform: 'translateZ(0)', backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
+        className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none flex items-center justify-center p-4 sm:p-8"
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          width: '100vw',
+          height: '100vh',
+          transform: 'translateZ(0)',
+          WebkitTransform: 'translateZ(0)',
+          backfaceVisibility: 'hidden',
+          WebkitBackfaceVisibility: 'hidden',
+          contain: 'strict'
+        }}
         aria-hidden="true"
       >
         <img
