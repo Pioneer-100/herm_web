@@ -1071,8 +1071,8 @@ export default function App() {
               </AnimatePresence>
             </div>
 
-            {/* Position 1: Unstacked Across Screen (Middle) */}
-            <div className="flex flex-col">
+            {/* Position 1: Unstacked Across Screen (Middle) — hidden on mobile */}
+            <div className="hidden md:flex flex-col">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`unstacked-1-${cardUnstacked1.name}`}
@@ -1110,8 +1110,8 @@ export default function App() {
               </AnimatePresence>
             </div>
 
-            {/* Position 2: Unstacked Across Screen (Right) */}
-            <div className="flex flex-col">
+            {/* Position 2: Unstacked Across Screen (Right) — hidden on mobile */}
+            <div className="hidden lg:flex flex-col">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`unstacked-2-${cardUnstacked2.name}`}
@@ -1457,161 +1457,57 @@ export default function App() {
           </div>
         </div>
 
-        {/* Partners Logo Banner */}
+        {/* Partners Logo Marquee — infinite scrolling ticker */}
         <div className="mt-14">
-          <p className="text-center text-xs font-bold uppercase tracking-widest text-slate-700 mb-8">
+          <p className="inline-block w-full text-center text-xs font-bold uppercase tracking-widest text-orange-500 mb-8 px-4 py-2.5 rounded-xl bg-gradient-to-b from-emerald-50/80 to-lime-50/60 border border-emerald-100">
             Strategic Partners & Multilateral Collaborations
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
 
-            {/* UNIDO */}
-            <div className="group flex flex-col items-center justify-between p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm hover:shadow-xl transition-all">
-              <div className="w-full h-20 flex items-center justify-center p-1">
-                <img
-                  src={logoUnido}
-                  alt="UNIDO - United Nations Industrial Development Organization"
-                  className="max-h-16 max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="text-center mt-2">
-                <p className="text-xs font-bold text-slate-800 leading-tight">UNIDO</p>
-                <p className="text-[10px] text-slate-600 font-medium leading-tight mt-0.5">Development Programs</p>
-              </div>
-            </div>
-
-            {/* GIZ */}
-            <div className="group flex flex-col items-center justify-between p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm hover:shadow-xl transition-all">
-              <div className="w-full h-20 flex items-center justify-center p-1">
-                <img
-                  src={logoGiz}
-                  alt="GIZ - Deutsche Gesellschaft für Internationale Zusammenarbeit"
-                  className="max-h-16 max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="text-center mt-2">
-                <p className="text-xs font-bold text-slate-800 leading-tight">GIZ</p>
-                <p className="text-[10px] text-slate-600 font-medium leading-tight mt-0.5">International Dev</p>
-              </div>
-            </div>
-
-            {/* IDBZ */}
-            <div className="group flex flex-col items-center justify-between p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm hover:shadow-xl transition-all">
-              <div className="w-full h-20 flex items-center justify-center p-1">
-                <img
-                  src={logoIdbz}
-                  alt="IDBZ - Infrastructure Development Bank of Zimbabwe"
-                  className="max-h-16 max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="text-center mt-2">
-                <p className="text-xs font-bold text-slate-800 leading-tight">IDBZ</p>
-                <p className="text-[10px] text-slate-600 font-medium leading-tight mt-0.5">Project Finance Partner</p>
-              </div>
-            </div>
-
-            {/* SADELEC / SADC Energy */}
-            <div className="group flex flex-col items-center justify-between p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm hover:shadow-xl transition-all">
-              <div className="w-full h-20 flex items-center justify-center p-1">
-                <img
-                  src={logoSadelec}
-                  alt="SADELEC - SADC Energy"
-                  className="max-h-16 max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="text-center mt-2">
-                <p className="text-xs font-bold text-slate-800 leading-tight">SADELEC</p>
-                <p className="text-[10px] text-slate-600 font-medium leading-tight mt-0.5">SADC Energy Solutions</p>
-              </div>
-            </div>
-
-            {/* REN21 */}
-            <div className="group flex flex-col items-center justify-between p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm hover:shadow-xl transition-all">
-              <div className="w-full h-20 flex items-center justify-center p-1">
-                <img
-                  src={logoRen21}
-                  alt="REN21 Renewables Now"
-                  className="max-h-16 max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="text-center mt-2">
-                <p className="text-xs font-bold text-slate-800 leading-tight">REN21</p>
-                <p className="text-[10px] text-slate-600 font-medium leading-tight mt-0.5">SADC RE Status Reports</p>
-              </div>
-            </div>
-
-            {/* African Union Commission */}
-            <div className="group flex flex-col items-center justify-between p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm hover:shadow-xl transition-all">
-              <div className="w-full h-20 flex items-center justify-center p-1">
-                <img
-                  src={logoAu}
-                  alt="African Union Commission"
-                  className="max-h-16 max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="text-center mt-2">
-                <p className="text-xs font-bold text-slate-800 leading-tight">African Union</p>
-                <p className="text-[10px] text-slate-600 font-medium leading-tight mt-0.5">AU Commission Policy</p>
-              </div>
-            </div>
-
-            {/* Green Hybrid Power */}
-            <div className="group flex flex-col items-center justify-between p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm hover:shadow-xl transition-all">
-              <div className="w-full h-20 flex items-center justify-center p-1">
-                <img
-                  src={logoGHP}
-                  alt="African Union Commission"
-                  className="max-h-16 max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="text-center mt-2">
-                <p className="text-xs font-bold text-slate-800 leading-tight">Green Hybrid Power</p>
-                {/*<p className="text-[10px] text-slate-600 font-medium leading-tight mt-0.5">AU Commission Policy</p>*/}
-              </div>
-            </div>
-            
-            {/* Ministry of Energy*/}
-            <div className="group flex flex-col items-center justify-between p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm hover:shadow-xl transition-all">
-              <div className="w-full h-20 flex items-center justify-center p-1">
-                <img
-                  src={logoMoE}
-                  alt="Min of Energy"
-                  className="max-h-16 max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="text-center mt-2">
-                <p className="text-xs font-bold text-slate-800 leading-tight">Ministry of Energy</p>
-                {/*<p className="text-[10px] text-slate-600 font-medium leading-tight mt-0.5">AU Commission Policy</p>*/}
-              </div>
-            </div>
-
-            {/* World Bank*/}
-            <div className="group flex flex-col items-center justify-between p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm hover:shadow-xl transition-all">
-              <div className="w-full h-20 flex items-center justify-center p-1">
-                <img
-                  src={logoWB}
-                  alt="World Bank"
-                  className="max-h-16 max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="text-center mt-2">
-                <p className="text-xs font-bold text-slate-800 leading-tight">World Bank</p>
-                {/*<p className="text-[10px] text-slate-600 font-medium leading-tight mt-0.5">AU Commission Policy</p>*/}
-              </div>
-            </div>
-
-            {/* IDC South Africa*/}
-            <div className="group flex flex-col items-center justify-between p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm hover:shadow-xl transition-all">
-              <div className="w-full h-20 flex items-center justify-center p-1">
-                <img
-                  src={logoIDC}
-                  alt="African Union Commission"
-                  className="max-h-16 max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="text-center mt-2">
-                <p className="text-xs font-bold text-slate-800 leading-tight">IDC South Africa</p>
-                {/*<p className="text-[10px] text-slate-600 font-medium leading-tight mt-0.5">AU Commission Policy</p>*/}
-              </div>
+          {/* Viewport: clips overflow and fades edges */}
+          <div className="partners-viewport">
+            {/* Track: duplicated set of items for seamless loop */}
+            <div className="partners-track">
+              {[
+                { src: logoUnido,   alt: "UNIDO",             label: "UNIDO",              sub: "Development Programs" },
+                { src: logoGiz,     alt: "GIZ",               label: "GIZ",                sub: "International Dev" },
+                { src: logoIdbz,    alt: "IDBZ",              label: "IDBZ",               sub: "Project Finance Partner" },
+                { src: logoSadelec, alt: "SADELEC",           label: "SADELEC",            sub: "SADC Energy Solutions" },
+                { src: logoRen21,   alt: "REN21",             label: "REN21",              sub: "SADC RE Status Reports" },
+                { src: logoAu,      alt: "African Union",     label: "African Union",      sub: "AU Commission Policy" },
+                { src: logoGHP,     alt: "Green Hybrid Power",label: "Green Hybrid Power", sub: "" },
+                { src: logoMoE,     alt: "Min of Energy",     label: "Ministry of Energy", sub: "" },
+                { src: logoWB,      alt: "World Bank",        label: "World Bank",         sub: "" },
+                { src: logoIDC,     alt: "IDC South Africa",  label: "IDC South Africa",   sub: "" },
+                /* duplicate set for seamless loop */
+                { src: logoUnido,   alt: "UNIDO",             label: "UNIDO",              sub: "Development Programs" },
+                { src: logoGiz,     alt: "GIZ",               label: "GIZ",                sub: "International Dev" },
+                { src: logoIdbz,    alt: "IDBZ",              label: "IDBZ",               sub: "Project Finance Partner" },
+                { src: logoSadelec, alt: "SADELEC",           label: "SADELEC",            sub: "SADC Energy Solutions" },
+                { src: logoRen21,   alt: "REN21",             label: "REN21",              sub: "SADC RE Status Reports" },
+                { src: logoAu,      alt: "African Union",     label: "African Union",      sub: "AU Commission Policy" },
+                { src: logoGHP,     alt: "Green Hybrid Power",label: "Green Hybrid Power", sub: "" },
+                { src: logoMoE,     alt: "Min of Energy",     label: "Ministry of Energy", sub: "" },
+                { src: logoWB,      alt: "World Bank",        label: "World Bank",         sub: "" },
+                { src: logoIDC,     alt: "IDC South Africa",  label: "IDC South Africa",   sub: "" },
+              ].map((p, i) => (
+                <div
+                  key={i}
+                  className="group flex-shrink-0 flex flex-col items-center justify-between mx-3 p-5 rounded-2xl bg-gradient-to-b from-emerald-50/80 to-lime-50/60 border border-emerald-100 hover:border-emerald-400 shadow-sm hover:shadow-xl hover:shadow-emerald-100/60 transition-all"
+                  style={{ width: '160px' }}
+                >
+                  <div className="w-full h-20 flex items-center justify-center p-1">
+                    <img
+                      src={p.src}
+                      alt={p.alt}
+                      className="max-h-16 max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="text-center mt-2">
+                    <p className="text-xs font-bold text-slate-800 leading-tight">{p.label}</p>
+                    {p.sub && <p className="text-[10px] text-slate-600 font-medium leading-tight mt-0.5">{p.sub}</p>}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
