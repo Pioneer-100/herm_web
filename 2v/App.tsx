@@ -1,7 +1,7 @@
 ﻿import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import heroBackgroundImg from './hero-bg.jpg';
-import heroPosterImg from './hero-poster.jpg';
+import heroPosterImg from './load-hero.jpg';
 import floatingSolarHybridImg from './floating-solar-hybrid.jpg';
 import logoImg from './logo.png';
 import globeBgImg from './logo.png';
@@ -418,7 +418,7 @@ export default function App() {
       </motion.nav>
 
       {/* Hero Section with Custom Background Image / Video */}
-      <section className="relative min-h-[calc(100vh-7.5rem)] flex items-center justify-start py-8 sm:py-10 lg:py-12 overflow-hidden w-full">
+      <section className="relative min-h-[calc(100vh-7.5rem)] flex items-center justify-center py-8 sm:py-10 lg:py-12 overflow-hidden w-full">
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none select-none" aria-hidden="true">
           {/* 1. Alternate Background (Wind Turbine / Solar) */}
           <div className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${isVideoLoaded ? "opacity-0" : "opacity-100"}`}>
@@ -448,7 +448,7 @@ export default function App() {
           {/* Full-bleed seamless gradient overlay: no harsh lines, keeps text ultra-readable */}
           <div className="absolute inset-0 w-full h-full bg-transparent pointer-events-none" />
         </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center flex flex-col items-center">
           
           {/* Masked Slide-up Headline Reveal (Erthost Style) */}
           <div className="py-1">
@@ -469,7 +469,7 @@ export default function App() {
             initial={{ y: 25, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-4 sm:mt-5 text-sm sm:text-lg lg:text-xl text-white/95 max-w-2xl leading-relaxed font-medium drop-shadow-md"
+            className="mt-4 sm:mt-5 text-sm sm:text-lg lg:text-xl text-white/95 max-w-2xl leading-relaxed font-medium drop-shadow-md text-center"
           >
             Delivering innovative, bankable, and scalable clean energy solutions grounded in the 
             <span className="font-bold text-emerald-300 drop-shadow"> Quad Nexus</span> of Energy, Water, Food, and Waste to Energy.
@@ -479,7 +479,7 @@ export default function App() {
             initial={{ y: 25, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-6 sm:mt-7 flex flex-col sm:flex-row items-stretch sm:items-start gap-3 sm:gap-4"
+            className="mt-6 sm:mt-7 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
           >
             <a
               href="#hybrid"
@@ -510,7 +510,7 @@ export default function App() {
                 }
               }
             }}
-            className="mt-8 sm:mt-10 lg:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 text-left"
+            className="mt-8 sm:mt-10 lg:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 text-center"
           >
             <motion.div 
               variants={{
