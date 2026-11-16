@@ -8,6 +8,10 @@ import globeBgImg from './logo.png';
 import navLeavesImg from './nav-leaves.jpg';
 import logoUnido from './logo-unido.png';
 import logoGiz from './logo-giz.png';
+import logoGHP  from './logo-ghp.png';
+import logoIDC from './logo-idc.png';
+import logoMoE from './logo-MoE.jpeg';
+import logoWB from './logo-wb.png';
 import logoIdbz from './logo-idbz.png';
 import logoSadelec from './logo-sadelec.png';
 import logoRen21 from './logo-ren21.png';
@@ -1550,6 +1554,65 @@ export default function App() {
               </div>
             </div>
 
+            {/* Green Hybrid Power */}
+            <div className="group flex flex-col items-center justify-between p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm hover:shadow-xl transition-all">
+              <div className="w-full h-20 flex items-center justify-center p-1">
+                <img
+                  src={logoGHP}
+                  alt="African Union Commission"
+                  className="max-h-16 max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="text-center mt-2">
+                <p className="text-xs font-bold text-slate-800 leading-tight">Green Hybrid Power</p>
+                {/*<p className="text-[10px] text-slate-600 font-medium leading-tight mt-0.5">AU Commission Policy</p>*/}
+              </div>
+            </div>
+            
+            {/* Ministry of Energy*/}
+            <div className="group flex flex-col items-center justify-between p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm hover:shadow-xl transition-all">
+              <div className="w-full h-20 flex items-center justify-center p-1">
+                <img
+                  src={logoMoE}
+                  alt="Min of Energy"
+                  className="max-h-16 max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="text-center mt-2">
+                <p className="text-xs font-bold text-slate-800 leading-tight">Ministry of Energy</p>
+                {/*<p className="text-[10px] text-slate-600 font-medium leading-tight mt-0.5">AU Commission Policy</p>*/}
+              </div>
+            </div>
+
+            {/* World Bank*/}
+            <div className="group flex flex-col items-center justify-between p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm hover:shadow-xl transition-all">
+              <div className="w-full h-20 flex items-center justify-center p-1">
+                <img
+                  src={logoWB}
+                  alt="World Bank"
+                  className="max-h-16 max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="text-center mt-2">
+                <p className="text-xs font-bold text-slate-800 leading-tight">World Bank</p>
+                {/*<p className="text-[10px] text-slate-600 font-medium leading-tight mt-0.5">AU Commission Policy</p>*/}
+              </div>
+            </div>
+
+            {/* IDC South Africa*/}
+            <div className="group flex flex-col items-center justify-between p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm hover:shadow-xl transition-all">
+              <div className="w-full h-20 flex items-center justify-center p-1">
+                <img
+                  src={logoIDC}
+                  alt="African Union Commission"
+                  className="max-h-16 max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="text-center mt-2">
+                <p className="text-xs font-bold text-slate-800 leading-tight">IDC South Africa</p>
+                {/*<p className="text-[10px] text-slate-600 font-medium leading-tight mt-0.5">AU Commission Policy</p>*/}
+              </div>
+            </div>
           </div>
         </div>
       </section>
