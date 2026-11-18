@@ -1448,9 +1448,12 @@ export default function App() {
 
         {/* Partners Logo Marquee — infinite scrolling ticker */}
         <div className="mt-14">
-          <p className="inline-block w-full text-center text-xs font-bold uppercase tracking-widest text-orange-500 mb-8 px-4 py-2.5 rounded-xl bg-gradient-to-b from-emerald-50/80 to-lime-50/60 border border-emerald-100">
-            Strategic Partners & Multilateral Collaborations
-          </p>
+          <div className="flex justify-center mb-8">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-slate-800 bg-slate-100/90 border border-slate-300 shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-emerald-600"></span>
+              Strategic Partners & Multilateral Collaborations
+            </span>
+          </div>
 
           {/* Viewport: clips overflow and fades edges */}
           <div className="partners-viewport">
@@ -1481,7 +1484,7 @@ export default function App() {
               ].map((p, i) => (
                 <div
                   key={i}
-                  className="group flex-shrink-0 flex flex-col items-center justify-between mx-3 p-5 rounded-2xl bg-gradient-to-b from-emerald-50/80 to-lime-50/60 border border-emerald-100 hover:border-emerald-400 shadow-sm hover:shadow-xl hover:shadow-emerald-100/60 transition-all"
+                  className="group flex-shrink-0 flex flex-col items-center justify-between mx-3 p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-slate-300 shadow-sm hover:shadow-md transition-all"
                   style={{ width: '160px' }}
                 >
                   <div className="w-full h-20 flex items-center justify-center p-1">
@@ -1492,8 +1495,8 @@ export default function App() {
                     />
                   </div>
                   <div className="text-center mt-2">
-                    <p className="text-xs font-bold text-slate-800 leading-tight">{p.label}</p>
-                    {p.sub && <p className="text-[10px] text-slate-600 font-medium leading-tight mt-0.5">{p.sub}</p>}
+                    <p className="text-xs font-bold text-slate-900 leading-tight">{p.label}</p>
+                    {p.sub && <p className="text-[10px] text-slate-700 font-medium leading-tight mt-0.5">{p.sub}</p>}
                   </div>
                 </div>
               ))}
