@@ -827,12 +827,19 @@ export default function App() {
                 Our floating solar practice hybridises megawatt-scale PV arrays with existing hydro plants, sharing one grid connection to dramatically lift a site's combined output without requiring costly transmission line reinforcement.
               </p>
 
-              {/* National Resource Potential Pill / Badge */}
-              <div className="mt-5 inline-flex items-center gap-2.5 px-4 py-2 rounded-xl bg-emerald-600/10 border border-emerald-600/25 text-emerald-950 shadow-sm">
-                <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
-                <span className="text-xs sm:text-sm font-bold">
-                  Zimbabwe has over <strong className="text-emerald-800 font-extrabold">10,000 water bodies</strong> primed for high-yield floating solar installations.
-                </span>
+              {/* National Resource Potential Prominent Banner */}
+              <div className="mt-6 p-4 sm:p-5 rounded-2xl bg-white border-2 border-emerald-500 shadow-xl shadow-emerald-500/10 flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-md">
+                  <Waves className="w-6 h-6" />
+                </div>
+                <div>
+                  <span className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-emerald-700 block mb-0.5">
+                    Unlocking Zimbabwe's Renewable Frontier
+                  </span>
+                  <p className="text-sm sm:text-base font-extrabold text-slate-900 leading-snug">
+                    Zimbabwe has over <span className="text-emerald-700 underline decoration-emerald-500 decoration-2 underline-offset-2">10,000 water bodies</span> primed for scalable, high-yield floating solar hybrid deployment.
+                  </p>
+                </div>
               </div>
             </div>
 
