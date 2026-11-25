@@ -826,6 +826,14 @@ export default function App() {
               <p className="mt-4 text-slate-600 text-base leading-relaxed">
                 Our floating solar practice hybridises megawatt-scale PV arrays with existing hydro plants, sharing one grid connection to dramatically lift a site's combined output without requiring costly transmission line reinforcement.
               </p>
+
+              {/* National Resource Potential Pill / Badge */}
+              <div className="mt-5 inline-flex items-center gap-2.5 px-4 py-2 rounded-xl bg-emerald-600/10 border border-emerald-600/25 text-emerald-950 shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
+                <span className="text-xs sm:text-sm font-bold">
+                  Zimbabwe has over <strong className="text-emerald-800 font-extrabold">10,000 water bodies</strong> primed for high-yield floating solar installations.
+                </span>
+              </div>
             </div>
 
             {/* Picture component covering the upper right area */}
