@@ -36,9 +36,9 @@ export default function App() {
   // LIGHT MODERN THEME - with semi-transparent cool emerald glass tints allowing watermark & white depth through
   const currentTheme = {
     name: "Light Modern",
-    bgRoot: "bg-white",
-    sectionAlt: "bg-emerald-50/60 border-y border-emerald-200/60",
-    sectionTranslucent: "bg-emerald-50/40",
+    bgRoot: "bg-[#fdfbf7]",
+    sectionAlt: "bg-[#f7f3eb]/80 border-y border-amber-900/10",
+    sectionTranslucent: "bg-[#f7f3eb]/50",
     badge: "border-emerald-400/70 bg-emerald-100 text-emerald-800 font-semibold",
     headlineGradient: "from-white via-emerald-100 to-teal-200",
     primaryBtn: "bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/30 font-bold",
