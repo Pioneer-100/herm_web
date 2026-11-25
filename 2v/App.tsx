@@ -362,14 +362,14 @@ export default function App() {
         transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         className="sticky top-0 z-50 overflow-hidden border-b border-emerald-200 shadow-sm transition-colors bg-gradient-to-b from-emerald-100 via-emerald-50 to-lime-100"
       >
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 sm:h-24 flex items-center justify-between">
           
           {/* Logo */}
           <a href="#" className="flex items-center space-x-3 group">
             <img
               src={logoImg}
               alt="Hermit Sustainability Advisory"
-              className="w-11 h-11 rounded-xl object-cover object-center shadow-lg shadow-emerald-500/20 transform group-hover:scale-105 transition-transform"
+              className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover object-center shadow-xl shadow-emerald-600/25 ring-2 ring-emerald-500/20 transform group-hover:scale-105 transition-transform"
             />
             <div>
               <span className="text-2xl font-black tracking-tight font-display text-slate-900">
